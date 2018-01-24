@@ -1,0 +1,191 @@
+.user-detail {
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  /* box-shadow: 1px 1px 10px 1px; */
+  margin: 85px 60px;
+  box-shadow: 1px 1px 5px -2px rgba(0,0,0,0.6);
+}
+.user-detail .heading {
+  text-align: left;
+}
+.user-detail .heading h1 {
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #757575;
+    line-height: 100%;
+    padding: 15px 0;
+    margin: 0;
+    border-bottom: 2px solid rgba(0,0,0,0.04)
+}
+.user-detail .sign-up-box {
+  background-color: #fff;
+}
+
+.user-detail .sign-up-box .sign-up-form {
+  /* background-color: #fff; */
+  padding: 20px 30px 15px;
+}
+.user-detail .sign-up-box .sign-up-form .form-group .input-icon {
+  position: relative;
+}
+.user-detail .sign-up-box .sign-up-form .form-group .input-icon .form-control {
+  color: #666;
+  font-size: 14px;
+  letter-spacing: 0.7px;
+  opacity: 0.8;
+  border-radius: 0; 
+  -webkit-transition: padding 0.1s;
+  transition: padding 0.1s;
+  font-weight: 400;
+}
+.user-detail .sign-up-box .sign-up-form .form-group .input-icon .form-control:focus {
+  border: 1px solid #1f8f43;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.user-detail .sign-up-box .sign-up-form .btn-continue .btn-success {
+  font-size: 14px;
+  cursor: pointer;
+  text-transform: capitalize;
+  background-color: #1f8f43;
+  border: #1f8f43;
+  border-radius: 0;
+  font-weight: 400;
+  margin-bottom: 3px;  
+  letter-spacing: 0.8px;
+}
+.user-detail .sign-up-box .sign-up-form .btn-continue .btn-success:focus {
+  outline: #1f8f43;
+  border-radius: 4px;
+}
+.user-detail .sign-up-box .sign-up-form .btn-continue .btn-success:hover {
+  background-color: #197236;
+}
+@media (max-width: 479px) {
+  .user-detail .sign-up-box .sign-up-form .btn-continue .btn-success {
+    font-size: 14px;
+  }
+}
+.user-detail .sign-up-box .sign-up-form .input-group {
+  line-height: 24px;
+  padding: 6px 0;
+}
+.user-detail .sign-up-box .sign-up-form .input-group .input-group-addon {
+  background-color: transparent;
+  border: transparent;
+  line-height: 27px;
+  padding: 0;
+  text-align: left;
+  color: #777;
+  letter-spacing: 0.6px;
+  font-size: 14px;
+}
+.user-detail .sign-up-box .sign-up-form .input-group .remember {
+  font-size: 14px;
+  color: #777;
+  letter-spacing: 0.6px;
+  margin-right: 25px;
+  text-transform: capitalize;
+  margin-left: 8px;
+  float: left;
+}
+.user-detail .sign-up-box .sign-up-form .input-group a {
+  font-size: 14px;
+  letter-spacing: 0.6px;
+  text-transform: capitalize;
+  color: #1f8f43;
+  cursor: pointer;
+  margin-left: auto;
+}
+.user-detail .sign-up-box .sign-up-form .or {
+  overflow: visible;
+  text-align: center;
+  height: 20px;
+  padding-bottom: 0;
+}
+.user-detail .sign-up-box .sign-up-form .or span {
+  background-color: #fff;
+  position: relative;
+  font-size: 18px;
+  line-height: 100%;
+  color: #777;
+  text-transform: lowercase;
+  padding: 0 10px;
+  display: block;
+}
+.user-detail .sign-up-box .sign-up-form .or span:before {
+  content: '';
+  position: absolute;
+  border-top: 1px solid #ccc;
+  width: 45%;
+  top: 10px;
+  left: 0;
+}
+.user-detail .sign-up-box .sign-up-form .or span:after {
+  content: '';
+  position: absolute;
+  border-top: 1px solid #ccc;
+  width: 45%;
+  top: 10px;
+  right: 0;
+}
+.user-detail .sign-up-box .sign-up-form .social-btn {
+  margin: 15px auto;
+  text-align: center;
+  font-size: 12px;
+  text-align: center;
+}
+.user-detail .sign-up-box .sign-up-form .social-btn .btn-facebook .btn-default {
+  font-size: 14px;
+  letter-spacing: 0.7px;
+  background-color: #4267b2;
+  color: #fff;
+  border: 2px solid #4267b2;
+  border-radius: 0;
+}
+.user-detail .sign-up-box .sign-up-form .social-btn .btn-facebook .btn-default:focus {
+  outline: #1f8f43;
+  border-radius: 1px;
+}
+.user-detail .sign-up-box .sign-up-form .social-btn .btn-facebook .btn-default .fa-facebook {
+  color: #fff;
+  margin-right: 30px;
+}
+@media (max-width: 479px) {
+  .user-detail .sign-up-box .sign-up-form .social-btn .btn-facebook .btn-default {
+    font-size: 14px;
+  }
+  .user-detail .sign-up-box .sign-up-form .social-btn .btn-facebook .btn-default .fa-facebook {
+    margin-right: 10px;
+  }
+}
+.user-detail .sign-up-box .sign-up-form .social-btn .btn-google {
+  margin-top: 15px;
+}
+.user-detail .sign-up-box .sign-up-form .social-btn .btn-google .btn-default {
+  font-size: 14px;
+  letter-spacing: 0.7px;
+  border-radius: 0;
+  background-color: #dc3545;
+  color: #fff;
+  border: 2px solid #dc3545;
+}
+.user-detail .sign-up-box .sign-up-form .social-btn .btn-google .btn-default:focus {
+  outline: #1f8f43;
+  border-radius: 1px;
+}
+.user-detail .sign-up-box .sign-up-form .social-btn .btn-google .btn-default .fa-google {
+  color: #f00;
+  margin-right: 30px;
+}
+@media (max-width: 479px) {
+  .user-detail .sign-up-box .sign-up-form .social-btn .btn-google .btn-default {
+    font-size: 14px;
+  }
+  .user-detail .sign-up-box .sign-up-form .social-btn .btn-google .btn-default .fa-google {
+    margin-right: 10px;
+  }
+}
