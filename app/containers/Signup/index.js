@@ -32,7 +32,7 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
         {/* SignIn Section */}
         <div className="container">
           <div className="row">
-            <div className="col-md-6 offset-md-3 col-sm-6 offset-sm-3">
+            <div className="col-lg-6 offset-md-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1  col-12">
               <form className="user-detail" id="user-detail">
                 <div className="heading">
                   <h1 className="text-center" >Signup</h1>
@@ -61,6 +61,9 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
                       </div>
                       <div className="btn-google">
                         <button className="btn btn-default btn-block"><i className="fa fa-google"></i> Continue With Google</button>
+                      </div>
+                      <div className="btn-linkedin">
+                        <button className="btn btn-default btn-block"><i className="fa fa-linkedin"></i> Continue With LinkedIn</button>
                       </div>
                     </div>
                   </div>

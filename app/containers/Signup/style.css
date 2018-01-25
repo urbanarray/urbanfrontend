@@ -2,8 +2,13 @@
   background-color: #fff;
   border: 1px solid rgba(0,0,0,0.07);
   /* box-shadow: 1px 1px 10px 1px; */
-  margin: 85px 60px;
+  margin: 30px 10px;
   box-shadow: 1px 1px 5px -2px rgba(0,0,0,0.6);
+}
+@media (min-width: 992px) {
+  .user-detail  {
+    margin: 50px 50px;
+  }
 }
 .user-detail .heading {
   text-align: left;
@@ -41,7 +46,7 @@
   font-weight: 400;
 }
 .user-detail .sign-up-box .sign-up-form .form-group .input-icon .form-control:focus {
-  border: 1px solid #1f8f43;
+  border: 1px solid #91c640;
   outline: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -50,25 +55,25 @@
   font-size: 14px;
   cursor: pointer;
   text-transform: capitalize;
-  background-color: #1f8f43;
-  border: #1f8f43;
+  background-color: #91c640;
+  border: #91c640;
   border-radius: 0;
   font-weight: 400;
   margin-bottom: 3px;  
   letter-spacing: 0.8px;
 }
 .user-detail .sign-up-box .sign-up-form .btn-continue .btn-success:focus {
-  outline: #1f8f43;
+  outline: #91c640;
   border-radius: 4px;
 }
 .user-detail .sign-up-box .sign-up-form .btn-continue .btn-success:hover {
   background-color: #197236;
 }
-@media (max-width: 479px) {
+/* @media (max-width: 479px) {
   .user-detail .sign-up-box .sign-up-form .btn-continue .btn-success {
     font-size: 14px;
   }
-}
+} */
 .user-detail .sign-up-box .sign-up-form .input-group {
   line-height: 24px;
   padding: 6px 0;
@@ -84,7 +89,7 @@
   font-size: 14px;
 }
 .user-detail .sign-up-box .sign-up-form .input-group .remember {
-  font-size: 14px;
+  font-size: 12px;
   color: #777;
   letter-spacing: 0.6px;
   margin-right: 25px;
@@ -93,10 +98,10 @@
   float: left;
 }
 .user-detail .sign-up-box .sign-up-form .input-group a {
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 0.6px;
   text-transform: capitalize;
-  color: #1f8f43;
+  color: #91c640;
   cursor: pointer;
   margin-left: auto;
 }
@@ -141,27 +146,31 @@
 .user-detail .sign-up-box .sign-up-form .social-btn .btn-facebook .btn-default {
   font-size: 14px;
   letter-spacing: 0.7px;
-  background-color: #4267b2;
+  background-color: #4a99cb;
   color: #fff;
-  border: 2px solid #4267b2;
+  border: 2px solid #4a99cb;
   border-radius: 0;
 }
+
+/* Facebook Button */
 .user-detail .sign-up-box .sign-up-form .social-btn .btn-facebook .btn-default:focus {
-  outline: #1f8f43;
+  outline: #91c640;
   border-radius: 1px;
 }
 .user-detail .sign-up-box .sign-up-form .social-btn .btn-facebook .btn-default .fa-facebook {
   color: #fff;
   margin-right: 30px;
 }
-@media (max-width: 479px) {
+/* @media (max-width: 479px) {
   .user-detail .sign-up-box .sign-up-form .social-btn .btn-facebook .btn-default {
     font-size: 14px;
   }
   .user-detail .sign-up-box .sign-up-form .social-btn .btn-facebook .btn-default .fa-facebook {
     margin-right: 10px;
   }
-}
+} */
+
+/* Google Button */
 .user-detail .sign-up-box .sign-up-form .social-btn .btn-google {
   margin-top: 15px;
 }
@@ -174,18 +183,48 @@
   border: 2px solid #dc3545;
 }
 .user-detail .sign-up-box .sign-up-form .social-btn .btn-google .btn-default:focus {
-  outline: #1f8f43;
+  outline: #f00;
   border-radius: 1px;
 }
 .user-detail .sign-up-box .sign-up-form .social-btn .btn-google .btn-default .fa-google {
   color: #f00;
   margin-right: 30px;
 }
-@media (max-width: 479px) {
+/* @media (max-width: 479px) {
   .user-detail .sign-up-box .sign-up-form .social-btn .btn-google .btn-default {
     font-size: 14px;
   }
   .user-detail .sign-up-box .sign-up-form .social-btn .btn-google .btn-default .fa-google {
     margin-right: 10px;
   }
+} */
+
+
+/* LinkedIn Button */
+.user-detail .sign-up-box .sign-up-form .social-btn .btn-linkedin {
+  margin-top: 15px;
 }
+.user-detail .sign-up-box .sign-up-form .social-btn .btn-linkedin .btn-default {
+  font-size: 14px;
+  letter-spacing: 0.7px;
+  border-radius: 0;
+  background-color: #007bb6;
+  color: #fff;
+  border: 2px solid #007bb6;
+}
+.user-detail .sign-up-box .sign-up-form .social-btn .btn-linkedin .btn-default:focus {
+  outline: #0071a5;
+  border-radius: 1px;
+}
+.user-detail .sign-up-box .sign-up-form .social-btn .btn-linkedin .btn-default .fa-google {
+  color: #007bb6;
+  margin-right: 30px;
+}
+/* @media (max-width: 479px) {
+  .user-detail .sign-up-box .sign-up-form .social-btn .btn-linkedin .btn-default {
+    font-size: 14px;
+  }
+  .user-detail .sign-up-box .sign-up-form .social-btn .btn-linkedin .btn-default .fa-google {
+    margin-right: 10px;
+  }
+} */

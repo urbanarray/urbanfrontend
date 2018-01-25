@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import {Button} from 'reactstrap';
-import logo from '../../../assets/images/logo.png';
 import styled from 'styled-components';
 
 import { Link } from 'react-router-dom';
@@ -22,7 +21,7 @@ const LandingWraper = styled.div`
   color:white;
 
   .container{
-    padding : 100px;
+    padding : 50px;
   }
 
   .padding_20{
@@ -49,7 +48,7 @@ export class Landing extends React.Component { // eslint-disable-line react/pref
             <div className= 'row' >
               <div className= 'col-md-12' >
                 
-              <iframe width="854" height="480" src="https://www.youtube.com/embed/U5n_FxGmcH8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              <iframe width="854" height="480" src="https://www.youtube.com/embed/U5n_FxGmcH8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
 
               </div>
             </div>
