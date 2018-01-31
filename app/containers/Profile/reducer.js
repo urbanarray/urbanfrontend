@@ -1,6 +1,6 @@
 /*
  *
- * Login reducer
+ * Profile reducer
  *
  */
 
@@ -11,7 +11,7 @@ import {
 
 const initialState = fromJS({});
 
-function loginReducer(state = initialState, action) {
+function profileReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
@@ -20,4 +20,4 @@ function loginReducer(state = initialState, action) {
   }
 }
 
-export default loginReducer;
+export default profileReducer;

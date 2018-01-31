@@ -1,13 +1,11 @@
 /**
  *
- * Signup
+ * Profile
  *
  */
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
@@ -16,70 +14,66 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectSignup from './selectors';
+import makeSelectProfile from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-import './style.css';
+import {Form, Input} from 'reactstrap';
 
-import {Form} from 'reactstrap';
-
-export class Signup extends React.Component { // eslint-disable-line react/prefer-stateless-function
- 
-  // handle form on change
+export class Profile extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  
   changeAll = () => {
-    // alert('hello test on change');  
+    // alert('hello')
   }
 
   handleSubmit = (e) => {
-    
     e.preventDefault();
-    this.props.history.push('profile');
-    // alert('hello to you test');
+
+    this.props.history.push('dashboard');
   }
-
-
-
+  
   render() {
     return (
       <div>
         <Helmet>
-          <title>Signup</title>
-          <meta name="description" content="Description of Signup" />
+          <title>Profile</title>
+          <meta name="description" content="Description of Profile" />
         </Helmet>
 
-        {/* SignIn Section */}
+
+        {/* Profile Section */}
         <div className="container">
           <div className="row">
             <div className="col-lg-6 offset-md-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1  col-12">
               <Form className="user-detail" id="user-detail" onChange={this.changeAll} onSubmit={this.handleSubmit} >
+               
                 <div className="heading">
-                  <h1 className="text-center" >Signup</h1>
+                  <h1 className="text-center" >Profile</h1>
                 </div>
                 <div className="sign-up-box">
                   <div className="sign-up-form">
-                    
+
                     <div className="form-group">
                       <div className="input-icon">
-                        <input className="form-control" type="text" placeholder="Email" />
-                      </div>
-                    </div>
-                    
-                    <div className="form-group">
-                      <div className="input-icon">
-                        <input className="form-control" type="text" placeholder="Username" />
+                        <Input className="form-control" type="text" name="firstName" placeholder="First Name" />
                       </div>
                     </div>
 
                     <div className="form-group">
                       <div className="input-icon">
-                        <input className="form-control" type="password" placeholder="Password" />
+                        <Input className="form-control" type="text" name="lastName" placeholder="Last Name" />
                       </div>
                     </div>
 
                     <div className="form-group">
                       <div className="input-icon">
-                        <input className="form-control" type="confirmPassword" placeholder="Confirm Password" />
+                        <Input className="form-control" type="text" name="contact" placeholder="Contact" />
+                      </div>
+                    </div>
+
+                    <div className="form-group">
+                      <div className="input-icon">
+                        <Input className="form-control" type="textarea" placeholder="Address" />
                       </div>
                     </div>
 
@@ -88,26 +82,12 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
                       <button className="btn btn-success btn-block">Continue</button>
                     </div>
 
-                    <div className="input-group">
-                    </div>
-                   
-                    <div className="or"><span>or</span></div>
-                    
-                    <div className="social-btn">
-                      <div className="btn-facebook">
-                        <button className="btn btn-default btn-block"><i className="fa fa-facebook"></i> Continue With Facebook</button>
-                      </div>
-                      <div className="btn-google">
-                        <button className="btn btn-default btn-block"><i className="fa fa-google"></i> Continue With Google</button>
-                      </div>
-                      <div className="btn-linkedin">
-                        <button className="btn btn-default btn-block"><i className="fa fa-linkedin"></i> Continue With LinkedIn</button>
-                      </div>
-                    </div>
+
                   </div>
                 </div>
-              </Form  >
-            
+              
+              </Form>
+
             </div>
           </div>
         </div>
@@ -117,12 +97,12 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
   }
 }
 
-Signup.propTypes = {
+Profile.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  signup: makeSelectSignup(),
+  profile: makeSelectProfile(),
 });
 
 function mapDispatchToProps(dispatch) {
@@ -131,13 +111,13 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-const withReducer = injectReducer({ key: 'signup', reducer });
-const withSaga = injectSaga({ key: 'signup', saga });
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+const withReducer = injectReducer({ key: 'profile', reducer });
+const withSaga = injectSaga({ key: 'profile', saga });
 
 export default compose(
   withReducer,
   withSaga,
   withConnect,
-)(Signup);
+)(Profile);

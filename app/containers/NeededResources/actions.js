@@ -1,6 +1,6 @@
 /*
  *
- * Login actions
+ * NeededResources actions
  *
  */
 

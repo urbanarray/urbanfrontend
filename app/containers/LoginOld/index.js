@@ -6,8 +6,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
@@ -20,26 +18,9 @@ import makeSelectSignup from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-import './style.css';
-
-import {Form} from 'reactstrap';
+import './app/containers/signup/style.css';
 
 export class Signup extends React.Component { // eslint-disable-line react/prefer-stateless-function
- 
-  // handle form on change
-  changeAll = () => {
-    // alert('hello test on change');  
-  }
-
-  handleSubmit = (e) => {
-    
-    e.preventDefault();
-    this.props.history.push('profile');
-    // alert('hello to you test');
-  }
-
-
-
   render() {
     return (
       <div>
@@ -52,47 +33,28 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
         <div className="container">
           <div className="row">
             <div className="col-lg-6 offset-md-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1  col-12">
-              <Form className="user-detail" id="user-detail" onChange={this.changeAll} onSubmit={this.handleSubmit} >
+              <form className="user-detail" id="user-detail">
                 <div className="heading">
                   <h1 className="text-center" >Signup</h1>
                 </div>
                 <div className="sign-up-box">
                   <div className="sign-up-form">
-                    
                     <div className="form-group">
                       <div className="input-icon">
-                        <input className="form-control" type="text" placeholder="Email" />
+                        <input className="form-control" type="text" placeholder="Email / Username" />
                       </div>
                     </div>
-                    
-                    <div className="form-group">
-                      <div className="input-icon">
-                        <input className="form-control" type="text" placeholder="Username" />
-                      </div>
-                    </div>
-
                     <div className="form-group">
                       <div className="input-icon">
                         <input className="form-control" type="password" placeholder="Password" />
                       </div>
                     </div>
-
-                    <div className="form-group">
-                      <div className="input-icon">
-                        <input className="form-control" type="confirmPassword" placeholder="Confirm Password" />
-                      </div>
-                    </div>
-
-
                     <div className="btn-continue">
                       <button className="btn btn-success btn-block">Continue</button>
                     </div>
-
-                    <div className="input-group">
-                    </div>
-                   
+                    <div className="input-group"><span className="input-group-addon">
+                      <input type="checkbox" id="checkbox" /></span><span className="remember">remember me?</span><a href="#">forget password</a></div>
                     <div className="or"><span>or</span></div>
-                    
                     <div className="social-btn">
                       <div className="btn-facebook">
                         <button className="btn btn-default btn-block"><i className="fa fa-facebook"></i> Continue With Facebook</button>
@@ -106,8 +68,8 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
                     </div>
                   </div>
                 </div>
-              </Form  >
-            
+              </form  >
+
             </div>
           </div>
         </div>

@@ -8,183 +8,73 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectLogin, { isGuestUser } from './selectors';
+import makeSelectLogin from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-
-import styled from 'styled-components';
-
-import { NavLink, Route, Router, browserHistory, Redirect } from 'react-router-dom';
-
-import {Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import logo from '../../../assets/images/logo.png';
-
-import {setCredentialsAction} from './actions';
-import {isLogin} from 'containers/App/selectors';
-
-const LoginWraper = styled.div`
-  position: absolute;
-  width: 100% !important;
-  min-height: 100% !important;
-  background: #27ae60 !important;
-  color:white;
-
-  .container{
-    padding : 100px;
-  }
-`;
-
- 
-const textStyle = {
-  marginBottom: '16px'
-}
-
-const Caption = styled.h4`
-  font-size: 18px;
-  margin: 18px 0 0;
-`;
-
+import messages from './messages';
+import 'containers/Signup/style.css';
 
 export class Login extends React.Component { // eslint-disable-line react/prefer-stateless-function
-
-  constructor(props, context) {
-    super(props);
-    this.state = {
-      email: "",
-      password: "",
-    };
-
-  }
-
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-
-    this.props.setCredentials({
-      email: this.state.email,
-      password: this.state.password,
-
-    });
-    
-  }
-
-  handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    this.setState({
-      [name]: value,
-    });
-  }
-
-  componentDidUpdate(){
-    if (this.props.isLogin) {
-      this.props.history.push('/home');
-    }
-  }
-
-  componentDidMount() {
-    if (this.props.isLogin) {
-      this.props.history.push('/home');
-    }     
-  }
-
-  printErrors = (attribute) => {
-    const { serverError } = this.props.login;
-    if (serverError !== null && serverError) {
-      return serverError.message;
-     
-    }
-
-    
-    return null;
-  }
-
-
-
   render() {
-    
     return (
-      <LoginWraper>
-
+      <div>
         <Helmet>
           <title>Login</title>
-          <meta name="description" content="Login" />
+          <meta name="description" content="Description of Login" />
         </Helmet>
-        
 
-        <div className='container padding_10'>
-
-        <div className= 'row text-center' >
-          <div className= 'col-md-12' >
-            <div className= 'logo ' >
-              <img src = {logo} />
-            </div>
-
-            <h3 className='padding_10' > Login </h3>
-          
-          </div>
-        </div>
-
-
-          <div className='row'> 
-           
-            <div className='col-md-8 offset-md-2' > 
-            
-
-              <Form onSubmit={this.handleSubmit} >
-            
-
-                <FormGroup row>
-                  <Label for="email" sm={3}>Email</Label>
-                  <Col sm={9}>
-                    <Input onChange={this.handleChange} value={this.state.email} type="email" name="email" id="email" placeholder="Email" required/>
-
-                  </Col>
-                </FormGroup>
-
-                <FormGroup row>
-                  <Label for="password" sm={3}>Password</Label>
-                  <Col sm={9}>
-                    <Input onChange={this.handleChange} value={this.state.password} type="password" name="password" id="password" placeholder="Password" required/>
-
-                  </Col>
-                </FormGroup>             
-                <FormGroup row>
-                  <Label for="password" sm={3}></Label>
-                  <Col sm={9}>
-                    
-                    <div className="alert-danger"  >
-                      {this.printErrors(`password`)}
+        {/* SignIn Section */}
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6 offset-md-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1  col-12">
+              <form className="user-detail" id="user-detail">
+                <div className="heading">
+                  <h1 className="text-center" >Login</h1>
+                </div>
+                <div className="sign-up-box">
+                  <div className="sign-up-form">
+                    <div className="form-group">
+                      <div className="input-icon">
+                        <input className="form-control" type="text" placeholder="Email / Username" />
+                      </div>
                     </div>
-                  </Col>
-                </FormGroup>             
-               
-               
+                    <div className="form-group">
+                      <div className="input-icon">
+                        <input className="form-control" type="password" placeholder="Password" />
+                      </div>
+                    </div>
+                    <div className="btn-continue">
+                      <button className="btn btn-success btn-block">Continue</button>
+                    </div>
+                    <div className="input-group"><span className="input-group-addon">
+                      <input type="checkbox" id="checkbox" /></span><span className="remember">remember me?</span><a href="#">forget password</a></div>
+                    <div className="or"><span>or</span></div>
+                    <div className="social-btn">
+                      <div className="btn-facebook">
+                        <button className="btn btn-default btn-block"><i className="fa fa-facebook"></i> Continue With Facebook</button>
+                      </div>
+                      <div className="btn-google">
+                        <button className="btn btn-default btn-block"><i className="fa fa-google"></i> Continue With Google</button>
+                      </div>
+                      <div className="btn-linkedin">
+                        <button className="btn btn-default btn-block"><i className="fa fa-linkedin"></i> Continue With LinkedIn</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form  >
 
-                <FormGroup row>
-                  <Col sm={3}></Col>
-
-                  <Col sm={9}>
-                    <Button className='btn btn-success submit btn-lg btn-block' >Login</Button>
-                  </Col>
-                </FormGroup>
-
-              </Form>
-            
             </div>
-
-   
-
           </div>
         </div>
 
-
-      </LoginWraper>
+      </div>
     );
   }
 }
@@ -195,14 +85,11 @@ Login.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   login: makeSelectLogin(),
-  isLogin: isLogin(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    setCredentials: (credentials) => dispatch(setCredentialsAction(credentials)),
-
   };
 }
 

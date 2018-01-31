@@ -26,6 +26,9 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Landing from 'containers/Landing';
 
 import Signup from 'containers/Signup/Loadable';
+import Login from 'containers/Login/Loadable';
+import Profile from 'containers/Profile/Loadable';
+import Dashboard from 'containers/Dashboard/Loadable';
 import './style.css';
 
 
@@ -39,7 +42,9 @@ export default function App() {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route path="/signup" component={Signup} />
-            <Route path="/home" component={HomePage} />
+            <Route path="/login" component={Login} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/dashboard" component={Dashboard} />
             <Route path="" component={NotFoundPage} />
 
           </Switch>

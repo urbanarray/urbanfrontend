@@ -19,7 +19,14 @@ const makeSelectLogin = () => createSelector(
   (substate) => substate.toJS()
 );
 
+const makeSelectCredentials = () => createSelector(
+  selectLoginDomain,
+  (loginState) => loginState.get('credentials')
+);
+
+
 export default makeSelectLogin;
 export {
   selectLoginDomain,
+  makeSelectCredentials,
 };
