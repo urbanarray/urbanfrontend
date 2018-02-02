@@ -19,6 +19,10 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 import Roles from 'containers/Roles';
+import YourRole from 'containers/YourRole';
+import NeededResources from 'containers/NeededResources';
+import PledgedResources from 'containers/PledgedResources';
+
 export class Dashboard extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
@@ -28,16 +32,36 @@ export class Dashboard extends React.Component { // eslint-disable-line react/pr
           <meta name="description" content="Description of Dashboard" />
         </Helmet>
         
-        <div className="row" >
+        {/* ROLES */}
+        <div className="container-fluid" >
+         
+          <div className="row" >
 
-          <div className="col-md-8 col-sm-12 col-12">
-            <Roles/>
+            <div className="col-md-12 col-lg-8">
+              <Roles/>
+            </div>
+
+            <div className="col-md-12 col-lg-4">
+              <YourRole/>
+            </div>
+
           </div>
-
-          <div className="col-md-4 col-sm-12 col-12">
+        
+          {/* NEEDED RESOURCES  */}
           
-          </div>
+          <div className="row" >
 
+            <div className="col-md-12 col-lg-8">
+              <NeededResources/>
+            </div>
+
+            <div className="col-md-12 col-lg-4">
+              <PledgedResources/>
+            </div>
+
+          </div>
+        
+        
         </div>
 
       </div>

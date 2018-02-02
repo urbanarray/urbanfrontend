@@ -19,8 +19,20 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 import 'containers/Signup/style.css';
+import {Form} from 'reactstrap';
+
 
 export class Login extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  
+  changeAll = () => {
+
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.history.push('/dashboard');
+  }
+
   render() {
     return (
       <div>
@@ -33,7 +45,7 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
         <div className="container">
           <div className="row">
             <div className="col-lg-6 offset-md-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1  col-12">
-              <form className="user-detail" id="user-detail">
+              <Form className="user-detail" id="user-detail" onChange={this.changeAll} onSubmit={this.handleSubmit} >
                 <div className="heading">
                   <h1 className="text-center" >Login</h1>
                 </div>
@@ -68,7 +80,7 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
                     </div>
                   </div>
                 </div>
-              </form  >
+              </Form>
 
             </div>
           </div>

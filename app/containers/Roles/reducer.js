@@ -9,7 +9,36 @@ import {
   DEFAULT_ACTION,
 } from './constants';
 
-const initialState = fromJS({});
+const initialState = fromJS({
+
+  openRoles : [
+    {
+      title: 'Landscape prep I',
+      description: 'Some Description here',
+      frame: 'Urban Frame II',
+      role: 'General Labour',
+      date: 'Oct 21',
+      startTime: '5pm',
+      endTime: '6pm',
+      pts: '776',
+      ac: '1.4',
+    },
+    {
+      title: 'Landscape prep II',
+      description: 'Some Description here',
+      frame: 'Urban Frame II',
+      role: 'General Labour',
+      date: 'Oct 21',
+      startTime: '5pm',
+      endTime: '6pm',
+      pts: '776',
+      ac: '1.4',
+    },
+  
+    
+  ]
+
+});
 
 function rolesReducer(state = initialState, action) {
   switch (action.type) {

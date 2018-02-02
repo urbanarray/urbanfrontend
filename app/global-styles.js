@@ -38,7 +38,7 @@ injectGlobal`
 }
   
   .inner-body{
-    margin: 30px 30px;
+    // margin: 30px 30px;
   }
    
   .box{
@@ -57,10 +57,26 @@ injectGlobal`
     padding: 10px 20px;
   }
   
+  .box-header .heading{
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  
+  .box-header .heading, .box-header .right-heading{
+    margin-top:10px;
+  }
+  
   .box-body{
-  margin: 30px;
-  background: white;
-  border: 1px solid white;
-}
+  
+  }
+  
+  .roles-box{
+    margin: 20px;
+    padding: 20px;
+    background: white;
+    border: 1px solid #ddd;
+  }
+
 `;
   
