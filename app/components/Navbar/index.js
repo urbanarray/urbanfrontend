@@ -1,8 +1,18 @@
 import React from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav,
+   NavItem, NavLink, UncontrolledDropdown, Dropdown, DropdownMenu, 
+   DropdownItem, DropdownToggle  } from 'reactstrap';
+   
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
+
+import injectSaga from 'utils/injectSaga';
+import injectReducer from 'utils/injectReducer'; 
+
+import { makeSelectCurrentUser} from 'containers/App/selectors';
 // Import required images
 
 
@@ -29,6 +39,46 @@ export default class Example extends React.Component {
     });
   }
 
+  getNavItems(){
+    if (this.props) {
+      return(
+        <span>
+          <NavItem>
+            <Link
+              to="signup"
+              className="btn btn-outline-primary btn_signup">Signup</Link>
+          </NavItem>
+          <NavItem>
+            <Link
+              to="login"
+              className="btn btn-outline-success btn_login">Login</Link>
+          </NavItem>
+
+        </span>
+      );
+    }
+    else{
+      return (
+        <div>
+          <NavItem>
+              <img style={{ borderRadius: '50%', background: '#ddd' }} src="#" />
+          </NavItem>
+          <NavItem>
+            <UncontrolledDropdown nav inNavbar>
+             
+              <DropdownToggle nav caret>
+                <a className=" "> Marquis</a>
+              </DropdownToggle>
+              
+            </UncontrolledDropdown>
+          </NavItem>
+
+        </div>
+      );
+    }
+
+  }
+
   render() {
     return (
       <div>
@@ -42,14 +92,20 @@ export default class Example extends React.Component {
           }} > <img src={Logo} style={{ maxWidth: '9em'}} className="img img-responsive" /> </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
+
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <Link to="signup" className="">Signup</Link>
+                <Link
+                  to="signup"
+                  className="btn btn-outline-primary btn_signup">Signup</Link>
               </NavItem>
               <NavItem>
-                <Link to="login" className="">Login</Link>
+                <Link
+                  to="login"
+                  className="btn btn-outline-success btn_login">Login</Link>
               </NavItem>
-          
+
+
             </Nav>
           </Collapse>
         </Navbar>
@@ -79,3 +135,12 @@ NavbarBrand.propTypes = {
   // pass in custom element to use
 }
 
+const mapStateToProps = createStructuredSelector({
+  currentUser: makeSelectCurrentUser(),
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+  };
+}

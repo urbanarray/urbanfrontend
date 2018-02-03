@@ -34,13 +34,17 @@ input[type=text]:focus {
 
 }
 
-.navbar__btn {
-    color: #fff;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 3px 15px;
-    letter-spacing: 0.7px;
+.btn_signup{
     border-radius: 0;
-    height: 30px;
-    margin-left: 0;
+    margin: 0 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 1rem;
+}
+.btn_login{
+    border-radius: 0;
+    margin: 0 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 1rem;
 }

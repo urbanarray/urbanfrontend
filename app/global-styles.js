@@ -78,5 +78,36 @@ injectGlobal`
     border: 1px solid #ddd;
   }
 
+  
+  .btn-outline-primary{
+    color: #4a99cb;
+    background-color: transparent;
+    background-image: none;
+    border-color: #4a99cb;
+  }
+
+  .btn-outline-primary:hover {
+      color: #fff;
+      background-color: #4a99cb;
+      border-color: #4a99cb;
+  }
+
+  .btn-outline-success{
+    color: #91c640;
+    background-color: transparent;
+    background-image: none;
+    border-color: #91c640;
+  }
+
+
+  .btn-outline-success:hover {
+    color: #fff;
+    background-color: #91c640;
+    border-color: #91c640;
+  }
+  .btn{
+    border-radius: 0;
+  }
+
 `;
   

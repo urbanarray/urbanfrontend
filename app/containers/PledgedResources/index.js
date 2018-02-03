@@ -68,7 +68,7 @@ export class PledgedResources extends React.Component { // eslint-disable-line r
             <div className="row">
               <div className="col-md-12 col-sm-12 col-12">
                 <p className="heading">
-                  pledged   resources
+                  pledged resources
                 </p>
               </div>
 
