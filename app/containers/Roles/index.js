@@ -32,11 +32,11 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
           <div className="roles-box" key={Math.random()} >
            
             <div className="row">    
-              <div className="col-md-8 col-sm-12 col-12">
+              <div className="col-md-9 col-sm-12 col-12">
                 <h4> {roles.title} </h4>
               </div>
-              <div className="col-md-4 col-sm-12 col-12">
-                <Button className="btn btn-outline-secondary" color="default" >CLAIM</Button>
+              <div className="col-md-3 col-sm-12 col-12">
+                <Button className="btn btn-outline-secondary btn-sm" color="default" >Claim</Button>
               </div>
             </div>
  
@@ -48,7 +48,7 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
  
             <div className="row "> 
               
-              <div className="col-md-4 col-sm-12 col-12 ">
+              <div className="col-md-5 col-sm-12 col-12 ">
                 <p> {roles.frame} </p>
                 <p> {roles.role} </p>
               </div>
@@ -59,7 +59,7 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
                 <p> {roles.startTime+' - '+roles.endTime} </p>
               </div>
               
-              <div className="col-md-4 col-sm-12 col-12">
+              <div className="col-md-3 col-sm-12 col-12">
                 <p> PTS:  {roles.pts} </p>
                 <p> AC:  {roles.ac} </p>
               </div>

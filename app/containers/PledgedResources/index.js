@@ -81,7 +81,7 @@ export class PledgedResources extends React.Component { // eslint-disable-line r
               this.renderPledgedResources()
             }
 
-            <div className="col-md-4 col-sm-12 col-12">
+            <div className="col-md-4 col-sm-12 col-12 form-group">
               <button type="button" className="btn btn-outline-secondary">Submit Resources</button>
             </div>
 

@@ -7,6 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
@@ -28,7 +29,7 @@ export class NeededResources extends React.Component { // eslint-disable-line re
         return (
           <div className="roles-box" key={Math.random()} >
 
-            <div className="row ">
+            <div className="row">
 
               <div className="col-md-3 col-sm-6 col-12 ">
                 <h4> {resource.name} </h4>
@@ -51,12 +52,11 @@ export class NeededResources extends React.Component { // eslint-disable-line re
              
                   <button type="button" className="btn btn-outline-secondary btn-block btn-sm"  > Pledge </button>
                 
-                  <button type="button" className="btn btn-outline-secondary btn-block btn-sm"  > Details </button>
+                  <Link to="/projectView" type="button" className="btn btn-outline-secondary btn-block btn-sm"  > Details </Link>
               
               </div>
 
             </div>
-
 
           </div>
         );

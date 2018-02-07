@@ -20,7 +20,7 @@ injectGlobal`
     background-color: #fcfcfc;
     min-height: 100%;
     min-width: 100%;
-    margin-top: 60px;
+    margin-top: 70px;
   }
 
   label{
@@ -44,7 +44,7 @@ injectGlobal`
   .box{
     background: white;
     border: 1px solid white;
-    box-shadow: 1px 1px 10px -2px rgba(0,0,0,0.6);
+    box-shadow: 1px 1px 8px -2px rgba(0,0,0,0.6);
     width: 100%;
     margin-bottom: 20px;
     margin-top: 20px;
@@ -67,8 +67,9 @@ injectGlobal`
     margin-top:10px;
   }
   
-  .box-body{
-  
+  .box-innerbody{
+    padding: 20px;
+    background: white;
   }
   
   .roles-box{

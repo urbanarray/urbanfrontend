@@ -18,10 +18,27 @@ import makeSelectProfile from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-import {Form, Input} from 'reactstrap';
+import { Form, Input, Label, FormGroup, Col} from 'reactstrap';
 
 export class Profile extends React.Component { // eslint-disable-line react/prefer-stateless-function
   
+  constructor(props, context){
+    super(props);
+
+    this.state = {
+      username: null,
+      firstName: null,
+      lastName: null,
+      password: null,
+      confirmPassword: null,
+      noCriminal: false,
+      noMedConditions: false,
+      howToContribute:null,
+      availability:null,
+      profilePicture:null,  
+    }
+  }
+
   changeAll = () => {
     // alert('hello')
   }
@@ -36,7 +53,7 @@ export class Profile extends React.Component { // eslint-disable-line react/pref
     return (
       <div>
         <Helmet>
-          <title>Profile</title>
+          <title>Urban Array Member Application</title>
           <meta name="description" content="Description of Profile" />
         </Helmet>
 
@@ -48,40 +65,71 @@ export class Profile extends React.Component { // eslint-disable-line react/pref
               <Form className="user-detail" id="user-detail" onChange={this.changeAll} onSubmit={this.handleSubmit} >
                
                 <div className="heading">
-                  <h1 className="text-center" >Profile</h1>
+                  <h1 className="text-center" >Member Application</h1>
                 </div>
                 <div className="sign-up-box">
                   <div className="sign-up-form">
+                
 
-                    <div className="form-group">
-                      <div className="input-icon">
-                        <Input className="form-control" type="text" name="firstName" placeholder="First Name" />
+                      <div className="form-group">
+                        <div className="input-icon">
+                          <Input className="form-control" type="text" name="firstName" placeholder="First Name" />
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="form-group">
-                      <div className="input-icon">
-                        <Input className="form-control" type="text" name="lastName" placeholder="Last Name" />
+                      <div className="form-group">
+                        <div className="input-icon">
+                          <Input className="form-control" type="text" name="lastName" placeholder="Last Name" />
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="form-group">
-                      <div className="input-icon">
-                        <Input className="form-control" type="text" name="contact" placeholder="Contact" />
+                      <div className="form-group">
+                        <div className="input-icon">
+                          <Input className="form-control" type="select" name="city" placeholder="City" >
+                            <option>City/Metro Area</option>
+                          </Input>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="form-group">
-                      <div className="input-icon">
-                        <Input className="form-control" type="textarea" placeholder="Address" />
+                      <div className="form-group">
+                        <div className="input-icon">
+                          <Input className="form-control" type="select" name="howToContribute" >
+                            <option>How would you like to contribute</option>
+                          </Input>
+                        </div>
                       </div>
-                    </div>
+
+                   
 
 
+                      <div className="form-group">
+                        <div className="input-icon">
+                          <Input className="form-control" type="select" name="howToContribute" >
+                            <option>Availability</option>
+                          </Input>
+                        </div>
+                      </div>
+                      
+                      
+                      <FormGroup check>
+                        <Label check>
+                          <Input type="checkbox" id="checkbox1" name="noCriminal" />{' '}
+                          No Criminal
+                        </Label> 
+                        <Label check style={{ marginLeft: '40px' }}>
+                          <Input  type="checkbox" id="checkbox2" name="noMedConditions" />{' '}
+                          No Med Conditions
+                        </Label>
+                      </FormGroup>
+                     
+                      
+                      <FormGroup>
+                          <Input  type="file" name="profilePicture" />
+                      </FormGroup>
+                      
                     <div className="btn-continue">
                       <button className="btn btn-success btn-block">Continue</button>
                     </div>
-
 
                   </div>
                 </div>

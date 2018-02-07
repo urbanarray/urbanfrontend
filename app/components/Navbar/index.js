@@ -82,7 +82,7 @@ export default class Example extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="faded" light expand="md" className="fixed-top" style={{ background: 'white', height: '60px', boxShadow: '0px 1px 10px -2px rgba(0,0,0,0.4' }}  >
+        <Navbar color="faded" light expand="md" className="fixed-top" style={{ background: 'white', height: '70px', boxShadow: '0px 1px 10px -2px rgba(0,0,0,0.4' }}  >
           <NavbarBrand href="/" style={{
             color: 'rgba(0, 0, 0, 0.55)',
             letterSpacing: '0.5px',
