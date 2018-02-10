@@ -7,6 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
@@ -36,7 +37,7 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
                 <h4> {roles.title} </h4>
               </div>
               <div className="col-md-3 col-sm-12 col-12">
-                <Button className="btn btn-outline-secondary btn-sm" color="default" >Claim</Button>
+                <Link to="/roleView" className="btn btn-outline-secondary btn-sm" color="default" >Claim</Link>
               </div>
             </div>
  

@@ -35,9 +35,11 @@ export class Profile extends React.Component { // eslint-disable-line react/pref
       noMedConditions: false,
       howToContribute:null,
       availability:null,
-      profilePicture:null,  
+      picture: '',
     }
   }
+  
+
 
   changeAll = () => {
     // alert('hello')
@@ -99,17 +101,13 @@ export class Profile extends React.Component { // eslint-disable-line react/pref
                         </div>
                       </div>
 
-                   
-
-
                       <div className="form-group">
                         <div className="input-icon">
-                          <Input className="form-control" type="select" name="howToContribute" >
-                            <option>Availability</option>
-                          </Input>
+                          <Input title="Set your availability" className="form-control" type="date" name="availability" placeholder="How to contribute" />
+                            {/* <option>Availability</option> */}
+                          {/* </Input> */}
                         </div>
                       </div>
-                      
                       
                       <FormGroup check>
                         <Label check>
@@ -121,11 +119,13 @@ export class Profile extends React.Component { // eslint-disable-line react/pref
                           No Med Conditions
                         </Label>
                       </FormGroup>
-                     
-                      
-                      <FormGroup>
-                          <Input  type="file" name="profilePicture" />
-                      </FormGroup>
+
+                      <div className="form-group">
+                        <div className="input-icon">
+                          <Input className="form-control" type="file" />
+                          <Label>Upload Profile Photo</Label>
+                        </div>
+                      </div>
                       
                     <div className="btn-continue">
                       <button className="btn btn-success btn-block">Continue</button>

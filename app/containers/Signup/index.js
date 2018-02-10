@@ -95,18 +95,18 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
                     
                     <div className="social-btn">
                       <div className="btn-facebook">
-                        <button className="btn btn-default btn-block"><i className="fa fa-facebook"></i> Continue With Facebook</button>
+                        <button className="btn btn-default btn-block">Continue With Facebook</button>
                       </div>
                       <div className="btn-google">
-                        <button className="btn btn-default btn-block"><i className="fa fa-google"></i> Continue With Google</button>
+                        <button className="btn btn-default btn-block">Continue With Google</button>
                       </div>
                       <div className="btn-linkedin">
-                        <button className="btn btn-default btn-block"><i className="fa fa-linkedin"></i> Continue With LinkedIn</button>
+                        <button className="btn btn-default btn-block">Continue With LinkedIn</button>
                       </div>
                     </div>
                   </div>
                 </div>
-              </Form  >
+              </Form>
             
             </div>
           </div>
