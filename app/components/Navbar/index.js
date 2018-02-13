@@ -82,7 +82,7 @@ export default class Example extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="faded" light expand="md" className="fixed-top" style={{ background: 'white', height: '70px', boxShadow: '0px 1px 10px -2px rgba(0,0,0,0.4' }}  >
+        <Navbar className="navbar navbar-expand-lg navbar-light bg-light fixed-top" style={{width: '100%', boxShadow: '0px 1px 10px -2px rgba(0,0,0,0.4' }}  >
           <NavbarBrand href="/" style={{
             color: 'rgba(0, 0, 0, 0.55)',
             letterSpacing: '0.5px',
@@ -90,22 +90,22 @@ export default class Example extends React.Component {
             fontWeight: '500',
             fontSize: '17px',
           }} > <img src={Logo} style={{ maxWidth: '9em'}} className="img img-responsive" /> </NavbarBrand>
+         
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <Link
-                  to="signup"
-                  className="btn btn-outline-primary btn_signup">Signup</Link>
-              </NavItem>
-              <NavItem>
-                <Link
-                  to="login"
-                  className="btn btn-outline-success btn_login">Login</Link>
-              </NavItem>
-
-
+              <Nav className="ml-auto" navbar>
+              <form className="form-inline justify-content-center">
+                <NavItem>
+                  <Link
+                    to="signup"
+                    className="btn btn-outline-primary btn_signup">Signup</Link>
+                </NavItem>
+                <NavItem>
+                  <Link
+                    to="login"
+                    className="btn btn-outline-success btn_login">Login</Link>
+                </NavItem>
+            </form>
             </Nav>
           </Collapse>
         </Navbar>
