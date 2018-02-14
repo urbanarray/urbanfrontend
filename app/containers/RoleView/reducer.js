@@ -11,8 +11,8 @@ import {
 
 const initialState = fromJS({
   roleDetail: {
-    title: 'Landscape prep I',
-    description: 'Some Description here',
+    title: 'Landscape Prep I',
+    description: 'Some description here',
     project: 'Urban Frame II',
     location: '600 w cawal chicago, IL',
     date: 'Oct 21',
@@ -34,7 +34,7 @@ const initialState = fromJS({
       endTime: '4am',
     },
     {
-      title:'prep planting bed soil',
+      title:'Prep Planting Bed Soil',
       description: 'fertilizing planting bed',
       startTime: '9:30am',
       endTime: '10am',
@@ -43,14 +43,14 @@ const initialState = fromJS({
   ],
   similarRoles:[
     {
-      title: 'landscape prep II',
+      title: 'Landscape Prep II',
       description: 'Detailed description for similar job...',
       date: 'Oct 23',
       startTime: '1am',
       endTime: '3am',
     },
     {
-      title: 'landscape prep II',
+      title: 'Landscape Prep II',
       description: 'Detailed description for similar job...',
       date: 'Oct 23',
       startTime: '1am',
