@@ -13,9 +13,8 @@ import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer'; 
 
 import { makeSelectCurrentUser} from 'containers/App/selectors';
+
 // Import required images
-
-
 import Logo from '../../../assets/logo/logo.png';
 
 import './styles.css';

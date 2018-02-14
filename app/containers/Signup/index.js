@@ -23,6 +23,8 @@ import messages from './messages';
 import './style.css';
 
 import {Form} from 'reactstrap';
+import SocialLogin from 'react-social-login'
+
 
 export class Signup extends React.Component { // eslint-disable-line react/prefer-stateless-function
  
@@ -52,7 +54,8 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
         <div className="container">
           <div className="row">
             <div className="col-lg-6 offset-md-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1  col-12">
-              <Form className="user-detail" id="user-detail" onChange={this.changeAll} onSubmit={this.handleSubmit} >
+              <div className="user-detail" id="user-detail" onChange={this.changeAll} onSubmit={this.handleSubmit} >
+              
                 <div className="heading">
                   <h1 className="text-center" >Signup</h1>
                 </div>
@@ -106,7 +109,7 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
                     </div>
                   </div>
                 </div>
-              </Form>
+              </div>
             
             </div>
           </div>
