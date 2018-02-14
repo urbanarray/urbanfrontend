@@ -88,7 +88,7 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
 
 
                     <div className="btn-continue">
-                      <button className="btn btn-success btn-block">Continue</button>
+                      <button className="btn btn-success btn-block ">Continue</button>
                     </div>
 
                     <div className="input-group">
