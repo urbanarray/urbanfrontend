@@ -19,7 +19,7 @@ const initialState = fromJS({
       project: 'Urban Farm II',
     },
     {
-      item: 'Shouel',
+      item: 'Shovel',
       startTime: '2pm',
       endTime: '3pm',
       date: '1 Feb',

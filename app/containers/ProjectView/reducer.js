@@ -12,7 +12,7 @@ import {
 const initialState = fromJS({
   projectView:
     {
-      name: 'lumber',
+      name: 'Garden',
       size: '4*3*6',
       quantity: 4,
       date: 'Nov 10',
