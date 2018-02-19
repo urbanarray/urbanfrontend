@@ -7,7 +7,7 @@ const aws ='http://52.15.60.1:3000/v1/';
 const local = 'http://localhost:3000/v1/';
 
 const api = axios.create({
-    baseURL: aws,
+    baseURL: local,
     timeout: 20000,
 });
 

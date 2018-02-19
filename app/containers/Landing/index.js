@@ -37,7 +37,6 @@ const LandingWraper = styled.div`
 
 
 
-
 export class Landing extends React.Component { // eslint-disable-line react/prefer-stateless-function
  
   render() {
@@ -48,7 +47,7 @@ export class Landing extends React.Component { // eslint-disable-line react/pref
             <div className= 'row' >
               <div className= 'col-md-12' >
                 
-              <iframe width="854" height="480" src="https://www.youtube.com/embed/U5n_FxGmcH8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
+              <iframe width="100%" height="450" src="https://www.youtube.com/embed/U5n_FxGmcH8" frameBorder="0"  allowFullScreen="true"></iframe>
 
               </div>
             </div>
