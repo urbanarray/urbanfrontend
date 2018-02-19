@@ -88,7 +88,7 @@ const initialState = fromJS({
 
   projectResources: [
     {
-      name: 'lumber',
+      name: 'Lumber',
       size: '4*3*6',
       quantity: 4,
       date: 'Nov 10',
@@ -97,7 +97,7 @@ const initialState = fromJS({
       project: 'Rehab III',
     },
     {
-      name: 'door',
+      name: 'Door',
       size: '2*3*7',
       quantity: 14,
       date: 'Dec 12',
