@@ -6,15 +6,56 @@
 
 import { fromJS } from 'immutable';
 import {
-  DEFAULT_ACTION,
+  LOGIN_ACTION,
+  SOCIAL_SIGNUP_ACTION,
+  SOCIAL_LOGGED_IN_ACTION,
+  LINKEDIN_ACTION,
+  LOGGED_IN_ACTION,
 } from './constants';
 
-const initialState = fromJS({});
+const initialState = fromJS({
+  socialSignup: {},
+  linkedinSignup: {},
+  loggedInUser: {},
+  loading: false,
+  done: false,
+
+  login:{},
+
+});
 
 function loginReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
+    case LOGIN_ACTION:
+      return state
+        .set('login', action.payload)
+        .set('loading', true)
+        .set('done', false);
+      
+    case SOCIAL_SIGNUP_ACTION:
+      return state
+        .set('socialSignup', action.payload)
+        .set('loading', true)
+        .set('done', false);
+        
+    case LINKEDIN_ACTION:
+      return state
+        .set('linkedinSignup', action.payload)
+        .set('loading', true)
+        .set('done', false);
+
+    case SOCIAL_LOGGED_IN_ACTION:
+      return state
+        .set('loggedInUser', action.payload)
+        .set('loading', false)
+        .set('done', true);
+
+    case LOGGED_IN_ACTION:
+      return state
+        .set('loggedInUser', action.payload)
+        .set('loading', false)
+        .set('done', true);
+    
     default:
       return state;
   }

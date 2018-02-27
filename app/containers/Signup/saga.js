@@ -1,6 +1,89 @@
-// import { take, call, put, select } from 'redux-saga/effects';
+import { takeLatest, call, put, select } from 'redux-saga/effects';
+import { fromJS } from 'immutable';
+import {socialLoggedInAction} from './actions';
+import {makeSelectSocialSignup, makeSelectCustomSignup, makeSelectLinkedinSignup} from './selectors';
+import {socialSignupApi, signupApi, linkedinSignupApi} from './api';
+import {SOCIAL_SIGNUP_ACTION, SIGNUP_ACTION, LINKEDIN_ACTION } from './constants';
+import { login as loginGLobal } from 'containers/App/actions';
+import { saveState } from 'utils/persistState';
+import { setToken } from 'utils/axios';
+
+
+export function* socialSignup(){
+  try {
+    const socialSignupData = yield select(makeSelectSocialSignup());
+    const response = yield call(socialSignupApi, socialSignupData);
+    
+    const { user, token } = response.data;
+    const access_token = token.accessToken;
+    const refresh_token = token.refreshToken;
+
+    const loginInfo = fromJS({ user, access_token, refresh_token });
+    setToken(access_token);
+    saveState(loginInfo);
+
+    yield put(loginGLobal(loginInfo));
+
+    yield put(socialLoggedInAction(response.data));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function* linkedinSignup(){
+  try {
+    const linkedinSignupData = yield select(makeSelectLinkedinSignup());
+
+    const response = yield call(linkedinSignupApi, linkedinSignupData);
+
+    const { linkedinData } = response.data;
+    const accessToken = response.data.access_token;
+
+    const socialSignupData = {
+      name: linkedinData.firstName,
+      email: linkedinData.emailAddress,
+      picture: linkedinData.pictureUrl,
+      source: 'linkedIn',
+      userId: linkedinData.id,
+      accessToken: accessToken
+    }
+   
+    const responseData = yield call(socialSignupApi, socialSignupData);
+    
+    const { user, token } = responseData.data;
+    const access_token = token.accessToken;
+    const refresh_token = token.refreshToken;
+
+    const loginInfo = fromJS({ user, access_token, refresh_token });
+    setToken(access_token);
+    saveState(loginInfo);
+
+    yield put(loginGLobal(loginInfo)); 
+
+    yield put(socialLoggedInAction(responseData.data));
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function* customSignup(){
+  try {
+    
+    const customSignupData = yield select(makeSelectCustomSignup());
+    const response = yield call(signupApi, customSignupData);
+    console.log(response); 
+  
+    // yield put(socialLoggedInAction(response.data));
+  
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 // Individual exports for testing
 export default function* defaultSaga() {
-  // See example in containers/HomePage/saga.js
+  yield takeLatest(SOCIAL_SIGNUP_ACTION, socialSignup);
+  yield takeLatest(SIGNUP_ACTION, customSignup);
+  yield takeLatest(LINKEDIN_ACTION, linkedinSignup);
 }
