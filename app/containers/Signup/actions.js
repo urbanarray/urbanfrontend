@@ -5,20 +5,38 @@
  */
 
 import {
-  DEFAULT_ACTION,
   SOCIAL_SIGNUP_ACTION,
-} from './constants';
+  SOCIAL_LOGGED_IN_ACTION,
+  SIGNUP_ACTION,
+  LINKEDIN_ACTION,
 
-export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
-  };
-}
+} from './constants';
 
 export function socialSignupAction(payload) {
   return {
     type: SOCIAL_SIGNUP_ACTION,
-    payload,
+    payload
+  };
+}
+
+export function socialLoggedInAction(payload) {
+  return {
+    type: SOCIAL_LOGGED_IN_ACTION,
+    payload
+  };
+}
+
+export function signupAction(payload) {
+  return {
+    type: SIGNUP_ACTION,
+    payload
+  };
+}
+
+export function linkedinAction(payload) {
+  return {
+    type: LINKEDIN_ACTION,
+    payload
   };
 }
 

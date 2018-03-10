@@ -19,7 +19,26 @@ const makeSelectLogin = () => createSelector(
   (substate) => substate.toJS()
 );
 
+const makeSelectSocialSignup = () => createSelector(
+  selectLoginDomain,
+  (substate) => substate.get("socialSignup")
+);
+
+const makeSelectLinkedinSignup = () => createSelector(
+  selectLoginDomain,
+  (substate) => substate.get("linkedinSignup")
+);
+
+const makeSelectLoginCredentials = () => createSelector(
+  selectLoginDomain,
+  (substate) => substate.get("login")
+);
+
+
 export default makeSelectLogin;
 export {
   selectLoginDomain,
+  makeSelectSocialSignup,
+  makeSelectLinkedinSignup,
+  makeSelectLoginCredentials,
 };

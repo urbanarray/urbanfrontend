@@ -19,6 +19,7 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 import { Form, Input, Label, FormGroup, Col} from 'reactstrap';
+import {createProfileAction} from './actions';
 
 export class Profile extends React.Component { // eslint-disable-line react/prefer-stateless-function
   
@@ -26,11 +27,9 @@ export class Profile extends React.Component { // eslint-disable-line react/pref
     super(props);
 
     this.state = {
-      username: null,
       firstName: null,
       lastName: null,
-      password: null,
-      confirmPassword: null,
+      city:null,
       noCriminal: false,
       noMedConditions: false,
       howToContribute:null,
@@ -39,16 +38,47 @@ export class Profile extends React.Component { // eslint-disable-line react/pref
     }
   }
   
+  changeAll = (e) => {
 
+    if (e.target.files && e.target.files.length) {
+      const name = e.target.name;
+      const file = e.target.files[0];
+      const { type: fileType } = file;
+      if (fileType.indexOf("image/") === -1) {
+        alert('File not supported');
+        e.target.value='';
+        return;
+      }
 
-  changeAll = () => {
-    // alert('hello')
+      this.setState({
+        [name] : file
+      });
+
+    }
+    else{
+      const name = e.target.name;
+      const value = e.target.value;
+      this.setState({
+        [name] : value,
+      });
+    }
+    // this.props.history.push('dashboard');
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('firstName', this.state.firstName);
+    formData.append('lastName', this.state.lastName);
+    formData.append('city', this.state.city);
+    formData.append('howToContribute', this.state.howToContribute);
+    formData.append('availability', this.state.availability);
+    formData.append('noCriminal', this.state.noCriminal);
+    formData.append('noMedConditions', this.state.noMedConditions);
+    formData.append('picture', this.state.picture);
+    
+    this.props.create(formData);
 
-    this.props.history.push('dashboard');
   }
   
   render() {
@@ -63,16 +93,17 @@ export class Profile extends React.Component { // eslint-disable-line react/pref
         {/* Profile Section */}
         <div className="container">
           <div className="row">
-            <div className="col-lg-6 offset-md-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1  col-12">
-              <Form className="user-detail" id="user-detail" onChange={this.changeAll} onSubmit={this.handleSubmit} >
+            <div className="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 ">
+              
+              <div className="user-detail" id="user-detail"  >
                
                 <div className="heading">
                   <h1 className="text-center" >Member Application</h1>
                 </div>
                 <div className="sign-up-box">
-                  <div className="sign-up-form">
-                
-
+                  <Form onChange={this.changeAll} onSubmit={this.handleSubmit} >
+                    <div className="sign-up-form">
+                  
                       <div className="form-group">
                         <div className="input-icon">
                           <Input className="form-control" type="text" name="firstName" placeholder="First Name" />
@@ -122,19 +153,20 @@ export class Profile extends React.Component { // eslint-disable-line react/pref
 
                       <div className="form-group">
                         <div className="input-icon">
-                          <Input className="form-control" type="file" />
+                          <Input className="form-control" name="picture" type="file" />
                           <Label>Upload Profile Photo</Label>
                         </div>
                       </div>
                       
-                    <div className="btn-continue">
-                      <button className="btn btn-success btn-block">Continue</button>
-                    </div>
+                      <div className="btn-continue">
+                        <button className="btn btn-success btn-block">Continue</button>
+                      </div>
 
-                  </div>
+                    </div>
+                  </Form>
                 </div>
               
-              </Form>
+              </div>
 
             </div>
           </div>
@@ -156,6 +188,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    create: (payload) => dispatch(createProfileAction(payload))
   };
 }
 

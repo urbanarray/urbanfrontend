@@ -19,7 +19,8 @@ import makeSelectNeededResources from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-import {Input, Button} from 'reactstrap';
+import { Row, Col, Button, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+
 
 export class NeededResources extends React.Component { // eslint-disable-line react/prefer-stateless-function
   
@@ -31,28 +32,28 @@ export class NeededResources extends React.Component { // eslint-disable-line re
 
             <div className="row">
 
-              <div className="col-md-3 col-sm-6 col-12 ">
+              <div className="col-md-3 col-sm-6 col-xs-12 ">
                 <h4> {resource.name} </h4>
                 <p> Qty: {resource.quantity} </p>
               </div>
 
 
-              <div className="col-md-3 col-sm-6 col-12">
+              <div className="col-md-3 col-sm-6 col-xs-12">
                 <p> Size: {resource.size} </p>
                 <p> Project: {resource.project} </p>
               </div>
 
-              <div className="col-md-3 col-sm-6 col-12">
+              <div className="col-md-3 col-sm-6 col-xs-12">
                 <p> {resource.date} </p>
                 <p> {resource.startTime + ' - ' + resource.endTime} </p>
               </div>
 
-              <div className="col-md-3 col-sm-6 col-12">
+              <div className="col-md-3 col-sm-6 col-xs-12">
                 
              
-                  <button type="button" className="btn btn-outline-secondary btn-block btn-sm"  > Pledge </button>
+                  <button type="button" className="btn btn-primary btn-block btn-sm"  > Pledge </button>
                 
-                  <Link to="/projectView" type="button" className="btn btn-outline-secondary btn-block btn-sm"  > Details </Link>
+                  <Link to="/projectView" type="button" className="btn btn-success btn-block btn-sm"  > Details </Link>
               
               </div>
 
@@ -66,46 +67,44 @@ export class NeededResources extends React.Component { // eslint-disable-line re
 
   render() {
     return (
-      <div className="inner-body">
-        <Helmet>
-          <title>NeededResources</title>
-          <meta name="description" content="Description of NeededResources" />
-        </Helmet>
 
-        <div className="box">
-          <div className="box-header">
+      <div id="panelDemo8" className="panel panel-primary">
+        <div className="panel-heading">
+          <Row>
+            <Col md={6}>
+                Needed Resources
+            </Col>
 
-            <div className="row">
-              <div className="col-md-4 col-sm-12 col-12">
-                <p className="heading">
-                  needed resources
-                </p>
-              </div>
-              <div className="col-md-5 col-sm-12 col-12" >
-                <Input type='select' >
-                  <option> 10 </option>
-                  <option> 12 </option>
-                  <option> 16 </option>
-                </Input>
-              </div>
-              <div className="col-md-3 col-sm-12 col-12 ">
-                <p className="right-heading">
-                  Miles to Chicago
-                </p>
-              </div>
+            <Col md={6}>
+              <form role="form" className="form-inline">
 
-            </div>
+                <FormControl style={{ height: '24px' }} componentClass="select" multiple="" className="input-sm">
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                  <option>Option 4</option>
+                </FormControl>
 
-          </div>
+                <label style={{ margin: '0px 20px' }}> To </label>
 
-          <div className="box-body">
+                <FormControl style={{ height: '24px' }} componentClass="select" multiple="" className="input-sm">
+                  <option>Option 4</option>
+                  <option>Option 3</option>
+                  <option>Option 2</option>
+                  <option>Option 1</option>
+                </FormControl>
 
-            {this.renderNeededResources()}
-
-          </div>
-
+              </form>
+            </Col>
+          </Row>
         </div>
+
+        <div className="panel-body">
+          {this.renderNeededResources()}
+        </div>
+
       </div>
+
     );
   }
 }

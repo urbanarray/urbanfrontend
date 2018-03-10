@@ -1,4 +1,4 @@
-const state_name = "daycare-app";
+const state_name = "urbarnarray";
 
 /**
  * Loads state from storage

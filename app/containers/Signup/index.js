@@ -26,13 +26,20 @@ import {Form} from 'reactstrap';
 import FacebookLogin from 'react-facebook-login';
 import { GoogleLogin } from 'react-google-login';
 import LinkedIn from 'react-linkedin-login';
-import { socialSignupAction} from './actions';
+import { socialSignupAction, signupAction, linkedinAction} from './actions';
+import { isLogin } from 'containers/App/selectors';
 
 export class Signup extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  constructor(props) {
+  constructor(props, context) {
     super(props)
 
     this.state = {
+      name: '',
+      email:'',
+      password:'',
+      confirmPassword:'',
+      passwordNotMatch:'',
+
       socialSignup:{
         name: '',
         email: '',
@@ -43,8 +50,19 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
         userId:'',
       },
 
+      redirect_uri:"http://localhost:8000/signup",
+      
     }
 
+  }
+
+  componentDidUpdate() {
+    
+    console.log(this.props.signup.done);
+    // if (this.props.isLogin && this.props.signup.done === true) {
+    if (this.props.signup.done === true) {
+      this.props.history.push('/profile');
+    }
   }
 
   responseGoogle = (response) => {
@@ -74,20 +92,45 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
 
     this.props.socialSignup(this.state.socialSignup);    
   }
+  
 
-  callbackLinkedIn = ({ code, redirectUri, response }) => {
-    console.log(code, redirectUri, response)
+  callbackLinkedIn = (response) => {
+    const linkedinSignup = {
+      code: response.code,
+      redirect_uri: this.state.redirect_uri,
+    };
+    // console.log(response.code);
+    this.props.linkedin(linkedinSignup);
   }
    
   // handle form on change
-  changeAll = () => {
-    // alert('hello test on change');  
+  handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+   
+    this.setState({
+      [name]: value,
+    });
+
   }
 
   handleSubmit = (e) => {
-    
     e.preventDefault();
-    this.props.history.push('profile');
+    if (this.state.password !== this.state.confirmPassword) {
+      this.setState({ passwordNotMatch: 'Your password does not match' });
+    }
+    else {
+      this.setState({ passwordNotMatch: '' });
+     
+      const signupObj = {
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password
+      };
+
+      this.props.customSignup(signupObj);
+    }
+    // this.props.history.push('profile');
     // alert('hello to you test');
   }
 
@@ -102,37 +145,38 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
         {/* SignIn Section */}
         <div className="container">
           <div className="row">
-            <div className="col-lg-6 offset-md-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1  col-12">
-              <div className="user-detail" id="user-detail" onChange={this.changeAll} onSubmit={this.handleSubmit} >
+            <div className="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 ">
+              <div className="user-detail" id="user-detail"  >
                 <div className="heading">
                   <h1 className="text-center" >Signup</h1>
                 </div>
                 <div className="sign-up-box">
                   <div className="sign-up-form">
                   
-                    <Form>
+                    <Form onChange={this.handleChange} onSubmit={this.handleSubmit} >
                       
                       <div className="form-group">
                         <div className="input-icon">
-                          <input className="form-control" type="text" placeholder="Email" />
+                          <input className="form-control" name="email" type="email" placeholder="Email" required/>
                         </div>
                       </div>
                       
                       <div className="form-group">
                         <div className="input-icon">
-                          <input className="form-control" type="text" placeholder="Username" />
+                          <input className="form-control" name="name" type="text" placeholder="Username" required/>
                         </div>
                       </div>
 
                       <div className="form-group">
                         <div className="input-icon">
-                          <input className="form-control" type="password" placeholder="Password" />
+                          <input className="form-control" name="password" type="password" placeholder="Password" required/>
+                          <p style={{color:'red'}} > {this.state.passwordNotMatch} </p>
                         </div>
                       </div>
 
                       <div className="form-group">
                         <div className="input-icon">
-                          <input className="form-control" type="confirmPassword" placeholder="Confirm Password" />
+                          <input className="form-control" name="confirmPassword" type="password" placeholder="Confirm Password" required/>
                         </div>
                       </div>
 
@@ -168,20 +212,15 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
                       </div>
 
                       <div className="btn-linkedin">
-                        <LinkedIn
-                          clientId='77dory0vf88a8p'
+                         <LinkedIn
+                          clientId='77dory0vf88a8p'                          
                           callback={this.callbackLinkedIn}
                           className="btn btn-default btn-block"
-                          text='Login with LinkedIn' />
+                          text='Login with LinkedIn' 
+                        />
                       </div>
 
                     </div>
-
-                    {/* Adding social button here */}
-
-                    <div className="social-btn" >                     
-                    </div>
-
 
                   </div>
                 </div>
@@ -202,12 +241,16 @@ Signup.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   signup: makeSelectSignup(),
+  isLogin: isLogin(),
+
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     socialSignup: (payload) => dispatch(socialSignupAction(payload)),
+    customSignup: (payload) => dispatch(signupAction(payload)), 
+    linkedin: (payload) => dispatch(linkedinAction(payload)), 
   };
 }
 

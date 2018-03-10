@@ -27,7 +27,7 @@ export default class Example extends React.Component {
     this.toggle = this.toggle.bind(this);
 
     this.state = {
-      isOpen: false,
+      isOpen: false,  
       
     };
   }
@@ -36,46 +36,6 @@ export default class Example extends React.Component {
     this.setState({
       isOpen: !this.state.isOpen
     });
-  }
-
-  getNavItems(){
-    if (this.props) {
-      return(
-        <span>
-          <NavItem>
-            <Link
-              to="signup"
-              className="btn btn-outline-primary btn_signup">Signup</Link>
-          </NavItem>
-          <NavItem>
-            <Link
-              to="login"
-              className="btn btn-outline-success btn_login">Login</Link>
-          </NavItem>
-
-        </span>
-      );
-    }
-    else{
-      return (
-        <div>
-          <NavItem>
-              <img style={{ borderRadius: '50%', background: '#ddd' }} src="#" />
-          </NavItem>
-          <NavItem>
-            <UncontrolledDropdown nav inNavbar>
-             
-              <DropdownToggle nav caret>
-                <a className=" "> Marquis</a>
-              </DropdownToggle>
-              
-            </UncontrolledDropdown>
-          </NavItem>
-
-        </div>
-      );
-    }
-
   }
 
   render() {

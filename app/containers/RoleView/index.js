@@ -20,15 +20,36 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 import {Button} from 'reactstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
+import ContentWrapper from 'components/Layout/ContentWrapper';
 
 export class RoleView extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      key: 1
+    };
+  }
+
+  componentDidMount() {
+    PanelsRun();
+  }
+
+  handleSelect(key) {
+    console.log('Tab selected ' + key);
+    this.setState({
+      key
+    });
+  }
+
   
   renderTasks = () => {
     if (this.props.roleview.tasks && this.props.roleview.tasks.length) {
       return this.props.roleview.tasks.map((task) => {
         return (
           <div key={Math.random()} className="roles-box" >
-            <h6> {task.title} </h6>
+            <p> {task.title} </p>
             <p> Description: {task.description} </p>
             
             <div className="row">
@@ -37,8 +58,8 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
               </div>
             
               <div className="col-md-7">
-                <Button className="btn btn-sm btn-outline-secondary" style={{marginRight: '10px'}} > Details </Button>
-                <Button className="btn btn-sm btn-outline-default" style={{marginRight: '10px'}} > Resources </Button>
+                <Button className="btn btn-sm btn-primary" style={{marginRight: '10px'}} > Details </Button>
+                <Button className="btn btn-sm btn-success" style={{marginRight: '10px'}} > Resources </Button>
               </div>
             
             </div>
@@ -57,7 +78,7 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
    
             <span> 
               {resource} 
-              <Button className="btn btn-outline-secondary btn-sm" style={{ marginLeft: '30px' }} > Details </Button>            
+              <Button className="btn btn-primary btn-xs " style={{ marginLeft: '30px' }} > Details </Button>            
             </span>
           </div>
         );
@@ -74,7 +95,7 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
               <div className="row">
 
                 <div className="col-md-7">
-                  <h6> {similarRole.title} </h6>
+                  <p> {similarRole.title} </p>
                   <p> Description: {similarRole.description} </p>
                 </div>
 
@@ -84,7 +105,7 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
                 </div>
 
                 <div className="col-md-3">
-                  <Button className="btn btn-sm btn-outline-secondary" > Claim </Button>
+                  <Button className="btn btn-sm btn-primary" > Claim </Button>
                 </div>
 
               </div>
@@ -98,86 +119,81 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
   
   render() {
     return (
-      <div className="container-fluid">
-        <Helmet>
-          <title>RoleView</title>
-          <meta name="description" content="Description of RoleView" />
-        </Helmet>
-        <div className="box-header">
-          <div className="box-innerbody">
-            <div className="row">
-              <div className="col-md-12">
-                <h4>Role: {this.props.roleview.roleDetail.title} </h4>
+      <ContentWrapper>
+          <h3>Role View
+          <small> Role view details are mentioned here.</small>
+          </h3>
+        <Row>
+            
+          <Helmet>
+            <title>RoleView</title>
+            <meta name="description" content="Description of RoleView" />
+          </Helmet>
+          
+          <Col md={12}>
+            <div id="panelDemo8" className="panel panel-primary">
+              <div className="panel-heading">
+                  Role: {this.props.roleview.roleDetail.title}
+              </div>
+              
+              <div className="panel-body">
                 <p>Location: {this.props.roleview.roleDetail.project} </p>
                 <p>Date: {this.props.roleview.roleDetail.date} </p>
-                <p>Time: {this.props.roleview.roleDetail.startTime+' to '+this.props.roleview.roleDetail.endTime} </p>
+                <p>Time: {this.props.roleview.roleDetail.startTime + ' to ' + this.props.roleview.roleDetail.endTime} </p>
+
               </div>
+              {/* <div className="panel-footer">Panel Footer</div> */}
             </div>
-          </div>
+          </Col>
 
-        </div>
+        </Row>
 
-        <div className="row">
-          
-          <div className="col-md-8">
-            <div className="box">
-              <div className="box-header">
-                <p className="heading">
-                  tasks
-                </p>
+        <Row>
+          <Col md={8}>
+            <div id="panelDemo8" className="panel panel-primary">
+              <div className="panel-heading">
+                  Tasks
               </div>
 
-              <div className="box-body">
+              <div className="panel-body">
                 {this.renderTasks()}
               </div>
-
+              {/* <div className="panel-footer">Panel Footer</div> */}
             </div>
-            
-          </div>
-      
-          
-          <div className="col-md-4">
-            <div className="box">
-              <div className="box-header">
-                <p className="heading">
-                  resources/tools needed
-                </p>
+          </Col>
+
+          <Col md={4}>
+            <div id="panelDemo8" className="panel panel-primary">
+              <div className="panel-heading">
+                  Resources/Tools Needed
               </div>
-         
-              <div className="box-body">
+
+              <div className="panel-body">
                 {this.renderResources()}
               </div>
-         
+              {/* <div className="panel-footer">Panel Footer</div> */}
             </div>
-
-          </div>
-
-
-        </div>
-  
-
-        <div className="row">
+          </Col>
           
-          <div className="col-md-8">
-            <div className="box">
-              <div className="box-header">
-                <p className="heading">
-                  similar roles
-                </p>
+        </Row>
+        
+        <Row>
+          <Col md={8}>
+            <div id="panelDemo8" className="panel panel-primary">
+              <div className="panel-heading">
+                  Similar Roles
               </div>
 
-              <div className="box-body">
+              <div className="panel-body">
                 {this.renderSimilarRoles()}
               </div>
-
+              {/* <div className="panel-footer">Panel Footer</div> */}
             </div>
-            
-          </div>
+          </Col>
+        </Row>
 
-        </div>
-  
 
-      </div>
+      </ContentWrapper>
     );
   }
 }
