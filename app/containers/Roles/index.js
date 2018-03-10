@@ -19,8 +19,9 @@ import makeSelectRoles from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-import {From, Input, Button} from 'reactstrap';
+import {From, Input} from 'reactstrap';
 import './style.css';
+import { Row, Col, Button, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 
 
 export class Roles extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -33,11 +34,11 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
           <div className="roles-box" key={Math.random()} >
            
             <div className="row">    
-              <div className="col-md-9 col-sm-12 col-12">
+              <div className="col-lg-9 col-md-9 col-sm-12">
                 <h4> {roles.title} </h4>
               </div>
-              <div className="col-md-3 col-sm-12 col-12">
-                <Link to="/roleView" className="btn btn-outline-secondary btn-sm" color="default" >Claim</Link>
+              <div className="col-lg-3 col-md-3 col-sm-12">
+                <Link to="/roleView" className="btn btn-primary btn-sm" color="default" >Claim</Link>
               </div>
             </div>
  
@@ -49,18 +50,18 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
  
             <div className="row "> 
               
-              <div className="col-md-5 col-sm-12 col-12 ">
+              <div className="col-md-5 col-sm-12 ">
                 <p> {roles.frame} </p>
                 <p> {roles.role} </p>
               </div>
            
               
-              <div className="col-md-4 col-sm-12 col-12">
+              <div className="col-md-4 col-sm-12">
                 <p> {roles.date} </p>
                 <p> {roles.startTime+' - '+roles.endTime} </p>
               </div>
               
-              <div className="col-md-3 col-sm-12 col-12">
+              <div className="col-md-3 col-sm-12">
                 <p> PTS:  {roles.pts} </p>
                 <p> AC:  {roles.ac} </p>
               </div>
@@ -77,46 +78,42 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
   render() {
     return (
 
-      <div className="inner-body">
-        <Helmet>
-          <title>Roles</title>
-          <meta name="description" content="Description of Roles" />
-        </Helmet>
+      <div id="panelDemo8" className="panel panel-primary">
+        <div className="panel-heading"> 
+          <Row>
+              <Col md={6}>
+                  Open Roles
+              </Col>
+              
+              <Col md={6}>
+              <form role="form" className="form-inline" >
 
-        <div className="box">
-          <div className="box-header">
-            
-            <div className="row">
-              <div className="col-md-4 col-sm-12 col-12">
-                <p className="heading">
-                  open roles
-                </p>
-              </div>
-              <div className="col-md-5 col-sm-12 col-12" >
-                <Input type='select' >
-                  <option> value </option>
-                </Input>
-              </div>
-              <div className="col-md-3 col-sm-12 col-12 ">
-                <p className="right-heading">
-                  Miles to Chicago
-                </p>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div className="box-body">
-
-              {this.renderOpenRoles()}
-
-          </div>
-
+                <FormControl style={{ height: '24px' }} componentClass="select" multiple="" className="input-sm">
+                      <option>Option 1</option>
+                      <option>Option 2</option>
+                      <option>Option 3</option>
+                      <option>Option 4</option>
+                    </FormControl>
+                
+                    <label style={{ margin: '0px 20px'}}> To </label>
+                
+                    <FormControl style={{ height: '24px' }} componentClass="select" multiple="" className="input-sm">
+                      <option>Option 4</option>
+                      <option>Option 3</option>
+                      <option>Option 2</option>
+                      <option>Option 1</option>
+                    </FormControl>
+              
+                </form>
+              </Col>
+          </Row>
         </div>
-
+        <div className="panel-body">
+          {this.renderOpenRoles()}            
+        </div>
+        {/* <div className="panel-footer">Panel Footer</div> */}
       </div>
-       
+  
     );
   }
 }

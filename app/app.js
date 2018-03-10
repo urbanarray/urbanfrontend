@@ -15,22 +15,39 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import FontFaceObserver from 'fontfaceobserver';
 import createHistory from 'history/createBrowserHistory';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import 'sanitize.css/sanitize.css';
+import 'sanitize.css/sanitize.css';
+
+// Application Styles
+
+import './assets/styles/bootstrap.scss';
+import './assets/styles/app.scss'
+
+// import 'jquery';
+window.$ = require('jquery');
+window.$.localStorage = require('js-storage').localStorage;
 
 
+// Datatables
+// $.fn.dataTable = require('datatables.net-bs')(window, $);
+// $.fn.dataTable = require('datatables.net-bs');
+// require('datatables.net-buttons');
+// require('datatables.net-buttons-bs');
+// require('datatables.net-responsive');
+// require('datatables.net-responsive-bs');
+// require('datatables.net-buttons/js/buttons.colVis.js'); // Column visibility
+// require('datatables.net-buttons/js/buttons.html5.js'); // HTML 5 file export
+// require('datatables.net-buttons/js/buttons.flash.js'); // Flash file export
+// require('datatables.net-buttons/js/buttons.print.js'); // Print view button
 
 // Import root app
 import App from 'containers/App';
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
+
 // Load the favicon, the manifest.json file and the .htaccess file
 /* eslint-disable import/no-webpack-loader-syntax */
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
-
-
-
 import '!file-loader?name=[name].[ext]!./manifest.json';
 import 'file-loader?name=[name].[ext]!./.htaccess'; // eslint-disable-line import/extensions
 /* eslint-enable import/no-webpack-loader-syntax */
@@ -43,10 +60,9 @@ import { translationMessages } from './i18n';
 // Import CSS reset and Global Styles
 import './global-styles';
 
-
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
-const openSansObserver = new FontFaceObserver('Roboto', {});
+const openSansObserver = new FontFaceObserver('Open Sans', {});
 
 // When Open Sans is loaded, add a font-family using Open Sans to the body
 openSansObserver.load().then(() => {
@@ -66,9 +82,7 @@ const render = (messages) => {
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
-          <MuiThemeProvider>
-            <App />
-          </MuiThemeProvider>
+          <App />
         </ConnectedRouter>
       </LanguageProvider>
     </Provider>,

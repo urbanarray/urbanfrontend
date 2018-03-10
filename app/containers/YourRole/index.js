@@ -18,6 +18,7 @@ import makeSelectYourRole from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
+import { Row, Col } from 'react-bootstrap';
 
 export class YourRole extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -29,13 +30,13 @@ export class YourRole extends React.Component { // eslint-disable-line react/pre
 
             <div className="row ">
 
-              <div className="col-md-8 col-sm-12 col-12 ">
+              <div className="col-md-8 col-sm-12  ">
                 <p> {roles.role} </p>
                 <p> {roles.address} </p>
               </div>
 
 
-              <div className="col-md-4 col-sm-12 col-12">
+              <div className="col-md-4 col-sm-12 ">
                 <p> {roles.date} </p>
                 <p> {roles.startTime + ' - ' + roles.endTime} </p>
               </div>
@@ -51,31 +52,19 @@ export class YourRole extends React.Component { // eslint-disable-line react/pre
   }
   render() {
     return (
-      <div className="inner-body">
-        <Helmet>
-          <title>Your Roles</title>
-          <meta name="description" content="Description of Your Roles" />
-        </Helmet>
-
-        <div className="box">
-          <div className="box-header">
-
-            <div className="row">
-              <div className="col-md-12 col-sm-12 col-12">
-                <p className="heading">
-                  your roles
-                </p>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div className="box-body">
+      <div id="panelDemo8" className="panel panel-primary">
+        <div className="panel-heading"> 
+          <Row>
+            <Col md={12}>
+                Your Roles
+            </Col>
+          </Row>
+        </div>
+          
+          <div className="panel-body">
             {this.renderYourRoles()}
           </div>
-
-        </div>
+        
       </div>
     );
   }

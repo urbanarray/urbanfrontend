@@ -21,9 +21,30 @@ import saga from './saga';
 import messages from './messages';
 import Avatar from '../../../assets/images/avatar.jpg';
 import {Button} from 'reactstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
+import ContentWrapper from 'components/Layout/ContentWrapper';
 
 export class ProjectView extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      key: 1
+    };
+  }
+
+  componentDidMount() {
+    PanelsRun();
+  }
+
+  handleSelect(key) {
+    console.log('Tab selected ' + key);
+    this.setState({
+      key
+    });
+  }
+
+
   renderLeadership = () => {
     
     if (this.props.projectview.leadership && this.props.projectview.leadership.length > 0) {      
@@ -44,7 +65,7 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
         return this.props.projectview.team.map((team) => {
           return(
             <div key={Math.random()} className="col-md-4">
-                <img style={{width:'50px', height:'50px', borderRadius:'50%' }} src={Avatar} />
+                <img style={{width:'40px', height:'40px', borderRadius:'50%' }} src={Avatar} />
                 <span> {team.firstName} </span>
             </div>
           ) 
@@ -59,11 +80,11 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
             <div key={Math.random()} className="roles-box">
 
               <div className="row">
-                <div className="col-md-9 col-sm-12 col-12">
-                  <h6> {roles.title} </h6>
+                <div className="col-md-9 col-sm-12 ">
+                  <p> {roles.title} </p>
                 </div>
-                <div className="col-md-3 col-sm-12 col-12">
-                  <Button className="btn btn-outline-secondary btn-sm" color="default" >Claim</Button>
+                <div className="col-md-3 col-sm-12 ">
+                  <Button className="btn btn-primary btn-sm" color="default" >Claim</Button>
                 </div>
               </div>
 
@@ -75,18 +96,18 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
 
               <div className="row ">
 
-                <div className="col-md-5 col-sm-12 col-12 ">
+                <div className="col-md-5 col-sm-12  ">
                   <p> {roles.frame} </p>
                   <p> {roles.role} </p>
                 </div>
 
 
-                <div className="col-md-4 col-sm-12 col-12">
+                <div className="col-md-4 col-sm-12 ">
                   <p> {roles.date} </p>
                   <p> {roles.startTime + ' - ' + roles.endTime} </p>
                 </div>
 
-                <div className="col-md-3 col-sm-12 col-12">
+                <div className="col-md-3 col-sm-12 ">
                   <p> PTS:  {roles.pts} </p>
                   <p> AC:  {roles.ac} </p>
                 </div>
@@ -108,20 +129,20 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
             
             <div className="row ">
 
-              <div className="col-md-8 col-sm-8 col-12 ">
-                <h6> {resource.name} </h6>
+              <div className="col-md-8 col-sm-8  ">
+                <p> {resource.name} </p>
                 <p> Qty: {resource.quantity} </p>
                 <p> Size: {resource.size} </p>
                 {/* <p> Project: {resource.project} </p> */}
               </div>
 
 
-              <div className="col-md-4 col-sm-4 col-12">
+              <div className="col-md-4 col-sm-4 ">
 
                 <p> {resource.date} </p>
                 <p> {resource.startTime + ' - ' + resource.endTime} </p>
 
-                <button type="button" className="btn btn-outline-secondary btn-block btn-sm"  > Pledge </button>
+                <button type="button" className="btn btn-primary btn-xs"  > Pledge </button>
 
 
               </div>
@@ -136,22 +157,25 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
 
   render() {
     return (
-      <div className="container-fluid">
-        <Helmet>
-          <title>Project View</title>
-          <meta name="description" content="Description of ProjectView" />
-        </Helmet>
-        
-        <div className="row">
-          <div className="col-md-12">
-            <div className="box">
+      <ContentWrapper>
+        <Row>
 
-              <div className="box-innerbody">
-                <h3> Project: {(this.props.projectview.projectView.name.toUpperCase() )} </h3>
+          <Helmet>
+            <title>Project View</title>
+            <meta name="description" content="Description of ProjectView" />
+          </Helmet>
+
+          <Col md={12}>
+            <div id="panelDemo8" className="panel panel-primary">
+              <div className="panel-heading">
+                  Project: {(this.props.projectview.projectView.name.toUpperCase())}
+              </div>
+
+              <div className="panel-body">
                 <div className="row">
-                
+
                   <div className="col-md-4 offset-md-1">
-                    <p> Time: {this.props.projectview.projectView.startTime+' '+this.props.projectview.projectView.endTime} </p>
+                    <p> Time: {this.props.projectview.projectView.startTime + ' ' + this.props.projectview.projectView.endTime} </p>
                     <p> Date: {this.props.projectview.projectView.date} </p>
                   </div>
 
@@ -162,94 +186,87 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
 
                 </div>
               </div>
-
+              {/* <div className="panel-footer">Panel Footer</div> */}
             </div>
-          </div>
-        </div>  
+          </Col>
 
-        <div className="row">
+        </Row>
         
-          <div className="col-md-8">
-            <div className="box">
-              <div className="box-header">
-                <p className="heading">
+        <Row>
+          <Col md={8}>
+            <div id="panelDemo8" className="panel panel-primary">
+              <div className="panel-heading">
                   Project Details
-                </p>
               </div>
-              <div className="box-innerbody">
-                <div className="">
+
+              <div className="panel-body">
+               
                   <p>Description: {(this.props.projectview.projectView.description)} </p>
                   <p>Goals: {(this.props.projectview.projectView.goals)} </p>
-                  <h6> Project Details </h6>  
+                  <p> Project Details </p>
                   <p>Execution: {this.props.projectview.projectView.projectDetails.execution} </p>
                   <p>Aux Groups: {this.props.projectview.projectView.projectDetails.communication} </p>
-                </div>
-
+                
               </div>
+              {/* <div className="panel-footer">Panel Footer</div> */}
             </div>
-          </div>
-          
-          <div className="col-md-4" >
-            <div className="box">
-              <div className="box-header">
-                <p className="heading">
-                  Leadership & Team
-                </p>
+          </Col>
+
+          <Col md={4}>
+            <div id="panelDemo8" className="panel panel-primary">
+              <div className="panel-heading">
+                      Leadership & Team
               </div>
-              <div className="box-innerbody">
-                <div className="">
-                    <h6> Leadership</h6>
-                    <div className="row">
-                      {this.renderLeadership()}
-                    </div>
-                    <hr/>
-                    <h6> Team</h6>
-                    <div className="row">
-                      {this.renderTeam()}
-                    </div>
-                </div>
+
+              <div className="panel-body">
+              
+                  <p> Leadership</p>
+                  <div className="row">
+                    {this.renderLeadership()}
+                  </div>
+                  <hr />
+                  <p> Team</p>
+                  <div className="row">
+                    {this.renderTeam()}
+                  </div>
 
               </div>
+              {/* <div className="panel-footer">Panel Footer</div> */}
             </div>
-          
-          </div>
+          </Col>
+        </Row>
 
-        </div>
 
-        <div className="row">
-          
-          <div className="col-md-8">
-            <div className="box">
-              <div className="box-body">               
-                <div className="box-header">               
-                  <p className="heading">
-                    roles
-                  </p>
-                </div>
+
+        <Row>
+          <Col md={8}>
+            <div id="panelDemo8" className="panel panel-primary">
+              <div className="panel-heading">
+                   Roles
+              </div>
+
+              <div className="panel-body">
                 {this.renderRoles()}
               </div>
+              {/* <div className="panel-footer">Panel Footer</div> */}
             </div>
-          </div>
-          
-          <div className="col-md-4">
-            <div className="box">
-              <div className="box-body">  
-                <div className="box-header">  
-                  <p className="heading">
-                    resources
-                  </p>             
-                </div>
-             
-                {this.renderProjectResources()}                
-             
+          </Col>
+
+          <Col md={4}>
+            <div id="panelDemo8" className="panel panel-primary">
+              <div className="panel-heading">
+                    Resources
               </div>
+
+              <div className="panel-body">
+                {this.renderProjectResources()}                
+              </div>
+              {/* <div className="panel-footer">Panel Footer</div> */}
             </div>
-          </div>
-          
+          </Col>
+        </Row>
 
-        </div>
-
-      </div>
+      </ContentWrapper>
     );
   }
 }

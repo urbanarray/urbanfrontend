@@ -52,7 +52,7 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
         // console.log(this.props);
 
     // if (this.props.isLogin && this.props.login.done === true) {
-    if (this.props.login.done == true) {
+    if (this.props.login.done === true) {
       this.props.history.push('/profile');
     }
   }
@@ -130,7 +130,7 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
         {/* SignIn Section */}
         <div className="container">
           <div className="row">
-            <div className="col-lg-6 offset-md-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1  col-12">
+            <div className="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 ">
               <div className="user-detail" id="user-detail"  >
                 <div className="heading">
                   <h1 className="text-center" >Login</h1>

@@ -60,7 +60,7 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
     
     console.log(this.props.signup.done);
     // if (this.props.isLogin && this.props.signup.done === true) {
-    if (this.props.signup.done == true) {
+    if (this.props.signup.done === true) {
       this.props.history.push('/profile');
     }
   }
@@ -145,7 +145,7 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
         {/* SignIn Section */}
         <div className="container">
           <div className="row">
-            <div className="col-lg-6 offset-md-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1  col-12">
+            <div className="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 ">
               <div className="user-detail" id="user-detail"  >
                 <div className="heading">
                   <h1 className="text-center" >Signup</h1>
@@ -212,14 +212,12 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
                       </div>
 
                       <div className="btn-linkedin">
-                        
-                        <LinkedIn
+                         <LinkedIn
                           clientId='77dory0vf88a8p'                          
                           callback={this.callbackLinkedIn}
                           className="btn btn-default btn-block"
                           text='Login with LinkedIn' 
                         />
-                  
                       </div>
 
                     </div>

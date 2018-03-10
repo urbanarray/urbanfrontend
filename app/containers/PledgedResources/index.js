@@ -18,6 +18,7 @@ import makeSelectPledgedResources from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
+import { Row, Col } from 'react-bootstrap';
 
 export class PledgedResources extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -29,9 +30,9 @@ export class PledgedResources extends React.Component { // eslint-disable-line r
 
             <div className="row ">
 
-              <div className="col-md-8 col-sm-12 col-12 ">
+              <div className="col-md-8 col-sm-12  ">
                 <p> {pledgedresource.item}
-                  <button type="button" className="btn btn-outline-secondary btn-sm" style={{float:'right'}} >Details</button>
+                  <button type="button" className="btn btn-primary btn-xs" style={{float:'right'}} >Details</button>
                 </p>
 
                  
@@ -39,7 +40,7 @@ export class PledgedResources extends React.Component { // eslint-disable-line r
               </div>
 
 
-              <div className="col-md-4 col-sm-12 col-12">
+              <div className="col-md-4 col-sm-12 ">
                 <p> {pledgedresource.date} </p>
                 <p> {pledgedresource.startTime + ' - ' + pledgedresource.endTime} </p>
               </div>
@@ -56,40 +57,30 @@ export class PledgedResources extends React.Component { // eslint-disable-line r
 
   render() {
     return (
-      <div className="inner-body">
-        <Helmet>
-          <title>Pledged Resources</title>
-          <meta name="description" content="Description of Pledged Resources" />
-        </Helmet>
 
-        <div className="box">
-          <div className="box-header">
+      <div id="panelDemo8" className="panel panel-primary">
+        <div className="panel-heading">
+          <Row>
+            <Col md={12}>
+                Pledged Resources
+            </Col>
+          </Row>
+        </div>
 
-            <div className="row">
-              <div className="col-md-12 col-sm-12 col-12">
-                <p className="heading">
-                  pledged resources
-                </p>
-              </div>
+        <div className="panel-body">
+          
+          {
+            this.renderPledgedResources()
+          }
 
-            </div>
-
-          </div>
-
-          <div className="box-body">
-            {
-              this.renderPledgedResources()
-            }
-
-            <div className="col-md-4 col-sm-12 col-12 form-group">
-              <button type="button" className="btn btn-outline-secondary">Submit Resources</button>
-            </div>
-
+          <div className="col-md-4 col-sm-12  form-group">
+            <button type="button" className="btn btn-sm btn-success">Submit Resources</button>
           </div>
 
         </div>
 
       </div>
+
     );
   }
 }

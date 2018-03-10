@@ -53,6 +53,7 @@ function loginReducer(state = initialState, action) {
     case LOGGED_IN_ACTION:
       return state
         .set('loggedInUser', action.payload)
+        .set('login', null)
         .set('loading', false)
         .set('done', true);
     
