@@ -105,15 +105,7 @@ const initialState = fromJS({
       endTime: '6pm',
       project: 'Semi ',
     },
-    {
-      name: 'Paint',
-      size: '...',
-      quantity: 6,
-      date: 'Feb 2',
-      startTime: '3am',
-      endTime: '5am',
-      project: 'Rehab IV',
-    },
+  
 
   ],
   

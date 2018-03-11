@@ -265,6 +265,25 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
             </div>
           </Col>
         </Row>
+        
+        <Row>
+          <Col md={8}>
+            <div id="panelDemo8" className="panel panel-primary">
+              <div className="panel-heading">
+                    Roles on Timeline
+              </div>
+
+              <div className="panel-body">
+                <p>Role 1</p>            
+                <p>Role 2</p>            
+                <p>Role 3</p>            
+              </div>
+              {/* <div className="panel-footer">Panel Footer</div> */}
+            </div>
+          </Col>
+        </Row>
+
+        
 
       </ContentWrapper>
     );
