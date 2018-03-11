@@ -3,6 +3,7 @@ import { Router, Route, Link, History, withRouter } from 'react-router-dom';
 import pubsub from 'pubsub-js';
 import { Collapse } from 'react-bootstrap';
 import SidebarRun from './Sidebar.run';
+import avatar from '../../assets/img/user/02.jpg';
 
 class Sidebar extends React.Component {
 
@@ -14,13 +15,13 @@ class Sidebar extends React.Component {
             collapse: {
                 dashboard: this.routeActive(['dashboard', 'dashboardv2', 'dashboardv3']),
                 widget: this.routeActive('widgets'),
-                elements: this.routeActive(['pledgedResources', 'notifications', 'sweetalert', 'tour', 'carousel', 'spinners', 'animations', 'dropdown', 'nestable', 'sortable', 'panels', 'portlet', 'grid', 'grid-masonry', 'typography', 'icons-font', 'icons-weather', 'neededResources']),
-                forms: this.routeActive(['form-standard', 'form-extended', 'form-validation', 'form-wizard', 'openRoles', 'yourRoles', 'similarRoles']),
+                elements: this.routeActive(['communities', 'projects', 'sweetalert', 'tour', 'carousel', 'spinners', 'animations', 'dropdown', 'nestable', 'sortable', 'panels', 'portlet', 'grid', 'grid-masonry', 'typography', 'icons-font', 'icons-weather', 'dm']),
+                forms: this.routeActive(['form-standard', 'form-extended', 'form-validation', 'form-wizard', 'openRoles', 'myRoles', 'allRoles']),
                 charts: this.routeActive(['chart-flot', 'chart-radial', 'chart-chartjs', 'chart-rickshaw', 'chart-morris', 'chart-chartist']),
                 tables: this.routeActive(['table-standard', 'table-extended', 'table-datatable', 'table-jqgrid']),
                 maps: this.routeActive(['map-google', 'map-vector']),
                 extras: this.routeActive(['mailbox', 'timeline', 'calendar', 'invoice', 'search', 'todo', 'profile','bug-tracker','contact-details','contacts','faq','file-manager','followers','help-center','plans','project-details','projects','settings','social-board','team-viewer','vote-links']),
-                blog: this.routeActive(['projectsList', 'createProject', 'blog-articles', 'blog-article-view']),
+                blog: this.routeActive(['projectsList', 'createProject', 'myProjects', 'blog-article-view']),
                 ecommerce: this.routeActive(['help', 'ecommerce-order-view', 'ecommerce-products', 'ecommerce-product-view', 'ecommerce-checkout']),
                 forum: this.routeActive(['forum-categories', 'forum-topics', 'forum-discussion']),
                 pages: false
@@ -38,7 +39,7 @@ class Sidebar extends React.Component {
         SidebarRun(this.navigator.bind(this));
     }
 
-    navigator(route) {
+    navigator(route) {      
         this.props.history.push(route);
     }
 
@@ -83,14 +84,14 @@ class Sidebar extends React.Component {
                                             { /* User picture */ }
                                             <div className="user-block-picture">
                                                 <div className="user-block-status">
-                                                    <img src="assets/img/user/02.jpg" alt="Avatar" width="60" height="60" className="img-thumbnail img-circle" />
+                                                    <img src={avatar} alt="Avatar" width="60" height="60" className="img-thumbnail img-circle" />
                                                     <div className="circle circle-success circle-lg"></div>
                                                 </div>
                                             </div>
                                             { /* Name and Job */ }
                                             <div className="user-block-info">
-                                                <span className="user-block-name">Hello, Mike</span>
-                                                <span className="user-block-role">Designer</span>
+                                                <span className="user-block-name">Hello, Max</span>
+                                                <span className="user-block-role">Community Manager</span>
                                             </div>
                                         </div>
                                     </div>
@@ -111,8 +112,8 @@ class Sidebar extends React.Component {
                                     <ul id="dashboard" className="nav sidebar-subnav">
                                         <li className="sidebar-subnav-header">Dashboard</li>
                                         <li className={ this.routeActive('dashboard') ? 'active' : '' }>
-                                            <Link to="dashboard" title="Main Dashboard">
-                                            <span>Main Dashboard</span>
+                                            <Link to="dashboard" title="Calander">
+                                            <span>Calander</span>
                                             </Link>
                                         </li>
                                     
@@ -123,31 +124,37 @@ class Sidebar extends React.Component {
                             <li className="nav-heading ">
                                 <span data-localize="sidebar.heading.COMPONENTS">Components</span>
                             </li>
-                            <li className={ this.routeActive(['pledgedResources', 'notifications', 'sweetalert', 'tour', 'carousel', 'spinners', 'animations', 'dropdown', 'nestable', 'sortable', 'panels', 'portlet', 'grid', 'grid-masonry', 'typography', 'icons-font', 'icons-weather', 'neededResources']) ? 'active' : '' }>
-                                <div className="nav-item" title="Resources" onClick={ this.toggleItemCollapse.bind(this, 'elements') }>
+                            <li className={ this.routeActive(['communities', 'projects', 'sweetalert', 'tour', 'carousel', 'spinners', 'animations', 'dropdown', 'nestable', 'sortable', 'panels', 'portlet', 'grid', 'grid-masonry', 'typography', 'icons-font', 'icons-weather', 'dm']) ? 'active' : '' }>
+                                <div className="nav-item" title="Communications" onClick={ this.toggleItemCollapse.bind(this, 'elements') }>
                                     <em className="icon-grid"></em>
-                                    <span data-localize="sidebar.nav.element.ELEMENTS">Resources</span>
+                                    <span data-localize="sidebar.nav.element.ELEMENTS">Communications</span>
                                 </div>
                                 <Collapse in={ this.state.collapse.elements }>
                                     <ul id="#" className="nav sidebar-subnav">
-                                        <li className="sidebar-subnav-header">Resources</li>
-                                        <li className={ this.routeActive('pledgedResources') ? 'active' : '' }>
-                                            <Link to="pledgedResources" title="Pledged Resources">
-                                            <span data-localize="sidebar.nav.element.BUTTON">Pledged Resources</span>
+                                        <li className="sidebar-subnav-header">Communications</li>
+                                       
+                                        <li className={ this.routeActive('communities') ? 'active' : '' }>
+                                            <Link to="communities" title="Communities">
+                                            <span data-localize="sidebar.nav.element.BUTTON">Communities</span>
                                             </Link>
                                         </li>
                                     
+                                        <li className={this.routeActive('projects') ? 'active' : ''}>
+                                            <Link to="projects" title="Projects">
+                                                <span data-localize="sidebar.nav.element.BUTTON">Projects</span>
+                                            </Link>
+                                        </li>
                                       
-                                        <li className={ this.routeActive('neededResources') ? 'active' : '' }>
-                                            <Link to="neededResources" title="Needed Resources">
-                                            <span data-localize="sidebar.nav.element.COLOR">Needed Resources</span>
+                                        <li className={ this.routeActive('dm') ? 'active' : '' }>
+                                            <Link to="dm" title="D.M">
+                                            <span data-localize="sidebar.nav.element.COLOR">D.M</span>
                                             </Link>
                                         </li>
 
                                     </ul>
                                 </Collapse>
                             </li>
-                            <li className={ this.routeActive(['form-standard', 'form-extended', 'form-validation', 'form-wizard', 'openRoles', 'yourRoles', 'similarRoles']) ? 'active' : '' }>
+                            <li className={ this.routeActive(['form-standard', 'form-extended', 'form-validation', 'form-wizard', 'openRoles', 'myRoles', 'allRoles']) ? 'active' : '' }>
                                 <div className="nav-item" title="Roles" onClick={ this.toggleItemCollapse.bind(this, 'forms') }>
                                     <em className="icon-note"></em>
                                     <span data-localize="sidebar.nav.form.FORM">Roles</span>
@@ -162,14 +169,14 @@ class Sidebar extends React.Component {
                                             <span>Open Roles</span>
                                             </Link>
                                         </li>
-                                        <li className={ this.routeActive('yourRoles') ? 'active' : '' }>
-                                            <Link to="yourRoles" title="Your Roles">
-                                            <span>Your Roles</span>
+                                        <li className={ this.routeActive('myRoles') ? 'active' : '' }>
+                                            <Link to="myRoles" title="My Roles">
+                                            <span>My Roles</span>
                                             </Link>
                                         </li>
-                                        <li className={ this.routeActive('similarRoles') ? 'active' : '' }>
-                                            <Link to="similarRoles" title="Similar Roles">
-                                            <span>Similar Roles</span>
+                                        <li className={ this.routeActive('allRoles') ? 'active' : '' }>
+                                            <Link to="allRoles" title="All Roles">
+                                            <span>All Roles</span>
                                             </Link>
                                         </li>
 
@@ -177,7 +184,7 @@ class Sidebar extends React.Component {
                                 </Collapse>
                             </li>
 
-                            <li className={ this.routeActive(['projectsList', 'createProject', 'blog-articles', 'blog-article-view']) ? 'active' : '' }>
+                            <li className={ this.routeActive(['projectsList', 'createProject', 'myProjects', 'blog-article-view']) ? 'active' : '' }>
                                 <div className="nav-item" title="Projects" onClick={ this.toggleItemCollapse.bind(this, 'blog') }>
                                     <em className="icon-notebook"></em>
                                     <span>Projects</span>
@@ -193,6 +200,12 @@ class Sidebar extends React.Component {
                                         <li className={ this.routeActive('createProject') ? 'active' : '' }>
                                             <Link to="createProject" title="Create Project">
                                             <span>Create Project</span>
+                                            </Link>
+                                        </li>
+                                   
+                                        <li className={ this.routeActive('myProjects') ? 'active' : '' }>
+                                            <Link to="myProjects" title="My Projects">
+                                            <span>My Projects</span>
                                             </Link>
                                         </li>
                                    
