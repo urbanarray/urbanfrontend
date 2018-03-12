@@ -19,47 +19,44 @@ import makeSelectNeededResources from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-import { Row, Col, Button, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+
+import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+import TableExtendedRun from 'components/Tables/TableExtended.run';
 
 
 export class NeededResources extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+  componentDidMount() {
+    TableExtendedRun();
+  }
+
   renderNeededResources = () => {
     if (this.props.neededresources.neededResources) {
       return this.props.neededresources.neededResources.map((resource) => {
         return (
-          <div className="roles-box" key={Math.random()} >
+          <tr key={Math.random()}>
+            <td>
+              {resource.name} 
+            </td>
 
-            <div className="row">
+            <td>
+              {resource.quantity}
+            </td>
+            <td>
+              {resource.project}
+            </td>
+            <td>
+              {resource.locationNeeded}
+            </td>
+            <td>
+              {resource.date + ' ' + resource.startTime + ' - ' + resource.endTime}
+            </td>
+            <td>
+              {/* <button type="button" className="btn btn-primary btn-block btn-sm"  > Pledge </button> */}
+              <Link to="/projectView" type="button" className="btn btn-success btn-block btn-sm"  > Details/Claim </Link>
+            </td>
 
-              <div className="col-md-3 col-sm-6 col-xs-12 ">
-                <h4> {resource.name} </h4>
-                <p> Qty: {resource.quantity} </p>
-              </div>
-
-
-              <div className="col-md-3 col-sm-6 col-xs-12">
-                <p> Size: {resource.size} </p>
-                <p> Project: {resource.project} </p>
-              </div>
-
-              <div className="col-md-3 col-sm-6 col-xs-12">
-                <p> {resource.date} </p>
-                <p> {resource.startTime + ' - ' + resource.endTime} </p>
-              </div>
-
-              <div className="col-md-3 col-sm-6 col-xs-12">
-                
-             
-                  <button type="button" className="btn btn-primary btn-block btn-sm"  > Pledge </button>
-                
-                  <Link to="/projectView" type="button" className="btn btn-success btn-block btn-sm"  > Details </Link>
-              
-              </div>
-
-            </div>
-
-          </div>
+          </tr>
+    
         );
       });
     }
@@ -72,26 +69,20 @@ export class NeededResources extends React.Component { // eslint-disable-line re
         <div className="panel-heading">
           <Row>
             <Col md={6}>
-                Needed Resources
+                NEEDED RESOURCES
             </Col>
 
             <Col md={6}>
               <form role="form" className="form-inline">
 
                 <FormControl style={{ height: '24px' }} componentClass="select" multiple="" className="input-sm">
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                  <option>Option 4</option>
+                  <option>Miles</option>
                 </FormControl>
 
                 <label style={{ margin: '0px 20px' }}> To </label>
 
                 <FormControl style={{ height: '24px' }} componentClass="select" multiple="" className="input-sm">
-                  <option>Option 4</option>
-                  <option>Option 3</option>
-                  <option>Option 2</option>
-                  <option>Option 1</option>
+                  <option>Zip</option>
                 </FormControl>
 
               </form>
@@ -100,9 +91,29 @@ export class NeededResources extends React.Component { // eslint-disable-line re
         </div>
 
         <div className="panel-body">
-          {this.renderNeededResources()}
+          { /* START table-responsive */}
+          <Table id="table-ext-2" responsive striped bordered hover>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Quantity </th>
+                <th>Project</th>
+                <th>Location Needed</th>
+                <th>Date/Time</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.renderNeededResources()}
+            </tbody>
+          </Table>
+          { /* END table-responsive */}
         </div>
-
+        <div className="panel-footer">
+          <div className="text-right">
+            <Link to="#" >View All</Link>
+          </div>
+        </div>
       </div>
 
     );

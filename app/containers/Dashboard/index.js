@@ -51,12 +51,15 @@ export class Dashboard extends React.Component { // eslint-disable-line react/pr
     return (
       <ContentWrapper>
         <Helmet>
-          <title>Dashboard</title>
+          <title>DASHBOARD</title>
           <meta name="description" content="Description of Dashboard" />
         </Helmet>
 
-        <h3>Dashboard
-          <small> Here we show demo for all the compnents in our application</small>
+        <h3>DASHBOARD
+          <small>
+
+          </small>
+
         </h3>
 
         <Grid fluid>
@@ -121,7 +124,10 @@ export class Dashboard extends React.Component { // eslint-disable-line react/pr
                     </div>
                   
                     <div data-now="" data-format="D" className="h2 mt0"></div>
-                    <em className="icon-clock fa-3x"></em>                    
+                    {/* <em className="icon-clock fa-3x"></em>     */}
+                    <div className=" mt0">March</div>
+                    <div className="h4">2</div>
+                    
                   </Col>
                   <Col xs={8} className="pv-lg">
                     {/* <div data-now="" data-format="dddd" className="text-uppercase"></div> */}
@@ -143,7 +149,7 @@ export class Dashboard extends React.Component { // eslint-disable-line react/pr
 
 
           { /* END row */}
-          <h4 className="page-header mt0">Roles</h4>
+          {/* <h4 className="page-header mt0">Roles</h4> */}
           { /* START row */}
           <Row>
             

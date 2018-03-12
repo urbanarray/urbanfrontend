@@ -60,7 +60,7 @@ class Header extends React.Component {
                             <Link className="btn btn-primary" to="signup"> Signup</Link>
                           </li>
                           <li> 
-                            <Link className="btn btn-success" to="Login"> Login</Link>
+                            <Link className="btn btn-success" to="login"> Login</Link>
                           </li>
                         </ul>
                         { /* END Right Navbar */}
