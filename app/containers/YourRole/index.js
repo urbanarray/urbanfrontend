@@ -7,6 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
@@ -18,7 +19,9 @@ import makeSelectYourRole from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-import { Row, Col } from 'react-bootstrap';
+
+import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+import TableExtendedRun from 'components/Tables/TableExtended.run';
 
 export class YourRole extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -26,26 +29,24 @@ export class YourRole extends React.Component { // eslint-disable-line react/pre
     if (this.props.yourrole.yourRoles) {
       return this.props.yourrole.yourRoles.map((roles) => {
         return (
-          <div className="roles-box" key={Math.random()} >
+          <tr key={Math.random()}>
+            <td>
+              {roles.role}
+            </td>
 
-            <div className="row ">
+            <td>
+              {roles.project}
+            </td>
+            <td>
+              {roles.date + ' ' + roles.startTime + '-' + roles.endTime }
+            </td>
+          
+            <td>
+              <Link to="/roleView" className="btn btn-primary btn-xs" color="default" >Details</Link>
+            </td>
 
-              <div className="col-md-8 col-sm-12  ">
-                <p> {roles.role} </p>
-                <p> {roles.address} </p>
-              </div>
-
-
-              <div className="col-md-4 col-sm-12 ">
-                <p> {roles.date} </p>
-                <p> {roles.startTime + ' - ' + roles.endTime} </p>
-              </div>
-
-
-            </div>
-
-
-          </div>
+          </tr>
+     
         );
       });
     }
@@ -56,15 +57,35 @@ export class YourRole extends React.Component { // eslint-disable-line react/pre
         <div className="panel-heading"> 
           <Row>
             <Col md={12}>
-                Your Roles
+                YOUR ROLES
             </Col>
           </Row>
         </div>
           
           <div className="panel-body">
-            {this.renderYourRoles()}
+          { /* START table-responsive */}
+          <Table id="table-ext-2" responsive striped bordered hover>
+            <thead>
+              <tr>
+                <th>Role</th>
+                <th>Project </th>
+                <th>Date/Time</th>
+                {/* <th></th> */}
+              </tr>
+            </thead>
+            <tbody>
+              {this.renderYourRoles()}
+            </tbody>
+          </Table>
+          { /* END table-responsive */}
           </div>
-        
+          
+          <div className="panel-footer">
+            <div className="text-right">
+              <Link to="#" >View All</Link>
+            </div>
+          </div>
+      
       </div>
     );
   }

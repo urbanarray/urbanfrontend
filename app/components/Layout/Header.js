@@ -57,13 +57,22 @@ class Header extends React.Component {
                             <li>
                                 { /* Button used to collapse the left sidebar. Only visible on tablet and desktops */ }
                                 <a href="#" data-trigger-resize="" data-toggle-state="aside-collapsed" className="hidden-xs">
-                                    <em className="fa fa-navicon"></em>
+                                    <em className="fa fa-navicon "></em>
                                 </a>
                                 { /* Button to show/hide the sidebar on mobile. Visible on mobile only. */ }
                                 <a href="#" data-toggle-state="aside-toggled" data-no-persist="true" className="visible-xs sidebar-toggle">
                                     <em className="fa fa-navicon"></em>
                                 </a>
                             </li>
+                            
+                            { /* START dashboard icon */ }
+                            <li>
+                                <Link to="dashboard" title="Dashboard">
+                                    <em className="icon-speedometer"></em>
+                                </Link>
+                            </li>
+                            { /* END dashboard icon */ }
+                            
                             { /* START User avatar toggle */ }
                             <li>
                                 { /* Button used to collapse the left sidebar. Only visible on tablet and desktops */ }
@@ -72,13 +81,19 @@ class Header extends React.Component {
                                 </a>
                             </li>
                             { /* END User avatar toggle */ }
-                            { /* START lock screen */ }
+
                             <li>
-                                <Link to="lock" title="Lock screen">
-                                    <em className="icon-lock"></em>
+                                <Link to="dashboard" title="Expand">
+                                    <em className="icon-paper-plane"></em>
                                 </Link>
                             </li>
-                            { /* END lock screen */ }
+
+                            <li>
+                                <Link to="dashboard" title="Graph Chart">
+                                    <em className="icon-graph"></em>
+                                </Link>
+                            </li>
+
                         </ul>
                         { /* END Left navbar */ }
                         { /* START Right Navbar */ }
@@ -89,19 +104,14 @@ class Header extends React.Component {
                                     <em className="icon-magnifier"></em>
                                 </a>
                             </li>
-                            { /* Fullscreen (only desktops) */ }
-                            <li className="visible-lg">
-                                <a href="#" data-toggle-fullscreen="">
-                                    <em className="fa fa-expand"></em>
-                                </a>
-                            </li>
+               
                             { /* START Alert menu */ }
                             <NavDropdown noCaret eventKey={ 3 } title={ ddAlertTitle } className="dropdown-list" id="basic-nav-dropdown" >
                               <CustomListGroup>
                                 <ListGroupItem href="javascript:void(0)">
                                      <div className="media-box">
                                         <div className="pull-left">
-                                           <em className="fa fa-twitter fa-2x text-info"></em>
+                                           <em className="fa fa-twitter text-info"></em>
                                         </div>
                                         <div className="media-box-body clearfix">
                                            <p className="m0">New followers</p>
@@ -114,7 +124,7 @@ class Header extends React.Component {
                                 <ListGroupItem href="javascript:void(0)">
                                      <div className="media-box">
                                         <div className="pull-left">
-                                           <em className="fa fa-envelope fa-2x text-warning"></em>
+                                           <em className="fa fa-envelope text-warning"></em>
                                         </div>
                                         <div className="media-box-body clearfix">
                                            <p className="m0">New e-mails</p>
@@ -127,7 +137,7 @@ class Header extends React.Component {
                                 <ListGroupItem href="javascript:void(0)">
                                      <div className="media-box">
                                         <div className="pull-left">
-                                           <em className="fa fa-tasks fa-2x text-success"></em>
+                                           <em className="fa fa-tasks text-success"></em>
                                         </div>
                                         <div className="media-box-body clearfix">
                                            <p className="m0">Pending Tasks</p>

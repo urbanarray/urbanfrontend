@@ -7,6 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
@@ -18,38 +19,36 @@ import makeSelectPledgedResources from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-import { Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+import TableExtendedRun from 'components/Tables/TableExtended.run';
 
 export class PledgedResources extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  componentDidMount() {
+    TableExtendedRun();
+  }
 
   renderPledgedResources = () => {
     if (this.props.pledgedresources.pledgedResources) {
       return this.props.pledgedresources.pledgedResources.map((pledgedresource) => {
         return (
-          <div className="roles-box" key={Math.random()} >
+          <tr key={Math.random()}>
+            <td>
+              {pledgedresource.item}
+            </td>
 
-            <div className="row ">
+            <td>
+              {pledgedresource.project} 
+            </td>
+            <td>
+              {pledgedresource.date + ' '+pledgedresource.startTime + '-' + pledgedresource.endTime}
+            </td>
 
-              <div className="col-md-8 col-sm-12  ">
-                <p> {pledgedresource.item}
-                  <button type="button" className="btn btn-primary btn-xs" style={{float:'right'}} >Details</button>
-                </p>
+            <td>
+              <button type="button" className="btn btn-primary btn-xs" style={{ float: 'right' }} >Details</button>
+            </td>
 
-                 
-                <p> Project: {pledgedresource.project} </p>
-              </div>
+          </tr>
 
-
-              <div className="col-md-4 col-sm-12 ">
-                <p> {pledgedresource.date} </p>
-                <p> {pledgedresource.startTime + ' - ' + pledgedresource.endTime} </p>
-              </div>
-
-
-            </div>
-
-
-          </div>
         );
       });
     }
@@ -62,23 +61,36 @@ export class PledgedResources extends React.Component { // eslint-disable-line r
         <div className="panel-heading">
           <Row>
             <Col md={12}>
-                Pledged Resources
+                PLEDGED RESOURCES
             </Col>
           </Row>
         </div>
 
         <div className="panel-body">
-          
-          {
-            this.renderPledgedResources()
-          }
-
-          <div className="col-md-4 col-sm-12  form-group">
-            <button type="button" className="btn btn-sm btn-success">Submit Resources</button>
-          </div>
+          { /* START table-responsive */}
+          <Table id="table-ext-2" responsive striped bordered hover>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Project </th>
+                <th>Date/Time</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                this.renderPledgedResources()
+              }
+            </tbody>
+          </Table>
+          { /* END table-responsive */}
 
         </div>
-
+        <div className="panel-footer">
+          <div className="text-right">
+            <Link to="#" >View All</Link>
+          </div>
+        </div>
       </div>
 
     );

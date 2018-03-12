@@ -13,14 +13,14 @@ const initialState = fromJS({
   yourRoles:[
     {
       role: 'General Labour',
-      address: '3502, Barry Chicago ld',
+      project: 'Urban Frame I',
       date: 'Oct 21',
       startTime: '5pm',
       endTime: '6pm',
     },    
     {
       role: 'Carpenter II',
-      address: '233, street 33, Auston',
+      project: 'Urban Frame II',
       date: 'Feb 2',
       startTime: '2am',
       endTime: '4am',

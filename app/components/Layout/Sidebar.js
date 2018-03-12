@@ -214,73 +214,6 @@ class Sidebar extends React.Component {
                             </li>
 
 
-                            <li className="nav-heading ">
-                                <span data-localize="sidebar.heading.MORE">Reports</span>
-                            </li>
-
-                            <li className={ this.routeActive(['chart-flot', 'chart-radial', 'chart-chartjs', 'chart-rickshaw', 'chart-morris', 'chart-chartist']) ? 'active' : '' }>
-                                <div className="nav-item" title="Charts" onClick={ this.toggleItemCollapse.bind(this, 'charts') }>
-                                    <em className="icon-graph"></em>
-                                    <span data-localize="sidebar.nav.chart.CHART">Charts</span>
-                                </div>
-                                <Collapse in={ this.state.collapse.charts }>
-                                    <ul id="" className="nav sidebar-subnav">
-                                        <li className="sidebar-subnav-header">Charts</li>
-                                        <li className={ this.routeActive('chart-flot') ? 'active' : '' }>
-                                            <Link to="chart-flot" title="Flot">
-                                            <span data-localize="sidebar.nav.chart.FLOT">Flot</span>
-                                            </Link>
-                                        </li>
-                                        <li className={ this.routeActive('chart-radial') ? 'active' : '' }>
-                                            <Link to="chart-radial" title="Radial">
-                                            <span data-localize="sidebar.nav.chart.RADIAL">Radial</span>
-                                            </Link>
-                                        </li>
-                                        <li className={ this.routeActive('chart-chartjs') ? 'active' : '' }>
-                                            <Link to="chart-chartjs" title="Chart JS">
-                                            <span>Chart JS</span>
-                                            </Link>
-                                        </li>
-                                        <li className={ this.routeActive('chart-rickshaw') ? 'active' : '' }>
-                                            <Link to="chart-rickshaw" title="Rickshaw">
-                                            <span>Rickshaw</span>
-                                            </Link>
-                                        </li>
-                                        <li className={ this.routeActive('chart-morris') ? 'active' : '' }>
-                                            <Link to="chart-morris" title="MorrisJS">
-                                            <span>MorrisJS</span>
-                                            </Link>
-                                        </li>
-                                        <li className={ this.routeActive('chart-chartist') ? 'active' : '' }>
-                                            <Link to="chart-chartist" title="Chartist">
-                                            <span>Chartist</span>
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </Collapse>
-                            </li>
-
-                            <li className={ this.routeActive(['map-google', 'map-vector']) ? 'active' : '' }>
-                                <div className="nav-item" title="Maps" onClick={ this.toggleItemCollapse.bind(this, 'maps') }>
-                                    <em className="icon-map"></em>
-                                    <span data-localize="sidebar.nav.map.MAP">Maps</span>
-                                </div>
-                                <Collapse in={ this.state.collapse.maps }>
-                                    <ul id="" className="nav sidebar-subnav">
-                                        <li className="sidebar-subnav-header">Maps</li>
-                                        <li className={ this.routeActive('map-google') ? 'active' : '' }>
-                                            <Link to="map-google" title="Google Maps">
-                                            <span data-localize="sidebar.nav.map.GOOGLE">Google Maps</span>
-                                            </Link>
-                                        </li>
-                                        <li className={ this.routeActive('map-vector') ? 'active' : '' }>
-                                            <Link to="map-vector" title="Vector Maps">
-                                            <span data-localize="sidebar.nav.map.VECTOR">Vector Maps</span>
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </Collapse>
-                            </li>
 
                             <li className="nav-heading ">
                                 <span data-localize="sidebar.heading.MORE">More</span>
@@ -314,7 +247,7 @@ class Sidebar extends React.Component {
                                     <ul id="" className="nav sidebar-subnav">
                                         <li className="sidebar-subnav-header">Feedback</li>
                                         <li className={this.routeActive('feedback') ? 'active' : ''}>
-                                            <Link to="feedback" title="Categories">
+                                            <Link to="feedback" title="Feedback">
                                                 <span>Feedback</span>
                                             </Link>
                                         </li>
@@ -322,7 +255,12 @@ class Sidebar extends React.Component {
                                     </ul>
                                 </Collapse>
                             </li>
-
+                            <li className={this.routeActive('logout') ? 'active' : ''}>
+                                <Link to="logout" title="Logout">
+                                    <em className="icon-power"></em>                                    
+                                    <span>Logout</span>
+                                </Link>
+                            </li>
                         </ul>
                         { /* END sidebar nav */ }
                     </nav>

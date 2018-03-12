@@ -20,6 +20,7 @@ const initialState = fromJS({
       startTime: '3am',
       endTime: '5am',
       project: 'Rehab III',
+      locationNeeded: 'Chicago'
     },
     {
       name: 'Door',
@@ -29,15 +30,17 @@ const initialState = fromJS({
       startTime: '2pm',
       endTime: '6pm',
       project: 'Semi ',
+      locationNeeded: 'Chicago'
     },
     {
       name: 'Paint',
       size: '...',
       quantity:6,
-      date: 'Feb 2',
+      date: 'Feb 02',
       startTime: '3am',
       endTime: '5am',
       project: 'Rehab IV',
+      locationNeeded: 'Chicago'
     },
 
   ],
