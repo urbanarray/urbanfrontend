@@ -13,7 +13,7 @@ const initialState = fromJS({
   roleDetail: {
     title: 'Landscape Prep I',
     description: 'Some description here',
-    project: 'Urban Frame II',
+    project: 'Urban Farm II',
     location: '600 w cawal chicago, IL',
     date: 'Oct 21',
     startTime: '5pm',
@@ -22,20 +22,20 @@ const initialState = fromJS({
 
   tasks: [
     {
-      title:'Gathering and Remove Litter',
-      description: 'dispose of trash and waste material',
+      title:'Gather and Remove Litter',
+      description: 'Dispose of trash and waste material',
       startTime: '3pm',
       endTime: '5pm',
     }, 
     {
       title:'Mow Grass',
-      description: 'mow grass in corner of lot',
+      description: 'Mow grass in corner of lot',
       startTime: '1am',
       endTime: '4am',
     },
     {
       title:'Prep Planting Bed Soil',
-      description: 'fertilizing planting bed',
+      description: 'Fertilizing planting bed',
       startTime: '9:30am',
       endTime: '10am',
     },
