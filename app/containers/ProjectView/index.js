@@ -20,9 +20,9 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 import Avatar from '../../../assets/images/avatar.jpg';
-import {Button} from 'reactstrap';
-import { Grid, Row, Col } from 'react-bootstrap';
 import ContentWrapper from 'components/Layout/ContentWrapper';
+import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+import TableExtendedRun from 'components/Tables/TableExtended.run';
 
 export class ProjectView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -34,7 +34,7 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
   }
 
   componentDidMount() {
-    PanelsRun();
+    TableExtendedRun();
   }
 
   handleSelect(key) {
@@ -65,8 +65,8 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
         return this.props.projectview.team.map((team) => {
           return(
             <div key={Math.random()} className="col-md-4">
-                <img style={{width:'40px', height:'40px', borderRadius:'50%' }} src={Avatar} />
-                <span> {team.firstName} </span>
+              <img style={{width:'50px', height:'50px', borderRadius:'50%' }} src={Avatar} />
+              <span> {team.firstName} </span>
             </div>
           ) 
         });
@@ -77,43 +77,30 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
     if (this.props.projectview.projectRoles && this.props.projectview.projectRoles.length > 0) {
       return this.props.projectview.projectRoles.map((roles) => {
           return (
-            <div key={Math.random()} className="roles-box">
+            <tr key={Math.random()}>
+              <td>
+                {roles.title}
+              </td>
 
-              <div className="row">
-                <div className="col-md-9 col-sm-12 ">
-                  <p> {roles.title} </p>
-                </div>
-                <div className="col-md-3 col-sm-12 ">
-                  <Button className="btn btn-primary btn-sm" color="default" >Claim</Button>
-                </div>
-              </div>
+              <td>
+                {roles.project}
+              </td>
 
-              <div className="row">
-                <div className="col-md-12">
-                  <p> {roles.description} </p>
-                </div>
-              </div>
+              <td>
+                {roles.date + ' ' + roles.startTime + ' - ' + roles.endTime}
+              </td>
+              <td>
+                {roles.pts}
+              </td>
+              <td>
+                {roles.ac}
+              </td>
+              <td>
+                <Link to="/roleView" className="btn btn-primary btn-sm" color="default" >Details</Link>
+              </td>
 
-              <div className="row ">
-
-                <div className="col-md-5 col-sm-12  ">
-                  <p> {roles.frame} </p>
-                  <p> {roles.role} </p>
-                </div>
-
-
-                <div className="col-md-4 col-sm-12 ">
-                  <p> {roles.date} </p>
-                  <p> {roles.startTime + ' - ' + roles.endTime} </p>
-                </div>
-
-                <div className="col-md-3 col-sm-12 ">
-                  <p> PTS:  {roles.pts} </p>
-                  <p> AC:  {roles.ac} </p>
-                </div>
-
-              </div>
-            </div>
+            </tr>
+   
           );
         });
     }  
@@ -125,149 +112,235 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
     if (this.props.projectview.projectResources) {
       return this.props.projectview.projectResources.map((resource) => {
         return (
-          <div className="roles-box" key={Math.random()} >
-            
-            <div className="row ">
+          <tr key={Math.random()}>
+            <td>
+              {resource.name}
+            </td>
 
-              <div className="col-md-8 col-sm-8  ">
-                <p> {resource.name} </p>
-                <p> Qty: {resource.quantity} </p>
-                <p> Size: {resource.size} </p>
-                {/* <p> Project: {resource.project} </p> */}
-              </div>
+            <td>
+              {resource.quantity}
+            </td>
+            <td>
+              {resource.project}
+            </td>
+            <td>
+              {resource.locationNeeded}
+            </td>
+            <td>
+              {resource.date + ' ' + resource.startTime + ' - ' + resource.endTime}
+            </td>
+            <td>
+              {/* <button type="button" className="btn btn-primary btn-block btn-sm"  > Pledge </button> */}
+              <Link to="/projectView" type="button" className="btn btn-success btn-block btn-sm"  > Details/Claim </Link>
+            </td>
 
-
-              <div className="col-md-4 col-sm-4 ">
-
-                <p> {resource.date} </p>
-                <p> {resource.startTime + ' - ' + resource.endTime} </p>
-
-                <button type="button" className="btn btn-primary btn-xs"  > Pledge </button>
-
-
-              </div>
-
-            </div>
-          </div>
+          </tr>
         );
       });
     }
   }
 
+  renderProjectGoals = () => {
+    if (this.props.projectview.projectView && this.props.projectview.projectView.goals.length > 0) {
+      return this.props.projectview.projectView.goals.map((goal, index) => {
+        return <li key={Math.random()} > {goal} </li>
+      });
+    }
+  }
 
   render() {
     return (
       <ContentWrapper>
-        <Row>
-
           <Helmet>
             <title>Project View</title>
             <meta name="description" content="Description of ProjectView" />
           </Helmet>
 
-          <Col md={12}>
+          <h3>{(this.props.projectview.projectView.name.toUpperCase())}
+            <small>
+              Project Details
+            </small>
+        </h3>
+        
+        <Row>
+          <Col md={6}>
             <div id="panelDemo8" className="panel panel-primary">
               <div className="panel-heading">
                   Project: {(this.props.projectview.projectView.name.toUpperCase())}
               </div>
 
               <div className="panel-body">
+                
                 <div className="row">
 
-                  <div className="col-md-4 offset-md-1">
-                    <p> Time: {this.props.projectview.projectView.startTime + ' ' + this.props.projectview.projectView.endTime} </p>
-                    <p> Date: {this.props.projectview.projectView.date} </p>
-                  </div>
+                  <div className="col-md-12">
+                    <h4>Project Description</h4>
+                    <p>{this.props.projectview.projectView.description} </p>
+                    <br/>
+                    <br/>
+                    <h4>Project Goals</h4>
+                      {this.renderProjectGoals()}
+                      <br />
+                      <br />
 
-                  <div className="col-md-7 ">
-                    <p> Address: {this.props.projectview.projectView.address} </p>
-                    <p> weather: {this.props.projectview.projectView.weather} </p>
-                  </div>
+                    <Row>
+                      <hr/>
+                      <Col md={6}>
+                        <Link to="/projectView" type="button" className="btn btn-primary btn-block "  > Communication </Link>
+                        <Link to="/projectView" type="button" className="btn btn-success btn-block "  > Documentation </Link>
+                        
+                      </Col>
+                      <Col md={6}>
+                        <Link to="/projectView" type="button" className="btn btn-success btn-block "  > Execution </Link>
+                        <Link to="/projectView" type="button" className="btn btn-primary btn-block "  > AEO/Safe/Weath </Link>
+                      </Col>
+                    </Row>
 
+                  </div>
+ 
                 </div>
               </div>
               {/* <div className="panel-footer">Panel Footer</div> */}
             </div>
           </Col>
+          
+          <Col md={6}>
+           <Row>
+              <Col lg={6}>
+                { /* START panel */}
+                <div id="panelDemo2" className="panel panel-default panel-demo">
+                  <div className="panel-heading">
+                    
+                  </div>
+                  <div className="panel-body text-center">
+                    <h4>Location</h4>
+                    <p>
+                      {
+                        this.props.projectview.projectView.address                       
+                      }
+                    </p>
 
-        </Row>
-        
-        <Row>
-          <Col md={8}>
-            <div id="panelDemo8" className="panel panel-primary">
-              <div className="panel-heading">
-                  Project Details
-              </div>
-
-              <div className="panel-body">
-               
-                  <p>Description: {(this.props.projectview.projectView.description)} </p>
-                  <p>Goals: {(this.props.projectview.projectView.goals)} </p>
-                  <p> Project Details </p>
-                  <p>Execution: {this.props.projectview.projectView.projectDetails.execution} </p>
-                  <p>Aux Groups: {this.props.projectview.projectView.projectDetails.communication} </p>
-                
-              </div>
-              {/* <div className="panel-footer">Panel Footer</div> */}
-            </div>
-          </Col>
-
-          <Col md={4}>
-            <div id="panelDemo8" className="panel panel-primary">
-              <div className="panel-heading">
-                      Leadership & Team
-              </div>
-
-              <div className="panel-body">
+                  </div>
+                </div>
+                { /* END panel */}
+              </Col>
               
-                  <p> Leadership</p>
-                  <div className="row">
-                    {this.renderLeadership()}
+              <Col lg={6}>
+                { /* START panel */}
+                <div id="panelDemo2" className="panel panel-default panel-demo">
+                  <div className="panel-heading">
                   </div>
-                  <hr />
-                  <p> Team</p>
-                  <div className="row">
-                    {this.renderTeam()}
-                  </div>
+                  <div className="panel-body text-center">
+                    <h4>Date Time</h4>
+                    <p>
+                      {
+                        this.props.projectview.projectView.date + ' ' +
+                        this.props.projectview.projectView.startTime + ' ' +
+                        this.props.projectview.projectView.endTime 
+                      }
+                    </p>
 
+
+                  </div>
+                </div>
+                { /* END panel */}
+              </Col>
+
+
+           </Row>
+           
+           <Row>
+              <Col md={12}>
+                <div id="panelDemo8" className="panel panel-primary">
+                  <div className="panel-heading">
+                    Leadership & Team
               </div>
-              {/* <div className="panel-footer">Panel Footer</div> */}
-            </div>
+
+                  <div className="panel-body">
+
+                    <p> Leadership</p>
+                    <div className="row">
+                      {this.renderLeadership()}
+                    </div>
+                    <hr />
+                    <p> Team</p>
+                    <div className="row">
+                      {this.renderTeam()}
+                    </div>
+
+                  </div>
+                  <div className="panel-footer">
+                    <div className="text-right">
+                      <Link to="#" >View All</Link>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+           </Row>
+
           </Col>
+
         </Row>
 
-
-
         <Row>
-          <Col md={8}>
+          <Col md={6}>
             <div id="panelDemo8" className="panel panel-primary">
               <div className="panel-heading">
                    Roles
               </div>
 
-              <div className="panel-body">
-                {this.renderRoles()}
-              </div>
+                { /* START table-responsive */}
+                <Table id="table-ext-2" responsive striped bordered hover>
+                  <thead>
+                    <tr>
+                      <th>Role</th>
+                      <th>Project </th>
+                      <th>Date/Time</th>
+                      <th>PTS</th>
+                      <th>AC</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {this.renderRoles()}
+                    
+                  </tbody>
+                </Table>
+                { /* END table-responsive */}
               {/* <div className="panel-footer">Panel Footer</div> */}
             </div>
           </Col>
 
-          <Col md={4}>
+          <Col md={6}>
             <div id="panelDemo8" className="panel panel-primary">
               <div className="panel-heading">
                     Resources
               </div>
-
-              <div className="panel-body">
-                {this.renderProjectResources()}                
-              </div>
+              { /* START table-responsive */}
+              <Table id="table-ext-2" responsive striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Quantity </th>
+                    <th>Project</th>
+                    <th>Location Needed</th>
+                    <th>Date/Time</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.renderProjectResources()}                
+                </tbody>
+              </Table>
+              { /* END table-responsive */}
+  
               {/* <div className="panel-footer">Panel Footer</div> */}
             </div>
           </Col>
         </Row>
         
         <Row>
-          <Col md={8}>
+          <Col md={12}>
             <div id="panelDemo8" className="panel panel-primary">
               <div className="panel-heading">
                     Roles on Timeline

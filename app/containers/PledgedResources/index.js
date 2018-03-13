@@ -66,7 +66,6 @@ export class PledgedResources extends React.Component { // eslint-disable-line r
           </Row>
         </div>
 
-        <div className="panel-body">
           { /* START table-responsive */}
           <Table id="table-ext-2" responsive striped bordered hover>
             <thead>
@@ -85,7 +84,6 @@ export class PledgedResources extends React.Component { // eslint-disable-line r
           </Table>
           { /* END table-responsive */}
 
-        </div>
         <div className="panel-footer">
           <div className="text-right">
             <Link to="#" >View All</Link>
