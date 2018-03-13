@@ -12,7 +12,7 @@ import {
 const initialState = fromJS({
   roleDetail: {
     role: 'Landscape Prep I',
-    project: 'Urban Frame II',
+    project: 'Urban Farm II',
     description: 'Some description here',
     location: '600 w cawal chicago, IL',
     date: 'Oct 21',

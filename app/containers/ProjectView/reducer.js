@@ -68,9 +68,9 @@ const initialState = fromJS({
   ],
   projectRoles: [
     {
-      title: 'Landscape prep I',
+      title: 'Landscape Prep I',
       description: 'Some Description here',
-      project: 'Urban Frame II',
+      project: 'Urban Farm II',
       role: 'General Labour',
       date: 'Oct 21',
       startTime: '5pm',
@@ -79,9 +79,9 @@ const initialState = fromJS({
       ac: '1.4',
     },
     {
-      title: 'Landscape prep II',
+      title: 'Landscape Prep II',
       description: 'Some Description here',
-      project: 'Urban Frame II',
+      project: 'Urban Farm II',
       role: 'General Labour',
       date: 'Oct 21',
       startTime: '5pm',
@@ -100,7 +100,7 @@ const initialState = fromJS({
       startTime: '3am',
       endTime: '5am',
       project: 'Rehab III',
-      locationNeeded: 'Chicago'
+      locationNeeded: 'Chicago, IL'
 
     },
     {
@@ -111,7 +111,7 @@ const initialState = fromJS({
       startTime: '2pm',
       endTime: '6pm',
       project: 'Semi ',
-      locationNeeded: 'Chicago'
+      locationNeeded: 'Chicago, IL'
 
     },
   
