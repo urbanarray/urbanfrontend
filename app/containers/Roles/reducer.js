@@ -13,9 +13,9 @@ const initialState = fromJS({
 
   openRoles : [
     {
-      title: 'Landscape prep I',
+      title: 'Landscape Prep I',
       description: 'Some description here',
-      project: 'Urban Frame II',
+      project: 'Urban Farm II',
       role: 'General Labour',
       date: 'Oct 21',
       startTime: '5pm',
@@ -25,9 +25,9 @@ const initialState = fromJS({
       ac: '1.4',
     },
     {
-      title: 'Landscape prep II',
+      title: 'Landscape Prep II',
       description: 'Some description here',
-      project: 'Urban Frame II',
+      project: 'Urban Farm II',
       role: 'General Labour',
       date: 'Oct 21',
       startTime: '5pm',
