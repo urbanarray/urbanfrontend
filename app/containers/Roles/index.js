@@ -69,7 +69,7 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
   render() {
     return (
 
-      <div id="panelDemo8" className="panel panel-primary">
+      <div id="" className="panel panel-primary">
         <div className="panel-heading"> 
           <Row>
               <Col md={6}>
@@ -93,7 +93,6 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
               </Col>
           </Row>
         </div>
-        <div className="panel-body text-uppercases">
           { /* START table-responsive */}
           <Table id="table-ext-2" responsive striped bordered hover>
             <thead>
@@ -114,7 +113,6 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
             </tbody>
           </Table>
           { /* END table-responsive */}
-        </div>
         
         <div className="panel-footer">
           <div className="text-right">

@@ -90,7 +90,6 @@ export class NeededResources extends React.Component { // eslint-disable-line re
           </Row>
         </div>
 
-        <div className="panel-body">
           { /* START table-responsive */}
           <Table id="table-ext-2" responsive striped bordered hover>
             <thead>
@@ -108,7 +107,6 @@ export class NeededResources extends React.Component { // eslint-disable-line re
             </tbody>
           </Table>
           { /* END table-responsive */}
-        </div>
         <div className="panel-footer">
           <div className="text-right">
             <Link to="#" >View All</Link>

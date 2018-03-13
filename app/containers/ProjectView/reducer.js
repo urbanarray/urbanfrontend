@@ -19,8 +19,13 @@ const initialState = fromJS({
       startTime: '3am',
       endTime: '5am',
       project: 'Rehab III',
-      description: 'Some detiled description here',
-      goals: 'goals.............',
+      description: 'Some detailed description will go here....',
+      goals: [
+          "Goal 1",
+          "Goal 2",
+          "Goal 3",
+          "Goal 4",
+        ],
       address: 'Chicago, IL 600 Canal',
       weather: 'Link',
       projectDetails:{
@@ -65,7 +70,7 @@ const initialState = fromJS({
     {
       title: 'Landscape prep I',
       description: 'Some Description here',
-      frame: 'Urban Frame II',
+      project: 'Urban Frame II',
       role: 'General Labour',
       date: 'Oct 21',
       startTime: '5pm',
@@ -76,7 +81,7 @@ const initialState = fromJS({
     {
       title: 'Landscape prep II',
       description: 'Some Description here',
-      frame: 'Urban Frame II',
+      project: 'Urban Frame II',
       role: 'General Labour',
       date: 'Oct 21',
       startTime: '5pm',
@@ -95,6 +100,8 @@ const initialState = fromJS({
       startTime: '3am',
       endTime: '5am',
       project: 'Rehab III',
+      locationNeeded: 'Chicago'
+
     },
     {
       name: 'Door',
@@ -104,6 +111,8 @@ const initialState = fromJS({
       startTime: '2pm',
       endTime: '6pm',
       project: 'Semi ',
+      locationNeeded: 'Chicago'
+
     },
   
 

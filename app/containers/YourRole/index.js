@@ -62,7 +62,6 @@ export class YourRole extends React.Component { // eslint-disable-line react/pre
           </Row>
         </div>
           
-          <div className="panel-body">
           { /* START table-responsive */}
           <Table id="table-ext-2" responsive striped bordered hover>
             <thead>
@@ -78,7 +77,6 @@ export class YourRole extends React.Component { // eslint-disable-line react/pre
             </tbody>
           </Table>
           { /* END table-responsive */}
-          </div>
           
           <div className="panel-footer">
             <div className="text-right">
