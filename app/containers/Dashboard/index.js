@@ -37,7 +37,7 @@ export class Dashboard extends React.Component { // eslint-disable-line react/pr
   }
 
   componentDidMount() {
-    PanelsRun();
+    // PanelsRun();
   }
 
   handleSelect(key) {
