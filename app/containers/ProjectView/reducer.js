@@ -70,11 +70,7 @@ const initialState = fromJS({
     {
       title: 'Landscape Prep I',
       description: 'Some Description here',
-<<<<<<< HEAD
       project: 'Urban Farm II',
-=======
-      frame: 'Urban Farm II',
->>>>>>> 8aab2c803cbf2e8874671376002ac16e78161279
       role: 'General Labour',
       date: 'Oct 21',
       startTime: '5pm',
@@ -85,11 +81,7 @@ const initialState = fromJS({
     {
       title: 'Landscape Prep II',
       description: 'Some Description here',
-<<<<<<< HEAD
       project: 'Urban Farm II',
-=======
-      frame: 'Urban Farm II',
->>>>>>> 8aab2c803cbf2e8874671376002ac16e78161279
       role: 'General Labour',
       date: 'Oct 21',
       startTime: '5pm',
