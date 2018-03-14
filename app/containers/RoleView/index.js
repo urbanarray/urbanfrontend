@@ -87,7 +87,7 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
         return this.props.roleview.similarRoles.map((similarRole) => {
           return (
             <tr key={Math.random()} >
-              <td> {similarRole.title} </td>
+              <td> {similarRole.role} </td>
               <td> {similarRole.description} </td>
         
               <td> {similarRole.date+' '+similarRole.startTime + ' ' + similarRole.endTime} </td>

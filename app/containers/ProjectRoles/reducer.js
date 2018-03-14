@@ -12,9 +12,9 @@ import {
 const initialState = fromJS({
   projectRoles: [
     {
-      title: 'Landscape prep I',
+      title: 'Landscape Prep I',
       description: 'Some Description here',
-      frame: 'Urban Frame II',
+      frame: 'Urban Farm II',
       role: 'General Labour',
       date: 'Oct 21',
       startTime: '5pm',
@@ -23,9 +23,9 @@ const initialState = fromJS({
       ac: '1.4',
     },
     {
-      title: 'Landscape prep II',
+      title: 'Landscape Prep II',
       description: 'Some Description here',
-      frame: 'Urban Frame II',
+      frame: 'Urban Farm II',
       role: 'General Labour',
       date: 'Oct 21',
       startTime: '5pm',

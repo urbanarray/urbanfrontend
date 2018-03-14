@@ -24,6 +24,10 @@ import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGrou
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 
 export class YourRole extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  
+  componentDidMount() {
+    TableExtendedRun();
+  }
 
   renderYourRoles = () => {
     if (this.props.yourrole.yourRoles) {

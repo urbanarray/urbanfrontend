@@ -12,7 +12,7 @@ import {
 const initialState = fromJS({
   roleDetail: {
     role: 'Landscape Prep I',
-    project: 'Urban Frame II',
+    project: 'Urban Farm II',
     description: 'Some description here',
     location: '600 w cawal chicago, IL',
     date: 'Oct 21',
@@ -22,23 +22,23 @@ const initialState = fromJS({
 
   tasks: [
     {
-      title:'Gathering and Remove Litter',
-      description: 'dispose of trash and waste material',
+      title:'Gather and Remove Litter',
       date: '14 March',
+      description: 'Dispose of trash and waste material',
       startTime: '3pm',
       endTime: '5pm',
     }, 
     {
       title:'Mow Grass',
-      description: 'mow grass in corner of lot',
       date: '14 March',
+      description: 'Mow grass in corner of lot',
       startTime: '1am',
       endTime: '4am',
     },
     {
       title:'Prep Planting Bed Soil',
-      description: 'fertilizing planting bed',
       date: '14 March',
+      description: 'Fertilizing planting bed',
       startTime: '9:30am',
       endTime: '10am',
     },
@@ -61,12 +61,11 @@ const initialState = fromJS({
     },
   ],
   resources: [
-              "gloves",
-              "liher stick",
-              "lawn mower",
-              "lawn bags",
-              "trash bags",
-              "shovel",
+              "Gloves",
+              "Liher stick",
+              "Lawn mower",
+              "Lawn bags",
+              "Trash bags",
             ],
 
 });

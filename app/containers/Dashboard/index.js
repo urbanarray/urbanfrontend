@@ -7,7 +7,7 @@
 import React from 'react';
 import ContentWrapper from 'components/Layout/ContentWrapper';
 import { Grid, Row, Col } from 'react-bootstrap';
-import PanelsRun from 'components/Elements/Panels.run';
+// import PanelsRun from 'components/Elements/Panels.run';
 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -26,6 +26,7 @@ import Roles from 'containers/Roles';
 import YourRole from 'containers/YourRole';
 import NeededResources from 'containers/NeededResources';
 import PledgedResources from 'containers/PledgedResources';
+import TableExtendedRun from 'components/Tables/TableExtended.run';
 
 export class Dashboard extends React.Component { // eslint-disable-line react/prefer-stateless-function
  
@@ -37,7 +38,7 @@ export class Dashboard extends React.Component { // eslint-disable-line react/pr
   }
 
   componentDidMount() {
-    // PanelsRun();
+    TableExtendedRun();
   }
 
   handleSelect(key) {
@@ -135,7 +136,7 @@ export class Dashboard extends React.Component { // eslint-disable-line react/pr
                     {/* <div data-now="" data-format="h:mm" className="h2 mt0"></div> */}
                     {/* <div data-now="" data-format="a" className="text-muted text-sm"></div> */}
 
-                    <div className="h2 mt0">Firday</div>
+                    <div className="h2 mt0">Friday</div>
                     <div className="text-uppercase">2:15</div>
                     <div className="text-uppercase">pm</div>
 
