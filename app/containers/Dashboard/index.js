@@ -135,7 +135,7 @@ export class Dashboard extends React.Component { // eslint-disable-line react/pr
                     {/* <div data-now="" data-format="h:mm" className="h2 mt0"></div> */}
                     {/* <div data-now="" data-format="a" className="text-muted text-sm"></div> */}
 
-                    <div className="h2 mt0">Firday</div>
+                    <div className="h2 mt0">Friday</div>
                     <div className="text-uppercase">2:15</div>
                     <div className="text-uppercase">pm</div>
 
