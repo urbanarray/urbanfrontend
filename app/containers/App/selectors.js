@@ -49,6 +49,21 @@ const isLogin = () => createSelector(
     
 );
 
+const isProfile = () => createSelector(
+  selectGlobal,
+  (globalState) => {
+    let user = globalState.get('loggedInUser');
+    if (user) {
+      user = user.toJS();
+      if (user.profile) {
+          return true;
+        }
+      }
+      return false;
+  } 
+    
+);
+
 
 export {
   selectGlobal,
@@ -58,4 +73,5 @@ export {
   makeSelectRepos,
   makeSelectLocation,
   isLogin,
+  isProfile,
 };

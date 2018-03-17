@@ -14,24 +14,22 @@ import { createStructuredSelector } from 'reselect';
 
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
-import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
-import H2 from 'components/H2';
-import ReposList from 'components/ReposList';
-import AtPrefix from './AtPrefix';
-import CenteredSection from './CenteredSection';
-import Form from './Form';
-import Input from './Input';
-import Section from './Section';
 import messages from './messages';
 import { loadRepos } from '../App/actions';
-import { changeUsername } from './actions';
-import { makeSelectUsername } from './selectors';
+// import { changeUsername } from './actions';
+// import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
 import styled from 'styled-components';
+import { browserHistory, Route, BrowserRouter, withRouter, Switch, BrowserRouter as Router, Redirect, Miss } from 'react-router-dom';
+import Dashboard from 'containers/Dashboard/Loadable';
+import ProjectView from 'containers/ProjectView/Loadable';
+import RoleView from 'containers/RoleView/Loadable';
+import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
-import './styles.css';
+import Base from 'components/Layout/Base';
+
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
@@ -44,26 +42,17 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   // }
 
   render() {
-    const { loading, error, repos } = this.props;
-    const reposListProps = {
-      loading,
-      error,
-      repos,
-    };
 
     return (
       
-        <div className='container-homepage'>
-          <CenteredSection>
-              <div>
-              
-
-              </div>
-
-          </CenteredSection>
-          
-        </div>
-      
+      <Switch>
+        <Base>
+          {/*Dashboard*/}
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/projectView" component={ProjectView} />
+          <Route path="/roleView" component={RoleView} />
+        </Base>
+      </Switch>
     );
   }
 }
@@ -84,20 +73,9 @@ HomePage.propTypes = {
 };
 
 export function mapDispatchToProps(dispatch) {
-  return {
-    onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
-    onSubmitForm: (evt) => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(loadRepos());
-    },
-  };
 }
 
 const mapStateToProps = createStructuredSelector({
-  repos: makeSelectRepos(),
-  username: makeSelectUsername(),
-  loading: makeSelectLoading(),
-  error: makeSelectError(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

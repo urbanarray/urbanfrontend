@@ -23,6 +23,7 @@ import Avatar from '../../../assets/images/avatar.jpg';
 import ContentWrapper from 'components/Layout/ContentWrapper';
 import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
+import PanelsRun from 'components/Elements/Panels.run';
 
 export class ProjectView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -34,6 +35,7 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
   }
 
   componentDidMount() {
+    PanelsRun();
     TableExtendedRun();
   }
 

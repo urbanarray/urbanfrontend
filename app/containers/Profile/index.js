@@ -20,12 +20,15 @@ import saga from './saga';
 import messages from './messages';
 import { Form, Input, Label, FormGroup, Col} from 'reactstrap';
 import {createProfileAction} from './actions';
+import {makeSelectCurrentUser} from 'containers/App/selectors';
+import { isLogin, isProfile } from 'containers/App/selectors';
+
+import 'containers/Signup/style.css';
 
 export class Profile extends React.Component { // eslint-disable-line react/prefer-stateless-function
   
   constructor(props, context){
     super(props);
-
     this.state = {
       firstName: null,
       lastName: null,
@@ -35,6 +38,17 @@ export class Profile extends React.Component { // eslint-disable-line react/pref
       howToContribute:null,
       availability:null,
       picture: '',
+      userId:(this.props.currentUser && this.props.currentUser.user)?this.props.currentUser.user.id : '',
+    }
+  }
+
+  componentDidMount(){
+    
+  }
+
+  componentDidUpdate(){
+    if (this.props.isLogin && this.props.profile.done === true) {
+      this.props.history.push('/dashboard');
     }
   }
   
@@ -76,7 +90,8 @@ export class Profile extends React.Component { // eslint-disable-line react/pref
     formData.append('noCriminal', this.state.noCriminal);
     formData.append('noMedConditions', this.state.noMedConditions);
     formData.append('picture', this.state.picture);
-    
+    formData.append('userId', this.state.userId);
+    // alert(formData.get('userId'))
     this.props.create(formData);
 
   }
@@ -106,13 +121,13 @@ export class Profile extends React.Component { // eslint-disable-line react/pref
                   
                       <div className="form-group">
                         <div className="input-icon">
-                          <Input className="form-control" type="text" name="firstName" placeholder="First Name" />
+                          <Input className="form-control" type="text" name="firstName" placeholder="First Name" required/>
                         </div>
                       </div>
 
                       <div className="form-group">
                         <div className="input-icon">
-                          <Input className="form-control" type="text" name="lastName" placeholder="Last Name" />
+                          <Input className="form-control" type="text" name="lastName" placeholder="Last Name" required/>
                         </div>
                       </div>
 
@@ -183,6 +198,9 @@ Profile.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   profile: makeSelectProfile(),
+  isLogin: isLogin(),
+  currentUser: makeSelectCurrentUser(),
+  currentProfile: isProfile(),
 });
 
 function mapDispatchToProps(dispatch) {

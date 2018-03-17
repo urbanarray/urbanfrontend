@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for Main
+ * Asynchronously loads the component for Logout
  *
  */
 

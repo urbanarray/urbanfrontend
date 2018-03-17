@@ -7,7 +7,6 @@
 import React from 'react';
 import ContentWrapper from 'components/Layout/ContentWrapper';
 import { Grid, Row, Col } from 'react-bootstrap';
-// import PanelsRun from 'components/Elements/Panels.run';
 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -27,6 +26,7 @@ import YourRole from 'containers/YourRole';
 import NeededResources from 'containers/NeededResources';
 import PledgedResources from 'containers/PledgedResources';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
+import PanelsRun from 'components/Elements/Panels.run';
 
 export class Dashboard extends React.Component { // eslint-disable-line react/prefer-stateless-function
  
@@ -38,6 +38,7 @@ export class Dashboard extends React.Component { // eslint-disable-line react/pr
   }
 
   componentDidMount() {
+    PanelsRun();
     TableExtendedRun();
   }
 

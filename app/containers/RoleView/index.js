@@ -22,6 +22,7 @@ import messages from './messages';
 import ContentWrapper from 'components/Layout/ContentWrapper';
 import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
+import PanelsRun from 'components/Elements/Panels.run';
 
 export class RoleView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -33,6 +34,7 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
   }
 
   componentDidMount() {
+    PanelsRun();
     TableExtendedRun();
   }
   handleSelect(key) {
