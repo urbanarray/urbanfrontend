@@ -25,6 +25,8 @@ import { GoogleLogin } from 'react-google-login';
 import LinkedIn from 'react-linkedin-login';
 import { socialSignupAction,linkedinAction, loginAction } from './actions';
 import { isLogin } from 'containers/App/selectors';
+import { isProfile } from 'containers/App/selectors';
+import { browserHistory } from 'react-router';
 
 export class Login extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -48,14 +50,22 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
 
   }
 
-  componentDidUpdate() {
-        // console.log(this.props);
+  componentDidMount(){
+    // console.log(this.props.currentProfile)
+  }
 
-    // if (this.props.isLogin && this.props.login.done === true) {
-    if (this.props.login.done === true) {
+  componentDidUpdate() {
+    console.log(this.props.currentProfile, this.props.isLogin );
+    if (this.props.login.done === true && this.props.currentProfile === true) {
+      this.props.history.push('/dashboard');
+    }
+    else if (this.props.login.done === true && this.props.currentProfile === false){
       this.props.history.push('/profile');
     }
+
+
   }
+
 
   responseGoogle = (response) => {
 
@@ -70,7 +80,7 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
 
     this.props.socialSignup(this.state.socialSignup);
   }
-
+  
   responseFacebook = (response) => {
 
     const social = this.state.socialSignup;
@@ -78,7 +88,7 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
     social['email'] = response.email;
     social['name'] = response.name;
     social['picture'] = response.picture.data.url;
-    social['expiresIn'] = response.expiresIn;
+    social['expiresIn'] = response.expiresIn; 
     social['userId'] = response.userID;
     social['source'] = "facebook";
 
@@ -97,6 +107,7 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
 
   // handle form on change
   handleChange = (e) => {
+    
     const name = e.target.name;
     const value = e.target.value;
 
@@ -218,6 +229,8 @@ Login.propTypes = {
 const mapStateToProps = createStructuredSelector({
   login: makeSelectLogin(),
   isLogin: isLogin(),
+  currentProfile: isProfile(),
+  
 });
 
 function mapDispatchToProps(dispatch) {
@@ -227,7 +240,7 @@ function mapDispatchToProps(dispatch) {
     linkedin: (payload) => dispatch(linkedinAction(payload)), 
     customLogin: (payload) => dispatch(loginAction(payload)), 
 
-  };
+  }; 
 }
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

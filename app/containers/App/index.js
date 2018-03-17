@@ -7,23 +7,9 @@
  */
 
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { browserHistory, Route, BrowserRouter, withRouter, Switch, BrowserRouter as Router, Redirect, Miss } from 'react-router-dom';
 
-// import { Switch, Route, browserHistory,  BrowserRouter as Router} from 'react-router-dom';
-
-// import 'bootstrap/dist/css/bootstrap.css';
-
-import Navbar from 'components/Navbar';
-
-// import Header from 'components/Header';
-// import Footer from 'components/Footer';
-
-// import Main from 'containers/Main';
-
-// import HomePage from 'containers/HomePage/Loadable';
-// import FeaturePage from 'containers/FeaturePage/Loadable';
 
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Landing from 'containers/Landing';
@@ -34,11 +20,12 @@ import Profile from 'containers/Profile/Loadable';
 import Dashboard from 'containers/Dashboard/Loadable';
 import ProjectView from 'containers/ProjectView/Loadable';
 import RoleView from 'containers/RoleView/Loadable';
-import './style.css';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+// import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import Logout from 'containers/Logout/Loadable';
+import HomePage from 'containers/HomePage/Loadable';
 import Base from 'components/Layout/Base';
-import BasePage from 'components/Layout/BasePage';
-import LandingNavbar from 'components/Layout/LandingNavbar';
+import Auth from 'containers/Auth';
+import './style.css';
 
 // List of routes that uses the page layout
 // listed here to Switch between layouts
@@ -48,79 +35,45 @@ const listofPages = [
     '/login',
     '/signup',
     '/profile',
+    '/logout',
     '/lock',
     '/notfound',
     '/error500',
     '/maintenance',
 ];
 
-export default function App() {
-    
-  const currentKey = Math.random();
-  const timeout = { enter: 500, exit: 500 };
-  const animationName = 'rag-fadeIn';
+
+
+const currentKey = Math.random();
+const timeout = { enter: 500, exit: 500 };
+const animationName = 'rag-fadeIn';
 console.log(listofPages.indexOf(location.pathname) > -1, location.pathname);
-    if(listofPages.indexOf(location.pathname) > -1) {
-        return (
-          <div className="" >
 
-            <Router history={browserHistory}  >
-              <BasePage>
-                  <LandingNavbar />
-                  <Switch location={location}>
-                    <Route exact path="/" component={Landing} />
-                    <Route path="/signup" component={Signup} />
-                    <Route path="/login" component={Login} />
-                    <Route path="/profile" component={Profile} />
-                    <Route path="" component={NotFoundPage} />
-                  </Switch>
-              </BasePage>
-            </Router>
-          </div>  
-        )
-    }
-    else {
-        return (
-          // console.log('hello to you')
-            // Layout component wrapper
-            // Use <BaseHorizontal> to change layout
-          <div className="" >
-          
-            <Router history={browserHistory}  >            
-              <Base>
-                <TransitionGroup>
-                  <CSSTransition key={currentKey} timeout={timeout} classNames={animationName} exit={false}>
-                      <div>
-                          <Switch location={location}>
 
-                            {/*Dashboard*/}
-                            <Route path="/dashboard" component={Dashboard} />
-                            <Route path="/projectView" component={ProjectView} />
-                            <Route path="/roleView" component={RoleView} />
-                            <Route path="" component={NotFoundPage} />                            
+export default function App() {
 
-                          </Switch>
-                      </div>
-                  </CSSTransition>
-                </TransitionGroup>
-              </Base>
-            </Router>
-          </div>
-        )
-    }
-
-  // return (
-  //   <Router history={browserHistory}  >
-  //       <div>
-  //       <Navbar />
-  //         <Switch>
-  //           <Route exact path="/" component={Landing} />
-  //           <Route path="/signup" component={Signup} />
-  //           <Route path="/login" component={Login} />
-  //           <Route path="/profile" component={Profile} />          
-  //         </Switch>
-  //       </div>
-  //   </Router>
-  // );
-
+  return (  
+    <div>
+      {/* <Auth /> */}
+        
+    <Router history={browserHistory}  >
+      <Switch>   
+        <Base>
+       
+          <Route exact path="/" component={Landing} />  
+          <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/logout" component={Logout} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/projectView" component={ProjectView} />
+          <Route path="/roleView" component={RoleView} /> 
+          {/* <Route component={NotFoundPage}   /> */}
+          {/* <Redirect to="/" /> */}
+        </Base> 
+      </Switch>
+    </Router>
+  </div>
+  
+  );
 }

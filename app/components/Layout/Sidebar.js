@@ -255,11 +255,11 @@ class Sidebar extends React.Component {
                                     </ul>
                                 </Collapse>
                             </li>
-                            <li className={this.routeActive('logout') ? 'active' : ''}>
-                                <Link to="logout" title="Logout">
+                            <li>
+                                <a href="logout" title="Logout">
                                     <em className="icon-power"></em>                                    
                                     <span>Logout</span>
-                                </Link>
+                                </a>
                             </li>
                         </ul>
                         { /* END sidebar nav */ }

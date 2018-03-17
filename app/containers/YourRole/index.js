@@ -22,10 +22,12 @@ import messages from './messages';
 
 import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
+import PanelsRun from 'components/Elements/Panels.run';
 
 export class YourRole extends React.Component { // eslint-disable-line react/prefer-stateless-function
   
   componentDidMount() {
+    PanelsRun();
     TableExtendedRun();
   }
 

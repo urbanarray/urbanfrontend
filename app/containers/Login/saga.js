@@ -73,14 +73,13 @@ export function* login() {
     const loginData = yield select(makeSelectLoginCredentials());
     const response = yield call(loginApi, loginData);
    
-    const { user, token } = response.data;
+    const {profile, user, token } = response.data;
     const access_token = token.accessToken;
     const refresh_token = token.refreshToken;
 
-    const loginInfo = fromJS({ user, access_token, refresh_token }); 
+    const loginInfo = fromJS({ user, profile, access_token, refresh_token }); 
     setToken(access_token);
     saveState(loginInfo);
-    
     yield put(loginGLobal(loginInfo));
     yield put(loggedInAction(response.data));
 

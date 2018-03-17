@@ -1,6 +1,6 @@
 /*
  *
- * Main reducer
+ * Logout reducer
  *
  */
 
@@ -11,7 +11,7 @@ import {
 
 const initialState = fromJS({});
 
-function mainReducer(state = initialState, action) {
+function logoutReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
@@ -20,4 +20,4 @@ function mainReducer(state = initialState, action) {
   }
 }
 
-export default mainReducer;
+export default logoutReducer;

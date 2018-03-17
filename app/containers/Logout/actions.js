@@ -1,6 +1,6 @@
 /*
  *
- * Main actions
+ * Logout actions
  *
  */
 
