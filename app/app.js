@@ -13,7 +13,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import FontFaceObserver from 'fontfaceobserver';
 import createHistory from 'history/createBrowserHistory';
 import 'sanitize.css/sanitize.css';
 
@@ -25,19 +24,6 @@ import './assets/styles/app.scss'
 // import 'jquery';
 window.$ = require('jquery');
 window.$.localStorage = require('js-storage').localStorage;
-
-
-// Datatables
-// $.fn.dataTable = require('datatables.net-bs')(window, $);
-// $.fn.dataTable = require('datatables.net-bs');
-// require('datatables.net-buttons');
-// require('datatables.net-buttons-bs');
-// require('datatables.net-responsive');
-// require('datatables.net-responsive-bs');
-// require('datatables.net-buttons/js/buttons.colVis.js'); // Column visibility
-// require('datatables.net-buttons/js/buttons.html5.js'); // HTML 5 file export
-// require('datatables.net-buttons/js/buttons.flash.js'); // Flash file export
-// require('datatables.net-buttons/js/buttons.print.js'); // Print view button
 
 // Import root app
 import App from 'containers/App';
@@ -60,16 +46,6 @@ import { translationMessages } from './i18n';
 // Import CSS reset and Global Styles
 import './global-styles';
 
-// Observe loading of Open Sans (to remove open sans, remove the <link> tag in
-// the index.html file and this observer)
-const openSansObserver = new FontFaceObserver('Open Sans', {});
-
-// When Open Sans is loaded, add a font-family using Open Sans to the body
-openSansObserver.load().then(() => {
-  document.body.classList.add('fontLoaded');
-}, () => {
-  document.body.classList.remove('fontLoaded');
-});
 
 // Create redux store with history
 const initialState = {};
@@ -90,15 +66,7 @@ const render = (messages) => {
   );
 };
 
-if (module.hot) {
-  // Hot reloadable React components and translation json files
-  // modules.hot.accept does not accept dynamic dependencies,
-  // have to be constants at compile-time
-  module.hot.accept(['./i18n', 'containers/App'], () => {
-    ReactDOM.unmountComponentAtNode(MOUNT_NODE);
-    render(translationMessages);
-  });
-}
+
 
 // Chunked polyfill for browsers without Intl support
 if (!window.Intl) {

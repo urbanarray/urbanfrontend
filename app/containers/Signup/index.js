@@ -192,7 +192,12 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
 
                       <div className="btn-facebook">
                         <FacebookLogin
-                          appId="405789706540584"
+                        /* app id on localhost  */
+                          /* appId="405789706540584" */ 
+                          
+                          /* app id for online app */
+                          appId="175561819906444"
+                        
                           /* autoLoad={true} */
                           fields="name,email,picture"
                           scope="email,public_profile,user_friends,user_actions.books"
@@ -203,7 +208,14 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
 
                       <div className="btn-google">
                         <GoogleLogin
-                          clientId="1037020038566-lq1c87c2kqvkgihcqvq2a370d242t4r3.apps.googleusercontent.com"
+                        /* below is clientId for local host 
+                          clientId="1037020038566-lq1c87c2kqvkgihcqvq2a370d242t4r3.apps.googleusercontent.com" 
+                        */
+                          
+                          /* below is clientId for online app 
+                          */
+                          clientId="867326421211-ph6qas651s4ejcrtpi4l82vc472vcqfc.apps.googleusercontent.com"
+                          
                           buttonText="Login with Google"
                           onSuccess={this.responseGoogle}
                           onFailure={this.responseGoogle}
@@ -213,7 +225,12 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
 
                       <div className="btn-linkedin">
                          <LinkedIn
-                          clientId='77dory0vf88a8p'                          
+                         /* clientId for localhost */
+                          /* clientId='77dory0vf88a8p'  */
+                         
+                         /* clientId for online app */
+                          clientId='77j1oh6z3z5y4s' 
+                                                   
                           callback={this.callbackLinkedIn}
                           className="btn btn-default btn-block"
                           text='Login with LinkedIn' 
