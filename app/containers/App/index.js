@@ -22,7 +22,6 @@ import ProjectView from 'containers/ProjectView/Loadable';
 import RoleView from 'containers/RoleView/Loadable';
 // import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Logout from 'containers/Logout/Loadable';
-import HomePage from 'containers/HomePage/Loadable';
 import Base from 'components/Layout/Base';
 import Auth from 'containers/Auth';
 import './style.css';
@@ -36,7 +35,6 @@ const listofPages = [
     '/signup',
     '/profile',
     '/logout',
-    '/lock',
     '/notfound',
     '/error500',
     '/maintenance',

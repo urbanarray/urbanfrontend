@@ -16,17 +16,9 @@ injectGlobal`
     font-family: 'Roboto', sans-serif;
   }
 
-  // #app {
-  //   background-color: #fcfcfc;
-  //   min-height: 100%;
-  //   min-width: 100%;
-  //   margin-top: 70px;
-  // }
-
   label{
     font-weight: normal !important;
   }
-
   
   .uppercase{
       text-transform: uppercase;
@@ -35,10 +27,6 @@ injectGlobal`
   .logo img{
     height: 100px;
     width: 100px;
-  }
-  
-  .inner-body{
-    // margin: 30px 30px;
   }
    
   .box{
@@ -114,11 +102,6 @@ injectGlobal`
     height: 100%;
     width: 100%;
   }
-
-  // .panel-inner-heading {
-  //   top: 5px;
-  //   position: relative;
-  // }
 
   .lightblue{
     background-color:#87cefa;
