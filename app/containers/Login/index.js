@@ -179,7 +179,7 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
                       <div className="btn-facebook">
                         <FacebookLogin
                           /* app id on localhost  */
-                          appId="405789706540584"
+                          /* appId="405789706540584" */
                           /* app id for online app */
                           appId="175561819906444"
                           /* autoLoad={true} */
@@ -208,7 +208,7 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
                       <div className="btn-linkedin">
                         <LinkedIn
                           /* clientId for localhost */
-                          clientId='77dory0vf88a8p'
+                          /* clientId='77dory0vf88a8p' */
                           /* clientId for online app */
                           clientId='77j1oh6z3z5y4s'
 
