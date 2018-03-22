@@ -2,13 +2,12 @@ import axios from 'axios';
 import history from '../history';
 import {accessToken, clearState} from './persistState';
 
-const ip = 'http://192.168.1.115/v1/';
-const aws ='http://54.255.192.217:3000/v1/';
+const onlineServer ='http://mvp.urbanarray.org:3000/v1';
 const local = 'http://localhost:3000/v1/';
 
 const api = axios.create({
     
-    baseURL: aws,
+    baseURL: onlineServer,
     timeout: 20000,
 });
 

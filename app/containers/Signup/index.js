@@ -276,7 +276,7 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const withReducer = injectReducer({ key: 'signup', reducer });
 const withSaga = injectSaga({ key: 'signup', saga });
 
-export default compose(
+export default compose( 
   withReducer,
   withSaga,
   withConnect,
