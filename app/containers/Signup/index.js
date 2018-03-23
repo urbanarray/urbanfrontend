@@ -27,7 +27,7 @@ import FacebookLogin from 'react-facebook-login';
 import { GoogleLogin } from 'react-google-login';
 import LinkedIn from 'react-linkedin-login';
 import { socialSignupAction, signupAction, linkedinAction} from './actions';
-import { isLogin } from 'containers/App/selectors';
+import { isLogin, isProfile } from 'containers/App/selectors';
 
 export class Signup extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props, context) {
@@ -57,26 +57,32 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
   }
 
   componentDidUpdate() {
-    
-    console.log(this.props.signup.done);
-    // if (this.props.isLogin && this.props.signup.done === true) {
-    if (this.props.signup.done === true) {
+  
+    console.log(this.props.currentProfile, this.props.isLogin);
+    if (this.props.signup.done === true && this.props.currentProfile === true) {
+      this.props.history.push('/dashboard');
+    }
+    else if (this.props.signup.done === true && this.props.currentProfile === false) {
       this.props.history.push('/profile');
     }
+  
   }
 
   responseGoogle = (response) => {
-  
-    const social = this.state.socialSignup;
-    social['accessToken'] = response.accessToken;
-    social['email'] = response.profileObj.email;
-    social['name'] = response.profileObj.name;
-    social['picture'] = response.profileObj.imageUrl;
-    social['expiresIn'] = response.tokenObj.expires_in;
-    social['userId'] = response.googleId;
-    social['source'] = "google";
-
-    this.props.socialSignup(this.state.socialSignup);
+    console.log(response)
+    if (response && response.profileObj) {
+      
+      const social = this.state.socialSignup;
+      social['accessToken'] = response.accessToken;
+      social['email'] = response.profileObj.email;
+      social['name'] = response.profileObj.name;
+      social['picture'] = response.profileObj.imageUrl;
+      social['expiresIn'] = response.tokenObj.expires_in;
+      social['userId'] = response.googleId;
+      social['source'] = "google";
+      
+      this.props.socialSignup(this.state.socialSignup);
+    }
   }
 
   responseFacebook = (response) => {
@@ -93,7 +99,7 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
     this.props.socialSignup(this.state.socialSignup);    
   }
   
-
+  
   callbackLinkedIn = (response) => {
     const linkedinSignup = {
       code: response.code,
@@ -192,10 +198,12 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
 
                       <div className="btn-facebook">
                         <FacebookLogin
-                        /* app id on localhost  */
-                          /* appId="405789706540584" */ 
+                        /* app id on localhost  
+                           appId="405789706540584"  
+                        */
                           
-                          /* app id for online app */
+                          /* app id for online app
+                           */
                           appId="175561819906444"
                         
                           /* autoLoad={true} */
@@ -213,7 +221,7 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
                         */
                           
                           /* below is clientId for online app 
-                          */
+                            */
                           clientId="867326421211-ph6qas651s4ejcrtpi4l82vc472vcqfc.apps.googleusercontent.com"
                           
                           buttonText="Login with Google"
@@ -225,16 +233,19 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
 
                       <div className="btn-linkedin">
                          <LinkedIn
-                         /* clientId for localhost */
-                          /* clientId='77dory0vf88a8p'  */
+                         /* clientId for localhost 
+                          clientId='77dory0vf88a8p'
+                         */
                          
-                         /* clientId for online app */
+                         /* clientId for online app 
+                         */
                           clientId='77j1oh6z3z5y4s' 
                                                    
                           callback={this.callbackLinkedIn}
                           className="btn btn-default btn-block"
                           text='Login with LinkedIn' 
                         />
+                        
                       </div>
 
                     </div>
@@ -259,6 +270,7 @@ Signup.propTypes = {
 const mapStateToProps = createStructuredSelector({
   signup: makeSelectSignup(),
   isLogin: isLogin(),
+  currentProfile: isProfile(),
 
 });
 

@@ -24,8 +24,7 @@ import FacebookLogin from 'react-facebook-login';
 import { GoogleLogin } from 'react-google-login';
 import LinkedIn from 'react-linkedin-login';
 import { socialSignupAction,linkedinAction, loginAction } from './actions';
-import { isLogin } from 'containers/App/selectors';
-import { isProfile } from 'containers/App/selectors';
+import { isLogin, isProfile } from 'containers/App/selectors';
 import { browserHistory } from 'react-router';
 
 export class Login extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -68,17 +67,19 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
 
 
   responseGoogle = (response) => {
-
-    const social = this.state.socialSignup;
-    social['accessToken'] = response.accessToken;
-    social['email'] = response.profileObj.email;
-    social['name'] = response.profileObj.name;
-    social['picture'] = response.profileObj.imageUrl;
-    social['expiresIn'] = response.tokenObj.expires_in;
-    social['userId'] = response.googleId;
-    social['source'] = "google";
-
-    this.props.socialSignup(this.state.socialSignup);
+    if (response && response.profileObj) {
+      
+      const social = this.state.socialSignup;
+      social['accessToken'] = response.accessToken;
+      social['email'] = response.profileObj.email;
+      social['name'] = response.profileObj.name;
+      social['picture'] = response.profileObj.imageUrl;
+      social['expiresIn'] = response.tokenObj.expires_in;
+      social['userId'] = response.googleId;
+      social['source'] = "google";
+      
+      this.props.socialSignup(this.state.socialSignup);
+    }
   }
   
   responseFacebook = (response) => {
@@ -178,10 +179,14 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
 
                       <div className="btn-facebook">
                         <FacebookLogin
-                          /* app id on localhost  */
-                          /* appId="405789706540584" */
-                          /* app id for online app */
+                          /* app id on localhost  
+                           appId="405789706540584" 
+                          */
+                          
+                          /* app id for online app 
+                          */
                           appId="175561819906444"
+                          
                           /* autoLoad={true} */
                           fields="name,email,picture"
                           scope="email,public_profile,user_friends,user_actions.books"
@@ -192,10 +197,12 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
 
                       <div className="btn-google">
                         <GoogleLogin
-                          /* below is clientId for local host */
-                          /* clientId="1037020038566-lq1c87c2kqvkgihcqvq2a370d242t4r3.apps.googleusercontent.com" */
+                          /* below is clientId for local host 
+                           clientId="1037020038566-lq1c87c2kqvkgihcqvq2a370d242t4r3.apps.googleusercontent.com" 
+                          */
 
-                          /* below is clientId for online app */
+                          /* below is clientId for online app 
+                          */
                           clientId="867326421211-ph6qas651s4ejcrtpi4l82vc472vcqfc.apps.googleusercontent.com"
 
                           buttonText="Login with Google"
@@ -207,9 +214,12 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
 
                       <div className="btn-linkedin">
                         <LinkedIn
-                          /* clientId for localhost */
-                          /* clientId='77dory0vf88a8p' */
-                          /* clientId for online app */
+                          /* clientId for localhost 
+                          clientId='77dory0vf88a8p'
+                          */
+                          
+                          /* clientId for online app 
+                          */
                           clientId='77j1oh6z3z5y4s'
 
                           callback={this.callbackLinkedIn}

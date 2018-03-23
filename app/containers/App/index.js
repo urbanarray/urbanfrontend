@@ -52,8 +52,9 @@ export default function App() {
 
   return (  
     <div>
-      {/* <Auth /> */}
-        
+      
+    <Auth />
+
     <Router history={browserHistory}  >
       <Switch>   
         <Base>

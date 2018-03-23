@@ -14,11 +14,11 @@ export function* socialSignup() {
     
     const response = yield call(socialSignupApi, socialSignupData);
     
-    const { user, token } = response.data;
+    const { user, token, profile } = response.data;
     const access_token = token.accessToken;
     const refresh_token = token.refreshToken;
 
-    const loginInfo = fromJS({ user, access_token, refresh_token });
+    const loginInfo = fromJS({ user,profile, access_token, refresh_token });
     setToken(access_token);
     saveState(loginInfo);
 
@@ -51,11 +51,11 @@ export function* linkedinSignup() {
 
     const responseData = yield call(socialSignupApi, socialSignupData);
    
-    const { user, token } = responseData.data;
+    const { user, token, profile } = responseData.data;
     const access_token = token.accessToken;
     const refresh_token = token.refreshToken;
 
-    const loginInfo = fromJS({ user, access_token, refresh_token });
+    const loginInfo = fromJS({ user, profile, access_token, refresh_token });
     setToken(access_token);
     saveState(loginInfo);
 
