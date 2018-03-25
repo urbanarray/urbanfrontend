@@ -36,7 +36,7 @@ export function* linkedinSignup() {
     const linkedinSignupData = yield select(makeSelectLinkedinSignup());
 
     const response = yield call(linkedinSignupApi, linkedinSignupData);
-
+    console.log(response)
     const { linkedinData } = response.data;
     const accessToken = response.data.access_token;
 

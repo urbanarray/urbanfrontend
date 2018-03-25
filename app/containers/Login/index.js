@@ -43,7 +43,8 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
       },
       email:'',
       password:'',
-      redirect_uri: "http://localhost:8000/login",
+      // redirect_uri: "http://localhost:8000/login",
+      redirect_uri: "http://mvp.urbanarray.org/login",
 
     }
 
