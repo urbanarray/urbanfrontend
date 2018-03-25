@@ -45,7 +45,6 @@ const listofPages = [
 const currentKey = Math.random();
 const timeout = { enter: 500, exit: 500 };
 const animationName = 'rag-fadeIn';
-console.log(listofPages.indexOf(location.pathname) > -1, location.pathname);
 
 
 export default function App() {
@@ -53,7 +52,7 @@ export default function App() {
   return (  
     <div>
       
-    <Auth />
+    {/* <Auth /> */}
 
     <Router history={browserHistory}  >
       <Switch>   

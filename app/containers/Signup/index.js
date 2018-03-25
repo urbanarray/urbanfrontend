@@ -50,7 +50,8 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
         userId:'',
       },
 
-      redirect_uri:"http://localhost:8000/signup",
+      // redirect_uri:"http://localhost:8000/signup",
+      redirect_uri:"http://mvp.urbanarray.org/signup",
       
     }
 
@@ -279,7 +280,7 @@ function mapDispatchToProps(dispatch) {
     dispatch,
     socialSignup: (payload) => dispatch(socialSignupAction(payload)),
     customSignup: (payload) => dispatch(signupAction(payload)), 
-    linkedin: (payload) => dispatch(linkedinAction(payload)), 
+    linkedin: (payload) => dispatch(linkedinAction(payload)),
   };
 }
 
