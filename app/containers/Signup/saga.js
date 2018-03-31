@@ -1,6 +1,6 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
 import { fromJS } from 'immutable';
-import {socialLoggedInAction} from './actions';
+import {socialLoggedInAction, signedupAction, errors } from './actions';
 import {makeSelectSocialSignup, makeSelectCustomSignup, makeSelectLinkedinSignup} from './selectors';
 import {socialSignupApi, signupApi, linkedinSignupApi} from './api';
 import {SOCIAL_SIGNUP_ACTION, SIGNUP_ACTION, LINKEDIN_ACTION } from './constants';
@@ -63,23 +63,23 @@ export function* linkedinSignup(){
     yield put(socialLoggedInAction(responseData.data));
 
   } catch (error) {
+
     console.log(error);
   }
 }
 
 export function* customSignup(){
   try {
-    
     const customSignupData = yield select(makeSelectCustomSignup());
     const response = yield call(signupApi, customSignupData);
-    console.log(response); 
-  
-    // yield put(socialLoggedInAction(response.data));
-  
+    yield put(signedupAction(response.data.user));
   } catch (error) {
     console.log(error);
+    const {data} = error.response;
+    yield put(errors(data.errors));
   }
 }
+
 
 // Individual exports for testing
 export default function* defaultSaga() {

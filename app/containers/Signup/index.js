@@ -60,7 +60,10 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
   componentDidUpdate() {
   
     console.log(this.props.currentProfile, this.props.isLogin);
-    if (this.props.signup.done === true && this.props.currentProfile === true) {
+    if (this.props.signup.customSignup === true) {
+      this.props.history.push('/resendEmail/' + this.props.signup.customSignupData.id);
+    }
+    else if (this.props.signup.done === true && this.props.currentProfile === true) {
       this.props.history.push('/dashboard');
     }
     else if (this.props.signup.done === true && this.props.currentProfile === false) {
@@ -141,6 +144,20 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
     // alert('hello to you test');
   }
 
+  printErrors = (attribute) => {
+    const { serverError } = this.props.signup;
+
+    if (serverError !== null && serverError) {
+      return serverError.map((item) => {
+        if (item.field && item.field.toLowerCase() === attribute.toLowerCase() && item.messages && item.messages.length) {
+          return item.messages[0];
+        }
+      })
+    }
+
+    return null;
+  }
+
   render() {
     return (
       <div>
@@ -165,12 +182,18 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
                       <div className="form-group">
                         <div className="input-icon">
                           <input className="form-control" name="email" type="email" placeholder="Email" required/>
+                          <div className="alert-danger"  >
+                            {this.printErrors(`email`)}
+                          </div>
                         </div>
                       </div>
                       
                       <div className="form-group">
                         <div className="input-icon">
                           <input className="form-control" name="name" type="text" placeholder="Username" required/>
+                          <div className="alert-danger"  >
+                            {this.printErrors(`name`)}
+                          </div>
                         </div>
                       </div>
 

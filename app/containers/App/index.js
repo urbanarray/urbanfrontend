@@ -20,6 +20,8 @@ import Profile from 'containers/Profile/Loadable';
 import Dashboard from 'containers/Dashboard/Loadable';
 import ProjectView from 'containers/ProjectView/Loadable';
 import RoleView from 'containers/RoleView/Loadable';
+import ResendEmail from 'containers/ResendEmail';
+import VerifyAccount from 'containers/VerifyAccount';
 // import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Logout from 'containers/Logout/Loadable';
 import Base from 'components/Layout/Base';
@@ -66,6 +68,9 @@ export default function App() {
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/projectView" component={ProjectView} />
           <Route path="/roleView" component={RoleView} /> 
+          <Route path="/roleView" component={RoleView} /> 
+          <Route path="/resendEmail/:id" component={ResendEmail} /> 
+          <Route path="/verify/:id" component={VerifyAccount} /> 
           {/* <Route component={NotFoundPage}   /> */}
           {/* <Redirect to="/" /> */}
         </Base> 

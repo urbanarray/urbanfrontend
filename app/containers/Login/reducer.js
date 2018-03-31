@@ -11,6 +11,7 @@ import {
   SOCIAL_LOGGED_IN_ACTION,
   LINKEDIN_ACTION,
   LOGGED_IN_ACTION,
+  ERROR,
 } from './constants';
 
 const initialState = fromJS({
@@ -21,7 +22,7 @@ const initialState = fromJS({
   done: false,
 
   login:{},
-
+  serverError: null,
 });
 
 function loginReducer(state = initialState, action) {
@@ -56,6 +57,10 @@ function loginReducer(state = initialState, action) {
         .set('login', null)
         .set('loading', false)
         .set('done', true);
+    
+    case ERROR:
+      return state
+        .set('serverError', action.payload);
     
     default:
       return state;

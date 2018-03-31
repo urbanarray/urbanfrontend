@@ -9,7 +9,8 @@ import {
   SOCIAL_SIGNUP_ACTION,
   SOCIAL_LOGGED_IN_ACTION,
   LINKEDIN_ACTION,
-  LOGGED_IN_ACTION
+  LOGGED_IN_ACTION,
+  ERROR,
 
 } from './constants';
 
@@ -44,6 +45,13 @@ export function linkedinAction(payload) {
 export function loggedInAction(payload) {
   return {
     type: LOGGED_IN_ACTION,
+    payload
+  };
+}
+
+export function errorAction(payload) {
+  return {
+    type: ERROR,
     payload
   };
 }

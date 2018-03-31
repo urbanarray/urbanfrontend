@@ -55,7 +55,7 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
   }
 
   componentDidUpdate() {
-    console.log(this.props.currentProfile, this.props.isLogin );
+    // console.log(this.props.currentProfile, this.props.isLogin );
     if (this.props.login.done === true && this.props.currentProfile === true) {
       this.props.history.push('/dashboard');
     }
@@ -122,14 +122,24 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.email, this.state.password)
     const loginObj = {
       email: this.state.email,
       password: this.state.password
     };
+    console.log(loginObj)
     this.props.customLogin(loginObj);
 
     // this.props.history.push('/dashboard');
+  }
+
+  printError = (attribute) => {
+    const { serverError } = this.props.login;
+
+    if (serverError !== null && serverError) {
+          return serverError.message;
+    }
+
+    return null;
   }
 
   render() {
@@ -154,6 +164,10 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
                     <Form onChange={this.handleChange} onSubmit={this.handleSubmit} >
 
                       <div className="form-group">
+                        <div className="alert-danger"  >
+                          {this.printError()}
+                        </div>
+
                         <div className="input-icon">
                           <input className="form-control" name="email" type="email" placeholder="Email" required />
                         </div>
