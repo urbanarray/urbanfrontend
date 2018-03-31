@@ -57,10 +57,10 @@ class Header extends React.Component {
                         { /* START Right Navbar */}
                         <ul className="nav navbar-nav navbar-right">
                           <li> 
-                            <Link className="btn btn-primary" to="signup"> Signup</Link>
+                            <Link className="btn btn-primary" to="/signup"> Signup</Link>
                           </li>
                           <li> 
-                            <Link className="btn btn-success" to="login"> Login</Link>
+                            <Link className="btn btn-success" to="/login"> Login</Link>
                           </li>
                         </ul>
                         { /* END Right Navbar */}

@@ -1,6 +1,6 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
 import { fromJS } from 'immutable';
-import { socialLoggedInAction, loggedInAction } from './actions';
+import { socialLoggedInAction, loggedInAction, errorAction } from './actions';
 import { makeSelectSocialSignup, makeSelectLinkedinSignup, makeSelectLoginCredentials } from './selectors';
 import { socialSignupApi, linkedinSignupApi, loginApi } from './api';
 import { SOCIAL_SIGNUP_ACTION, LINKEDIN_ACTION, LOGIN_ACTION } from './constants';
@@ -36,7 +36,6 @@ export function* linkedinSignup() {
     const linkedinSignupData = yield select(makeSelectLinkedinSignup());
 
     const response = yield call(linkedinSignupApi, linkedinSignupData);
-    console.log(response)
     const { linkedinData } = response.data;
     const accessToken = response.data.access_token;
 
@@ -84,6 +83,7 @@ export function* login() {
     yield put(loggedInAction(response.data));
 
   } catch (error) {
+    yield put(errorAction(error.response.data));
     console.log(error);
   }
 }
