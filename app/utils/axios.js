@@ -2,7 +2,8 @@ import axios from 'axios';
 import history from '../history';
 import {accessToken, clearState} from './persistState';
 
-const onlineServer ='http://mvp.urbanarray.org:3000/v1';
+// const onlineServer ='http://mvp.urbanarray.org:3000/v1';
+const onlineServer ='http://54.255.192.217:3000/v1';
 const local = 'http://localhost:3000/v1/';
 
 const api = axios.create({
