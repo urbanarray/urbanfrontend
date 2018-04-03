@@ -256,12 +256,12 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
                       <div className="btn-google">
                         <GoogleLogin
                         /* below is clientId for local host 
-                        */
                           clientId="1037020038566-lq1c87c2kqvkgihcqvq2a370d242t4r3.apps.googleusercontent.com" 
+                        */
                           
                           /* below is clientId for online app 
-                          clientId="867326421211-ph6qas651s4ejcrtpi4l82vc472vcqfc.apps.googleusercontent.com"
                             */
+                          clientId="867326421211-ph6qas651s4ejcrtpi4l82vc472vcqfc.apps.googleusercontent.com"
                           
                           buttonText="Login with Google"
                           onSuccess={this.responseGoogle}
