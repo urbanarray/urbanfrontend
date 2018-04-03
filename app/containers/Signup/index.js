@@ -28,6 +28,7 @@ import { GoogleLogin } from 'react-google-login';
 import LinkedIn from 'react-linkedin-login';
 import { socialSignupAction, signupAction, linkedinAction} from './actions';
 import { isLogin, isProfile } from 'containers/App/selectors';
+import { Redirect } from 'react-router';
 
 export class Signup extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props, context) {
