@@ -2,8 +2,7 @@ import axios from 'axios';
 import history from '../history';
 import {accessToken, clearState} from './persistState';
 
-// const onlineServer ='http://mvp.urbanarray.org:3000/v1';
-const onlineServer ='http://54.255.192.217:3000/v1';
+const onlineServer ='http://mvp.urbanarray.org:3000/v1';
 const local = 'http://localhost:3000/v1/';
 
 const api = axios.create({
@@ -23,7 +22,7 @@ api.interceptors.response.use((response) =>{
         clearState();
         history.push('/login');
     }
-
+    
     throw error;
 });
 
@@ -32,8 +31,7 @@ api.interceptors.response.use((response) =>{
  */
 
  export const setToken = (token) => {
-   
-     api.defaults.headers.common['Authorization'] = "Bearer "+ token;
+  api.defaults.headers.common['Authorization'] = "Bearer "+ token;
  }
 
  export default api;

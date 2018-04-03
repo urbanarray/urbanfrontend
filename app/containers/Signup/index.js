@@ -60,15 +60,15 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
   componentDidUpdate() {
   
     console.log(this.props.currentProfile, this.props.isLogin);
-    if (this.props.signup.customSignup === true) {
-      this.props.history.push('/resendEmail/' + this.props.signup.customSignupData.id);
-    }
-    else if (this.props.signup.done === true && this.props.currentProfile === true) {
-      this.props.history.push('/dashboard');
-    }
-    else if (this.props.signup.done === true && this.props.currentProfile === false) {
-      this.props.history.push('/profile');
-    }
+    // if (this.props.signup.customSignup === true) {
+    //   this.props.history.push('/resendEmail/' + this.props.signup.customSignupData.id);
+    // }
+    // else if (this.props.signup.done === true && this.props.currentProfile === true) {
+    //   this.props.history.push('/dashboard');
+    // }
+    // else if (this.props.signup.done === true && this.props.currentProfile === false) {
+    //   this.props.history.push('/profile');
+    // }
   
   }
 
@@ -159,6 +159,20 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
   }
 
   render() {
+
+    if (this.props.signup.customSignup === true) {
+      // this.props.history.push('/resendEmail/' + this.props.signup.customSignupData.id);
+      return <Redirect to='resendEmail' id={this.props.signup.customSignupData.id} />
+    }
+    else if (this.props.signup.done === true && this.props.currentProfile === true) {
+      // this.props.history.push('/dashboard');
+      return <Redirect to='dashboard' />      
+    }
+    else if (this.props.signup.done === true && this.props.currentProfile === false) {
+      // this.props.history.push('/profile');
+      return <Redirect to='profile' />
+    }
+
     return (
       <div>
         <Helmet>
@@ -222,7 +236,7 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
 
                       <div className="btn-facebook">
                         <FacebookLogin
-                        /* app id on localhost  
+                        /* app id on localhost    
                            appId="405789706540584"  
                         */
                           
