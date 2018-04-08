@@ -22,6 +22,8 @@ import ProjectView from 'containers/ProjectView/Loadable';
 import RoleView from 'containers/RoleView/Loadable';
 import ResendEmail from 'containers/ResendEmail';
 import VerifyAccount from 'containers/VerifyAccount';
+import ForgetPassword from 'containers/ForgetPassword';
+import ResetPassword from 'containers/ResetPassword';
 // import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Logout from 'containers/Logout/Loadable';
 import Base from 'components/Layout/Base';
@@ -71,6 +73,8 @@ export default function App() {
           <Route path="/roleView" component={RoleView} /> 
           <Route path="/resendEmail/:id" component={ResendEmail} /> 
           <Route path="/verify/:id" component={VerifyAccount} /> 
+          <Route path="/forgetpassword" component={ForgetPassword} /> 
+          <Route path="/resetpassword/:code" component={ResetPassword} /> 
           {/* <Route component={NotFoundPage}   /> */}
           {/* <Redirect to="/" /> */}
         </Base> 

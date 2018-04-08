@@ -26,6 +26,7 @@ import LinkedIn from 'react-linkedin-login';
 import { socialSignupAction,linkedinAction, loginAction } from './actions';
 import { isLogin, isProfile } from 'containers/App/selectors';
 import { browserHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 
 export class Login extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -183,7 +184,7 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
                         <button className="btn btn-success btn-block">Continue</button>
                       </div>
                       <div className="input-group"><span className="input-group-addon">
-                        <input type="checkbox" id="checkbox" /></span><span className="remember">remember me?</span><a href="#">forget password</a></div>
+                        <input type="checkbox" id="checkbox" /></span><span className="remember">remember me?</span><Link to="/forgetpassword"> Forget password </Link></div>
                       <div className="or"><span>or</span></div>
                       
                     </Form>
