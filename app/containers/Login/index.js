@@ -58,7 +58,7 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
   componentDidUpdate() {
     // console.log(this.props.currentProfile, this.props.isLogin );
     if (this.props.login.done === true && this.props.currentProfile === true) {
-      this.props.history.push('/dashboard');
+      this.props.history.push('/projectView');
     }
     else if (this.props.login.done === true && this.props.currentProfile === false){
       this.props.history.push('/profile');
@@ -130,7 +130,7 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
     console.log(loginObj)
     this.props.customLogin(loginObj);
 
-    // this.props.history.push('/dashboard');
+    // this.props.history.push('/projectView');
   }
 
   printError = (attribute) => {
