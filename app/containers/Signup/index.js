@@ -116,8 +116,7 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
    
   // handle form on change
   handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+    const { name, value } = e.target;
    
     this.setState({
       [name]: value,

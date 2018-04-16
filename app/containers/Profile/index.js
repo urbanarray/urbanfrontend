@@ -70,8 +70,7 @@ export class Profile extends React.Component { // eslint-disable-line react/pref
 
     }
     else{
-      const name = e.target.name;
-      const value = e.target.value;
+      const { name, value } = e.target;
       this.setState({
         [name] : value,
       });
