@@ -60,7 +60,6 @@ export class Profile extends React.Component { // eslint-disable-line react/pref
 
   componentDidUpdate(prevProps, prevState){
     if (this.props.isLogin && this.props.profile.done === true) {
-      alert(this.props.profile.done)
       this.props.history.push('/dashboard');
     }
   }
