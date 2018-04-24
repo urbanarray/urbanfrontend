@@ -37,8 +37,7 @@ export class ResetPassword extends React.Component { // eslint-disable-line reac
   }
 
   handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+    const { name, value } = e.target;
     this.setState({
       [name]: value,
     });
