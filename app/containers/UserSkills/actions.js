@@ -1,19 +1,22 @@
 /*
  *
- * Profile actions
+ * UserSkills actions
  *
  */
 
 import {
-  CREATE_PROFILE_ACTION,
+  CREATE_ACTION,
   CREATED_ACTION,
   UPDATE_ACTION,
   UPDATED_ACTION,
+  LIST_ACTION,
+  LISTED_ACTION,
+
 } from './constants';
 
-export function createProfileAction(payload) {
+export function createAction(payload) {
   return {
-    type: CREATE_PROFILE_ACTION,
+    type: CREATE_ACTION,
     payload
   };
 }
@@ -38,4 +41,21 @@ export function updatedAction(payload) {
     payload
   };
 }
+
+export function listAction(payload) {
+  return {
+    type: LIST_ACTION,
+    payload
+  };
+}
+
+export function listedAction(payload) {
+  return {
+    type: LISTED_ACTION,
+    payload
+  };
+}
+
+
+
 

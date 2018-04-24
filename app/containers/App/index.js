@@ -26,10 +26,11 @@ import ForgetPassword from 'containers/ForgetPassword';
 import ResetPassword from 'containers/ResetPassword';
 // import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Logout from 'containers/Logout/Loadable';
+import AccountSettings from 'containers/AccountSettings/Loadable';
 import Base from 'components/Layout/Base';
 import Auth from 'containers/Auth';
 import './style.css';
-
+  
 // List of routes that uses the page layout
 // listed here to Switch between layouts
 // depending on the current pathname
@@ -74,6 +75,7 @@ export default function App() {
           <Route path="/resendEmail/:id" component={ResendEmail} /> 
           <Route path="/verify/:id" component={VerifyAccount} /> 
           <Route path="/forgetpassword" component={ForgetPassword} /> 
+          <Route path="/account-settings" component={AccountSettings} /> 
           <Route path="/resetpassword/:code" component={ResetPassword} /> 
           {/* <Route component={NotFoundPage}   /> */}
           {/* <Redirect to="/" /> */}
