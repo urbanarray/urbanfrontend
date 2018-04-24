@@ -31,7 +31,7 @@ class HeaderHorizontal extends React.Component {
                 <nav role="navigation" className="navbar topnavbar">
                     { /* START navbar header */ }
                     <div className="navbar-header">
-                        <a href="#/" className="navbar-brand">
+                        <a href="/" className="navbar-brand">
                             <div className="brand-logo">
                                 <img src="img/logo.png" alt="App Logo" className="img-responsive" />
                             </div>

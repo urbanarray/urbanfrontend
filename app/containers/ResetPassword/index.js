@@ -70,7 +70,6 @@ export class ResetPassword extends React.Component { // eslint-disable-line reac
   }
 
   componentDidUpdate(){
-
   }
 
   printErrors = (attribute) => {

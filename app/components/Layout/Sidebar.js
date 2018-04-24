@@ -1,9 +1,15 @@
 import React from 'react';
 import { Router, Route, Link, History, withRouter } from 'react-router-dom';
+
+import { createStructuredSelector } from 'reselect';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+
 import pubsub from 'pubsub-js';
 import { Collapse } from 'react-bootstrap';
 import SidebarRun from './Sidebar.run';
 import avatar from '../../assets/img/user/02.jpg';
+import { makeSelectCurrentUser } from 'containers/App/selectors';
 
 class Sidebar extends React.Component {
 
@@ -23,7 +29,7 @@ class Sidebar extends React.Component {
                 extras: this.routeActive(['mailbox', 'timeline', 'calendar', 'invoice', 'search', 'todo', 'profile','bug-tracker','contact-details','contacts','faq','file-manager','followers','help-center','plans','project-details','projects','settings','social-board','team-viewer','vote-links']),
                 blog: this.routeActive(['projectsList', 'createProject', 'myProjects', 'blog-article-view']),
                 ecommerce: this.routeActive(['help', 'ecommerce-order-view', 'ecommerce-products', 'ecommerce-product-view', 'ecommerce-checkout']),
-                forum: this.routeActive(['forum-categories', 'forum-topics', 'forum-discussion']),
+                forum: this.routeActive(['forum-categories', 'user-skills', '']),
                 pages: false
             }
         };
@@ -35,6 +41,7 @@ class Sidebar extends React.Component {
     };
 
     componentDidMount() {
+			console.log(this.props.currentUser)
         // pass navigator to access router api
         SidebarRun(this.navigator.bind(this));
     }
@@ -69,7 +76,7 @@ class Sidebar extends React.Component {
     }
 
     render() {
-        return (
+        return (  
             <aside className='aside'>
                 { /* START Sidebar (left) */ }
                 <div className="aside-inner">
@@ -90,7 +97,7 @@ class Sidebar extends React.Component {
                                             </div>
                                             { /* Name and Job */ }
                                             <div className="user-block-info">
-                                                <span className="user-block-name">Hello, Max</span>
+                                                <span className="user-block-name"> <Link to="/profile"> {(this.props.currentUser && this.props.currentUser.profile)? this.props.currentUser.profile.firstName : 'Not Found' } </Link> </span>
                                                 <span className="user-block-role">Community Manager</span>
                                             </div>
                                         </div>
@@ -238,18 +245,19 @@ class Sidebar extends React.Component {
                                 </Collapse>
                             </li>
                         
-                            <li className={this.routeActive(['feedback', 'forum-topics', 'forum-discussion']) ? 'active' : ''}>
-                                <div className="nav-item" title="Feedback" onClick={this.toggleItemCollapse.bind(this, 'forum')}>
+                            <li className={this.routeActive(['account-settings', 'user-skills', '']) ? 'active' : ''}>
+                                <div className="nav-item" title="Account Settings" onClick={this.toggleItemCollapse.bind(this, 'forum')}>
                                     <em className="icon-speech"></em>
-                                    <span>Feedback</span>
+                                    <span>Account Settings</span>
                                 </div>
                                 <Collapse in={this.state.collapse.forum}>
                                     <ul id="" className="nav sidebar-subnav">
-                                        <li className="sidebar-subnav-header">Feedback</li>
-                                        <li className={this.routeActive('feedback') ? 'active' : ''}>
-                                            <Link to="feedback" title="Feedback">
-                                                <span>Feedback</span>
-                                            </Link>
+                                        <li className="sidebar-subnav-header">Profile</li>
+                                        
+                                        <li className={this.routeActive('account-settings') ? 'active' : ''}>
+                                          <Link to="account-settings" title="Profile Setting">
+                                            <span>Profile</span>
+                                          </Link>
                                         </li>
 
                                     </ul>
@@ -272,5 +280,17 @@ class Sidebar extends React.Component {
 
 }
 
-export default withRouter(Sidebar);
+
+const mapStateToProps = createStructuredSelector({
+	currentUser: makeSelectCurrentUser(),
+});
+
+const withConnect = connect(mapStateToProps);
+
+export default withRouter(
+	// compose(
+		Sidebar, 
+		// withConnect,
+	// )
+);
 

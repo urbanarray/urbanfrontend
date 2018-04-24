@@ -65,7 +65,7 @@ class ContactDetails extends React.Component {
                                   </div>
                                </div>
                             </div>
-                            <div className="media">
+														<div className="medi<em className=" icon-note"></em>a">
                                <div className="media-left media-middle">
                                   <a href="#">
                                      <img src="img/user/07.jpg" alt="Contact" className="media-object img-circle img-thumbnail thumb48" />
