@@ -21,10 +21,18 @@ const makeSelectAccountSettings = () => createSelector(
 
 const makeSelectaddUserSkills = () => createSelector(
   selectAccountSettingsDomain,
-  (substate) => substate.toJS()
+  (substate) => substate.get('addUserSkills')
+);
+
+const makeSelectUserId = () => createSelector(
+  selectAccountSettingsDomain,
+  (substate) => substate.get('userId')
 );
 
 export default makeSelectAccountSettings;
 export {
   selectAccountSettingsDomain,
+  makeSelectaddUserSkills,
+  makeSelectUserId,
+  
 };

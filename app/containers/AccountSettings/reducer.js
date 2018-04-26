@@ -12,13 +12,15 @@ import {
   CREATE_USER_SKILLS_ACTION,
   CREATED_USER_SKILLS_ACTION,
   LIST_USER_SKILLS_ACTION,
-  
+  LISTED_USER_SKILLS_ACTION,
+
 } from './constants';
 
 const initialState = fromJS({
+  userId:'',
   listSkills: null,
   addUserSkills: {},
-  listUserSkills: {},
+  listUserSkills: null,
   done: false,
   loading: false,
 
@@ -47,8 +49,10 @@ function accountSettingsReducer(state = initialState, action) {
 
     case LIST_USER_SKILLS_ACTION:
       return state
-        .set('loading', false)
-        .set('done', true)
+        .set('userId', action.payload);
+
+    case LISTED_USER_SKILLS_ACTION:
+      return state
         .set('listUserSkills', action.payload);
 
       

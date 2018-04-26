@@ -11,12 +11,19 @@ import {
   CREATE_USER_SKILLS_ACTION,
   CREATED_USER_SKILLS_ACTION,
   LIST_USER_SKILLS_ACTION,
+  LISTED_USER_SKILLS_ACTION,
 
 } from './constants';
 
 export function defaultAction() {
   return {
     type: DEFAULT_ACTION,
+  };
+}
+
+export function skillsListAction() {
+  return {
+    type: SKILLS_LIST_ACTION,
   };
 }
 
@@ -44,6 +51,13 @@ export function createdUserSkillsAction(payload) {
 export function listUserSkillsAction(payload) {
   return {
     type: LIST_USER_SKILLS_ACTION,
+    payload
+  };
+}
+
+export function listedUserSkillsAction(payload) {
+  return {
+    type: LISTED_USER_SKILLS_ACTION,
     payload
   };
 }

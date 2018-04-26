@@ -13,5 +13,6 @@ export const CREATE_USER_SKILLS_ACTION = 'app/AccountSettings/CREATE_USER_SKILLS
 export const CREATED_USER_SKILLS_ACTION = 'app/AccountSettings/CREATED_USER_SKILLS_ACTION';
 
 export const LIST_USER_SKILLS_ACTION = 'app/AccountSettings/LIST_USER_SKILLS_ACTION';
+export const LISTED_USER_SKILLS_ACTION = 'app/AccountSettings/LISTED_USER_SKILLS_ACTION';
 
 
