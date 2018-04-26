@@ -70,8 +70,7 @@ export default function App() {
           <Route path="/logout" component={Logout} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/projectView" component={ProjectView} />
-          <Route path="/roleView" component={RoleView} /> 
-          <Route path="/roleView" component={RoleView} /> 
+          <Route path="/roleView" component={RoleView} />  
           <Route path="/resendEmail/:id" component={ResendEmail} /> 
           <Route path="/verify/:id" component={VerifyAccount} /> 
           <Route path="/forgetpassword" component={ForgetPassword} /> 

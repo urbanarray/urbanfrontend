@@ -27,6 +27,7 @@ import NeededResources from 'containers/NeededResources';
 import PledgedResources from 'containers/PledgedResources';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
+import Clock from './Clock';
 
 export class Dashboard extends React.Component { // eslint-disable-line react/prefer-stateless-function
  
@@ -115,37 +116,7 @@ export class Dashboard extends React.Component { // eslint-disable-line react/pr
                 </Row>
               </div>
             </Col>
-            <Col lg={3} md={6} sm={12}>
-              { /* START date widget */}
-              <div className="panel widget">
-                <Row className="row-table">
-                  <Col xs={4} className="text-center bg-green pv-lg">
-                    { /* See formats: https://docs.angularjs.org/api/ng/filter/date */}
-                    <div data-now="" data-format="MMMM" className="text-sm">
-           
-                    </div>
-                  
-                    <div data-now="" data-format="D" className="h2 mt0"></div>
-                    {/* <em className="icon-clock fa-3x"></em>     */}
-                    <div className=" mt0">March</div>
-                    <div className="h4">2</div>
-                    
-                  </Col>
-                  <Col xs={8} className="pv-lg">
-                    {/* <div data-now="" data-format="dddd" className="text-uppercase"></div> */}
-                    {/* <br /> */}
-                    {/* <div data-now="" data-format="h:mm" className="h2 mt0"></div> */}
-                    {/* <div data-now="" data-format="a" className="text-muted text-sm"></div> */}
-
-                    <div className="h2 mt0">Friday</div>
-                    <div className="text-uppercase">2:15</div>
-                    <div className="text-uppercase">pm</div>
-
-                  </Col>
-                </Row>
-              </div>
-              { /* END date widget */}
-            </Col>
+            <Clock />
           </Row>
           { /* END widgets box */}
 
