@@ -116,7 +116,6 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
       [name]: value,
     });
 
-    // console.log(this.state);
   }
 
   handleSubmit = (e) => {
@@ -125,7 +124,6 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
       email: this.state.email,
       password: this.state.password
     };
-    console.log(loginObj)
     this.props.customLogin(loginObj);
 
     // this.props.history.push('/dashboard');

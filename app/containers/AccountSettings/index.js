@@ -21,36 +21,40 @@ import messages from './messages';
 
 import ContentWrapper from 'components/Layout/ContentWrapper';
 
-import { Grid, Row, Col, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
+import {Grid, Row, Col, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
 
 import { makeSelectCurrentUser } from 'containers/App/selectors';
+import { skillsListAction, listUserSkillsAction, createUserSkillsAction } from './actions';
 
 export class AccountSettings extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props, context) {
     super(props, context);
     this.state = {
-      showModal: false
+      showModal: false,
+      skillId:null,
+      userId:this.props.currentUser.user.id,
     };
   }
 
   
 
-  close() {
+  close = () => {
     this.setState({
       showModal: false
     });
   }
 
-  open() {
+  open = () => {
     this.setState({
       showModal: true
     });
   }
 
-  
   componentDidMount() {
-    
+    this.props.listSkills();
+    this.props.listUserSkills(this.props.currentUser.user.id);
   }
+
 
   renderProfileInfo = () => {
     if (this.props.currentUser && this.props.currentUser.user && this.props.currentUser.profile) {
@@ -109,6 +113,56 @@ export class AccountSettings extends React.Component { // eslint-disable-line re
     }
   }
 
+
+  renderUserSkills = () => {
+    const {listUserSkills} = this.props.accountsettings;
+    if (listUserSkills && listUserSkills.length > 0) {
+      return listUserSkills.map((userSkill) => {
+        return <Alert key={Math.random()} className="primary" > {(userSkill && userSkill.skillId) ? userSkill.skillId.name.charAt(0).toUpperCase() + userSkill.skillId.name.slice(1) : ''} </Alert>
+      });
+    }
+  }
+
+
+  renderSkills = () => {
+    const { listSkills} = this.props.accountsettings;
+    if (listSkills && listSkills.length > 0) {
+     return listSkills.map((skill) => {
+       return (
+         <option key={skill._id} value={skill._id}> {skill.name} </option>         
+       );
+     });
+   } 
+  }
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const addUserSkills = {
+      userId: this.props.currentUser.user.id,
+      skillId: this.state.skillId,
+    };
+    
+    this.props.createUserSkills(addUserSkills);
+    
+    setTimeout(() => {
+      this.close();
+    }, 1000);
+    
+    setTimeout(() => {
+      this.props.listUserSkills(this.props.currentUser.user.id);
+    }, 1100);
+
+
+  }
+
   render() {
     var ddTitle = (<em className="fa fa-ellipsis-v fa-lg text-muted"></em>);
     return (
@@ -130,23 +184,44 @@ export class AccountSettings extends React.Component { // eslint-disable-line re
             </div>
             <div className="panel panel-default hidden-xs hidden-sm">
               <div className="panel-heading">
-                <div className="panel-title text-center"> Skills <em onClick={this.open.bind(this)} className="pull-right icon-note"></em>  </div>
+                <div className="panel-title text-center"> Skills <em onClick={this.open} className="pull-right icon-note"></em>  </div>
               </div>
               <div className="panel-body">
+
+                {this.renderUserSkills()}
+
                 {/* Add user skills using pop up model */}  
-                {/* <Button bsStyle="primary" bsSize="large" onClick={this.open.bind(this)}>
+                {/* <Button bsStyle="primary" bsSize="large" onClick={this.open}>
                   Launch demo modal
                 </Button> */}
 
-                <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
+                <Modal show={this.state.showModal} onHide={this.close}>
                   <Modal.Header closeButton>
                     <Modal.Title>Add User Skills</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                    <input type='' />
+                    <form className="form-horizontal" onSubmit={this.handleSubmit} onChange={this.handleChange}  >
+                      <fieldset>
+                        <div className="form-group mb">
+                          <label className="col-sm-3 control-label mb">Choose Skills</label>
+                          <Col sm={9}>
+                            { /*  SELECT2 */}
+                            <select id="select2-1" className="form-control" name="skillId" value={this.state.skillId} >
+                              <option>Select Skills</option>
+                              {this.renderSkills()}
+                            </select>
+
+                            { /*  END SELECT2 */}
+                          </Col>
+                        </div>
+                        <div className="col-sm-6 col-sm-offset-3 text-center" >
+                          <input type="submit" value="Add Skill" className="btn btn-primary" /> 
+                        </div>
+                      </fieldset>
+                    </form>
                   </Modal.Body>
                   <Modal.Footer>
-                    <Button onClick={this.close.bind(this)}>Close</Button>
+                    <Button onClick={this.close}>Cancel</Button>
                   </Modal.Footer>
                 </Modal>
 
@@ -193,6 +268,9 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    listSkills: () => (dispatch(skillsListAction())),
+    createUserSkills: (payload) => (dispatch(createUserSkillsAction(payload))),
+    listUserSkills: (payload) => (dispatch(listUserSkillsAction(payload))),
   };
 }
 

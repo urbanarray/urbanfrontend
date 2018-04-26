@@ -8,6 +8,6 @@ export const createUserSkillsApi = (data) => {
     return axios.post('userSkill/create', data);
 }
 
-export const listUserSkillsApi = () => {
-    return axios.get('userSkill/index');
+export const listUserSkillsApi = (id) => {
+    return axios.get('userSkill/index/'+id);
 }
