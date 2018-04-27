@@ -50,7 +50,8 @@ export class NeededResources extends React.Component { // eslint-disable-line re
               {resource.locationNeeded}
             </td>
             <td>
-              {resource.date + ' ' + resource.startTime + ' - ' + resource.endTime}
+              {`${resource.startTime} - ${resource.endTime}`}<br />
+              {resource.date}
             </td>
             <td>
               {/* <button type="button" className="btn btn-primary btn-block btn-sm"  > Pledge </button> */}
@@ -96,10 +97,10 @@ export class NeededResources extends React.Component { // eslint-disable-line re
           <Table id="table-ext-2" responsive striped bordered hover>
             <thead>
               <tr>
-                <th>Item</th>
-                <th>Quantity </th>
-                <th>Project</th>
-                <th>Location Needed</th>
+                <th style={{width: '150px'}}>Item</th>
+                <th style={{width: '100px'}}>Quantity </th>
+                <th style={{width: '150px'}}>Project</th>
+                <th style={{width: '150px'}}>Location Needed</th>
                 <th>Date/Time</th>
                 <th>Action</th>
               </tr>
