@@ -12,6 +12,8 @@ import {
   CREATED_USER_SKILLS_ACTION,
   LIST_USER_SKILLS_ACTION,
   LISTED_USER_SKILLS_ACTION,
+  DELETE_USER_SKILLS_ACTION,
+  DELETED_USER_SKILLS_ACTION,
 
 } from './constants';
 
@@ -58,6 +60,20 @@ export function listUserSkillsAction(payload) {
 export function listedUserSkillsAction(payload) {
   return {
     type: LISTED_USER_SKILLS_ACTION,
+    payload
+  };
+}
+
+export function deleteUserSkillsAction(payload) {
+  return {
+    type: DELETE_USER_SKILLS_ACTION,
+    payload
+  };
+}
+
+export function deletedUserSkillsAction(payload) {
+  return {
+    type: DELETED_USER_SKILLS_ACTION,
     payload
   };
 }
