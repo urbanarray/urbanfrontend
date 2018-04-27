@@ -15,14 +15,14 @@ const initialState = fromJS({
       item: 'Hammer',
       startTime: '5pm',
       endTime: '9pm',
-      date: '5 Jan',
+      date: 'Jan 5',
       project: 'Urban Farm II',
     },
     {
       item: 'Shovel',
       startTime: '2pm',
       endTime: '3pm',
-      date: '1 Feb',
+      date: 'Feb 1',
       project: 'Urban Farm I',
     },
 
