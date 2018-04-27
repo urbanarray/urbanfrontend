@@ -42,7 +42,8 @@ export class PledgedResources extends React.Component { // eslint-disable-line r
               {pledgedresource.project} 
             </td>
             <td>
-              {pledgedresource.date + ' '+pledgedresource.startTime + '-' + pledgedresource.endTime}
+              {`${pledgedresource.startTime} - ${pledgedresource.endTime}`}<br />
+              {pledgedresource.date}
             </td>
 
             <td>
@@ -72,8 +73,8 @@ export class PledgedResources extends React.Component { // eslint-disable-line r
           <Table id="table-ext-2" responsive striped bordered hover>
             <thead>
               <tr>
-                <th>Item</th>
-                <th>Project </th>
+                <th style={{width: '175px'}}>Item</th>
+                <th style={{width: '175px'}}>Project </th>
                 <th>Date/Time</th>
                 <th>Action</th>
               </tr>

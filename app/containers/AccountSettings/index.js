@@ -59,6 +59,7 @@ export class AccountSettings extends React.Component { // eslint-disable-line re
   renderProfileInfo = () => {
     if (this.props.currentUser && this.props.currentUser.user && this.props.currentUser.profile) {
       const {user, profile} = this.props.currentUser;
+      
       return(
         <div className="form-horizontal">
           <div className="form-group">
@@ -96,14 +97,14 @@ export class AccountSettings extends React.Component { // eslint-disable-line re
           <div className="form-group">
             <label htmlFor="inputContact8" className="col-sm-4 control-label"> Availability Start Date</label>
             <div className="col-sm-8">
-              <input disabled id="inputContact8" type="text" className="form-control" defaultValue={profile.avaiability_start_date} />
+              <input disabled id="inputContact8" type="text" className="form-control" defaultValue={profile.availability_end_date} />
             </div>  
           </div>
 
           <div className="form-group">
             <label htmlFor="inputContact8" className="col-sm-4 control-label"> Availability End Date</label>
             <div className="col-sm-8">
-              <input disabled id="inputContact8" type="text" className="form-control" defaultValue={profile.avaiability_end_date} />
+              <input disabled id="inputContact8" type="text" className="form-control" defaultValue={profile.availability_end_date} />
             </div>
           </div>
 
@@ -114,14 +115,23 @@ export class AccountSettings extends React.Component { // eslint-disable-line re
   }
 
 
+  handleRemove = (skillId) => {
+    alert(skillId);
+  }
+
   renderUserSkills = () => {
     const {listUserSkills} = this.props.accountsettings;
     if (listUserSkills && listUserSkills.length > 0) {
       return listUserSkills.map((userSkill) => {
-        return <Alert key={Math.random()} className="primary" > {(userSkill && userSkill.skillId) ? userSkill.skillId.name.charAt(0).toUpperCase() + userSkill.skillId.name.slice(1) : ''} </Alert>
+        return <Alert key={Math.random()} className="primary" > {(userSkill && userSkill.skillId) ? userSkill.skillId.name.charAt(0).toUpperCase() + userSkill.skillId.name.slice(1) : ''}
+          <Button onClick={() => this.handleRemove(userSkill._id) } className="btn btn-xs btn-alert pull-right" title="Remove" >
+            <em className="fa fa-close"></em>
+          </Button>
+         </Alert>
       });
     }
   }
+
 
 
   renderSkills = () => {
@@ -243,7 +253,7 @@ export class AccountSettings extends React.Component { // eslint-disable-line re
                 <Row className="pv-lg">
                     <Col lg={2}></Col>
                   <Col lg={8}>
-                    {this.renderProfileInfo()}
+                   {this.renderProfileInfo()}
                   </Col>
                 </Row>
               </div>

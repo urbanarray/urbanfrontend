@@ -38,15 +38,14 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
         return (
           <tr key={Math.random()}>
             <td>
-            {roles.title} 
+              {roles.title} 
             </td>
-          
             <td>
-            {roles.project} 
+              {roles.project} 
             </td>
-          
             <td>
-              {roles.date +' '+roles.startTime + ' - ' + roles.endTime}
+              {`${roles.startTime} - ${roles.endTime}`}<br />
+              {roles.date}
             </td>
             <td>
               {roles.duration}
@@ -58,7 +57,7 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
               {roles.ac}
             </td>
             <td>
-              <Link to="/roleView" className="btn btn-primary btn-sm" color="default" >Details</Link>
+              <Link to="/roleView" className="btn btn-primary btn-block btn-sm" color="default" >Details</Link>
             </td>
 
           </tr>
@@ -99,11 +98,11 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
           <Table id="table-ext-2" responsive striped bordered hover>
             <thead>
               <tr>         
-                <th>Role</th>
-                <th>Project </th>
-                <th>Date/Time</th>
-                <th>Duration</th>
-                <th>PTS</th>
+                <th style={{width: '200px'}}>Role</th>
+                <th style={{width: '200px'}}>Project </th>
+                <th style={{width: '150px'}}>Date/Time</th>
+                <th style={{width: '80px'}}>Duration</th>
+                <th style={{width: '80px'}}>PTS</th>
                 <th>AC</th>
                 <th>Action</th>
               </tr>
