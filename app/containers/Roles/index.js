@@ -38,15 +38,14 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
         return (
           <tr key={Math.random()}>
             <td>
-            {roles.title} 
+              {roles.title} 
             </td>
-          
             <td>
-            {roles.project} 
+              {roles.project} 
             </td>
-          
             <td>
-              {roles.date +' '+roles.startTime + ' - ' + roles.endTime}
+              {`${roles.startTime} - ${roles.endTime}`}<br />
+              {roles.date}
             </td>
             <td>
               {roles.duration}

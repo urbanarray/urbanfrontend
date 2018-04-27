@@ -44,7 +44,8 @@ export class YourRole extends React.Component { // eslint-disable-line react/pre
               {roles.project}
             </td>
             <td>
-              {roles.date + ' ' + roles.startTime + '-' + roles.endTime }
+              {`${roles.startTime} - ${roles.endTime}`} <br />
+              {roles.date}
             </td>
           
             <td>
@@ -72,8 +73,8 @@ export class YourRole extends React.Component { // eslint-disable-line react/pre
           <Table id="table-ext-2" responsive striped bordered hover>
             <thead>
               <tr>
-                <th>Role</th>
-                <th>Project </th>
+                <th style={{width: '175px'}}>Role</th>
+                <th style={{width: '175px'}}>Project </th>
                 <th>Date/Time</th>
                 {/* <th></th> */}
               </tr>
