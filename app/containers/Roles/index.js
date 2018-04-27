@@ -99,11 +99,11 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
           <Table id="table-ext-2" responsive striped bordered hover>
             <thead>
               <tr>         
-                <th>Role</th>
-                <th>Project </th>
-                <th>Date/Time</th>
-                <th>Duration</th>
-                <th>PTS</th>
+                <th style={{width: '200px'}}>Role</th>
+                <th style={{width: '200px'}}>Project </th>
+                <th style={{width: '150px'}}>Date/Time</th>
+                <th style={{width: '80px'}}>Duration</th>
+                <th style={{width: '80px'}}>PTS</th>
                 <th>AC</th>
                 <th>Action</th>
               </tr>
