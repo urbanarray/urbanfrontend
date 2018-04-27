@@ -57,7 +57,7 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
               {roles.ac}
             </td>
             <td>
-              <Link to="/roleView" className="btn btn-primary btn-sm" color="default" >Details</Link>
+              <Link to="/roleView" className="btn btn-primary btn-block btn-sm" color="default" >Details</Link>
             </td>
 
           </tr>
