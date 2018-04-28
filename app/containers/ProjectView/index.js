@@ -52,7 +52,7 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
     if (this.props.projectview.leadership && this.props.projectview.leadership.length > 0) {      
         return this.props.projectview.leadership.map((leadership) => {
           return(
-            <div key={Math.random()} className="col-md-6">
+            <div key={Math.random()} className="col-md-4">
                 <img style={{width:'50px', height:'50px', borderRadius:'50%' }} src={Avatar} />
                 <span> {leadership.firstName} </span>
             </div>
