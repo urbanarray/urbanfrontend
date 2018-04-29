@@ -27,6 +27,7 @@ import ResetPassword from 'containers/ResetPassword';
 // import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Logout from 'containers/Logout/Loadable';
 import AccountSettings from 'containers/AccountSettings/Loadable';
+import Volunteer from 'containers/Volunteer/Loadable';
 import Base from 'components/Layout/Base';
 import Auth from 'containers/Auth';
 import './style.css';
@@ -75,6 +76,7 @@ export default function App() {
           <Route path="/verify/:id" component={VerifyAccount} /> 
           <Route path="/forgetpassword" component={ForgetPassword} /> 
           <Route path="/account-settings" component={AccountSettings} /> 
+          <Route path="/list-volunteers" component={Volunteer} /> 
           <Route path="/resetpassword/:code" component={ResetPassword} /> 
           {/* <Route component={NotFoundPage}   /> */}
           {/* <Redirect to="/" /> */}
