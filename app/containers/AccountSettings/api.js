@@ -11,3 +11,7 @@ export const createUserSkillsApi = (data) => {
 export const listUserSkillsApi = (id) => {
     return axios.get('userSkill/index/'+id);
 }
+
+export const deleteUserSkillsApi = (id) => {
+    return axios.delete('userSkill/delete/'+id);
+}

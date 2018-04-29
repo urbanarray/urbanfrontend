@@ -29,10 +29,15 @@ const makeSelectUserId = () => createSelector(
   (substate) => substate.get('userId')
 );
 
+const makeSelectSkillId = () => createSelector(
+  selectAccountSettingsDomain,
+  (substate) => substate.get('skillId')
+);
+
 export default makeSelectAccountSettings;
 export {
   selectAccountSettingsDomain,
   makeSelectaddUserSkills,
   makeSelectUserId,
-  
+  makeSelectSkillId,
 };

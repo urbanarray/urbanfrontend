@@ -25,7 +25,7 @@ class Sidebar extends React.Component {
                 forms: this.routeActive(['form-standard', 'form-extended', 'form-validation', 'form-wizard', 'openRoles', 'myRoles', 'allRoles']),
                 charts: this.routeActive(['chart-flot', 'chart-radial', 'chart-chartjs', 'chart-rickshaw', 'chart-morris', 'chart-chartist']),
                 tables: this.routeActive(['table-standard', 'table-extended', 'table-datatable', 'table-jqgrid']),
-                maps: this.routeActive(['map-google', 'map-vector']),
+                volunteers: this.routeActive(['add-volunteers', 'list-volunteers']),
                 extras: this.routeActive(['mailbox', 'timeline', 'calendar', 'invoice', 'search', 'todo', 'profile','bug-tracker','contact-details','contacts','faq','file-manager','followers','help-center','plans','project-details','projects','settings','social-board','team-viewer','vote-links']),
                 blog: this.routeActive(['projectsList', 'createProject', 'myProjects', 'blog-article-view']),
                 ecommerce: this.routeActive(['help', 'ecommerce-order-view', 'ecommerce-products', 'ecommerce-product-view', 'ecommerce-checkout']),
@@ -245,7 +245,7 @@ class Sidebar extends React.Component {
                                 </Collapse>
                             </li>
                         
-                            <li className={this.routeActive(['account-settings', 'user-skills', '']) ? 'active' : ''}>
+                            <li className={this.routeActive(['', 'user-skills', '']) ? 'active' : ''}>
                                 <div className="nav-item" title="Account Settings" onClick={this.toggleItemCollapse.bind(this, 'forum')}>
                                     <em className="icon-speech"></em>
                                     <span>Account Settings</span>
@@ -263,6 +263,27 @@ class Sidebar extends React.Component {
                                     </ul>
                                 </Collapse>
                             </li>
+														{/* Volunteers  */}
+                            <li className={this.routeActive(['add-volunteers', 'list-volunteers']) ? 'active' : ''}>
+                                <div className="nav-item" title="Volunteers" onClick={this.toggleItemCollapse.bind(this, 'volunteers')}>
+																	<em className="icon-people"></em>
+																	<span>Volunteers</span>
+                                </div>
+                                <Collapse in={this.state.collapse.volunteers}>
+                                    <ul id="" className="nav sidebar-subnav">
+                                        <li className="sidebar-subnav-header">List Volunteers</li>
+                                        
+                                        <li className={this.routeActive('list-volunteers') ? 'active' : ''}>
+                                          <Link to="list-volunteers" title="List Volunteers">
+                                            <span>List Volunteers</span>
+                                          </Link>
+                                        </li>
+
+                                    </ul>
+                                </Collapse>
+                            </li>
+
+
                             <li>
                                 <a href="logout" title="Logout">
                                     <em className="icon-power"></em>                                    
