@@ -87,7 +87,7 @@ export class AddVolunteer extends React.Component { // eslint-disable-line react
                   <Col sm={3}>
                   </Col>
                   <Col sm={6}>
-                    <button className="btn btn-primary btn-block">Save and Inivte</button>
+                    <button className="btn btn-primary btn-block">Save and Inivite</button>
                   </Col>
                   <Col sm={3}>
                   </Col>
