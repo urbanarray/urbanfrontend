@@ -24,7 +24,16 @@ import ContentWrapper from 'components/Layout/ContentWrapper';
 import {Grid, Row, Col, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
 
 import { makeSelectCurrentUser } from 'containers/App/selectors';
-import { skillsListAction, listUserSkillsAction, createUserSkillsAction } from './actions';
+import { 
+  skillsListAction, 
+  listUserSkillsAction, 
+  createUserSkillsAction,
+  deleteUserSkillsAction,
+} from './actions';
+
+import ProfileDetails from 'containers/ProfileDetails';
+
+
 
 export class AccountSettings extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props, context) {
@@ -56,67 +65,12 @@ export class AccountSettings extends React.Component { // eslint-disable-line re
   }
 
 
-  renderProfileInfo = () => {
-    if (this.props.currentUser && this.props.currentUser.user && this.props.currentUser.profile) {
-      const {user, profile} = this.props.currentUser;
-      
-      return(
-        <div className="form-horizontal">
-          <div className="form-group">
-            <label htmlFor="inputContact1" className="col-sm-4 control-label">Name</label>
-            <div className="col-sm-8">
-              <input disabled id="inputContact1" type="text" placeholder="" defaultValue={profile.firstName+' '+profile.lastName} className="form-control" />
-            </div>
-          </div>
-          <div className="form-group">
-            <label htmlFor="inputContact2" className="col-sm-4 control-label">Email</label>
-            <div className="col-sm-8">
-              <input disabled id="inputContact2" type="email" defaultValue={user.email} className="form-control" />
-            </div>
-          </div>
-          <div className="form-group">
-            <label htmlFor="inputContact3" className="col-sm-4 control-label">Phone</label>
-            <div className="col-sm-8">
-              <input disabled id="inputContact3" type="text" defaultValue="(123) 465 789" className="form-control" />
-            </div>
-          </div>
-            <div className="form-group">
-            <label htmlFor="inputContact4" className="col-sm-4 control-label">Mobile</label>
-            <div className="col-sm-8">
-              <input disabled id="inputContact4" type="text" defaultValue="(12) 123 987 465" className="form-control" />
-            </div>
-          </div>
-          
-          <div className="form-group">
-            <label htmlFor="inputContact6" className="col-sm-4 control-label">City/Metro Area</label>
-            <div className="col-sm-8">
-              <textarea disabled id="inputContact6" rows="4" className="form-control" defaultValue="Some nice Street, 1234"></textarea>
-            </div>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="inputContact8" className="col-sm-4 control-label"> Availability Start Date</label>
-            <div className="col-sm-8">
-              <input disabled id="inputContact8" type="text" className="form-control" defaultValue={profile.availability_end_date} />
-            </div>  
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="inputContact8" className="col-sm-4 control-label"> Availability End Date</label>
-            <div className="col-sm-8">
-              <input disabled id="inputContact8" type="text" className="form-control" defaultValue={profile.availability_end_date} />
-            </div>
-          </div>
-
-          
-        </div>
-      );
-    }
-  }
-
 
   handleRemove = (skillId) => {
-    alert(skillId);
+    this.props.deleteUserSkill(skillId);
+    setTimeout(() => {
+      this.props.listUserSkills(this.props.currentUser.user.id);
+    }, 500);
   }
 
   renderUserSkills = () => {
@@ -174,7 +128,6 @@ export class AccountSettings extends React.Component { // eslint-disable-line re
   }
 
   render() {
-    var ddTitle = (<em className="fa fa-ellipsis-v fa-lg text-muted"></em>);
     return (
       <ContentWrapper>
         <Row>
@@ -194,7 +147,7 @@ export class AccountSettings extends React.Component { // eslint-disable-line re
             </div>
             <div className="panel panel-default hidden-xs hidden-sm">
               <div className="panel-heading">
-                <div className="panel-title text-center"> Skills <em onClick={this.open} className="pull-right icon-note"></em>  </div>
+                <div className="panel-title">User Skills <span onClick={this.open}  className="pull-right">Add Skills <em className=" icon-note"></em> </span> </div>
               </div>
               <div className="panel-body">
 
@@ -239,25 +192,7 @@ export class AccountSettings extends React.Component { // eslint-disable-line re
             </div>
           </Col>
           <Col md={8}>
-            <div className="panel panel-default">
-              <div className="panel-body">
-                <div className="pull-right">    
-                  <DropdownButton bsStyle="link" noCaret pullRight title={ddTitle} id="dropdown-basic">
-                    <MenuItem eventKey="1">Send by message</MenuItem>
-                    <MenuItem eventKey="2">Share contact</MenuItem>
-                    <MenuItem eventKey="3">Block contact</MenuItem>
-                    <MenuItem eventKey="4"><span className="text-warning">Block contact</span></MenuItem>
-                  </DropdownButton>
-                </div>
-                <div className="h4 text-center">Profile Information</div>
-                <Row className="pv-lg">
-                    <Col lg={2}></Col>
-                  <Col lg={8}>
-                   {this.renderProfileInfo()}
-                  </Col>
-                </Row>
-              </div>
-            </div>
+            <ProfileDetails profileDetails={this.props.currentUser} />
           </Col>
         </Row>
       </ContentWrapper>
@@ -281,6 +216,7 @@ function mapDispatchToProps(dispatch) {
     listSkills: () => (dispatch(skillsListAction())),
     createUserSkills: (payload) => (dispatch(createUserSkillsAction(payload))),
     listUserSkills: (payload) => (dispatch(listUserSkillsAction(payload))),
+    deleteUserSkill : (payload) => (dispatch(deleteUserSkillsAction(payload))),
   };
 }
 

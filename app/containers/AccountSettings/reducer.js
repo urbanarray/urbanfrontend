@@ -13,6 +13,8 @@ import {
   CREATED_USER_SKILLS_ACTION,
   LIST_USER_SKILLS_ACTION,
   LISTED_USER_SKILLS_ACTION,
+  DELETE_USER_SKILLS_ACTION,
+  DELETED_USER_SKILLS_ACTION,
 
 } from './constants';
 
@@ -23,6 +25,7 @@ const initialState = fromJS({
   listUserSkills: null,
   done: false,
   loading: false,
+  skillId:null,
 
 });
 
@@ -54,6 +57,10 @@ function accountSettingsReducer(state = initialState, action) {
     case LISTED_USER_SKILLS_ACTION:
       return state
         .set('listUserSkills', action.payload);
+
+    case DELETE_USER_SKILLS_ACTION:
+      return state
+        .set('skillId', action.payload);
 
       
     default:
