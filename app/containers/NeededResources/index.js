@@ -23,6 +23,7 @@ import messages from './messages';
 import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
+import {styles} from '../../assets/styles/variables'
 
 
 export class NeededResources extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -55,7 +56,12 @@ export class NeededResources extends React.Component { // eslint-disable-line re
             </td>
             <td>
               {/* <button type="button" className="btn btn-primary btn-block btn-sm"  > Pledge </button> */}
-              <Link to="/projectView" type="button" className="btn btn-success btn-block btn-sm blue"  > Details/Claim </Link>
+              <Link 
+                to="/projectView" 
+                type="button" 
+                className="btn btn-success btn-block btn-sm"
+                style={styles.primary}>Details/Claim 
+              </Link>
             </td>
 
           </tr>
@@ -69,7 +75,7 @@ export class NeededResources extends React.Component { // eslint-disable-line re
     return (
 
       <div id="panelDemo8" className="panel panel-primary">
-        <div className="panel-heading" style={{backgroundColor: '#006b9a'}}>
+        <div className="panel-heading" style={styles.primaryDark}>
           <Row>
             <Col md={6}>
                 NEEDED RESOURCES

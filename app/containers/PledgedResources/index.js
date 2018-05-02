@@ -22,6 +22,7 @@ import messages from './messages';
 import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
+import {styles} from '../../assets/styles/variables'
 
 export class PledgedResources extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -47,7 +48,12 @@ export class PledgedResources extends React.Component { // eslint-disable-line r
             </td>
 
             <td>
-              <button type="button" className="btn btn-primary btn-xs blue" style={{ float: 'right' }} >Details</button>
+              <Link
+                to="" 
+                type="button" 
+                className="btn btn-primary btn-xs btn-block"
+                style={styles.primary}>Details
+              </Link>
             </td>
 
           </tr>
@@ -61,7 +67,7 @@ export class PledgedResources extends React.Component { // eslint-disable-line r
     return (
 
       <div id="panelDemo8" className="panel panel-primary">
-        <div className="panel-heading" style={{backgroundColor: '#006b9a'}}>
+        <div className="panel-heading" style={styles.primaryDark}>
           <Row>
             <Col md={12}>
                 PLEDGED RESOURCES
