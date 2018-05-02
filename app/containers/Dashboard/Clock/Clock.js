@@ -32,9 +32,9 @@ class Clock extends Component {
     render() {
         return(
             <Col lg={3} md={6} sm={12}>
-                <div className="panel widget">
+                <div className="panel widget green">
                     <Row className="row-table">
-                        <Col xs={4} className="text-center bg-green pv-lg">
+                        <Col xs={4} className="text-center darkgreen pv-lg" style={{color: 'white'}}>
                             <div data-now="" data-format="D" className="h2 mt0"></div>
                             
                             {/* https://momentjs.com/ */}
@@ -43,7 +43,7 @@ class Clock extends Component {
                             <div className="h4">{this.state.date.format("Do")}</div>
 
                         </Col>
-                        <Col xs={8} className="pv-lg">
+                        <Col xs={8} className="pv-lg" style={{color: 'white'}}>
 
                             <div className="h2 mt0">{this.state.date.format("dddd")}</div>
                             <div className="text-uppercase">{this.state.date.format("h:mm:ss a")}</div>

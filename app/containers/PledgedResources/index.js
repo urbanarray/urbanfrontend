@@ -47,7 +47,7 @@ export class PledgedResources extends React.Component { // eslint-disable-line r
             </td>
 
             <td>
-              <button type="button" className="btn btn-primary btn-xs" style={{ float: 'right' }} >Details</button>
+              <button type="button" className="btn btn-primary btn-xs blue" style={{ float: 'right' }} >Details</button>
             </td>
 
           </tr>
@@ -61,7 +61,7 @@ export class PledgedResources extends React.Component { // eslint-disable-line r
     return (
 
       <div id="panelDemo8" className="panel panel-primary">
-        <div className="panel-heading">
+        <div className="panel-heading" style={{backgroundColor: '#006b9a'}}>
           <Row>
             <Col md={12}>
                 PLEDGED RESOURCES

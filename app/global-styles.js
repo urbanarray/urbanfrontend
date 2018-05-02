@@ -103,8 +103,28 @@ injectGlobal`
     width: 100%;
   }
 
+  .blue {
+    background-color: #4a99cb;
+  }
+
   .lightblue{
-    background-color:#87cefa;
+    background-color:#80cafe;
+  }
+
+  .darkblue {
+    background-color: #006b9a;
+  }
+
+  .green {
+    background-color: #91c63f;
+  }
+
+  .lightgreen {
+    background-color: #c4f970;
+  }
+
+  .darkgreen {
+    background-color: #5f9500;
   }
 `;
   

@@ -49,7 +49,7 @@ export class YourRole extends React.Component { // eslint-disable-line react/pre
             </td>
           
             <td>
-              <Link to="/roleView" className="btn btn-primary btn-xs" color="default" >Details</Link>
+              <Link to="/roleView" className="btn btn-primary btn-xs blue" color="default" >Details</Link>
             </td>
 
           </tr>
@@ -61,7 +61,7 @@ export class YourRole extends React.Component { // eslint-disable-line react/pre
   render() {
     return (
       <div id="panelDemo8" className="panel panel-primary">
-        <div className="panel-heading"> 
+        <div className="panel-heading" style={{backgroundColor: '#006b9a'}}> 
           <Row>
             <Col md={12}>
                 YOUR ROLES

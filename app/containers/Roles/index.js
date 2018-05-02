@@ -57,7 +57,7 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
               {roles.ac}
             </td>
             <td>
-              <Link to="/roleView" className="btn btn-primary btn-block btn-sm" color="default" >Details</Link>
+              <Link to="/roleView" className="btn btn-primary btn-block btn-sm blue" color="default" >Details</Link>
             </td>
 
           </tr>
@@ -71,7 +71,7 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
     return (
 
       <div id="" className="panel panel-primary">
-        <div className="panel-heading"> 
+        <div className="panel-heading" style={{backgroundColor: '#006b9a'}}> 
           <Row>
               <Col md={6}>
                   OPEN ROLES (Suggested)
