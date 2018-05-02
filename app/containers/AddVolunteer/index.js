@@ -19,6 +19,7 @@ import makeSelectAddVolunteer from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
+import {listRolesAction, createAction} from './actions';
 
 export class AddVolunteer extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -44,8 +45,65 @@ export class AddVolunteer extends React.Component { // eslint-disable-line react
     });
   }
 
-
+  componentDidMount(){
+    this.props.listRoles();
+  }
   
+
+  renderRoles = () => {
+    const {roles_list} = this.props.addvolunteer;
+    if (roles_list && roles_list.length > 0) {
+      return roles_list.map((role) => {
+        return(
+          <option key={Math.random()} value={role.name} >{role.name}</option>
+        );
+      });
+    }   
+  }
+
+
+
+  changeAll = (e) => {
+
+    if (e.target.files && e.target.files.length) {
+      const name = e.target.name;
+      const file = e.target.files[0];
+      const { type: fileType } = file;
+      if (fileType.indexOf("image/") === -1) {
+        alert('File not supported');
+        e.target.value = '';
+        return;
+      }
+
+      this.setState({
+        [name]: file
+      });
+
+    }
+    else {
+      const { name, value } = e.target;
+      this.setState({
+        [name]: value,
+      });
+    }
+    // this.props.history.push('dashboard');
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const obj = {
+      email: this.state.email,
+      role: this.state.role
+    }
+  
+    this.props.create(obj);
+
+    setTimeout(() => {
+      this.close();
+    }, 500);
+
+  }
+
 
   render() {
     return (
@@ -78,7 +136,7 @@ export class AddVolunteer extends React.Component { // eslint-disable-line react
                   <Col sm={6}>
                     <select className="form-control" type="select" name="role" value={this.state.role} required>
                       <option>Select Your Role</option>
-
+                      {this.renderRoles()}
                     </select>
                   </Col>
                 </div>
@@ -120,6 +178,8 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    listRoles: () => dispatch(listRolesAction()),
+    create: (payload) => dispatch(createAction(payload)),
   };
 }
 

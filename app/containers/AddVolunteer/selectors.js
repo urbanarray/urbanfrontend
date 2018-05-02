@@ -19,7 +19,13 @@ const makeSelectAddVolunteer = () => createSelector(
   (substate) => substate.toJS()
 );
 
+const makeSelectVolunteer = () => createSelector(
+  selectAddVolunteerDomain,
+  (substate) => substate.get('volunteer')
+);
+
 export default makeSelectAddVolunteer;
 export {
   selectAddVolunteerDomain,
+  makeSelectVolunteer,
 };

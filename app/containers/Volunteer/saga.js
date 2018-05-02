@@ -11,7 +11,6 @@ import { listVolunteersApi } from "./api";
 export function* listVolunteers() {
   try {
     const response = yield call(listVolunteersApi, {});
-    console.log(response)
     yield put(listedVolunteerAction(response.data.user));
   } catch (error) {
     alert('Got Error.')
