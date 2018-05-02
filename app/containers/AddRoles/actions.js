@@ -1,16 +1,16 @@
 /*
  *
- * AddVolunteer actions
+ * AddRoles actions
  *
  */
 
 import {
   DEFAULT_ACTION,
-  CREATE_VOLUNTEER_ACTION,
-  CREATED_VOLUNTEER_ACTION,
+  CREATE_ROLES_ACTION,
+  CREATED_ROLES_ACTION,
   LIST_ROLES_ACTION,
   LISTED_ROLES_ACTION,
-  
+
 } from './constants';
 
 export function defaultAction() {
@@ -19,16 +19,16 @@ export function defaultAction() {
   };
 }
 
-export function createAction(payload) {
+export function createRolesAction(payload) {
   return {
-    type: CREATE_VOLUNTEER_ACTION,
+    type: CREATE_ROLES_ACTION,
     payload
   };
 }
 
-export function createdAction(payload) {
+export function createdRolesAction(payload) {
   return {
-    type: CREATED_VOLUNTEER_ACTION,
+    type: CREATED_ROLES_ACTION,
     payload
   };
 }

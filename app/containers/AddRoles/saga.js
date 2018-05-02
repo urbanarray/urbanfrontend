@@ -1,15 +1,15 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
-import { CREATE_VOLUNTEER_ACTION , LIST_ROLES_ACTION } from "./constants";
-import { createdAction , listedRolesAction } from "./actions";
-import {makeSelectVolunteer} from "./selectors";
-import { createVolunteerApi, listRolesApi } from "./api";
+import { CREATE_ROLES_ACTION, LIST_ROLES_ACTION } from "./constants";
+import { createdRolesAction, listedRolesAction } from "./actions";
+import { makeSelectRole } from "./selectors";
+import { createRoleApi, listRolesApi } from "./api";
 
 
 export function* create() {
   try {
-    const role = yield select(makeSelectVolunteer());
-    const response = yield call(createVolunteerApi, role);
-    yield put(createdAction(response.data));
+    const role = yield select(makeSelectRole());
+    const response = yield call(createRoleApi, role);
+    yield put(createdRolesAction(response.data));
   } catch (error) {
     console.log(error)
   }
@@ -29,7 +29,7 @@ export function* index() {
 
 // Individual exports for testing
 export default function* defaultSaga() {
+  yield takeLatest(CREATE_ROLES_ACTION, create);
   yield takeLatest(LIST_ROLES_ACTION, index);
-  yield takeLatest(CREATE_VOLUNTEER_ACTION, create);
   // See example in containers/HomePage/saga.js
 }

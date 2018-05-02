@@ -30,16 +30,20 @@ export class Volunteer extends React.Component { // eslint-disable-line react/pr
     this.props.listVolunteers();
   }
 
+  handleActivate = (email) => {
+    alert(email)
+  }
+
   renderUsers = () => {
     const {volunteersList} = this.props.volunteer;
     if (volunteersList && volunteersList.length > 0) {
       return volunteersList.map((volunteer) => {
         return(
-          <tr>
-            <td> <img src={volunteer.picture} alt="avatar" style={{width:'50px', height:'50px', borderRadius: '50%'}}  /> </td>
+          <tr key={Math.random()} >
+            <td> <img src={volunteer.picture} alt="avatar" style={{width:'45px', height:'45px', borderRadius: '50%'}}  /> </td>
+            <td> {volunteer.name} </td>
             <td> {volunteer.email} </td>
-            <td> {volunteer.email} </td>
-            <td> <button className="btn btn-primary btn-sm" > Invite </button> </td>
+            <td> {(volunteer.status == 1) ? 'Active' : <button onClick={()=>this.handleActivate(volunteer.email)} className='btn btn-primary btn-sm' > Invite </button>}  </td>
           </tr>
         );
       });
@@ -61,12 +65,12 @@ export class Volunteer extends React.Component { // eslint-disable-line react/pr
           <div className="panel panel-default">
           <div className="panel-heading">
              
-            <div className='pull-right' > <AddVolunteer/>
-              
-             </div>
+            <div className='pull-right' > 
+              <AddVolunteer/>
+            </div>
              <br/>   
           </div>
-          <hr/>
+          <hr style={{marginTop: '12px', marginBottom: '0px'}} />
             { /* START table-responsive */}
             <Table id="table-ext-1" responsive bordered hover>
               <thead>

@@ -1,39 +1,39 @@
 /*
  *
- * AddVolunteer reducer
+ * AddRoles reducer
  *
  */
 
 import { fromJS } from 'immutable';
 import {
   DEFAULT_ACTION,
-  CREATE_VOLUNTEER_ACTION,
-  CREATED_VOLUNTEER_ACTION,
+  CREATE_ROLES_ACTION,
+  CREATED_ROLES_ACTION,
+  LIST_ROLES_ACTION,
   LISTED_ROLES_ACTION,
 
 } from './constants';
 
 const initialState = fromJS({
-  volunteer: null,
+  role: null,
+  roles_list:null,
   loading: false,
-  done: false,
-  roles_list:[],
-
+  done: false
 });
 
-function addVolunteerReducer(state = initialState, action) {
+function addRolesReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
-    case CREATE_VOLUNTEER_ACTION:
+    case CREATE_ROLES_ACTION:
       return state
-        .set('volunteer', action.payload)
+        .set('role', action.payload)
         .set('loading', true)
         .set('done', false);
-        
-    case CREATED_VOLUNTEER_ACTION:
+
+    case CREATED_ROLES_ACTION:
       return state
-        .set('volunteer', null)
+        .set('role', null)
         .set('loading', false)
         .set('done', true);
         
@@ -41,9 +41,9 @@ function addVolunteerReducer(state = initialState, action) {
       return state
         .set('roles_list', action.payload);
 
-      default:
+    default:
       return state;
   }
 }
 
-export default addVolunteerReducer;
+export default addRolesReducer;

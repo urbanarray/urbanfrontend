@@ -30,6 +30,7 @@ import AccountSettings from 'containers/AccountSettings/Loadable';
 import Volunteer from 'containers/Volunteer/Loadable';
 import Base from 'components/Layout/Base';
 import Auth from 'containers/Auth';
+import AddRoles from 'containers/AddRoles';
 import './style.css';
   
 // List of routes that uses the page layout
@@ -77,9 +78,9 @@ export default function App() {
           <Route path="/forgetpassword" component={ForgetPassword} /> 
           <Route path="/account-settings" component={AccountSettings} /> 
           <Route path="/list-volunteers" component={Volunteer} /> 
+          <Route path="/add-roles" component={AddRoles} />
           <Route path="/resetpassword/:code" component={ResetPassword} /> 
-          {/* <Route component={NotFoundPage}   /> */}
-          {/* <Redirect to="/" /> */}
+        
         </Base> 
       </Switch>
     </Router>
