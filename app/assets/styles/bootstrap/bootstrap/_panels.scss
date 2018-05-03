@@ -22,6 +22,7 @@
 .panel-heading {
   padding: $panel-heading-padding;
   border-bottom: 1px solid transparent;
+  background-color: #006b9a;
   @include border-top-radius(($panel-border-radius - 1));
 
   > .dropdown .dropdown-toggle {

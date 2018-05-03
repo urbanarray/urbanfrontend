@@ -102,9 +102,5 @@ injectGlobal`
     height: 100%;
     width: 100%;
   }
-
-  .lightblue{
-    background-color:#87cefa;
-  }
 `;
   

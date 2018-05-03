@@ -23,6 +23,7 @@ import messages from './messages';
 import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
+import { styles } from '../../assets/styles/variables'
 
 
 export class NeededResources extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -37,7 +38,7 @@ export class NeededResources extends React.Component { // eslint-disable-line re
         return (
           <tr key={Math.random()}>
             <td>
-              {resource.name} 
+              {resource.name}
             </td>
 
             <td>
@@ -55,11 +56,16 @@ export class NeededResources extends React.Component { // eslint-disable-line re
             </td>
             <td>
               {/* <button type="button" className="btn btn-primary btn-block btn-sm"  > Pledge </button> */}
-              <Link to="/projectView" type="button" className="btn btn-success btn-block btn-sm"  > Details/Claim </Link>
+              <Link
+                to="/projectView"
+                type="button"
+                className="btn btn-success btn-block btn-sm"
+                style={styles.primary}>Details/Claim
+              </Link>
             </td>
 
           </tr>
-    
+
         );
       });
     }
@@ -67,40 +73,40 @@ export class NeededResources extends React.Component { // eslint-disable-line re
 
   render() {
     return (
-
-      <div id="panelDemo8" className="panel panel-primary">
-        <div className="panel-heading">
-          <Row>
-            <Col md={6}>
+      <Col md={8}>
+        <div id="panelDemo8" className="panel panel-primary">
+          <div className="panel-heading" style={styles.primaryDark}>
+            <Row>
+              <Col md={6}>
                 NEEDED RESOURCES
             </Col>
 
-            <Col md={6}>
-              <form role="form" className="form-inline">
+              <Col md={6}>
+                <form role="form" className="form-inline">
 
-                <FormControl style={{ height: '24px' }} componentClass="select" multiple="" className="input-sm">
-                  <option>Miles</option>
-                </FormControl>
+                  <FormControl style={{ height: '24px' }} componentClass="select" multiple="" className="input-sm">
+                    <option>Miles</option>
+                  </FormControl>
 
-                <label style={{ margin: '0px 20px' }}> To </label>
+                  <label style={{ margin: '0px 20px' }}> To </label>
 
-                <FormControl style={{ height: '24px' }} componentClass="select" multiple="" className="input-sm">
-                  <option>Zip</option>
-                </FormControl>
+                  <FormControl style={{ height: '24px' }} componentClass="select" multiple="" className="input-sm">
+                    <option>Zip</option>
+                  </FormControl>
 
-              </form>
-            </Col>
-          </Row>
-        </div>
+                </form>
+              </Col>
+            </Row>
+          </div>
 
           { /* START table-responsive */}
           <Table id="table-ext-2" responsive striped bordered hover>
             <thead>
               <tr>
-                <th style={{width: '150px'}}>Item</th>
-                <th style={{width: '100px'}}>Quantity </th>
-                <th style={{width: '150px'}}>Project</th>
-                <th style={{width: '150px'}}>Location Needed</th>
+                <th style={{ width: '150px' }}>Item</th>
+                <th style={{ width: '100px' }}>Quantity </th>
+                <th style={{ width: '150px' }}>Project</th>
+                <th style={{ width: '150px' }}>Location Needed</th>
                 <th>Date/Time</th>
                 <th>Action</th>
               </tr>
@@ -110,13 +116,13 @@ export class NeededResources extends React.Component { // eslint-disable-line re
             </tbody>
           </Table>
           { /* END table-responsive */}
-        <div className="panel-footer">
-          <div className="text-right">
-            <Link to="#" >View All</Link>
+          <div className="panel-footer">
+            <div className="text-right">
+              <Link to="#" >View All</Link>
+            </div>
           </div>
         </div>
-      </div>
-
+      </Col>
     );
   }
 }
