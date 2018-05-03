@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import { Grid, Row, Col } from 'react-bootstrap';
-import {styles} from '../../../assets/styles/variables'
+import {styles} from '../../../../assets/styles/variables'
 import moment from 'moment/src/moment';
 
 class Clock extends Component {

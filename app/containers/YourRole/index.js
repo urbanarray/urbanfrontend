@@ -23,10 +23,10 @@ import messages from './messages';
 import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
-import {styles} from '../../assets/styles/variables'
+import { styles } from '../../assets/styles/variables'
 
 export class YourRole extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
@@ -48,39 +48,40 @@ export class YourRole extends React.Component { // eslint-disable-line react/pre
               {`${roles.startTime} - ${roles.endTime}`} <br />
               {roles.date}
             </td>
-          
+
             <td>
-              <Link 
+              <Link
                 to="/roleView"
                 type="button"
-                className="btn btn-primary btn-xs btn-block"  
+                className="btn btn-primary btn-xs btn-block"
                 style={styles.primary}>Details
               </Link>
             </td>
 
           </tr>
-     
+
         );
       });
     }
   }
   render() {
     return (
-      <div id="panelDemo8" className="panel panel-primary">
-        <div className="panel-heading" style={styles.primaryDark}> 
-          <Row>
-            <Col md={12}>
+      <Col md={4}>
+        <div id="panelDemo8" className="panel panel-primary">
+          <div className="panel-heading" style={styles.primaryDark}>
+            <Row>
+              <Col md={12}>
                 YOUR ROLES
             </Col>
-          </Row>
-        </div>
-          
+            </Row>
+          </div>
+
           { /* START table-responsive */}
           <Table id="table-ext-2" responsive striped bordered hover>
             <thead>
               <tr>
-                <th style={{width: '175px'}}>Role</th>
-                <th style={{width: '175px'}}>Project </th>
+                <th style={{ width: '175px' }}>Role</th>
+                <th style={{ width: '175px' }}>Project </th>
                 <th>Date/Time</th>
                 {/* <th></th> */}
               </tr>
@@ -90,14 +91,15 @@ export class YourRole extends React.Component { // eslint-disable-line react/pre
             </tbody>
           </Table>
           { /* END table-responsive */}
-          
+
           <div className="panel-footer">
             <div className="text-right">
               <Link to="#" >View All</Link>
             </div>
           </div>
-      
-      </div>
+
+        </div>
+      </Col>
     );
   }
 }

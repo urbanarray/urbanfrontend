@@ -27,10 +27,7 @@ import NeededResources from 'containers/NeededResources';
 import PledgedResources from 'containers/PledgedResources';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
-import Clock from './Clock';
-import HoursWorked from './HoursWorked';
-import PointsDisplay from './PointsDisplay';
-import CoinDisplay from './CoinDisplay';
+import {Clock, HoursWorked, PointsDisplay, CoinDisplay} from './widgets';
 
 export class Dashboard extends React.Component { // eslint-disable-line react/prefer-stateless-function
  
@@ -80,29 +77,13 @@ export class Dashboard extends React.Component { // eslint-disable-line react/pr
           { /* END widgets box */}
           
           <Row>
-            
-            <Col md={8}>
-              <Roles />
-            </Col>
-    
-            
-            <Col md={4}>
-              <YourRole />
-            </Col>
-    
+            <Roles />
+            <YourRole />
           </Row>
 
           <Row>
-
-            <Col md={8}>
-              <NeededResources />
-            </Col>
-
-
-            <Col md={4}>
-              <PledgedResources />
-            </Col>
-
+            <NeededResources />
+            <PledgedResources />
           </Row>
 
           { /* END row */}

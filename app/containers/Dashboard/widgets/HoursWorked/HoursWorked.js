@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Col, Row } from 'react-bootstrap';
-import {styles} from '../../../assets/styles/variables'
+import {styles} from '../../../../assets/styles/variables'
 
 const HoursWorked = (props) => (
     <Col lg={3} sm={6}>

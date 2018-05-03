@@ -19,12 +19,12 @@ import makeSelectRoles from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-import {From, Input} from 'reactstrap';
+import { From, Input } from 'reactstrap';
 import './style.css';
 import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
-import {styles} from '../../assets/styles/variables';
+import { styles } from '../../assets/styles/variables';
 
 export class Roles extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -32,17 +32,17 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
     TableExtendedRun();
   }
 
-  renderOpenRoles = ()=>{
+  renderOpenRoles = () => {
     // console.log(this.props.roles.openRoles.lenght);
     if (this.props.roles.openRoles) {
       return this.props.roles.openRoles.map((roles) => {
         return (
           <tr key={Math.random()}>
             <td>
-              {roles.title} 
+              {roles.title}
             </td>
             <td>
-              {roles.project} 
+              {roles.project}
             </td>
             <td>
               {`${roles.startTime} - ${roles.endTime}`}<br />
@@ -58,17 +58,17 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
               {roles.ac}
             </td>
             <td>
-              <Link 
+              <Link
                 to="/roleView"
                 type="button"
-                className="btn btn-primary btn-block btn-sm" 
-                color="default" 
+                className="btn btn-primary btn-block btn-sm"
+                color="default"
                 style={styles.primary}>Details
               </Link>
             </td>
 
           </tr>
-    
+
         );
       });
     }
@@ -76,60 +76,61 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
 
   render() {
     return (
-
-      <div id="" className="panel panel-primary">
-        <div className="panel-heading" style={styles.primaryDark}> 
-          <Row>
+      <Col md={8}>
+        <div id="" className="panel panel-primary">
+          <div className="panel-heading" style={styles.primaryDark}>
+            <Row>
               <Col md={6}>
-                  OPEN ROLES (Suggested)
+                OPEN ROLES (Suggested)
               </Col>
-              
-              <Col md={6}>
-              <form role="form" className="form-inline" >
 
-                <FormControl style={{ height: '24px' }} componentClass="select" multiple="" className="input-sm">
-                  <option>Miles</option>
-                </FormControl>
-                
-                <label style={{ margin: '0px 20px'}}> To </label>
-            
-                <FormControl style={{ height: '24px' }} componentClass="select" multiple="" className="input-sm">
-                  <option>Zip</option>
-                </FormControl>
-              
+              <Col md={6}>
+                <form role="form" className="form-inline" >
+
+                  <FormControl style={{ height: '24px' }} componentClass="select" multiple="" className="input-sm">
+                    <option>Miles</option>
+                  </FormControl>
+
+                  <label style={{ margin: '0px 20px' }}> To </label>
+
+                  <FormControl style={{ height: '24px' }} componentClass="select" multiple="" className="input-sm">
+                    <option>Zip</option>
+                  </FormControl>
+
                 </form>
               </Col>
-          </Row>
-        </div>
+            </Row>
+          </div>
           { /* START table-responsive */}
           <Table id="table-ext-2" responsive striped bordered hover>
             <thead>
-              <tr>         
-                <th style={{width: '200px'}}>Role</th>
-                <th style={{width: '200px'}}>Project </th>
-                <th style={{width: '150px'}}>Date/Time</th>
-                <th style={{width: '80px'}}>Duration</th>
-                <th style={{width: '80px'}}>PTS</th>
+              <tr>
+                <th style={{ width: '200px' }}>Role</th>
+                <th style={{ width: '200px' }}>Project </th>
+                <th style={{ width: '150px' }}>Date/Time</th>
+                <th style={{ width: '80px' }}>Duration</th>
+                <th style={{ width: '80px' }}>PTS</th>
                 <th>AC</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-                {
-                  this.renderOpenRoles()
-                }
+              {
+                this.renderOpenRoles()
+              }
             </tbody>
           </Table>
           { /* END table-responsive */}
-        
-        <div className="panel-footer">
-          <div className="text-right">
-          <Link to="#" >View All</Link>
-          </div>
-        </div>
 
-      </div>
-  
+          <div className="panel-footer">
+            <div className="text-right">
+              <Link to="#" >View All</Link>
+            </div>
+          </div>
+
+        </div>
+      </Col>
+
     );
   }
 }
