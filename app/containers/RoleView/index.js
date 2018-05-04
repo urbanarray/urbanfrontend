@@ -23,6 +23,7 @@ import ContentWrapper from 'components/Layout/ContentWrapper';
 import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
+import RoleDisplay from './RoleDisplay';
 
 export class RoleView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -120,36 +121,7 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
             <meta name="description" content="Description of RoleView" />
           </Helmet>
           
-          <Col md={12}>
-            <div id="panelDemo8" className="panel panel-primary">
-              <div className="panel-heading">
-                  Role: {this.props.roleview.roleDetail.role}
-              </div>
-              
-                { /* START table-responsive */}
-                <Table id="table-ext-2" responsive striped bordered hover>
-                  <thead>
-                    <tr>
-                      <th>Project</th>
-                      <th>Date/Time</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        {this.props.roleview.roleDetail.project} 
-                      </td>
-                      <td>
-                        {this.props.roleview.roleDetail.date + ' ' + this.props.roleview.roleDetail.startTime + ' to ' + this.props.roleview.roleDetail.endTime }
-                      </td>
-                    </tr>
-                  </tbody>
-                </Table>
-                { /* END table-responsive */}
-             
-              {/* <div className="panel-footer">Panel Footer</div> */}
-            </div>
-          </Col>
+          <RoleDisplay {...this.props}/>
 
         </Row>
 
