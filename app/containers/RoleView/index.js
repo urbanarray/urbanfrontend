@@ -23,6 +23,11 @@ import ContentWrapper from 'components/Layout/ContentWrapper';
 import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
+import { styles } from '../../assets/styles/variables';
+import RoleDisplay from './RoleDisplay';
+import TasksDisplay from './TasksDisplay';
+import ResourcesNeeded from './ResourcesNeeded';
+import SimilarRoles from './SimilarRoles';
 
 export class RoleView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -44,20 +49,32 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
     });
   }
 
-  
+
   renderTasks = () => {
     if (this.props.roleview.tasks && this.props.roleview.tasks.length) {
       return this.props.roleview.tasks.map((task) => {
         return (
           <tr key={Math.random()} >
-            <td> {task.title} </td>
-            <td> {task.description} </td>
-            <td>{task.date+' '+task.startTime+' '+task.endTime} </td>
-            <td>
-              <Button className="btn btn-sm btn-primary" style={{marginRight: '10px'}} > Details </Button>
-              <Button className="btn btn-sm btn-success" style={{marginRight: '10px'}} > Resources </Button>
+            <td>{task.title}</td>
+            <td>{task.description}</td>
+            <td>{`${task.date}`}<br />
+              {`${task.startTime} - ${task.endTime}`}
             </td>
-          
+            <td>
+              <Link
+                to="#"
+                type="button"
+                className="btn btn-sm btn-primary btn-block"
+                style={[{ marginRight: '10px' }, styles.primary]}>Details
+              </Link>
+              <Link
+                to="#"
+                type="button"
+                className="btn btn-sm btn-success btn-block"
+                style={[{ marginRight: '10px' }, styles.secondary]}>Resources
+              </Link>
+            </td>
+
           </tr>
         );
       });
@@ -70,15 +87,20 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
         return (
           <tr key={Math.random()}>
             <td>
-              {resource} 
+              {resource}
             </td>
 
             <td>
-              <Button className="btn btn-primary btn-xs " style={{ marginLeft: '30px' }} > Details </Button>            
+              <Link
+                to="#"
+                type="button"
+                className="btn btn-primary btn-xs btn-block"
+                style={[{ marginLeft: '30px' }, styles.primary]}>Details
+              </Link>
             </td>
 
           </tr>
-      
+
         );
       });
     }
@@ -86,166 +108,57 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
 
   renderSimilarRoles = () => {
     if (this.props.roleview.similarRoles && this.props.roleview.similarRoles.length > 0) {
-        return this.props.roleview.similarRoles.map((similarRole) => {
-          return (
-            <tr key={Math.random()} >
-              <td> {similarRole.role} </td>
-              <td> {similarRole.description} </td>
-        
-              <td> {similarRole.date+' '+similarRole.startTime + ' ' + similarRole.endTime} </td>
+      return this.props.roleview.similarRoles.map((similarRole) => {
+        return (
+          <tr key={Math.random()}>
+            <td>{similarRole.role}</td>
+            <td>{similarRole.description}</td>
 
-              <td className="col-md-3">
-                <Button className="btn btn-sm btn-primary" > Claim </Button>
-              </td>
+            <td>{similarRole.date}<br />
+              {`${similarRole.startTime} - ${similarRole.endTime}`}
+            </td>
 
-            </tr>
-          );
-        });
+            <td className="col-md-3">
+              <Link 
+                to="#"
+                type="button"
+                className="btn btn-primary btn-block"
+                style={styles.primary}>Claim
+              </Link>
+            </td>
+
+          </tr>
+        );
+      });
     }
   }
 
-  
+
   render() {
     return (
       <ContentWrapper>
-          <h3>Role View
+        <h3>Role View
           <small>
 
           </small>
-          </h3>
+        </h3>
         <Row>
-            
+
           <Helmet>
             <title>RoleView</title>
             <meta name="description" content="Description of RoleView" />
           </Helmet>
-          
-          <Col md={12}>
-            <div id="panelDemo8" className="panel panel-primary">
-              <div className="panel-heading">
-                  Role: {this.props.roleview.roleDetail.role}
-              </div>
-              
-                { /* START table-responsive */}
-                <Table id="table-ext-2" responsive striped bordered hover>
-                  <thead>
-                    <tr>
-                      <th>Project</th>
-                      <th>Date/Time</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        {this.props.roleview.roleDetail.project} 
-                      </td>
-                      <td>
-                        {this.props.roleview.roleDetail.date + ' ' + this.props.roleview.roleDetail.startTime + ' to ' + this.props.roleview.roleDetail.endTime }
-                      </td>
-                    </tr>
-                  </tbody>
-                </Table>
-                { /* END table-responsive */}
-             
-              {/* <div className="panel-footer">Panel Footer</div> */}
-            </div>
-          </Col>
+
+          <RoleDisplay {...this.props} />
 
         </Row>
 
         <Row>
-          <Col md={8}>
-            <div id="panelDemo8" className="panel panel-primary">
-              <div className="panel-heading">
-                  Tasks
-              </div>
-
-                { /* START table-responsive */}
-                <Table id="table-ext-2" responsive striped bordered hover>
-                  <thead>
-                    <tr>
-                      <th>Title</th>
-                      <th>Description </th>
-                      <th>Date/Time</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {this.renderTasks()}
-                  </tbody>
-                </Table>
-                { /* END table-responsive */}
-               
-              <div className="panel-footer">
-                <div className="text-right">
-                  <Link to="#" >View All</Link>
-                </div>
-              </div>
-            </div>
-          </Col>
-
-          <Col md={4}>
-            <div id="panelDemo8" className="panel panel-primary">
-              <div className="panel-heading">
-                  Resources/Tools Needed
-              </div>
-
-                { /* START table-responsive */}
-                <Table id="table-ext-2" responsive striped bordered hover>
-                  <thead>
-                    <tr>
-                      <th>Resource</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {this.renderResources()}
-                  </tbody>
-                </Table>
-                { /* END table-responsive */}
-
-              <div className="panel-footer">
-                <div className="text-right">
-                  <Link to="#" >View All</Link>
-                </div>
-              </div>
-
-            </div>
-          </Col>
-          
+          <TasksDisplay renderTasks={this.renderTasks} {...this.props} />
+          <ResourcesNeeded renderResources={this.renderResources} {...this.props} />
         </Row>
-        
-        <Row>
-          <Col md={8}>
-            <div id="panelDemo8" className="panel panel-primary">
-              <div className="panel-heading">
-                  Similar Roles
-              </div>
 
-                { /* START table-responsive */}
-                <Table id="table-ext-2" responsive striped bordered hover>
-                  <thead>
-                    <tr>
-                      <th>Role</th>
-                      <th>Description</th>
-                      <th>Date/Time</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {this.renderSimilarRoles()}
-                  </tbody>
-                </Table>
-                { /* END table-responsive */}
-
-              <div className="panel-footer">
-                <div className="text-right">
-                  <Link to="#" >View All</Link>
-                </div>
-              </div>
-            </div>
-          </Col>
-        </Row>
+        <SimilarRoles renderSimilarRoles={this.renderSimilarRoles} {...this.props} />
 
 
       </ContentWrapper>

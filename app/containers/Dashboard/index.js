@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import ContentWrapper from 'components/Layout/ContentWrapper';
 import { Grid, Row, Col } from 'react-bootstrap';
 
@@ -29,7 +29,7 @@ import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
 import {Clock, HoursWorked, PointsDisplay, CoinDisplay} from './widgets';
 
-export class Dashboard extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class Dashboard extends Component { // eslint-disable-line react/prefer-stateless-function
  
   constructor(props, context) {
     super(props, context);

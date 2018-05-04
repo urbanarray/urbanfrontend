@@ -21,17 +21,26 @@ import makeSelectVolunteer from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-import { listVolunteerAction } from './actions';
+import { listVolunteerAction, resendInvitationAction } from './actions';
 import AddVolunteer from 'containers/AddVolunteer';
 
 export class Volunteer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   
+  constructor(props, context) {
+    super(props)
+
+    this.state = {
+      hide: 'hide',
+      show: 'alert alert-success',
+    }
+  }
+
   componentDidMount(){
     this.props.listVolunteers();
   }
 
-  handleActivate = (email) => {
-    alert(email)
+  handleResendEmail = (email) => {
+    this.props.resendEmail({email: email})
   }
 
   renderUsers = () => {
@@ -43,12 +52,31 @@ export class Volunteer extends React.Component { // eslint-disable-line react/pr
             <td> <img src={volunteer.picture} alt="avatar" style={{width:'45px', height:'45px', borderRadius: '50%'}}  /> </td>
             <td> {volunteer.name} </td>
             <td> {volunteer.email} </td>
-            <td> {(volunteer.status == 1) ? 'Active' : <button onClick={()=>this.handleActivate(volunteer.email)} className='btn btn-primary btn-sm' > Resend Invitation </button>}  </td>
+            <td> {(volunteer.status == 1) ? 'Active' : <button onClick={()=>this.handleResendEmail(volunteer.email)} className='btn btn-primary btn-sm' > Resend Invitation </button>}  </td>
           </tr>
         );
       });
     }
   }
+
+
+  handleClick = () => {
+    this.setState({
+      show: 'hide'
+    });
+  }
+
+  renderMessage = () => {
+    return (
+      <div>
+        <p className={(this.props.volunteer.email_sent === true) ? this.state.show : this.state.hide} >
+          An Invitation has been sent.
+          <span className="pull-right" onClick={this.handleClick} > X </span>
+        </p>
+      </div>
+    );
+  }
+
 
   render() {
     return (
@@ -60,7 +88,10 @@ export class Volunteer extends React.Component { // eslint-disable-line react/pr
         </Helmet>
           <h3>Volunteers
             <small>List of all volunteers</small>
+         {console.log(this.props.volunteer.email_sent)} 
           </h3>
+          { this.renderMessage() }
+          
           { /* START panel */}
           <div className="panel panel-default">
           <div className="panel-heading">
@@ -110,7 +141,8 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    listVolunteers:() => dispatch(listVolunteerAction())
+    listVolunteers:() => dispatch(listVolunteerAction()),
+    resendEmail: (payload) => dispatch(resendInvitationAction(payload)),
   };
 } 
 
