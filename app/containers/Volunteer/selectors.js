@@ -19,7 +19,13 @@ const makeSelectVolunteer = () => createSelector(
   (substate) => substate.toJS()
 );
 
+const makeSelectEmail = () => createSelector(
+  selectVolunteerDomain,
+  (substate) => substate.get('resend_email')
+);
+
 export default makeSelectVolunteer;
 export {
   selectVolunteerDomain,
+  makeSelectEmail,
 };
