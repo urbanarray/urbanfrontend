@@ -1,36 +1,39 @@
 import React from 'react';
 
+import {Link} from 'react-router-dom';
 import {Col, Table} from 'react-bootstrap';
-import { styles } from '../../../assets/styles/variables';
 
-const RolesDisplay = (props) => (
-    <Col md={6}>
+import {styles} from '../../../assets/styles/variables';
+
+const ResourcesNeeded = (props) => (
+    <Col md={4}>
         <div id="panelDemo8" className="panel panel-primary">
             <div className="panel-heading" style={styles.primaryDark}>
-                Roles
+                All Resources Needed
               </div>
 
             { /* START table-responsive */}
             <Table id="table-ext-2" responsive striped bordered hover>
                 <thead>
                     <tr>
-                        <th style={{width: '150px'}}>Role</th>
-                        <th style={{width: '150px'}}>Project </th>
-                        <th>Date/Time</th>
-                        <th>PTS</th>
-                        <th>AC</th>
-                        <th>Action</th>
+                        <th style={{width: '150px'}}>Resource</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {props.renderRoles()}
-
+                    {props.renderResources()}
                 </tbody>
             </Table>
             { /* END table-responsive */}
-            {/* <div className="panel-footer">Panel Footer</div> */}
+
+            <div className="panel-footer">
+                <div className="text-right">
+                    <Link to="#">View All</Link>
+                </div>
+            </div>
+
         </div>
     </Col>
 )
 
-export default RolesDisplay;
+export default ResourcesNeeded;
