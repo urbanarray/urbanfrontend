@@ -31,6 +31,7 @@ import Volunteer from 'containers/Volunteer/Loadable';
 import Base from 'components/Layout/Base';
 import Auth from 'containers/Auth';
 import AddRoles from 'containers/AddRoles';
+import AcceptInvitation from 'containers/AcceptInvitation';
 import './style.css';
   
 // List of routes that uses the page layout
@@ -80,6 +81,7 @@ export default function App() {
           <Route path="/list-volunteers" component={Volunteer} /> 
           <Route path="/add-roles" component={AddRoles} />
           <Route path="/resetpassword/:code" component={ResetPassword} /> 
+          <Route path="/completeAccount/:id" component={AcceptInvitation} /> 
         
         </Base> 
       </Switch>
