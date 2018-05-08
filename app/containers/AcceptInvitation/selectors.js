@@ -29,10 +29,16 @@ const makeSelectUserData = () => createSelector(
   (substate) => substate.get('user_data')
 );
 
+const makeSelectInvitedUserData = () => createSelector(
+  selectAcceptInvitationDomain,
+  (substate) => substate.get('invited_user_data')
+);
+
 
 export default makeSelectAcceptInvitation;
 export {
   selectAcceptInvitationDomain,
   makeSelectUserId,
   makeSelectUserData,
+  makeSelectInvitedUserData,
 };

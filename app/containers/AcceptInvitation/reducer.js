@@ -11,6 +11,7 @@ import {
   USER_FOUND_ACTION,
   ACCEPT_INVITATION_ACTION,
   INVITATION_ACCEPTED_ACTION,
+  INVITED_USER_DATA_ACTION,
 } from './constants';
 
 const initialState = fromJS({
@@ -19,6 +20,7 @@ const initialState = fromJS({
   done: false,
   userId:null,
   user_data: null,
+  invited_user_data: null,
 
 });
 
@@ -42,6 +44,9 @@ function acceptInvitationReducer(state = initialState, action) {
       return state.set('accepted_invitation', null)
                 .set('loading', false)
                 .set('done', true);
+    
+    case INVITED_USER_DATA_ACTION:
+      return state.set('invited_user_data', action.payload);
 
     default:
       return state;

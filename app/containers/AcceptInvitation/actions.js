@@ -10,6 +10,7 @@ import {
   USER_FOUND_ACTION,
   ACCEPT_INVITATION_ACTION,
   INVITATION_ACCEPTED_ACTION,
+  INVITED_USER_DATA_ACTION
 } from './constants';
 
 export function defaultAction() {
@@ -41,7 +42,14 @@ export function acceptInvitationAction(payload) {
 
 export function invitationAcceptedAction(payload) {
   return {
-    type: ACCEPT_INVITATION_ACTION,
+    type: INVITATION_ACCEPTED_ACTION,
+    payload
+  };
+}
+
+export function invitedUserDataAction(payload) {
+  return {
+    type: INVITED_USER_DATA_ACTION,
     payload
   };
 }
