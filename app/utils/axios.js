@@ -7,7 +7,7 @@ const local = 'http://localhost:3000/v1/';
 
 const api = axios.create({
     
-    baseURL: onlineServer,
+    baseURL: local,
     timeout: 20000,
 });
 
