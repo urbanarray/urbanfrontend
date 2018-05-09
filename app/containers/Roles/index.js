@@ -31,13 +31,19 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
     super(props);
 
     this.state = {
-      zip: ''
+      zip: '',
+      miles: ''
     }
   }
 
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
+  }
+
+  componentDidUpdate(){
+    console.log(this.state);
+
   }
 
   getValidationState() {
@@ -47,8 +53,13 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
     return null;
   }
 
-  handleChange(e) {
-    this.setState({ value: e.target.value });
+  handleZipChange(e) {
+    this.setState({ zip: e.target.value });
+  }
+
+  handleMilesChange(e){
+    this.setState({miles: e})
+
   }
 
   renderOpenRoles = () => {
@@ -110,15 +121,16 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
                     bsSize="small"
                     title="Miles"
                     id="dropdown-size-extra-small"
+                    onSelect={(e)=>this.handleMilesChange(e).bind(this)}
                   >
-                    <MenuItem eventKey="1">5</MenuItem>
-                    <MenuItem eventKey="2">15</MenuItem>
-                    <MenuItem eventKey="3">25</MenuItem>
-                    <MenuItem eventKey="4">50</MenuItem>
-                    <MenuItem eventKey="4">100</MenuItem>
+                    <MenuItem eventKey="5">5</MenuItem>
+                    <MenuItem eventKey="15">15</MenuItem>
+                    <MenuItem eventKey="25">25</MenuItem>
+                    <MenuItem eventKey="50">50</MenuItem>
+                    <MenuItem eventKey="100">100</MenuItem>
                   </DropdownButton>
 
-                  <span style={{ margin: '0 10px' }}> To </span>
+                  <span style={{ margin: '0 10px' }}> From </span>
 
                   <FormGroup
                     controlId="formZip"
@@ -128,8 +140,8 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
                       type="text"
                       value={this.state.zip}
                       placeholder="Zip"
-                      onChange={this.handleChange}
-                      style={{padding: '0', marginTop: '10px', height: '30px', border: 'none'}}
+                      onChange={this.handleZipChange.bind(this)}
+                      style={{padding: '0', paddingLeft: '5px', marginTop: '10px', height: '30px', border: 'none'}}
                     />
                     <FormControl.Feedback />
                     <HelpBlock></HelpBlock>
