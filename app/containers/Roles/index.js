@@ -21,15 +21,45 @@ import saga from './saga';
 import messages from './messages';
 import { From, Input } from 'reactstrap';
 import './style.css';
-import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, HelpBlock, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
 import { styles } from '../../assets/styles/variables';
 
 export class Roles extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      zip: '',
+      miles: ''
+    }
+  }
+
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
+  }
+
+  componentDidUpdate(){
+    console.log(this.state);
+
+  }
+
+  getValidationState() {
+    if (/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(this.state.zip)) return 'success';
+    else if (length < 5) return 'warning';
+    else if (length > 5) return 'Must return a 5 digit zip code';
+    return null;
+  }
+
+  handleZipChange(e) {
+    this.setState({ zip: e.target.value });
+  }
+
+  handleMilesChange(e){
+    this.setState({miles: e})
+
   }
 
   renderOpenRoles = () => {
@@ -87,15 +117,35 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
               <Col md={6}>
                 <form role="form" className="form-inline" >
 
-                  <FormControl style={{ height: '24px' }} componentClass="select" multiple="" className="input-sm">
-                    <option>Miles</option>
-                  </FormControl>
+                  <DropdownButton
+                    bsSize="small"
+                    title="Miles"
+                    id="dropdown-size-extra-small"
+                    onSelect={(e)=>this.handleMilesChange(e).bind(this)}
+                  >
+                    <MenuItem eventKey="5">5</MenuItem>
+                    <MenuItem eventKey="15">15</MenuItem>
+                    <MenuItem eventKey="25">25</MenuItem>
+                    <MenuItem eventKey="50">50</MenuItem>
+                    <MenuItem eventKey="100">100</MenuItem>
+                  </DropdownButton>
 
-                  <label style={{ margin: '0px 20px' }}> To </label>
+                  <span style={{ margin: '0 10px' }}> From </span>
 
-                  <FormControl style={{ height: '24px' }} componentClass="select" multiple="" className="input-sm">
-                    <option>Zip</option>
-                  </FormControl>
+                  <FormGroup
+                    controlId="formZip"
+                    validationState={this.getValidationState()}
+                  >
+                    <FormControl
+                      type="text"
+                      value={this.state.zip}
+                      placeholder="Zip"
+                      onChange={this.handleZipChange.bind(this)}
+                      style={{padding: '0', paddingLeft: '5px', marginTop: '10px', height: '30px', border: 'none'}}
+                    />
+                    <FormControl.Feedback />
+                    <HelpBlock></HelpBlock>
+                  </FormGroup>
 
                 </form>
               </Col>

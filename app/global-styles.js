@@ -98,6 +98,13 @@ injectGlobal`
     border-radius: 0;
   }
 
+  .p-v-20{
+    padding: 20px 0;
+  }
+  fw-i{
+    font-weight: 400;
+  }
+
   [data-reactroot] {
     height: 100%;
     width: 100%;
