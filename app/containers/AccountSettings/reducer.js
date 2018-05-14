@@ -25,7 +25,7 @@ const initialState = fromJS({
   listUserSkills: null,
   done: false,
   loading: false,
-  skillId:null,
+  skillId :null,
 
 });
 

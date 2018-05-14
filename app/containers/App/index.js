@@ -33,6 +33,8 @@ import Auth from 'containers/Auth';
 import AddRoles from 'containers/AddRoles';
 import AcceptInvitation from 'containers/AcceptInvitation';
 import './style.css';
+import AddProject  from 'containers/AddProject';
+import ListProjects  from 'containers/ListProjects';
   
 // List of routes that uses the page layout
 // listed here to Switch between layouts
@@ -82,6 +84,8 @@ export default function App() {
           <Route path="/add-roles" component={AddRoles} />
           <Route path="/resetpassword/:code" component={ResetPassword} /> 
           <Route path="/completeAccount/:id" component={AcceptInvitation} /> 
+          <Route path="/addProject" component={AddProject} /> 
+          <Route path="/listProjects" component={ListProjects} /> 
         
         </Base> 
       </Switch>
