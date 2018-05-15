@@ -12,7 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import ContentWrapper from 'components/Layout/ContentWrapper';
-import {Form , FormGroup, Label, Input, Grid, Row, Col, Panel, Button, Table, Pagination,Modal } from 'react-bootstrap';
+import {Form , FormGroup, Label, Input, Ellipsis, Last, First, Prev, Next, Item, Grid, Row, Col, Panel, Button, Table, Pagination,Modal } from 'react-bootstrap';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -115,11 +115,11 @@ export class ListProjects extends React.Component { // eslint-disable-line react
 
 
   listPojects = () => {
-    const prolists = this.props.projects.list_projects;
+    const prolists = (this.props.projects.list_projects && this.props.projects.list_projects.docs) ? this.props.projects.list_projects.docs : [] ;
 
     if (prolists && prolists.length > 0) {
       return prolists.map((projects) => {
-        if(projects.status === 1) {
+        
           return(
             <tr key={Math.random()} >
               <td> {projects.name}
@@ -132,7 +132,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                   <span className="btn-label" ><i className="fa fa-check"></i></span> Update</button> </td>
             </tr>
           );
-        }
+        
       });
     }
     
@@ -155,7 +155,29 @@ export class ListProjects extends React.Component { // eslint-disable-line react
               <tbody>
               {this.listPojects()}
               </tbody>
+             
             </Table>
+
+            <Row>
+              <Col  className="text-center">
+                <Pagination>
+                  <Pagination.First value="first" />
+                  <Pagination.Item>{1}</Pagination.Item>
+                  <Pagination.Item>{2}</Pagination.Item>
+                  <Pagination.Item>{3}</Pagination.Item>
+                  <Pagination.Item>{4}</Pagination.Item>
+                  <Pagination.Item>{5}</Pagination.Item>
+                  <Pagination.Item>{6}</Pagination.Item>
+                  <Pagination.Item>{7}</Pagination.Item>
+                  <Pagination.Item>{8}</Pagination.Item>
+                  <Pagination.Item>{9}</Pagination.Item>
+                  <Pagination.Item>{10}</Pagination.Item>
+                  <Pagination.Last value="last"/>
+                </Pagination>;
+              </Col>
+            </Row>
+          
+          
           <Modal show={this.state.showModal} onHide={this.close}>
             <Modal.Header closeButton >
               <Modal.Title>Update Project</Modal.Title>
