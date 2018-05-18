@@ -175,8 +175,6 @@ export class ListProjects extends React.Component { // eslint-disable-line react
             { /* START table-responsive */}
             <Table id="table-ext-1" responsive bordered hover>
               <thead>
-                <tr>                
-                </tr>
               </thead>
               <tbody>
               {this.listPojects()}
@@ -222,7 +220,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                     
                     <Row>
                       <label className="col-sm-3 control-label mb">description</label>
-                      <Col sm={8}>
+                      <Col md={8}>
                         <textarea rows="5" style={{marginTop: '10px'}} onChange={this.handleUpdateChange} className="form-control" type="text" name="description" value={this.state.toedit.description} placeholder="description" required />
                       </Col>
 
@@ -241,7 +239,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                       {/* <Col sm={4}>
                         <input rows="5" onChange={this.handleUpdateChange} className="form-control" type="text" name="date" value={this.state.toedit.date} placeholder="date" required />
                       </Col> */}
-                      <Col sm={8}>
+                      <Col md={8}>
                         <input rows="5" style={{marginTop: '10px'}} onChange={this.handleUpdateChange} className="form-control" type="text" name="time" value={this.state.toedit.time} placeholder="time" required />
                       </Col>
 
