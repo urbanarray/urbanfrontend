@@ -146,11 +146,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
 
 
               <td>{projects.description}</td>
-              <td>{projects.place}</td>
-              <td>{projects.date}</td>
-              <td>{projects.time}</td>
-              <td>{projects.pgoals}</td>
-              <td>{projects.pkeywords}</td>
+              
               <td>
 
                 <button className='btn btn-labeled btn-danger mr btn btn-labeled btn-danger mr-default pull-right' onClick={() => this.openDelete(projects._id)}>
@@ -179,15 +175,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
             { /* START table-responsive */}
             <Table id="table-ext-1" responsive bordered hover>
               <thead>
-                <tr>
-                  <th>Project Name</th>                  
-                  <th>description</th>                  
-                  <th>place</th>                  
-                  <th>date</th>                  
-                  <th>Time</th>                  
-                  <th>Project Goals</th>                  
-                  <th>Project keywords</th>                  
-                  <th>actions</th>                  
+                <tr>                
                 </tr>
               </thead>
               <tbody>
@@ -225,22 +213,55 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                 <fieldset>
                   
                   <div className="form-group mb">
-                    <label className="col-sm-3 control-label mb">Project Name</label>
-                    <Col sm={9}>
-                      <input onChange={this.handleUpdateChange} className="form-control" type="text" name="name" value={this.state.toedit.name} placeholder="Project Name" required />
-                    </Col>
+                    <Row>
+                        <label className="col-sm-3 control-label mb">Project Name</label>
+                        <Col md={8} >
+                          <input onChange={this.handleUpdateChange} className="form-control" type="text" name="name" value={this.state.toedit.name} placeholder="Project Name" required />
+                        </Col>
+                    </Row>
                     
-                    <label className="col-sm-3 control-label mb">description</label>
-                    <Col sm={9}>
-                      <textarea rows="5" onChange={this.handleUpdateChange} className="form-control" type="text" name="description" value={this.state.toedit.description} placeholder="description" required />
-                    </Col>
-                    <Col sm={4}>
-                      <textarea rows="5" onChange={this.handleUpdateChange} className="form-control" type="text" name="place" value={this.state.toedit.place} placeholder="place"/>
-                    </Col>
+                    <Row>
+                      <label className="col-sm-3 control-label mb">description</label>
+                      <Col sm={8}>
+                        <textarea rows="5" style={{marginTop: '10px'}} onChange={this.handleUpdateChange} className="form-control" type="text" name="description" value={this.state.toedit.description} placeholder="description" required />
+                      </Col>
+
+                    </Row>
+
+                    <Row>
+                      <label className="col-sm-3 control-label mb">Place</label>
+                      <Col sm={8}>
+                      <input onChange={this.handleUpdateChange} style={{marginTop: '10px'}} className="form-control" type="text" name="place" value={this.state.toedit.place} placeholder="place"/>
+                      </Col>
+                    </Row>
                     
-                    <Col sm={4}>
-                      <textarea rows="5" onChange={this.handleUpdateChange} className="form-control" type="text" name="date" value={this.state.toedit.date} placeholder="date" required />
-                    </Col>
+                    <Row>
+                      
+                      <label className="col-sm-3 control-label mb">date and Time</label>
+                      {/* <Col sm={4}>
+                        <input rows="5" onChange={this.handleUpdateChange} className="form-control" type="text" name="date" value={this.state.toedit.date} placeholder="date" required />
+                      </Col> */}
+                      <Col sm={8}>
+                        <input rows="5" style={{marginTop: '10px'}} onChange={this.handleUpdateChange} className="form-control" type="text" name="time" value={this.state.toedit.time} placeholder="time" required />
+                      </Col>
+
+                    </Row>
+                    
+                    <Row>
+                      <label className="col-sm-3 control-label mb">Project Goals</label>
+                      <Col sm={8}>
+                      <textarea rows="3" style={{marginTop: '10px'}} onChange={this.handleUpdateChange} className="form-control" type="text" name="pgoals" value={this.state.toedit.pgoals} placeholder="Project Goals"/>
+                      </Col>
+                    </Row>
+
+                    <Row>
+                      <label className="col-sm-3 control-label mb">Project keywords</label>
+                      <Col sm={8}>
+                      <textarea rows="3" style={{marginTop: '10px'}} onChange={this.handleUpdateChange} className="form-control" type="text" name="pkeywords" value={this.state.toedit.pkeywords} placeholder="Project Keywords"/>
+                      </Col>
+                    </Row>
+
+
                   </div>
 
                 </fieldset>
