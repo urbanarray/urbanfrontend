@@ -21,7 +21,7 @@ import reducer from './reducer';
 import saga from './saga';
 
 
-import {updateAction, listProjectsAction, deleteAction} from "./actions";
+import * as a from "./actions";
 
 
 export class ListProjects extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -30,13 +30,26 @@ export class ListProjects extends React.Component { // eslint-disable-line react
     super(props)
     this.state = {
       name: '',
+      description: '',
+      place: '',
+      date: null,
+      time: null,
+      pgoals: '',
+      pkeywords: '',
       showModal: false,
       showDeleteModel: false,
-    
+      
       toedit: {
         name: '',
+        description: '',
+        place: '',
+        date: null,
+        time: null,
+        pgoals: '',
+        pkeywords: '',
       },
       modal_delete: null,
+      page_no: 1,
     };
   }
 
@@ -112,6 +125,13 @@ export class ListProjects extends React.Component { // eslint-disable-line react
     this.closedelete();
   }
 
+  handlePagination = (no) => {
+    this.setState({
+      page_no: no
+    }, () => {
+      this.props.getPagination(this.state.page_no);
+    })
+  }
 
 
   listPojects = () => {
@@ -122,14 +142,25 @@ export class ListProjects extends React.Component { // eslint-disable-line react
         
           return(
             <tr key={Math.random()} >
-              <td> {projects.name}
+              <td> {projects.name} </td>
 
-              <button className='btn btn-labeled btn-danger mr btn btn-labeled btn-danger mr-default pull-right' onClick={() => this.openDelete(projects._id)}>
-                  <span  className="btn-label" > <i className="fa fa-times"> </i> </span> Delete </button>  
+
+              <td>{projects.description}</td>
+              <td>{projects.place}</td>
+              <td>{projects.date}</td>
+              <td>{projects.time}</td>
+              <td>{projects.pgoals}</td>
+              <td>{projects.pkeywords}</td>
+              <td>
+
+                <button className='btn btn-labeled btn-danger mr btn btn-labeled btn-danger mr-default pull-right' onClick={() => this.openDelete(projects._id)}>
+                    <span  className="btn-label" > <i className="fa fa-times"> </i> </span> Delete </button>  
+                
+                
+                <button  className='btn btn-labeled btn-success mr btn btn-labeled btn-success mr-default pull-right' onClick={() => this.open(projects)}> 
+                    <span className="btn-label" ><i className="fa fa-check"></i></span> Update</button> </td>
+
               
-              
-              <button  className='btn btn-labeled btn-success mr btn btn-labeled btn-success mr-default pull-right' onClick={() => this.open(projects)}> 
-                  <span className="btn-label" ><i className="fa fa-check"></i></span> Update</button> </td>
             </tr>
           );
         
@@ -150,6 +181,13 @@ export class ListProjects extends React.Component { // eslint-disable-line react
               <thead>
                 <tr>
                   <th>Project Name</th>                  
+                  <th>description</th>                  
+                  <th>place</th>                  
+                  <th>date</th>                  
+                  <th>Time</th>                  
+                  <th>Project Goals</th>                  
+                  <th>Project keywords</th>                  
+                  <th>actions</th>                  
                 </tr>
               </thead>
               <tbody>
@@ -161,18 +199,18 @@ export class ListProjects extends React.Component { // eslint-disable-line react
             <Row>
               <Col  className="text-center">
                 <Pagination>
-                  <Pagination.First value="first" />
-                  <Pagination.Item>{1}</Pagination.Item>
-                  <Pagination.Item>{2}</Pagination.Item>
-                  <Pagination.Item>{3}</Pagination.Item>
-                  <Pagination.Item>{4}</Pagination.Item>
-                  <Pagination.Item>{5}</Pagination.Item>
-                  <Pagination.Item>{6}</Pagination.Item>
-                  <Pagination.Item>{7}</Pagination.Item>
-                  <Pagination.Item>{8}</Pagination.Item>
-                  <Pagination.Item>{9}</Pagination.Item>
-                  <Pagination.Item>{10}</Pagination.Item>
-                  <Pagination.Last value="last"/>
+                  <Pagination.Prev onClick={(e) => this.state.page_no > 1 && this.handlePagination(this.state.page_no - 1)}/>
+                  <Pagination.Item onClick={(e) => this.handlePagination(1)} active={this.state.page_no === 1} >{1}</Pagination.Item>
+                  <Pagination.Item onClick={(e) => this.handlePagination(2)} active={this.state.page_no === 2} >{2}</Pagination.Item>
+                  <Pagination.Item onClick={(e) => this.handlePagination(3)} active={this.state.page_no === 3} >{3}</Pagination.Item>
+                  <Pagination.Item onClick={(e) => this.handlePagination(4)} active={this.state.page_no === 4} >{4}</Pagination.Item>
+                  <Pagination.Item onClick={(e) => this.handlePagination(5)} active={this.state.page_no === 5} >{5}</Pagination.Item>
+                  <Pagination.Item onClick={(e) => this.handlePagination(6)} active={this.state.page_no === 6} >{6}</Pagination.Item>
+                  <Pagination.Item onClick={(e) => this.handlePagination(7)} active={this.state.page_no === 7} >{7}</Pagination.Item>
+                  <Pagination.Item onClick={(e) => this.handlePagination(8)} active={this.state.page_no === 8} >{8}</Pagination.Item>
+                  <Pagination.Item onClick={(e) => this.handlePagination(9)} active={this.state.page_no === 9} >{9}</Pagination.Item>
+                  <Pagination.Item onClick={(e) => this.handlePagination(10)} active={this.state.page_no === 10} >{10}</Pagination.Item>
+                  <Pagination.Next onClick={(e) => this.state.page_no < 10 && this.handlePagination(this.state.page_no + 1)}/>
                 </Pagination>;
               </Col>
             </Row>
@@ -190,6 +228,18 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                     <label className="col-sm-3 control-label mb">Project Name</label>
                     <Col sm={9}>
                       <input onChange={this.handleUpdateChange} className="form-control" type="text" name="name" value={this.state.toedit.name} placeholder="Project Name" required />
+                    </Col>
+                    
+                    <label className="col-sm-3 control-label mb">description</label>
+                    <Col sm={9}>
+                      <textarea rows="5" onChange={this.handleUpdateChange} className="form-control" type="text" name="description" value={this.state.toedit.description} placeholder="description" required />
+                    </Col>
+                    <Col sm={4}>
+                      <textarea rows="5" onChange={this.handleUpdateChange} className="form-control" type="text" name="place" value={this.state.toedit.place} placeholder="place"/>
+                    </Col>
+                    
+                    <Col sm={4}>
+                      <textarea rows="5" onChange={this.handleUpdateChange} className="form-control" type="text" name="date" value={this.state.toedit.date} placeholder="date" required />
                     </Col>
                   </div>
 
@@ -242,9 +292,10 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    listprojects: () => dispatch(listProjectsAction()),
-    update : (payload) => dispatch(updateAction(payload)),
-    deleteProject : (payload) => dispatch(deleteAction(payload)) 
+    listprojects: () => dispatch(a.listProjectsAction()),
+    update : (payload) => dispatch(a.updateAction(payload)),
+    deleteProject : (payload) => dispatch(a.deleteAction(payload)),
+    getPagination: (payload) => dispatch(a.getPagination(payload)) 
   };
 }
 

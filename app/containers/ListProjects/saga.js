@@ -1,14 +1,15 @@
 import {takeLatest, call, put, select} from 'redux-saga/effects';
-import {LIST_PROJECTS_ACTION, UPDATE_PROJECT_ACTION, DELETE_PROJECT_ACTION} from "./constants";
+import {LIST_PROJECTS_ACTION, UPDATE_PROJECT_ACTION, DELETE_PROJECT_ACTION, SET_PAGINATION, GET_PAGINATION} from "./constants";
 import {listProjectsApi, updateProjectApi, deleteProjectApi} from "./api";
 import {listedProjectsAction, updatedAction, deletedAction} from "./actions";
-import { makeSelectUpdateProject, makeSelectProjectId } from "./selectors";
+import makeSelectListProjects, {makeSelectUpdateProject, makeSelectProjectId}
+from "./selectors";
 
 
 export function* listProjects() {
   try {
-    const response = yield call(listProjectsApi, {});
-    // console.log(response); 
+    const { pagination } = yield select(makeSelectListProjects());
+    const response = yield call(listProjectsApi, pagination);
     yield put(listedProjectsAction(response.data.project));
   } catch (error) {
     alert('Got Error.')
@@ -17,6 +18,7 @@ export function* listProjects() {
 }
 
 export function* update(params) {
+  
   const projectDetails = yield select(makeSelectUpdateProject());
   const response = yield call(updateProjectApi, projectDetails);
   console.log(response);
@@ -49,5 +51,6 @@ export default function* defaultSaga() {
   yield takeLatest(LIST_PROJECTS_ACTION, listProjects);
   yield takeLatest(UPDATE_PROJECT_ACTION, update);
   yield takeLatest(DELETE_PROJECT_ACTION, deleteProject);
+  yield takeLatest(GET_PAGINATION, listProjects);
   // See example in containers/HomePage/saga.js
 }

@@ -1,7 +1,7 @@
 import axios from 'utils/axios';
 
-export const listProjectsApi = () => {
-    return axios.get('project/index');
+export const listProjectsApi = (pagination) => {
+    return axios.get(`project/index?page=${pagination.page_no}&limit=${pagination.limit}`);
 }
 
 export const updateProjectApi = (data) => {
