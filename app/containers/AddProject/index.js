@@ -11,7 +11,7 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
-import { Grid, Row,Col,Panel,Button,FormControl
+import { Grid, Row,Col,Panel,Button,FormControl, Textarea
 } from 'react-bootstrap';
 import ContentWrapper from '../../components/Layout/ContentWrapper';
 import injectSaga from 'utils/injectSaga';
@@ -28,6 +28,12 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
     super(props);
     this.state = {
       name: '',
+      description: '',
+      place: '',
+      date: '',
+      time: '',
+      pgoals: '',
+      pkeywords: '',
       userId:(this.props.currentUser && this.props.currentUser.user)?this.props.currentUser.user.id : '',
       show: false,
       // show:'alert alert-success',
@@ -45,10 +51,27 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
     e.preventDefault();
 
     // userid = this
-    this.props.addPro({name: this.state.name, userId: this.state.userId});
+    this.props.addPro(
+      {
+        name: this.state.name, 
+        description: this.state.description, 
+        place: this.state.place,
+        date: this.state.date,
+        time: this.state.time,
+        pgoals: this.state.pgoals,
+        pkeywords: this.state.pkeywords,
+        userId: this.state.userId});
       setTimeout(() => {
         this.setState(
-          {'name':''}
+          {
+            'name':'',
+            'description': '',
+            'place': '',
+            'date': '',
+            'pgoals': '',
+            'pkeywords': '',
+            'time': '',
+          }
         );
         
       }, 500);
@@ -92,8 +115,9 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
                   </div>
                   <div className="panel-body">
                     {this.renderFleshmsh()}
+                  <Col md={12} >
                     <div className="form-group">
-                      <label className="control-label">Name *</label>
+                      <label className="control-label">Project Name *</label>
                       <p style={{
                         color: 'red'
                       }}>
@@ -108,6 +132,127 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
                         required="required"
                         className="form-control"/>
                     </div>
+                  </Col>
+                  <Col md={12}>
+                    <div className="form-group">
+                      <label className="control-label">Description</label>
+                      <p style={{
+                        color: 'red'
+                      }}>
+                        {/* {this.state.projectname} */}
+                      </p>
+                      <FormControl
+                        id="description"
+                        type="description"
+                        name="description"
+                        rows="5"
+                        componentClass="textarea"
+                        placeholder="Description"
+                        value={this.state.description}
+                        required="required"
+                        className="form-control" />
+                    </div>
+                  </Col>
+                  <Col md={12 }>
+                    <div className="form-group">
+                      <label className="control-label">Place</label>
+                      <p style={{
+                        color: 'red'
+                      }}>
+                        {/* {this.state.projectname} */}
+                      </p>
+                      <FormControl
+                        id="place"
+                        type="place"
+                        name="place"
+                        rows="5"
+                        placeholder="place"
+                        value={this.state.place}
+                        className="form-control" />
+                    </div>
+                  </Col>
+                  
+                  <Col md={6}>
+                    <div className="form-group">
+                      <label className="control-label">Date</label>
+                      <p style={{
+                        color: 'red'
+                      }}>
+                        {/* {this.state.projectname} */}
+                      </p>
+                      <FormControl
+                        id="date  "
+                        type="date"
+                        name="date"
+                        rows="5"
+                        placeholder="date"
+                        value={this.state.date}
+                        className="form-control" />
+                    </div>
+                  </Col>
+                  
+
+                    <Col md={6}>
+                      <div className="form-group">
+                        <label className="control-label">Time</label>
+                        <p style={{
+                          color: 'red'
+                        }}>
+                          {/* {this.state.projectname} */}
+                        </p>
+                        <FormControl
+                          id="time"
+                          type="timedate"
+                          name="time"
+                          rows="5"
+                          placeholder="time"
+                          value={this.state.time}
+                          className="form-control" />
+                      </div>
+                    </Col>
+
+                    <Col md={6}>
+                      <div className="form-group">
+                        <label className="control-label">Project Goals</label>
+                        <p style={{
+                          color: 'red'
+                        }}>
+                          {/* {this.state.projectname} */}
+                        </p>
+                        <FormControl
+                          id="pgoals"
+                          type="pgoals"
+                          name="pgoals"
+                          rows="5"
+                          componentClass="textarea"
+                          placeholder="Project Goals"
+                          value={this.state.pgoals}
+                          required="required"
+                          className="form-control" />
+                      </div>
+                    </Col>
+
+                    <Col md={6}>
+                      <div className="form-group">
+                        <label className="control-label">Project Keywords</label>
+                        <p style={{
+                          color: 'red'
+                        }}>
+                          {/* {this.state.projectname} */}
+                        </p>
+                        <FormControl
+                          id="pkeywords"
+                          type="pkeywords"
+                          name="pkeywords"
+                          rows="5"
+                          componentClass="textarea"
+                          placeholder="Project Keywords"
+                          value={this.state.pkeywords}
+                          required="required"
+                          className="form-control" />
+                      </div>
+                    </Col>  
+
                   </div>
                   <div className="panel-footer">
                     <div className="clearfix">
