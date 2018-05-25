@@ -5,11 +5,11 @@
  */
 
 import { fromJS } from 'immutable';
-import {
-  DEFAULT_ACTION,
-} from './constants';
+import * as c from './constants';
 
 const initialState = fromJS({
+  id: null,
+  projectDetail: null,
   projectView:
     {
       name: 'Garden',
@@ -122,8 +122,16 @@ const initialState = fromJS({
 
 function projectViewReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
+    case c.DEFAULT_ACTION:
       return state;
+    case c.PROJECT_VIEW_ACTION:
+      return state
+        .set('id', action.payload)
+
+    case c.PROJECT_VIEWED_ACTION:
+      return state
+        .set('projectDetail', action.payload)
+        
     default:
       return state;
   }

@@ -4,27 +4,37 @@
  *
  */
 
-import {
-  DEFAULT_ACTION,
-  ADD_PROJECT_ACTION,
-  ADDED_PROJECT_ACTION
-} from './constants';
+import * as c from './constants';
 
 export function defaultAction() {
   return {
-    type: DEFAULT_ACTION,
+    type: c.DEFAULT_ACTION,
   };
 }
 export function addProjectAction(payload) {
   return {
-    type: ADD_PROJECT_ACTION,
+    type: c.ADD_PROJECT_ACTION,
     payload
   };
 }
 
 export function addedProjectAction(payload) {
   return {
-    type: ADDED_PROJECT_ACTION,
+    type: c.ADDED_PROJECT_ACTION,
+    payload
+  };
+}
+
+export function listPlacesAction() {
+
+  return {
+    type: c.LIST_PLCACES_ACTION,
+  };
+}
+
+export function listedPlacesAction(payload) {
+  return {
+    type: c.LISTED_PLCACES_ACTION,
     payload
   };
 }

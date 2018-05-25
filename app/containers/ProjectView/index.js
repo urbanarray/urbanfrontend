@@ -32,6 +32,7 @@ import RolesDisplay from './RolesDisplay';
 import ResourcesDisplay from './ResourcesDisplay';
 import TimelineRoles from './TimelineRoles';
 import {styles} from '../../assets/styles/variables';
+import { viewProject } from './actions';
 
 export class ProjectView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -45,10 +46,12 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
+    this.props.viewProjects(this.props.match.params.id)
+   
   }
 
   handleSelect(key) {
-    console.log('Tab selected ' + key);
+    // console.log('Tab selected ' + key);
     this.setState({
       key
     });
@@ -80,6 +83,16 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
             </div>
           ) 
         });
+    }
+  }
+
+  functionDisplay = () => {
+    if(this.props.projectview && this.props.projectview.projectDetail && this.props.projectview.projectDetail.place) {
+      // console.log(this.props.projectview.projectDetail.place)
+      return (
+        <LocationDisplay location={this.props.projectview.projectDetail.place} />
+        
+      )
     }
   }
 
@@ -180,6 +193,7 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
             <small>
               Project Details
             </small>
+            
         </h3>
         
         <Row>
@@ -187,7 +201,7 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
           
           <Col md={6}>
            <Row>
-              <LocationDisplay {...this.props}/>
+              {this.functionDisplay()}
               <ProjectTime {...this.props} />
            </Row>
            
@@ -220,6 +234,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    viewProjects : (id) => dispatch(viewProject(id))
   };
 }
 
