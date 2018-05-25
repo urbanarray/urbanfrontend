@@ -88,7 +88,7 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
 
   functionDisplay = () => {
     if(this.props.projectview && this.props.projectview.projectDetail && this.props.projectview.projectDetail.place) {
-      // console.log(this.props.projectview.projectDetail.place)
+      console.log(this.props.projectview.projectDetail.place)
       return (
         <LocationDisplay location={this.props.projectview.projectDetail.place} />
         
@@ -173,11 +173,10 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
     }
   }
 
-  renderProjectGoals = () => {
-    if (this.props.projectview.projectView && this.props.projectview.projectView.goals.length > 0) {
-      return this.props.projectview.projectView.goals.map((goal, index) => {
-        return <li key={Math.random()} > {goal} </li>
-      });
+  renderProjectDetails = () => {
+    console.log(this.props.projectview)
+    if (this.props.projectview.projectDetail) {
+          return <ProjectDetails projectDetail = {this.props.projectview.projectDetail} />      
     }
   }
 
@@ -197,7 +196,7 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
         </h3>
         
         <Row>
-          <ProjectDetails renderProjectGoals={this.renderProjectGoals} {...this.props} />
+          {this.renderProjectDetails()}
           
           <Col md={6}>
            <Row>

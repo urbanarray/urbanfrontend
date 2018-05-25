@@ -15,7 +15,7 @@ export default class ProjectDetails extends React.Component {
             <Col md={6}>
                 <div id="panelDemo8" className="panel panel-primary">
                     <div className="panel-heading" style={styles.primaryDark}>
-                        Project: {(this.props.projectview.projectDetail.name)}
+                        Project: {(this.props.projectDetail.name)}
                     </div>
     
                     <div className="panel-body">
@@ -24,11 +24,12 @@ export default class ProjectDetails extends React.Component {
     
                             <div className="col-md-12">
                                 <h4>Project Description</h4>
-                                <p>{this.props.projectview.projectDetail.description} </p>
+                                 {(this.props.projectDetail.description)}
+                                {/* <p>{this.props.projectview.projectDetail.description} </p> */}
                                 <br />
                                 <br />
                                 <h4>Project Goals</h4>
-                                {this.props.renderProjectGoals()}
+                                 {(this.props.projectDetail.pgoals)}
                                 <br />
                                 <br />
     
