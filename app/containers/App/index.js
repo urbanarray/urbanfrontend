@@ -35,6 +35,7 @@ import AcceptInvitation from 'containers/AcceptInvitation';
 import './style.css';
 import AddProject  from 'containers/AddProject';
 import ListProjects  from 'containers/ListProjects';
+import ListPlaces  from 'containers/Places';
   
 // List of routes that uses the page layout
 // listed here to Switch between layouts
@@ -74,7 +75,7 @@ export default function App() {
           <Route path="/profile" component={Profile} />
           <Route path="/logout" component={Logout} />
           <Route path="/dashboard" component={Dashboard} />
-          <Route path="/projectView" component={ProjectView} />
+          <Route path="/projectView/:id" component={ProjectView} />
           <Route path="/roleView" component={RoleView} />  
           <Route path="/resendEmail/:id" component={ResendEmail} /> 
           <Route path="/verify/:id" component={VerifyAccount} /> 
@@ -86,6 +87,7 @@ export default function App() {
           <Route path="/completeAccount/:id" component={AcceptInvitation} /> 
           <Route path="/addProject" component={AddProject} /> 
           <Route path="/listProjects" component={ListProjects} /> 
+          <Route path="/places" component={ListPlaces} /> 
         
         </Base> 
       </Switch>

@@ -48,7 +48,7 @@ function listProjectsReducer(state = initialState, action) {
         return state
           .set('deleteProject', action.payload);
       
-      case c.GET_PAGINATION:
+          case c.GET_PAGINATION:
         const pg = fromJS(state.get('pagination')).toJS();
         pg.page_no = action.payload;
         return state.set('pagination', pg);

@@ -396,15 +396,45 @@ class Sidebar extends React.Component {
                             </li>
 
                             <li
-                                className={this.routeActive(['projectsList', 'createProject', 'myProjects', 'blog-article-view'])
+                                className={this.routeActive(['places'])
                                 ? 'active'
                                 : ''}>
                                 <div
                                     className="nav-item"
-                                    title="Projects"
+                                    title="Places"
                                     onClick={this
                                     .toggleItemCollapse
-                                    .bind(this, 'blog')}>
+                                    .bind(this, 'places')}>
+                                    <em className="icon-notebook"></em>
+                                    <span>Places</span>
+                                </div>
+                                <Collapse in={this.state.collapse.places}>
+                                    <ul id="" className="nav sidebar-subnav">
+                                        <li className="sidebar-subnav-header">Places</li>
+                                        <li
+                                            className={this.routeActive('places')
+                                            ? 'active'
+                                            : ''}>
+                                            <Link to="places" title="List">
+                                                <span>List Places</span>
+                                            </Link>
+                                        </li>
+                                        
+
+                                    </ul>
+                                </Collapse>
+                            </li>
+
+                            <li
+                                className={this.routeActive(['projectsList', 'createProject', 'myProjects', 'blog-article-view'])
+                                    ? 'active'
+                                    : ''}>
+                                <div
+                                    className="nav-item"
+                                    title="Projects"
+                                    onClick={this
+                                        .toggleItemCollapse
+                                        .bind(this, 'blog')}>
                                     <em className="icon-notebook"></em>
                                     <span>Projects</span>
                                 </div>
@@ -413,26 +443,26 @@ class Sidebar extends React.Component {
                                         <li className="sidebar-subnav-header">Projects</li>
                                         <li
                                             className={this.routeActive('projectsList')
-                                            ? 'active'
-                                            : ''}>
-                                            <Link to="listProjects" title="List">
+                                                ? 'active'
+                                                : ''}>
+                                            <Link to="/listProjects" title="List">
                                                 <span>List Projects</span>
                                             </Link>
                                         </li>
                                         <li
                                             className={this.routeActive('createProject')
-                                            ? 'active'
-                                            : ''}>
-                                            <Link to="addProject" title="Create Project">
+                                                ? 'active'
+                                                : ''}>
+                                            <Link to="/addProject" title="Create Project">
                                                 <span>Create Project</span>
                                             </Link>
                                         </li>
 
                                         <li
                                             className={this.routeActive('myProjects')
-                                            ? 'active'
-                                            : ''}>
-                                            <Link to="myProjects" title="My Projects">
+                                                ? 'active'
+                                                : ''}>
+                                            <Link to="/myProjects" title="My Projects">
                                                 <span>My Projects</span>
                                             </Link>
                                         </li>

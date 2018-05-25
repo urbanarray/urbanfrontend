@@ -81,6 +81,12 @@ export class ListProjects extends React.Component { // eslint-disable-line react
     });
   }
 
+  projectFullInfo = (id) => {
+  
+    this.props.history.push('projectView/' + id);
+    
+  }
+
 
   changeAll = (e) => {
     const { name, value } = e.target;
@@ -149,13 +155,19 @@ export class ListProjects extends React.Component { // eslint-disable-line react
               
               <td>
 
+
                 <button className='btn btn-labeled btn-danger mr btn btn-labeled btn-danger mr-default pull-right' onClick={() => this.openDelete(projects._id)}>
                     <span  className="btn-label" > <i className="fa fa-times"> </i> </span> Delete </button>  
                 
                 
                 <button  className='btn btn-labeled btn-success mr btn btn-labeled btn-success mr-default pull-right' onClick={() => this.open(projects)}> 
-                    <span className="btn-label" ><i className="fa fa-check"></i></span> Update</button> </td>
+                    <span className="btn-label" ><i className="fa fa-check"></i></span> Update</button> 
+                    
 
+                <button className='btn btn-labeled btn-info mr btn btn-labeled btn-info mr-default pull-right' onClick={() => this.projectFullInfo(projects._id)}>
+                  <span className="btn-label" > <i className="fa fa-info"> </i> </span> Info </button>
+              
+              </td>
               
             </tr>
           );

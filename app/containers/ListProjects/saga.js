@@ -21,7 +21,7 @@ export function* update(params) {
   
   const projectDetails = yield select(makeSelectUpdateProject());
   const response = yield call(updateProjectApi, projectDetails);
-  console.log(response);
+  
 
   const project = response.data.project;
   yield put(updatedAction(response.data.project));

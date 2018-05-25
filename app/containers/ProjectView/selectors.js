@@ -19,7 +19,13 @@ const makeSelectProjectView = () => createSelector(
   (substate) => substate.toJS()
 );
 
+const projectId = () => createSelector(
+  selectProjectViewDomain,
+  (substate) => substate.get('id')
+)
+
 export default makeSelectProjectView;
 export {
   selectProjectViewDomain,
+  projectId
 };

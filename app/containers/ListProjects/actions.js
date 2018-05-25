@@ -52,6 +52,10 @@ export function deletedAction(payload) {
   };
 }
 
+
+
+
+
 export const getPagination = (payload) => (
   {
     type: c.GET_PAGINATION,

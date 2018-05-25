@@ -24,10 +24,17 @@ const makeSelectAddPro = () => createSelector(
   (substate) => substate.get('add_project'),
 );
 
+const makeSelectListPlaces = () => createSelector(
+  selectAddProjectDomain,
+  (substate) => substate.get('list_places'),
+);
+
 
 
 export default makeSelectAddProject;
 export {
+  makeSelectAddProject,
   selectAddProjectDomain,
   makeSelectAddPro,
+  makeSelectListPlaces,
 };

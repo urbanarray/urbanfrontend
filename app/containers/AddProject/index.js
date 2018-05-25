@@ -16,11 +16,13 @@ import { Grid, Row,Col,Panel,Button,FormControl, Textarea
 import ContentWrapper from '../../components/Layout/ContentWrapper';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectAddProject from './selectors';
+import  {makeSelectAddProject, makeSelectListPlaces} from './selectors';
 import reducer from './reducer';
-import saga from './saga';
+import saga from './saga';``
 import {makeSelectCurrentUser} from 'containers/App/selectors';
-import {addProjectAction} from './actions';
+import {addProjectAction, listPlacesAction} from './actions';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 export class AddProject extends React.Component { // eslint-disable-line react/prefer-stateless-function
   
@@ -29,6 +31,7 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
     this.state = {
       name: '',
       description: '',
+      projectType: '',
       place: '',
       date: '',
       time: '',
@@ -39,13 +42,15 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
       // show:'alert alert-success',
     }
   }
-
+  
   handleChange = (e) => {
-
+  
     const {name, value} = e.target;
     this.setState({[name]: value});
     
   }
+
+  
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -76,14 +81,39 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
         
       }, 500);
       this.handleClick(true);
-  }
-
-  handleClick = (value) => {
+    }
+    
+    
+    handleClick = (value) => {
     this.setState({
       show: value,
     });
 
   }
+
+  componentDidMount(){
+    this.props.listPlace();
+  }
+
+  renderSelect = () => {
+    console.log(this.props.addproject.list_places);
+    if(this.props.addproject && this.props.addproject.list_places && this.props.addproject.list_places.places){
+      const places = this.props.addproject.list_places.places;
+    
+      return places.map((place) => {
+        console.log(place);
+        return (
+          
+          
+    
+            <option  key={Math.random()} value={place._id}>{place.name}</option>
+    
+        )
+      })
+    } 
+
+  }
+
 
   renderFleshmsh = () => {
     return ( 
@@ -153,7 +183,21 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
                         className="form-control" />
                     </div>
                   </Col>
-                  <Col md={12 }>
+                    <Col md={6}>
+                      <div className="form-group">
+                        <label className="control-label">Project Type</label>
+                        <p style={{
+                          color: 'red'
+                        }}>
+                          {/* {this.state.projectname} */}
+                        </p>
+                        <select value={this.state.projectType} name="projectType" className="form-control">
+                          <option value={1}>Urban Farming</option>
+                          <option value={2}>Building Rehab</option>
+                        </select>
+                      </div>
+                    </Col>
+                  <Col md={6}>
                     <div className="form-group">
                       <label className="control-label">Place</label>
                       <p style={{
@@ -161,14 +205,9 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
                       }}>
                         {/* {this.state.projectname} */}
                       </p>
-                      <FormControl
-                        id="place"
-                        type="place"
-                        name="place"
-                        rows="5"
-                        placeholder="place"
-                        value={this.state.place}
-                        className="form-control" />
+                        <select value={this.state.place} name="place" className="form-control">
+                          {this.renderSelect()}
+                        </select>
                     </div>
                   </Col>
                   
@@ -219,7 +258,16 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
                         }}>
                           {/* {this.state.projectname} */}
                         </p>
-                        <FormControl
+                        <ReactQuill 
+                          id="pgoals"
+                          name="pgoals"
+                          rows={15}                          
+                          componentClass="textarea"
+                          placeholder="Enable bullets for list points"
+                          value={this.state.pgoals}
+                          required="required"
+                           />
+                        {/* <FormControl
                           id="pgoals"
                           type="pgoals"
                           name="pgoals"
@@ -228,7 +276,7 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
                           placeholder="Project Goals"
                           value={this.state.pgoals}
                           required="required"
-                          className="form-control" />
+                          className="form-control" /> */}
                       </div>
                     </Col>
 
@@ -282,12 +330,16 @@ AddProject.propTypes = {
 const mapStateToProps = createStructuredSelector({
   addproject: makeSelectAddProject(),
   currentUser: makeSelectCurrentUser(),
+  ListPlace: makeSelectListPlaces(),
+  
 });
  
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     addPro : (payload) => dispatch(addProjectAction(payload)),
+    listPlace: () => dispatch(listPlacesAction()),
+
     
   };
 }
