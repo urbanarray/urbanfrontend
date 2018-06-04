@@ -16,3 +16,6 @@ export const DELETED_PROJECT_ACTION = 'app/ProjectDetails/DELETED_PROJECT_ACTION
 
 export const GET_PAGINATION = 'app/ProjectDetails/GET_PAGINATION';
 export const SET_PAGINATION = 'app/ProjectDetails/SET_PAGINATION';
+
+export const LIST_PLACES_ACTION = 'app/ProjectDetails/LIST_PLACES_ACTION';
+export const LISTED_PLACES_ACTION = 'app/ProjectDetails/LISTED_PLACES_ACTION';

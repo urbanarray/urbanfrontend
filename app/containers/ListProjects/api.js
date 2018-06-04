@@ -9,5 +9,13 @@ export const updateProjectApi = (data) => {
 }
 
 export const deleteProjectApi = (id) => {
+    
     return axios.delete('project/delete/' + id);
+
+}
+
+export const listPlacesApi = () => {
+
+    return axios.get('places/index');
+
 }
