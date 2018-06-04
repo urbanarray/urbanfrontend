@@ -31,11 +31,19 @@ const makeSelectProjectId = () => createSelector(
 );
 
 
+const makeSelectPlaces = () => createSelector(
+  selectListProjectsDomain,
+  (substate) => substate.get('list_places')
+
+);
+
 export default makeSelectListProjects;
 export {
   selectListProjectsDomain,
    makeSelectUpdateProject,
-   makeSelectProjectId
+  makeSelectListProjects,
+   makeSelectProjectId,
+   makeSelectPlaces
    
   
 };

@@ -41,12 +41,21 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
       show: false,
       // show:'alert alert-success',
     }
+    this.handleQuill = this.handleQuill.bind(this)
   }
   
   handleChange = (e) => {
-  
+
     const {name, value} = e.target;
     this.setState({[name]: value});
+    
+  }
+
+  handleQuill = (value) => {
+
+    this.setState({
+      pgoals: value,
+    });
     
   }
 
@@ -60,6 +69,7 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
       {
         name: this.state.name, 
         description: this.state.description, 
+        projectType: this.state.projectType,
         place: this.state.place,
         date: this.state.date,
         time: this.state.time,
@@ -71,6 +81,7 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
           {
             'name':'',
             'description': '',
+            'projectType': '',
             'place': '',
             'date': '',
             'pgoals': '',
@@ -88,7 +99,7 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
     this.setState({
       show: value,
     });
-
+    console.log(this.state);
   }
 
   componentDidMount(){
@@ -96,12 +107,10 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
   }
 
   renderSelect = () => {
-    console.log(this.props.addproject.list_places);
     if(this.props.addproject && this.props.addproject.list_places && this.props.addproject.list_places.places){
-      const places = this.props.addproject.list_places.places;
+      const places = this.props.addproject.list_places.places; 
     
       return places.map((place) => {
-        console.log(place);
         return (
           
           
@@ -138,7 +147,7 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
           <Row>
             <Col md={10} className="col-md-offset-1">
               <form method="post" action="#" data-parsley-validate="" onChange={this.handleChange} onSubmit={this.handleSubmit} noValidate>
-                
+                  console.log(e);
                 <div className="panel panel-default">
                   <div className="panel-heading">
                     <div className="panel-title">Create Project</div>
@@ -229,8 +238,6 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
                         className="form-control" />
                     </div>
                   </Col>
-                  
-
                     <Col md={6}>
                       <div className="form-group">
                         <label className="control-label">Time</label>
@@ -259,13 +266,11 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
                           {/* {this.state.projectname} */}
                         </p>
                         <ReactQuill 
-                          id="pgoals"
                           name="pgoals"
-                          rows={15}                          
-                          componentClass="textarea"
-                          placeholder="Enable bullets for list points"
-                          value={this.state.pgoals}
+                          value ={this.state.pgoals}
                           required="required"
+                          type="text"
+                          onChange={this.handleQuill}
                            />
                         {/* <FormControl
                           id="pgoals"
@@ -289,8 +294,7 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
                           {/* {this.state.projectname} */}
                         </p>
                         <FormControl
-                          id="pkeywords"
-                          type="pkeywords"
+                          type="text"
                           name="pkeywords"
                           rows="5"
                           componentClass="textarea"

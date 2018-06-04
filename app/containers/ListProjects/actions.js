@@ -52,6 +52,19 @@ export function deletedAction(payload) {
   };
 }
 
+export function listPlacesAction() {
+  return {
+    type: c.LIST_PLACES_ACTION,
+  };
+}
+
+export function listedPlacesAction(payload) {
+  return {
+    type: c.LISTED_PLACES_ACTION,
+    payload
+  };
+}
+
 
 
 

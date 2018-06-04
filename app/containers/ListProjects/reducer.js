@@ -15,6 +15,11 @@ const initialState = fromJS({
   done: false,
   name: null,
   updateDone: null,
+
+  list_places: null,
+  loading_places: null,
+  done_places: null,
+
   deleteProject: null,
   pagination: {
     page_no: 1,
@@ -48,7 +53,18 @@ function listProjectsReducer(state = initialState, action) {
         return state
           .set('deleteProject', action.payload);
       
-          case c.GET_PAGINATION:
+      case c.LIST_PLACES_ACTION:
+        return state
+          .set('list_places', null)
+          .set('loading_places', true)
+          .set('done_places', false);
+      case c.LISTED_PLACES_ACTION:
+        return state
+          .set('list_places', action.payload)
+          .set('loading_places', false)
+          .set('done_places', true);
+      
+      case c.GET_PAGINATION:
         const pg = fromJS(state.get('pagination')).toJS();
         pg.page_no = action.payload;
         return state.set('pagination', pg);

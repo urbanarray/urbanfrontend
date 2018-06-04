@@ -88,7 +88,7 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
 
   functionDisplay = () => {
     if(this.props.projectview && this.props.projectview.projectDetail && this.props.projectview.projectDetail.place) {
-      console.log(this.props.projectview.projectDetail.place)
+   
       return (
         <LocationDisplay location={this.props.projectview.projectDetail.place} />
         
@@ -174,7 +174,6 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
   }
 
   renderProjectDetails = () => {
-    console.log(this.props.projectview)
     if (this.props.projectview.projectDetail) {
           return <ProjectDetails projectDetail = {this.props.projectview.projectDetail} />      
     }

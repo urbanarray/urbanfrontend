@@ -1,8 +1,8 @@
 import {takeLatest, call, put, select} from 'redux-saga/effects';
-import {LIST_PROJECTS_ACTION, UPDATE_PROJECT_ACTION, DELETE_PROJECT_ACTION, SET_PAGINATION, GET_PAGINATION} from "./constants";
-import {listProjectsApi, updateProjectApi, deleteProjectApi} from "./api";
-import {listedProjectsAction, updatedAction, deletedAction} from "./actions";
-import makeSelectListProjects, {makeSelectUpdateProject, makeSelectProjectId}
+import {LIST_PROJECTS_ACTION, UPDATE_PROJECT_ACTION, DELETE_PROJECT_ACTION,LIST_PLACES_ACTION,LISTED_PLACES_ACTION, SET_PAGINATION, GET_PAGINATION} from "./constants";
+import {listProjectsApi, updateProjectApi, deleteProjectApi, listPlacesApi} from "./api";
+import {listedProjectsAction, updatedAction, deletedAction, listedPlacesAction} from "./actions";
+import makeSelectListProjects, {makeSelectUpdateProject, makeSelectProjectId, makeSelectPlaces}
 from "./selectors";
 
 
@@ -42,6 +42,21 @@ export function* deleteProject() {
 
 }
 
+export function* listPlaces() {
+  try {
+    
+    const listPlaces = yield select(makeSelectPlaces());
+    const response = yield call(listPlacesApi, listPlaces);
+    // console.log(response);
+    yield put(listedPlacesAction(response.data.places));
+ 
+  } catch (error) {
+    console.log('error');
+  }
+
+
+}
+
 
 
 
@@ -49,6 +64,7 @@ export function* deleteProject() {
 export default function* defaultSaga() {
 
   yield takeLatest(LIST_PROJECTS_ACTION, listProjects);
+  yield takeLatest(LIST_PLACES_ACTION, listPlaces);
   yield takeLatest(UPDATE_PROJECT_ACTION, update);
   yield takeLatest(DELETE_PROJECT_ACTION, deleteProject);
   yield takeLatest(GET_PAGINATION, listProjects);

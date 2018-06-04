@@ -16,9 +16,12 @@ import {Form , FormGroup, Label, Input, Ellipsis, Last, First, Prev, Next, Item,
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectListProjects from './selectors';
+import {makeSelectListProjects, makeSelectPlaces} from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 
 import * as a from "./actions";
@@ -31,6 +34,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
     this.state = {
       name: '',
       description: '',
+      projectType: '',
       place: '',
       date: null,
       time: null,
@@ -42,6 +46,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
       toedit: {
         name: '',
         description: '',
+        projectType: '',
         place: '',
         date: null,
         time: null,
@@ -119,9 +124,22 @@ export class ListProjects extends React.Component { // eslint-disable-line react
       toedit: toedit,
     });
   }
+  
+  handleQuill = (value) => {
+    console.log(value);
+    const toedit = this.state.toedit;
+    
+    toedit[name] = value;
+    this.setState({
+      toedit: toedit,
+    });
+
+  }
 
   componentDidMount(){
-    this.props.listprojects()
+    this.props.listprojects();
+    this.props.listPlaces();
+    
   }
 
 
@@ -139,6 +157,22 @@ export class ListProjects extends React.Component { // eslint-disable-line react
     })
   }
 
+  renderPlaces = () => {
+    if (this.props.places) {
+      const places = this.props.places;
+
+      return places.map((place) => {
+        return (
+
+
+
+          <option key={Math.random()} value={place._id}>{place.name}</option>
+
+        )
+      })
+    }
+
+  }
 
   listPojects = () => {
     const prolists = (this.props.projects.list_projects && this.props.projects.list_projects.docs) ? this.props.projects.list_projects.docs : [] ;
@@ -237,11 +271,25 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                       </Col>
 
                     </Row>
+                    
+                    <Row>
+                      <label className="col-sm-3 control-label mb">Project Type</label>
+                      <Col md={8}>
+                      <select value={this.state.toedit.projectType} style={{marginTop: '10px'}} name="projectType" className="form-control">
+                        <option value={1}>Urban Farming</option>
+                        <option value={2}>Building Rehab</option>
+                      </select>
+                      </Col>
+
+                    </Row>
 
                     <Row>
                       <label className="col-sm-3 control-label mb">Place</label>
                       <Col sm={8}>
-                      <input onChange={this.handleUpdateChange} style={{marginTop: '10px'}} className="form-control" type="text" name="place" value={this.state.toedit.place} placeholder="place"/>
+                      <select style={{marginTop: '10px'}} onChange={this.handleUpdateChange} value={this.state.toedit.place} name="place" className="form-control">
+                        {this.renderPlaces()}
+                      </select>
+                      {/* <input  style={{marginTop: '10px'}} className="form-control" type="text" name="place" value={this.state.toedit.place} placeholder="place"/> */}
                       </Col>
                     </Row>
                     
@@ -260,7 +308,19 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                     <Row>
                       <label className="col-sm-3 control-label mb">Project Goals</label>
                       <Col sm={8}>
-                      <textarea rows="3" style={{marginTop: '10px'}} onChange={this.handleUpdateChange} className="form-control" type="text" name="pgoals" value={this.state.toedit.pgoals} placeholder="Project Goals"/>
+                        <ReactQuill 
+                          name="pgoals"
+                          value ={this.state.toedit.pgoals}
+                          type="text"
+                          style={{marginTop: '10px'}}
+                          // onChange={this.handleUpdateChange} 
+                          onChange={this.handleQuill}
+                           />
+                        {/* <textarea rows="3" 
+                        style={{marginTop: '10px'}} 
+                        onChange={this.handleUpdateChange} 
+                        className="form-control" type="text" 
+                        name="pgoals" value={this.state.toedit.pgoals} placeholder="Project Goals"/> */}
                       </Col>
                     </Row>
 
@@ -278,7 +338,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
               </form>
             </Modal.Body>
             <Modal.Footer>
-              <Button onClick={this.handleSubmit} disabled={!this.state.name}>Update</Button>
+              <Button onClick={this.handleSubmit}>Update</Button>
               <Button onClick={this.close}>Cancel</Button>
             </Modal.Footer>
           </Modal>
@@ -317,7 +377,9 @@ ListProjects.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  projects: makeSelectListProjects(),
+  projects:makeSelectListProjects(),
+  places : makeSelectPlaces()
+
 });
 
 function mapDispatchToProps(dispatch) {
@@ -326,7 +388,8 @@ function mapDispatchToProps(dispatch) {
     listprojects: () => dispatch(a.listProjectsAction()),
     update : (payload) => dispatch(a.updateAction(payload)),
     deleteProject : (payload) => dispatch(a.deleteAction(payload)),
-    getPagination: (payload) => dispatch(a.getPagination(payload)) 
+    getPagination: (payload) => dispatch(a.getPagination(payload)), 
+    listPlaces: () => dispatch(a.listPlacesAction())
   };
 }
 
