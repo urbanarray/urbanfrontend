@@ -2,16 +2,14 @@ import { takeLatest, call, put, select } from 'redux-saga/effects';
 import { CREATE_HEALTHSAFETY_ACTION } from "./constants";
 import { createdHealthSafetyAction } from "./actions";
 import { makeSelectHealth } from "./selectors";
-import {  } from "./api";
+import {healthAPI} from "./api";
 
 
 export function* create() {
   try {
 
     const health = yield select(makeSelectHealth());
-    console.log(health);
     const response = yield call(healthAPI, health);
-    
     yield put(createdHealthSafetyAction(response.data));
 
   } catch (error) {
@@ -23,5 +21,5 @@ export function* create() {
 
 // Individual exports for testing
 export default function* defaultSaga() {
-  yield takeLatest(CREATE_HEALTHSAFETY_ACTION. create)
+  yield takeLatest(CREATE_HEALTHSAFETY_ACTION, create)
 }

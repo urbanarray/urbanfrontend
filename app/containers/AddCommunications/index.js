@@ -39,6 +39,7 @@ export class AddCommunications extends React.Component { // eslint-disable-line 
 
     };
 
+
   }
 
   handleMutiChange = (selectedOption) => {
@@ -65,7 +66,18 @@ export class AddCommunications extends React.Component { // eslint-disable-line 
         specialInstruction: this.state.specialInstruction,
         revelvantUA: this.state.revelvantUA
       }
-    )
+    );
+    setTimeout(() => {
+      this.setState({
+        'moc': '',
+        'critialContacts' : '',
+        'specialInstruction': '',
+        'revelvantUA' : '',
+      })
+      setTimeout(() => {
+        this.close();
+      }, 800);
+    }, 500);
   }
 
 handleChange = (e) => {

@@ -58,6 +58,34 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
       
     }
   }
+  
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.create(
+      {
+        ecn: this.state.ecn,
+        mma: this.state.mma,
+        sma: this.state.sma,
+        location: this.state.location,
+        lmc: this.state.lmc,
+        lsc: this.state.lsc
+      }
+    )
+    setTimeout(() => {
+      this.setState ({
+        'ecn': '',
+        'mma': '',
+        'sma': '',
+        'location': '',
+        'lmc': '',
+        'lsc': ''
+      })
+      setTimeout(() => {
+        this.close();
+        
+      }, 800);
+    }, 500);
+  }
 
   handleMutiChange = (selectedOption) => {
     console.log(selectedOption);
@@ -85,18 +113,6 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
     })
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.create(
-      {
-        moc: this.state.moc,
-        critialContacts: this.state.critialContacts,
-        specialInstruction: this.state.specialInstruction,
-        revelvantUA: this.state.revelvantUA
-      }
-    )
-    console.log(this.state);
-  }
 
   handleChange = (e) => {
     const { name, value } = e.target;
