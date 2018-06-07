@@ -7,6 +7,7 @@ import styled from "styled-components";
 import AddCommunications from "../../AddCommunications";
 import HealthSafety from "../../HealthSafety";
 import AddExecution from "../../AddExecution";
+import Documentation from "../../Documentation";
 import 'react-quill/dist/quill.snow.css';
 
 const Textquill = styled.div`
@@ -73,12 +74,7 @@ export default class ProjectDetails extends React.Component {
                                     <hr />
                                     <Col md={6}>
                                         <AddCommunications/>
-                                        <Link
-                                            to="/projectView"
-                                            type="button"
-                                            className="btn btn-success btn-block"
-                                            style={styles.secondary}>Documentation
-                                        </Link>
+                                        <Documentation />
                                     </Col>
                                     <Col md={6}>
                                         <AddExecution/>
