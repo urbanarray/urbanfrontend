@@ -74,17 +74,23 @@ export default class ProjectDetails extends React.Component {
                                     <hr />
                                     <Col md={6}>
                                         <AddCommunications/>
-                                        <Documentation />
+                                        
                                     </Col>
                                     <Col md={6}>
                                         <AddExecution/>
-                                        <HealthSafety/>
-                                        {/* <Link
-                                            to="/projectView"
-                                            type="button"
-                                            className="btn btn-primary btn-block"
-                                            style={styles.primary}>AEO/Safe/Weath
-                                        </Link> */}
+                                        
+                                        
+                                    </Col>
+                                </Row>
+
+                                <Row>
+                                    <hr />
+                                    <Col md={6}>
+                                        <Documentation />
+                                    </Col>
+                                    <Col md={6}>
+                                        <HealthSafety />
+                                        
                                     </Col>
                                 </Row>
     

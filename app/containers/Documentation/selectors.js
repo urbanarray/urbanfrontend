@@ -19,7 +19,13 @@ const makeSelectDocumentation = () => createSelector(
   (substate) => substate.toJS()
 );
 
+const makeSelectDocument = () => createSelector(
+  selectDocumentationDomain,
+  (substate) => substate.get('create_document')
+);
+
 export default makeSelectDocumentation;
 export {
   selectDocumentationDomain,
+  makeSelectDocument
 };

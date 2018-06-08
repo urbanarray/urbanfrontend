@@ -17,13 +17,14 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectDocumentation from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import { createDocumentAction } from "./actions";
 
 export class Documentation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   
   constructor(props){
     super(props)
     this.state = {
-      document: null,
+      attachments: [],
       openModel: false,
     }
   }
@@ -40,6 +41,42 @@ export class Documentation extends React.Component { // eslint-disable-line reac
     })
   }
 
+  componentDidMount = () => {
+   
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    if (this.state.attachments) {
+      Array.from(this.state.attachments).forEach((attachment) => {
+        formData.append('attachments', attachment, attachment.name)
+      });
+    }
+    this.props.create(formData);
+    setTimeout(() => {
+      this.close();
+    }, 500);
+  }
+
+  changeAll = (e) => {
+    if (e.target.files && e.target.files.length) {
+      const name = e.target.name;
+      const files = e.target.files;
+
+      this.setState({
+        [name]: files,
+      });
+    }
+    else {
+      const { name } = e.target;
+      const { value } = e.target;
+      this.setState({
+        [name]: value
+      });
+    // this.props.history.push('dashboard');
+  }
+  }
 
   render() {
     return (
@@ -56,17 +93,24 @@ export class Documentation extends React.Component { // eslint-disable-line reac
             <Modal.Title>Add Documentation</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form className="form-horizontal" onChange={this.handleChange} onSubmit={this.handleSubmit} >
+            <form className="form-horizontal" onChange={this.changeAll} onSubmit={this.handleSubmit} >
               <fieldset>
-
-                <div className="form-group mb">
-                  <label className="col-sm-2 col-sm-offset-1 control-label mb">Methods of Communications</label>
-                  <input 
-                    type="file"
-                    name="document"
-                    value={this.state.document}
-                  />
-                </div>
+                <Row>
+                  <Col md={10}>
+                      <label className=" col-md-offset-1 control-label mb">Methods of Communications</label>
+                  </Col>
+                  <Col sm={10}>
+                    <div className="col-md-offset-1">
+                      <div className=" form-group mb">
+                        <input 
+                          type="file"
+                          name="attachments"
+                          value={this.state.document}
+                        />
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
 
               </fieldset>
               <button className="btn-block btn btn-success">Add Documentation</button>
@@ -93,6 +137,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    create : (payload) => dispatch(createDocumentAction(payload))
   };
 }
 

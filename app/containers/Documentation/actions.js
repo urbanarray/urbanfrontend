@@ -4,12 +4,25 @@
  *
  */
 
-import {
-  DEFAULT_ACTION,
-} from './constants';
+import * as b from './constants';
 
 export function defaultAction() {
   return {
-    type: DEFAULT_ACTION,
+    type: b.DEFAULT_ACTION,
   };
+}
+
+export function createDocumentAction(payload) {
+  return {
+    type: b.CREATE_DOCUMENT_ACTION,
+    payload
+  };
+}
+
+
+export function createdDocumentAction(payload) {
+  return {
+    type: b.CREATED_DOCUMENT_ACTION,
+    payload
+  }
 }

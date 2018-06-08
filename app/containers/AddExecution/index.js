@@ -112,7 +112,7 @@ export class AddExecution extends React.Component { // eslint-disable-line react
           <title>AddExecution</title>
           <meta name="description" content="Description of AddExecution" />
         </Helmet>
-        <button onClick={this.open} className="btn btn-primary btn-block" style={{}}> Execution </button>
+        <button onClick={this.open} className="btn btn-success btn-block" style={{}}> Execution </button>
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>Execution</Modal.Title>
