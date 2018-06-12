@@ -10,6 +10,7 @@ import * as c from './constants';
 const initialState = fromJS({
 
   addCommunications: [],
+  communication_list: [],
   loading: false,
   done: false
 
@@ -28,7 +29,17 @@ function addCommunicationsReducer(state = initialState, action) {
       return state
         .set('addCommunications', null)
         .set('loading', false)
-        .set('done', true)
+        .set('done', true);
+    case c.LIST_COMMUNICATION_ACTION:
+      return state
+        .set('communication_list', action.payload)
+        .set('loading', true)
+        .set('done', false);
+    case c.LISTED_COMMUNICATION_ACTION:
+      return state
+        .set('communication_list', action.payload)
+        .set('loading', false)
+        .set('done', true);
     default:
       return state;
   }

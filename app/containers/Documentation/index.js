@@ -111,7 +111,6 @@ export class Documentation extends React.Component { // eslint-disable-line reac
                     </div>
                   </Col>
                 </Row>
-
               </fieldset>
               <button className="btn-block btn btn-success">Add Documentation</button>
             </form>

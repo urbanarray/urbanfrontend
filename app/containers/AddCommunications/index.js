@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import { FormGroup, Label, Grid, Row, Col, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
+import { FormGroup, Label, Grid, Table, Row, Col, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
 
 import Select from 'react-select';
 import injectSaga from 'utils/injectSaga';
@@ -20,7 +20,9 @@ import reducer from './reducer';
 import saga from './saga';
 import './style.css';
 import 'react-select/dist/react-select.css';
-import { createCommunicationsAction } from "./actions";
+import { createCommunicationsAction, listCommunication } from "./actions";
+import {styles} from '../../assets/styles/variables';
+
 
 export class AddCommunications extends React.Component { // eslint-disable-line react/prefer-stateless-function
   
@@ -40,6 +42,11 @@ export class AddCommunications extends React.Component { // eslint-disable-line 
     };
 
 
+  }
+
+  componentDidMount(){
+    console.log(this.props.projectId)
+    this.props.listCommunication(this.props.projectId);
   }
 
   handleMutiChange = (selectedOption) => {
@@ -64,7 +71,8 @@ export class AddCommunications extends React.Component { // eslint-disable-line 
         moc: this.state.moc,
         critialContacts: this.state.critialContacts,
         specialInstruction: this.state.specialInstruction,
-        revelvantUA: this.state.revelvantUA
+        revelvantUA: this.state.revelvantUA,
+        projectId: this.props.projectId,
       }
     );
     setTimeout(() => {
@@ -97,6 +105,40 @@ handleChange = (e) => {
     });
   }
 
+  
+  renderMoc = (moc) => {
+    if (moc && moc.length > 0) {
+      return moc.map((a) => {
+        return (
+          <ul>
+            <li>
+              {a.label}
+
+            </li>
+          </ul>
+        )
+      })
+    }
+  }
+  listComm = () => {
+    if (this.props.addcommunications.communication_list && this.props.addcommunications.communication_list.length > 0) {
+      return this.props.addcommunications.communication_list.map((c) => {
+        return (
+              <tr key={Math.random()}>
+                <td>
+                  {c.revelvantUA}
+                </td>
+                <td>
+                  {c.specialInstruction}
+                </td>
+                <td>
+                  {this.renderMoc(c.moc)}
+                </td>
+              </tr>
+            );
+          });
+        }
+      }
   render() {
 
     const { selectedOption } = this.state;
@@ -107,7 +149,33 @@ handleChange = (e) => {
           <title>AddCommunications</title>
           <meta name="description" content="Description of AddCommunications" />
         </Helmet>
-        <button onClick={this.open} className="btn btn-primary btn-block" style={{}}> Communication </button>
+        <Col md={12}>
+            <div id="panelDemo8" className="panel panel-primary" >
+                <div className="panel-heading" style={styles.primaryDark}  >
+                    Communications
+                    <button onClick={this.open} className="btn btn-primary pull-right" style={{}}> Add Communication </button>
+                </div>
+
+                { /* START table-responsive */}
+                <Table id="table-ext-2" responsive striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th style={{ width: '120px' }}>List of revelvant UA</th>
+                            <th style={{width: '120px'}}>special Instruction </th>
+                            <th style={{width: '120px'}}>Method of Communication </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {this.listComm()}
+                    </tbody>
+                </Table>
+                { /* END table-responsive */}
+                {/* <div className="panel-footer">Panel Footer</div> */}
+            </div>
+        </Col>
+
+        
+        
 
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
@@ -200,7 +268,8 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    create: (payload) => dispatch(createCommunicationsAction(payload))
+    create: (payload) => dispatch(createCommunicationsAction(payload)),
+    listCommunication : (id) => dispatch(listCommunication(id))
   };
 }
 

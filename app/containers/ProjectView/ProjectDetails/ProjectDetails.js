@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import {styles} from '../../../assets/styles/variables';
 import ReactQuill from 'react-quill';
 import styled from "styled-components";
-import AddCommunications from "../../AddCommunications";
+
 import HealthSafety from "../../HealthSafety";
 import AddExecution from "../../AddExecution";
 import Documentation from "../../Documentation";
@@ -22,7 +22,6 @@ const Textquill = styled.div`
 }
 
 `;
-
 
 export default class ProjectDetails extends React.Component {
     
@@ -72,8 +71,8 @@ export default class ProjectDetails extends React.Component {
     
                                 <Row>
                                     <hr />
-                                    <Col md={6}>
-                                        <AddCommunications/>
+                                    <Col md={12}>
+                                        
                                         
                                     </Col>
                                     <Col md={6}>

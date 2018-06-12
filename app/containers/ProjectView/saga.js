@@ -1,8 +1,8 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
-import { projectView } from './api';
-import { projectId } from './selectors';
+import {projectView, listCommunicationApi} from './api';
+import { projectId, listCommunications} from './selectors';
 import * as c from './constants';
-import { viewedProject } from './actions';
+import { viewedProject, listedCommunication } from './actions';
 
 
 export function* index() {
@@ -17,8 +17,7 @@ export function* index() {
 }
 
 
-// Individual exports for testing
+
 export default function* defaultSaga() {
-  // See example in containers/HomePage/saga.js
   yield takeLatest(c.PROJECT_VIEW_ACTION, index)
 }

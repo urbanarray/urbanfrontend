@@ -25,3 +25,18 @@ export function createdCommunicationsAction(payload) {
     payload
   };
 }
+
+export function listCommunication(payload) {
+  return {
+    type: c.LIST_COMMUNICATION_ACTION,
+    payload
+
+  }
+}
+
+export function listedCommunication(payload) {
+  return {
+    type: c.LISTED_COMMUNICATION_ACTION,
+    payload
+  }
+}

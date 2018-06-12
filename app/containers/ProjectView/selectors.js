@@ -24,8 +24,16 @@ const projectId = () => createSelector(
   (substate) => substate.get('id')
 )
 
+const listCommunications = () => createSelector(
+  selectProjectViewDomain,
+  (substate) => substate.get('communication_list')
+)
+
+
+
 export default makeSelectProjectView;
 export {
   selectProjectViewDomain,
-  projectId
+  projectId,
+  listCommunications
 };

@@ -24,8 +24,14 @@ const makeSelectCreateCommunications = () => createSelector(
   (substate) => substate.get('addCommunications')
 );
 
+const listCommunications = () => createSelector(
+  selectAddCommunicationsDomain,
+(substate) => substate.get('communication_list')
+);
+
 export default makeSelectAddCommunications;
 export {
   selectAddCommunicationsDomain,
-  makeSelectCreateCommunications
+  makeSelectCreateCommunications,
+  listCommunications
 };
