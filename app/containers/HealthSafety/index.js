@@ -17,6 +17,7 @@ import {
   Row,
   Col,
   Panel,
+  Table,
   Button,
   ButtonGroup,
   ButtonToolbar,
@@ -41,6 +42,8 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectHealthSafety from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import {listHealthSafetyAction} from './actions';
+import { styles } from '../../assets/styles/variables';
 
 export class HealthSafety extends React.Component { // eslint-disable-line react/prefer-stateless-function
   
@@ -68,7 +71,8 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
         sma: this.state.sma,
         location: this.state.location,
         lmc: this.state.lmc,
-        lsc: this.state.lsc
+        lsc: this.state.lsc,
+        projectId: this.props.projectId
       }
     )
     setTimeout(() => {
@@ -88,12 +92,16 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
   }
 
   handleMutiChange = (selectedOption) => {
-    console.log(selectedOption);
+ 
     this.setState({
       critialContacts: selectedOption
     });
   }
 
+  componentDidMount (){
+    this.props.listHealthSafety(this.props.projectId);
+  }
+  
   ECN = (ec) => {
     
     this.setState({
@@ -112,23 +120,43 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
       sma: ec
     })
   }
-
+  
 
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   }
-
+  
   open = () => {
     this.setState({
       openModel: true,
     })
   }
-
+  
   close = () => {
     this.setState({
       openModel: false,
     });
+  }
+  listHealth = () => {
+    {console.log(this.props.healthSafety.list_healthsafety.healthsafety)}
+    if (this.props.healthSafety && this.props.healthSafety.list_healthsafety && this.props.healthSafety.list_healthsafety.healthsafety && this.props.healthSafety.list_healthsafety.healthsafety.length > 0) {
+      return this.props.healthSafety.list_healthsafety.healthsafety.map((c) => {
+        return (
+              <tr key={Math.random()}>
+                <td>
+                  {c.lmc}
+                </td>
+                <td>
+                  {c.location}
+                </td>
+                <td>
+                  {/* {this.renderMoc(c.moc)} */}
+                </td>
+              </tr>
+            );
+          });
+        }
   }
   
   render() {
@@ -139,7 +167,29 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
           <meta name="description" content="Description of HealthSafety" />
         </Helmet>
 
-        <button onClick={this.open} className="btn btn-success btn-block" style={{}}> Health & Safety </button>
+        <Col md={12}>
+            <div id="panelDemo8" className="panel panel-primary" >
+                <div className="panel-heading" style={styles.primaryDark}  >
+                  <button onClick={this.open} className="btn btn-success btn-block" style={{}}> Health & Safety </button>
+                </div>
+
+                { /* START table-responsive */}
+                <Table id="table-ext-2" responsive striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th style={{ width: '120px' }}>LMC</th>
+                            <th style={{width: '120px'}}>special Instruction </th>
+                            <th style={{width: '120px'}}>Method of Communication </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {this.listHealth()}
+                    </tbody>
+                </Table>
+                { /* END table-responsive */}
+                {/* <div className="panel-footer">Panel Footer</div> */}
+            </div>
+        </Col>
 
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
@@ -254,7 +304,9 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    create: (payload) => dispatch(createHealthSafetyAction(payload))
+    create: (payload) => dispatch(createHealthSafetyAction(payload)),
+    listHealthSafety: (payload) => dispatch(listHealthSafetyAction(payload))
+
   };
 }
 

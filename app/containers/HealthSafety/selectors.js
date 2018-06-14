@@ -24,8 +24,14 @@ const makeSelectHealth = () => createSelector(
   (substate) => substate.get('add_healthsafety')
 );
 
+const makeSelectListHealth = () => createSelector(
+  selectHealthSafetyDomain,
+  (substate) => substate.get('list_healthsafety')
+);
+
 export default makeSelectHealthSafety;
 export {
   selectHealthSafetyDomain,
-  makeSelectHealth
+  makeSelectHealth,
+  makeSelectListHealth
 };

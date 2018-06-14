@@ -45,19 +45,18 @@ export class AddCommunications extends React.Component { // eslint-disable-line 
   }
 
   componentDidMount(){
-    console.log(this.props.projectId)
     this.props.listCommunication(this.props.projectId);
   }
 
   handleMutiChange = (selectedOption) => {
-    console.log(selectedOption);
+    
     this.setState({ 
       critialContacts : selectedOption
      });
   }
 
   handleMutiValueChange = (value) => {
-    console.log(value);
+    
     this.setState({
       moc: value
     })
@@ -110,10 +109,9 @@ handleChange = (e) => {
     if (moc && moc.length > 0) {
       return moc.map((a) => {
         return (
-          <ul>
+          <ul key={Math.random()}>
             <li>
               {a.label}
-
             </li>
           </ul>
         )
@@ -121,7 +119,7 @@ handleChange = (e) => {
     }
   }
   listComm = () => {
-    if (this.props.addcommunications.communication_list && this.props.addcommunications.communication_list.length > 0) {
+    if (this.props.addcommunications && this.props.addcommunications.communication_list && this.props.addcommunications.communication_list.length > 0) {
       return this.props.addcommunications.communication_list.map((c) => {
         return (
               <tr key={Math.random()}>

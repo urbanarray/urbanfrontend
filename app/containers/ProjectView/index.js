@@ -34,6 +34,8 @@ import TimelineRoles from './TimelineRoles';
 import {styles} from '../../assets/styles/variables';
 import { viewProject } from './actions';
 import AddCommunications from "../AddCommunications";
+import AddExecution from "../AddExecution";
+import HealthSafety from "../HealthSafety";
 
 export class ProjectView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -208,10 +210,35 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
           </Col>
 
         </Row>
+
         <Row>
-          <AddCommunications
-            projectId={this.props.projectId}
-          />
+          <hr />
+          <Col md={12}>
+            <AddCommunications
+              projectId={this.props.match.params.id}
+            />
+
+          </Col>
+
+
+          <Col md={12}>
+            <HealthSafety
+
+              projectId={this.props.match.params.id}
+            
+            />
+
+
+          </Col>
+          <Col md={6}>
+            <AddExecution
+
+              projectId={this.props.match.params.id}
+
+            />
+
+
+          </Col>
         </Row>
 
         <Row>

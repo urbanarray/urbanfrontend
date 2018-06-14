@@ -9,6 +9,9 @@ import * as v from './constants';
 
 const initialState = fromJS({
   add_healthsafety: null,
+  list_healthsafety: [],
+  list_healthsafety_loading: false,
+  list_healthsafety_done: false,
   loading: false,
   done: false,
 });
@@ -28,6 +31,16 @@ function healthSafetyReducer(state = initialState, action) {
         .set('add_healthsafety', null )
         .set('loading', false)    
         .set('done', true);
+    case v.LIST_HEALTHSAFETY_ACTION:
+      return state
+        .set('list_healthsafety', action.payload)
+        .set('list_healthsafety_loading', true)
+        .set('list_healthsafety_done', false);
+    case v.LISTED_HEALTHSAFETY_ACTION:
+      return state
+        .set('list_healthsafety', action.payload)
+        .set('list_healthsafety_loading', false)
+        .set('list_healthsafety_done', true);
     default:
       return state;
   }

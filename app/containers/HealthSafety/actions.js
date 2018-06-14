@@ -25,3 +25,16 @@ export function createdHealthSafetyAction(payload) {
     payload
   };
 }
+
+export function listHealthSafetyAction(payload) {
+  return {
+    type: v.LIST_HEALTHSAFETY_ACTION,
+    payload
+  };
+}
+export function listedHealthSafetyAction(payload) {
+  return {
+    type: v.LISTED_HEALTHSAFETY_ACTION,
+    payload
+  };
+}

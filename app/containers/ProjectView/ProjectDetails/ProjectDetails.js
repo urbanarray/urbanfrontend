@@ -5,8 +5,8 @@ import {styles} from '../../../assets/styles/variables';
 import ReactQuill from 'react-quill';
 import styled from "styled-components";
 
-import HealthSafety from "../../HealthSafety";
-import AddExecution from "../../AddExecution";
+
+
 import Documentation from "../../Documentation";
 import 'react-quill/dist/quill.snow.css';
 
@@ -71,24 +71,12 @@ export default class ProjectDetails extends React.Component {
     
                                 <Row>
                                     <hr />
-                                    <Col md={12}>
-                                        
-                                        
-                                    </Col>
-                                    <Col md={6}>
-                                        <AddExecution/>
-                                        
-                                        
-                                    </Col>
-                                </Row>
-
-                                <Row>
-                                    <hr />
                                     <Col md={6}>
                                         <Documentation />
                                     </Col>
                                     <Col md={6}>
-                                        <HealthSafety />
+                                        {/* {console.log(this.props.projectId)} */}
+                                        
                                         
                                     </Col>
                                 </Row>

@@ -25,3 +25,17 @@ export function createdExecutionAction(payload) {
     payload
   };
 }
+
+export function listExecutionAction(payload) {
+  return {
+    type: b.LIST_EXECUTION_ACTION,
+    payload
+  };
+}
+
+export function listedExecutionAction(payload) {
+  return {
+    type: b.LISTED_EXECUTION_ACTION,
+    payload
+  };
+}

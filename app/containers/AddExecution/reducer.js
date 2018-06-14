@@ -10,6 +10,9 @@ import * as c from './constants';
 const initialState = fromJS({
 
   add_execution:null,
+  execution_list: [],
+  execution_loading: false,
+  execution_done: false,
   loading: false,
   done: false,
 
@@ -29,6 +32,16 @@ function addExecutionReducer(state = initialState, action) {
         .set('add_execution', null)
         .set('loading', false)
         .set('done', true);
+    case c.LIST_EXECUTION_ACTION:
+      return state
+        .set('execution_list', action.payload)
+        .set('execution_loading', true)
+        .set('execution_done', false)
+    case c.LISTED_EXECUTION_ACTION:
+      return state
+        .set('execution_list', action.payload)
+        .set('execution_loading', false)
+        .set('execution_done', true)
     default:
       return state;
   }

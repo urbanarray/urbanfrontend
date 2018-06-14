@@ -22,7 +22,6 @@ export function * listCommunication() {
   try {
 
     const communicationLIst = yield select(listCommunications());
-    console.log(communicationLIst);
     const response = yield call(listCommunicationApi, communicationLIst);
 
     yield put(listedCommunication(response.data.communication));

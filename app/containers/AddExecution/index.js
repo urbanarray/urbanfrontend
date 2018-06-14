@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import { FormGroup, Label, Grid, Row, Col, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
+import { FormGroup, Label, Grid, Row, Col,Table , Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
 import styled from "styled-components";
 
 import injectSaga from 'utils/injectSaga';
@@ -19,8 +19,10 @@ import makeSelectAddExecution from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import ReactQuill from 'react-quill';
-import { createExecutionAction } from "./actions";
+import { createExecutionAction, listExecutionAction } from "./actions";
 import 'react-quill/dist/quill.snow.css';
+import {styles} from '../../assets/styles/variables';
+
 
 const QuillWrapper = styled.div`
 .quill{
@@ -29,6 +31,19 @@ const QuillWrapper = styled.div`
   margin-bottom: 50px;
 }
   
+`;
+
+const Textquill = styled.div `
+
+.ql-toolbar {
+    display: none;
+}
+
+.ql-editor {
+    border-top: 1px solid #ccc;
+    
+}
+
 `;
 
 
@@ -41,8 +56,19 @@ export class AddExecution extends React.Component { // eslint-disable-line react
       entry: '',
       intent: '',
       conceptOperation: '',
-      openModel: false
+      openModel: false,
+      formats: [
+                null,
+                'bold', 'italic', 'underline', 'strike', 'blockquote',
+                'list', 'bullet', 'indent',
+                'link', 'image'
+            ]
+
     }
+  }
+
+  componentDidMount (){
+    this.props.listExecution(this.props.projectId);
   }
 
   open = () => {
@@ -90,6 +116,7 @@ export class AddExecution extends React.Component { // eslint-disable-line react
       entry: this.state.entry,
       intent: this.state.intent,
       conceptOperation: this.state.conceptOperation,
+      projectId: this.props.projectId
     });
 
     setTimeout(() => {
@@ -104,15 +131,80 @@ export class AddExecution extends React.Component { // eslint-disable-line react
     }, 500);
   }
 
+  listExc = () => {
+    if (this.props.addexecution && this.props.addexecution.execution_list && this.props.addexecution.execution_list.execution && this.props.addexecution.execution_list.execution.length > 0) {
+      return this.props.addexecution.execution_list.execution.map((c) => {
+        return (
+              <tr key={Math.random()}>
+                <td>
+                  <Textquill>
+                      <ReactQuill
+                          name="react_quill"
+                          value={c.conceptOperation}
+                          readOnly
+                          formats={this.formats}
+                          />
+                  </Textquill>
+                </td>
+                <td>
+                  <Textquill>
+                      <ReactQuill
+                          name="react_quill"
+                          value={c.entry}
+                          readOnly
+                          formats={this.formats}
+                          />
+                  </Textquill>
+                </td>
+                <td>
+                  <Textquill>
+                      <ReactQuill
+                          name="react_quill"
+                          value={c.intent}
+                          readOnly
+                          formats={this.formats}
+                          />
+                  </Textquill>
+                </td>
+              </tr>
+            );
+          });
+        }
+      }
 
-  render() {
+
+  render(){
     return (
       <div>
         <Helmet>
           <title>AddExecution</title>
           <meta name="description" content="Description of AddExecution" />
         </Helmet>
-        <button onClick={this.open} className="btn btn-success btn-block" style={{}}> Execution </button>
+        
+        <Col md={12}>
+            <div id="panelDemo8" className="panel panel-primary" >
+                <div className="panel-heading" style={styles.primaryDark}>
+                    <button onClick={this.open} className="btn btn-success btn-block" style={{}}> Add Execution </button>
+                </div>
+
+                { /* START table-responsive */}
+                <Table id="table-ext-2" responsive striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th style={{ width: '120px' }}>Concept Operation</th>
+                            <th style={{width: '120px'}}>Entry</th>
+                            <th style={{width: '120px'}}>intent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {this.listExc()}
+                    </tbody>
+                </Table>
+                { /* END table-responsive */}
+                {/* <div className="panel-footer">Panel Footer</div> */}
+            </div>
+        </Col>
+
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>Execution</Modal.Title>
@@ -120,7 +212,6 @@ export class AddExecution extends React.Component { // eslint-disable-line react
           <Modal.Body>
             <form className="form-horizontal" onSubmit={this.handleSubmit} >
               <fieldset>
-
                 <div className="form-group mb">
                   <label className="col-sm-2 control-label mb">Entry</label>
                   <Col sm={10}>
@@ -194,6 +285,7 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     create: (payload) => dispatch(createExecutionAction(payload)),
+    listExecution: (payload) => dispatch(listExecutionAction(payload))
   };
 }
 

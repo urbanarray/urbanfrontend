@@ -25,8 +25,15 @@ const makeSelectExecution = () => createSelector(
   (substate) => substate.get('add_execution')
 );
 
+const makeSelectListExecution = () => createSelector(
+  selectAddExecutionDomain,
+  (substate) => substate.get('execution_list')
+);
+
 export default makeSelectAddExecution;
 export {
   selectAddExecutionDomain,
-  makeSelectExecution
+  makeSelectExecution,
+  makeSelectListExecution
+  
 };
