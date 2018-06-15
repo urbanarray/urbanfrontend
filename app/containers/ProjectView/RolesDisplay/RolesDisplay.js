@@ -24,7 +24,6 @@ const RolesDisplay = (props) => (
                 </thead>
                 <tbody>
                     {props.renderRoles()}
-
                 </tbody>
             </Table>
             { /* END table-responsive */}

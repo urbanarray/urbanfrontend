@@ -10,6 +10,8 @@ import * as c from './constants';
 const initialState = fromJS({
   id: null,
   projectDetail: null,
+  loading: false,
+  done: false,
   projectView:
     {
       name: 'Garden',
@@ -127,11 +129,10 @@ function projectViewReducer(state = initialState, action) {
     case c.PROJECT_VIEW_ACTION:
       return state
         .set('id', action.payload)
-
     case c.PROJECT_VIEWED_ACTION:
       return state
-        .set('projectDetail', action.payload)
-        
+        .set('projectDetail', action.payload);
+
     default:
       return state;
   }

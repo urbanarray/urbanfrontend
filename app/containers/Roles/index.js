@@ -121,7 +121,7 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
                     bsSize="small"
                     title="Miles"
                     id="dropdown-size-extra-small"
-                    onSelect={(e)=>this.handleMilesChange(e).bind(this)}
+                    onSelect={(e)=>this.handleMilesChange(e)}
                   >
                     <MenuItem eventKey="5">5</MenuItem>
                     <MenuItem eventKey="15">15</MenuItem>
@@ -141,7 +141,7 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
                       value={this.state.zip}
                       placeholder="Zip"
                       onChange={this.handleZipChange.bind(this)}
-                      style={{padding: '0', paddingLeft: '5px', marginTop: '10px', height: '30px', border: 'none'}}
+                      style={{padding: '0', paddingLeft: '5px', marginTop: '10px', height: '30px', maxWidth: '150px', border: 'none'}}
                     />
                     <FormControl.Feedback />
                     <HelpBlock></HelpBlock>

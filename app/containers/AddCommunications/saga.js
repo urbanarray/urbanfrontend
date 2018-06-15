@@ -1,8 +1,8 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
-import { CREATE_COMMUNICATIONS_ACTION } from "./constants";
-import { createdCommunicationsAction } from "./actions";
-import { makeSelectCreateCommunications } from "./selectors";
-import { createCommunicationsApi } from "./api";
+import { CREATE_COMMUNICATIONS_ACTION, LIST_COMMUNICATION_ACTION } from "./constants";
+import { createdCommunicationsAction, listedCommunication} from "./actions";
+import { makeSelectCreateCommunications, listCommunications } from "./selectors";
+import {createCommunicationsApi, listCommunicationApi} from "./api";
 
 export function* create() {
   try {
@@ -18,8 +18,20 @@ export function* create() {
   }
 }
 
-// Individual exports for testing
+export function * listCommunication() {
+  try {
+
+    const communicationLIst = yield select(listCommunications());
+    const response = yield call(listCommunicationApi, communicationLIst);
+
+    yield put(listedCommunication(response.data.communication));
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default function* defaultSaga() {
   yield takeLatest(CREATE_COMMUNICATIONS_ACTION, create);
-  // See example in containers/HomePage/saga.js
+  yield takeLatest(LIST_COMMUNICATION_ACTION, listCommunication)
 }
