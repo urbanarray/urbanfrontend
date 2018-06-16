@@ -4,6 +4,7 @@ import {listedPlacesAction, listPlacesAction, deletePlacesAction, deletedPlacesA
 import {listPlacesApi, deletePlaceApi, updatePlacesApi} from "./api.js";
 import { makeSelectDelete, makeSelectUpdate } from "./selectors";
 
+
 export function* listPlaces() {
 
   try {
@@ -24,6 +25,7 @@ export function* deletePlaces() {
     const response = yield call(deletePlaceApi, deleteId);
     console.log(response);
     yield put(deletedPlacesAction(response.data))
+    yield listPlaces();
   } catch (error) {
     console.log(error);
   }
@@ -39,6 +41,7 @@ export function* updatePlaces(params) {
     const response = yield call(updatePlacesApi, updatePlc);
     console.log(response + "REsponse Data");
     yield put(updatedPlacesAction(response.data.place))
+    yield listPlaces();
 
   } catch (error) {
     console.log(error);

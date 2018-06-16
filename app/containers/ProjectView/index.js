@@ -189,7 +189,7 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
             <meta name="description" content="Description of ProjectView" />
           </Helmet>
 
-          <h3>{(this.props.projectview.projectView.name.toUpperCase())}
+          <h3>{(this.props.projectview.projectDetail.name.toUpperCase())}
             <small>
               Project Details
             </small>

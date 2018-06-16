@@ -99,7 +99,6 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
     this.setState({
       show: value,
     });
-    console.log(this.state);
   }
 
   componentDidMount(){
@@ -147,7 +146,6 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
           <Row>
             <Col md={10} className="col-md-offset-1">
               <form method="post" action="#" data-parsley-validate="" onChange={this.handleChange} onSubmit={this.handleSubmit} noValidate>
-                  console.log(e);
                 <div className="panel panel-default">
                   <div className="panel-heading">
                     <div className="panel-title">Create Project</div>
