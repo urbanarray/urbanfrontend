@@ -3,6 +3,7 @@ import { CREATE_PlACE_ACTION } from "./constants";
 import { createdPlaceAction } from "./actions";
 import { makeSelectPlace } from "./selectors";
 import { createPlaceApi } from "./api";
+import { listPlaces } from 'containers/Places/saga';
 
 
 export function* create() {
@@ -10,7 +11,7 @@ export function* create() {
     const place = yield select(makeSelectPlace());
     const response = yield call(createPlaceApi, place.addPlace);
     yield put(createdPlaceAction(response.data));
-    
+    yield listPlaces();
   } catch (error) {
     console.log(error + "Trouble Here");
   }
