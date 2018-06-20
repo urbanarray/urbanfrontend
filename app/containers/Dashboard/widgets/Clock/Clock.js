@@ -33,14 +33,14 @@ class Clock extends Component {
     render() {
         return(
             <Col lg={3} md={6} sm={12}>
-                <div className="panel widget green">
-                    <Row className="row-table">
+                <div className="panel widget green" style={{height: "115px"}}>
+                    <Row className="row-table" >
                         <Col xs={4} className="text-center pv-lg" style={styles.secondaryDark}>
-                            <div data-now="" data-format="D" className="h2 mt0"></div>
-                            
+
+
                             {/* https://momentjs.com/ */}
-                            
-                            <div className="h4">{this.state.date.format("MMMM")}</div>
+
+                            <div className="h4" >{this.state.date.format("MMMM")}</div>
                             <div className="h4">{this.state.date.format("Do")}</div>
 
                         </Col>
@@ -55,7 +55,7 @@ class Clock extends Component {
             </Col>
         )
     }
-    
+
 }
 
 export default Clock;
