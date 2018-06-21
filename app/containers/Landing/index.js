@@ -46,9 +46,10 @@ export class Landing extends React.Component { // eslint-disable-line react/pref
         <div className= 'container text-center' >
             <div className= 'row' >
               <div className= 'col-md-12' >
-                
-              <iframe width="100%" height="450" src="https://www.youtube.com/embed/U5n_FxGmcH8" frameBorder="0"  allowFullScreen="true"></iframe>
-
+              <h1 style={{color: 'black'}}>Welcome to the Urban Array MVP Demo App.</h1>
+              <h3 style={{color: 'black'}}>This website is for testing and design purposes only.  THIS IS NOT A LIVE SITE.  Your data will NOT be saved.</h3>
+              <h3 style={{color: 'black'}}>Please Enter your Invitation PASSPHRASE to the right to begin.</h3>
+              <p style={{color: 'black'}}>For more info about Urban Array, <a href="https://urbanarray.org/">please click here to visit our website</a></p>
               </div>
             </div>
         </div>
