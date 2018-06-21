@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 
 
-import Documentation from "../../Documentation";
+
 import 'react-quill/dist/quill.snow.css';
 
 const Textquill = styled.div`
@@ -72,7 +72,7 @@ export default class ProjectDetails extends React.Component {
                                 <Row>
                                     <hr />
                                     <Col md={6}>
-                                        <Documentation />
+                                        
                                     </Col>
                                     <Col md={6}>
                                         {/* {console.log(this.props.projectId)} */}

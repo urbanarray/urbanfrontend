@@ -32,8 +32,6 @@ export function* listExecution() {
   } catch (error) {
     console.log(error)
   }
-
-
 }
 
 

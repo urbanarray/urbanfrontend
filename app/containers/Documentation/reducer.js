@@ -13,6 +13,10 @@ const initialState = fromJS({
   loading: false,
   done: false,
 
+  list_document: null,
+  list_loading: false,
+  list_done: false
+
 });
 
 function documentationReducer(state = initialState, action) {
@@ -28,7 +32,17 @@ function documentationReducer(state = initialState, action) {
       return state
         .set('create_document', null)
         .set('loading', false)
-        .set('done', true)
+        .set('done', true);
+    case c.LIST_DOCUMENT_ACTION:
+      return state
+        .set('list_document', action.payload)
+        .set('list_loading', true )
+        .set('list_done', false);
+    case c.LISTED_DOCUMENT_ACTION:
+      return state
+        .set('list_document', action.payload)
+        .set('list_loading', false )
+        .set('list_done', true)
     default:
       return state;
   }

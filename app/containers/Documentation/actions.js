@@ -26,3 +26,17 @@ export function createdDocumentAction(payload) {
     payload
   }
 }
+
+export function listDocumentAction(payload) {
+  return {
+    type: b.LIST_DOCUMENT_ACTION,
+    payload
+  }
+}
+
+export function listedDocumentAction(payload) {
+  return {
+    type: b.LISTED_DOCUMENT_ACTION,
+    payload
+  }
+}

@@ -139,7 +139,6 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
     });
   }
   listHealth = () => {
-    {console.log(this.props.healthSafety.list_healthsafety.healthsafety)}
     if (this.props.healthSafety && this.props.healthSafety.list_healthsafety && this.props.healthSafety.list_healthsafety.healthsafety && this.props.healthSafety.list_healthsafety.healthsafety.length > 0) {
       return this.props.healthSafety.list_healthsafety.healthsafety.map((c) => {
         return (
