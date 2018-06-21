@@ -23,9 +23,14 @@ const makeSelectDocument = () => createSelector(
   selectDocumentationDomain,
   (substate) => substate.get('create_document')
 );
+const makeSelectListDocument = () => createSelector(
+  selectDocumentationDomain,
+  (substate) => substate.get('list_document')
+);
 
 export default makeSelectDocumentation;
 export {
   selectDocumentationDomain,
-  makeSelectDocument
+  makeSelectDocument,
+  makeSelectListDocument
 };

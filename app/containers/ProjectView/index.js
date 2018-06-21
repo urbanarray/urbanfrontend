@@ -36,6 +36,7 @@ import { viewProject } from './actions';
 import AddCommunications from "../AddCommunications";
 import AddExecution from "../AddExecution";
 import HealthSafety from "../HealthSafety";
+import Documentation from "../Documentation";
 
 export class ProjectView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -188,13 +189,13 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
             <title>Project View</title>
             <meta name="description" content="Description of ProjectView" />
           </Helmet>
-
-          <h3>{(this.props.projectview.projectDetail.name.toUpperCase())}
+          <h3>{(this.props.projectview && this.props.projectview.projectDetail)? this.props.projectview.projectDetail.name : ''}
+          
             <small>
               Project Details
             </small>
             
-        </h3>
+          </h3>
         
         <Row>
           {this.renderProjectDetails()}
@@ -228,7 +229,6 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
             
             />
 
-
           </Col>
           <Col md={6}>
             <AddExecution
@@ -236,8 +236,14 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
               projectId={this.props.match.params.id}
 
             />
+          </Col>
 
+          <Col md={6}>
+            <Documentation
 
+              projectId={this.props.match.params.id}
+
+            />
           </Col>
         </Row>
 

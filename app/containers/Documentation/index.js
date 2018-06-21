@@ -10,14 +10,15 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import { FormGroup, Label, Grid, Row, Col, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
+import { FormGroup, Label, Grid, Table, Row, Col, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectDocumentation from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { createDocumentAction } from "./actions";
+import { createDocumentAction, listDocumentAction } from "./actions";
+import {styles} from '../../assets/styles/variables';
 
 export class Documentation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   
@@ -42,7 +43,7 @@ export class Documentation extends React.Component { // eslint-disable-line reac
   }
 
   componentDidMount = () => {
-   
+   this.props.listDocs(this.props.projectId);
   }
 
   handleSubmit = (e) => {
@@ -53,7 +54,13 @@ export class Documentation extends React.Component { // eslint-disable-line reac
         formData.append('attachments', attachment, attachment.name)
       });
     }
-    this.props.create(formData);
+    formData.append('projectId', this.props.projectId)
+    this.props.create(
+      
+        formData,
+        
+      
+    );
     setTimeout(() => {
       this.close();
     }, 500);
@@ -72,10 +79,40 @@ export class Documentation extends React.Component { // eslint-disable-line reac
       const { name } = e.target;
       const { value } = e.target;
       this.setState({
-        [name]: value
+        [name]: value,
+        
       });
     // this.props.history.push('dashboard');
   }
+  }
+
+  docs = (document) => {
+    if (document && document.length > 0) {
+      return document.map((a) => {
+        return (
+          <ul key={Math.random()}  style={{textDecoration: 'none', listStyleType: 'none'}}>
+            <li>
+              <a className="btn btn-info" target="blank" href={`http://localhost:3000/v1/uploads/documents/` + a}>Document </a>
+              
+            </li>
+          </ul>
+        )
+      }
+    )}
+  }
+
+  listD = () => {
+    if (this.props.documentation && this.props.documentation.list_document && this.props.documentation.list_document.document && this.props.documentation.list_document.document.length > 0) {
+      return this.props.documentation.list_document.document.map((c) => {
+        return (
+          <tr key={Math.random()}>
+            <td>
+              {this.docs(c.document)}
+            </td>
+          </tr>
+        );
+      });
+    }
   }
 
   render() {
@@ -86,7 +123,29 @@ export class Documentation extends React.Component { // eslint-disable-line reac
           <meta name="description" content="Description of Documentation" />
         </Helmet>
 
-        <button onClick={this.open} className="btn btn-primary btn-block" style={{}}> Documentation </button>
+
+        <Col md={12}>
+            <div id="panelDemo8" className="panel panel-primary" >
+                <div className="panel-heading" style={styles.primaryDark}  >
+                  <button onClick={this.open} className="btn btn-primary btn-block" style={{}}> Documentation </button>
+                </div>
+
+                { /* START table-responsive */}
+                <Table id="table-ext-2" responsive striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th style={{ width: '120px' }}>Document</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {this.listD()}
+                    </tbody>
+                </Table>
+                { /* END table-responsive */}
+                {/* <div className="panel-footer">Panel Footer</div> */}
+            </div>
+        </Col>
+
 
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
@@ -136,7 +195,8 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    create : (payload) => dispatch(createDocumentAction(payload))
+    create : (payload) => dispatch(createDocumentAction(payload)),
+    listDocs : (payload) => dispatch(listDocumentAction(payload))
   };
 }
 
