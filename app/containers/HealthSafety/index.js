@@ -88,6 +88,9 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
         this.close();
         
       }, 800);
+      setTimeout(() => {
+        this.props.listHealthSafety(this.props.projectId);
+      }, 1000);
     }, 500);
   }
 
@@ -138,6 +141,47 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
       openModel: false,
     });
   }
+
+  renderSma = (sma) => {
+    if(sma && sma.length > 0 ){
+      return sma.map((c) => {
+        return (
+          <ul key={Math.random()}> 
+            <li>
+              {c.label}
+            </li>
+          </ul>
+        )
+      })
+    }
+  }
+
+  renderMma = (mma) => {
+    if (mma && mma.length > 0 ) {
+      return mma.map((c) =>{
+        return (
+          <ul key={Math.random()}>
+            <li>{c.label}</li>
+          </ul>
+        )
+      })
+    }
+  }
+
+  renderEcn = (ecn) => {
+    if(ecn && ecn.length > 0) {
+      return ecn.map((c) => {
+        return (
+          <ul key={Math.random()}>
+            <li>
+              { c.label}
+            </li>
+          </ul>
+        )
+      })
+    }
+  }
+
   listHealth = () => {
     if (this.props.healthSafety && this.props.healthSafety.list_healthsafety && this.props.healthSafety.list_healthsafety.healthsafety && this.props.healthSafety.list_healthsafety.healthsafety.length > 0) {
       return this.props.healthSafety.list_healthsafety.healthsafety.map((c) => {
@@ -150,7 +194,16 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
                   {c.location}
                 </td>
                 <td>
-                  {/* {this.renderMoc(c.moc)} */}
+                  {c.lsc}
+                </td>
+                <td>
+                  {this.renderSma(c.sma)}
+                </td>
+                <td>
+                  {this.renderMma(c.mma)}
+                </td>
+                <td>
+                  {this.renderEcn(c.ecn)}
                 </td>
               </tr>
             );
@@ -168,17 +221,27 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
 
         <Col md={12}>
             <div id="panelDemo8" className="panel panel-primary" >
-                <div className="panel-heading" style={styles.primaryDark}  >
-                  <button onClick={this.open} className="btn btn-success btn-block" style={{}}> Health & Safety </button>
-                </div>
-
+              <div className="panel-heading" style={styles.primaryDark} >
+                <Row>
+                  <Col md={6}>
+                    <h4 style={{color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase'}}>Health & Safety</h4>
+                  </Col>
+                
+                  <Col md={6}>
+                      <button onClick={this.open} className="btn btn-success pull-right" style={{}}> Add Health & Safety </button>
+                  </Col>
+                </Row>
+              </div>
                 { /* START table-responsive */}
                 <Table id="table-ext-2" responsive striped bordered hover>
                     <thead>
                         <tr>
-                            <th style={{ width: '120px' }}>LMC</th>
-                            <th style={{width: '120px'}}>special Instruction </th>
-                            <th style={{width: '120px'}}>Method of Communication </th>
+                            <th style={{ width: '120px' }}>List of Medical Considerations</th>
+                            <th style={{width: '120px'}}>Location of Medical</th>
+                            <th style={{width: '120px'}}>Any Safety Considerations</th>
+                            <th style={{width: '120px'}}>Security Members Assigned</th>
+                            <th style={{width: '120px'}}>Medical Members Assigned</th>
+                            <th style={{width: '120px'}}>Emergency Contact Number</th>
                         </tr>
                     </thead>
                     <tbody>

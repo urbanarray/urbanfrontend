@@ -65,6 +65,7 @@ export class AddCommunications extends React.Component { // eslint-disable-line 
   handleSubmit = (e) => {
     e.preventDefault();
     console.log(e);
+
     this.props.create(
       {
         moc: this.state.moc,
@@ -84,6 +85,9 @@ export class AddCommunications extends React.Component { // eslint-disable-line 
       setTimeout(() => {
         this.close();
       }, 800);
+      setTimeout(() => {
+        this.props.listCommunication(this.props.projectId);
+      }, 1000);
     }, 500);
   }
 
@@ -102,6 +106,20 @@ handleChange = (e) => {
     this.setState({
       openModel : false,
     });
+  }
+
+  renderCC = (critialContacts) => {
+    if (critialContacts && critialContacts.length > 0) {
+      return critialContacts.map((a) => {
+        return (
+          <ul key={Math.random()}>
+              <li>
+                {a.label}
+              </li>
+          </ul>
+        )
+      })
+    }
   }
 
   
@@ -132,6 +150,10 @@ handleChange = (e) => {
                 <td>
                   {this.renderMoc(c.moc)}
                 </td>
+
+                <td>
+                  {this.renderCC(c.critialContacts)}
+                </td>
               </tr>
             );
           });
@@ -148,19 +170,28 @@ handleChange = (e) => {
           <meta name="description" content="Description of AddCommunications" />
         </Helmet>
         <Col md={12}>
-            <div id="panelDemo8" className="panel panel-primary" >
+            <div  className="panel panel-default" >
                 <div className="panel-heading" style={styles.primaryDark}  >
-                    Communications
-                    <button onClick={this.open} className="btn btn-primary pull-right" style={{}}> Add Communication </button>
+                    <Row>
+                      <Col md={6}>
+                        <h4 style={{color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase'}}>Communications</h4>
+                      </Col>
+                    
+                      <Col md={6}>
+                        <button onClick={this.open} className="btn btn-success pull-right" style={{}}> Add Communication </button>
+                        
+                      </Col>
+                    </Row>
                 </div>
 
                 { /* START table-responsive */}
                 <Table id="table-ext-2" responsive striped bordered hover>
                     <thead>
                         <tr>
-                            <th style={{ width: '120px' }}>List of revelvant UA</th>
-                            <th style={{width: '120px'}}>special Instruction </th>
-                            <th style={{width: '120px'}}>Method of Communication </th>
+                            <th style={{ width: 'auto' }}>List of revelvant UA</th>
+                            <th style={{width: 'auto'}}>special Instruction </th>
+                            <th style={{width: 'auto'}}>Method of Communication </th>
+                            <th style={{width: 'auto'}}>Critial Contacts</th>
                         </tr>
                     </thead>
                     <tbody>

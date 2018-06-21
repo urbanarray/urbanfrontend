@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import { FormGroup, Label, Grid, Table, Row, Col, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
+import { FormGroup, Label, Grid, Table, Row, Col, Input, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -25,6 +25,7 @@ export class Documentation extends React.Component { // eslint-disable-line reac
   constructor(props){
     super(props)
     this.state = {
+      name: null,
       attachments: [],
       openModel: false,
     }
@@ -55,6 +56,7 @@ export class Documentation extends React.Component { // eslint-disable-line reac
       });
     }
     formData.append('projectId', this.props.projectId)
+    formData.append('name', this.state.name)
     this.props.create(
       
         formData,
@@ -62,8 +64,15 @@ export class Documentation extends React.Component { // eslint-disable-line reac
       
     );
     setTimeout(() => {
+      this.setState({
+        'name': ''
+      })
       this.close();
     }, 500);
+
+    setTimeout(() => {
+      this.props.listDocs(this.props.projectId);
+    }, 1000);
   }
 
   changeAll = (e) => {
@@ -92,7 +101,7 @@ export class Documentation extends React.Component { // eslint-disable-line reac
         return (
           <ul key={Math.random()}  style={{textDecoration: 'none', listStyleType: 'none'}}>
             <li>
-              <a className="btn btn-info" target="blank" href={`http://localhost:3000/v1/uploads/documents/` + a}>Document </a>
+              <a className="btn btn-info" target="blank" href={`http://localhost:3000/v1/uploads/documents/` + a}>View Document </a>
               
             </li>
           </ul>
@@ -106,6 +115,9 @@ export class Documentation extends React.Component { // eslint-disable-line reac
       return this.props.documentation.list_document.document.map((c) => {
         return (
           <tr key={Math.random()}>
+            <td>
+              {c.name}
+            </td>
             <td>
               {this.docs(c.document)}
             </td>
@@ -126,14 +138,23 @@ export class Documentation extends React.Component { // eslint-disable-line reac
 
         <Col md={12}>
             <div id="panelDemo8" className="panel panel-primary" >
-                <div className="panel-heading" style={styles.primaryDark}  >
-                  <button onClick={this.open} className="btn btn-primary btn-block" style={{}}> Documentation </button>
-                </div>
+              <div className="panel-heading" style={styles.primaryDark} >
+                <Row>
+                  <Col md={6}>
+                  <h4 style={{ color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase' }}>Documentation</h4>
+                  </Col>
+                
+                  <Col md={6}>
+                    <button onClick={this.open} className="btn btn-success pull-right" style={{}}> Add Documentation </button>
+                  </Col>
+                </Row>
+              </div>
 
                 { /* START table-responsive */}
                 <Table id="table-ext-2" responsive striped bordered hover>
                     <thead>
                         <tr>
+                            <th style={{ width: '120px' }}>Name</th>
                             <th style={{ width: '120px' }}>Document</th>
                         </tr>
                     </thead>
@@ -160,6 +181,18 @@ export class Documentation extends React.Component { // eslint-disable-line reac
                   </Col>
                   <Col sm={10}>
                     <div className="col-md-offset-1">
+                      <div className="form-group mb">
+                        <label className="col-sm-2 col-sm-offset-1 control-label mb">Special Instructions</label>
+                        <Col sm={8}>
+                          <input
+                            type="text"
+                            name="name"
+                            value={this.state.name}
+                            className="form-control"
+                            placeholder="Please Add Document Name"
+                          />
+                        </Col>
+                      </div>
                       <div className=" form-group mb">
                         <input 
                           type="file"
@@ -167,7 +200,10 @@ export class Documentation extends React.Component { // eslint-disable-line reac
                           value={this.state.document}
                         />
                       </div>
+
+                    
                     </div>
+
                   </Col>
                 </Row>
               </fieldset>
