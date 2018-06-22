@@ -63,7 +63,7 @@ export class Landing extends Component {
             <Col xs={12} sm={8}>
               <h1>Welcome to the Urban Array MVP Demo App.</h1>
               <h3>This website is for testing and design purposes only.  THIS IS NOT A LIVE SITE.  Your data will NOT be saved.</h3>
-              <h3>Please Enter your Invitation PASSPHRASE to the right to begin.</h3>
+              <h3>Please Enter your Invitation PASSPHRASE to the right (or below, on mobile) to begin.</h3>
               <p>For more info about Urban Array, <a href="https://urbanarray.org/">please click here to visit our website</a></p>
             </Col>
 
