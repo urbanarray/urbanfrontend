@@ -101,7 +101,7 @@ export class Documentation extends React.Component { // eslint-disable-line reac
         return (
           <ul key={Math.random()}  style={{textDecoration: 'none', listStyleType: 'none'}}>
             <li>
-              <a className="btn btn-info" target="blank" href={`http://localhost:3000/v1/uploads/documents/` + a}>View Document </a>
+              <a className="btn btn-info" target="blank" href={`http://mvp.urbanarray.org:3000/v1/uploads/documents/` + a}>View Document </a>
               
             </li>
           </ul>
