@@ -128,6 +128,9 @@ export class AddExecution extends React.Component { // eslint-disable-line react
       setTimeout(() => {
         this.close();
       }, 800);
+      setTimeout(() => {
+        this.props.listExecution(this.props.projectId);
+      }, 1000);
     }, 500);
   }
 
@@ -183,9 +186,17 @@ export class AddExecution extends React.Component { // eslint-disable-line react
         
         <Col md={12}>
             <div id="panelDemo8" className="panel panel-primary" >
-                <div className="panel-heading" style={styles.primaryDark}>
-                    <button onClick={this.open} className="btn btn-success btn-block" style={{}}> Add Execution </button>
-                </div>
+              <div className="panel-heading" style={styles.primaryDark} >
+                <Row>
+                  <Col md={6}>
+                    <h4 style={{color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase'}}>Execution</h4>
+                  </Col>
+                
+                  <Col md={6}>
+                      <button onClick={this.open} className="btn btn-success btn-block" style={{}}> Add Execution </button>
+                  </Col>
+                </Row>
+              </div>
 
                 { /* START table-responsive */}
                 <Table id="table-ext-2" responsive striped bordered hover>
