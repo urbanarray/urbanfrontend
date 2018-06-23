@@ -4,56 +4,79 @@
  *
  */
 
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import {Button} from 'reactstrap';
-import styled from 'styled-components';
-
-import { Link } from 'react-router-dom';
+import { Row, Col} from 'react-bootstrap';
+import LandingForm from './LandingForm';
 
 
-const LandingWraper = styled.div`
-  position: absolute;
-  width: 100% !important;
-  height: 100% !important;
-  color:white;
 
-  .container{
-    padding : 50px;
+export class Landing extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.getValidationState = this.getValidationState.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.state = {
+      value: '',
+      message: ''
+    };
   }
 
-  .padding_20{
-    padding: 20px;
+  getValidationState() {
+    const length = this.state.value.length;
+    if (length === 6) return 'success';
+    else if (length > 6) return 'warning';
+    else if (length < 6) return 'warning';
+    return null;
   }
 
-  .margin_10{
-    margin: 10px;
+  handleChange(e) {
+    if (this.state.value.length === 6) {
+      this.setState({message: "", value: e.target.value})
+    } else {
+      this.setState({ value: e.target.value });
+    }
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    const submissionLength = this.state.value.length;
+    if (submissionLength < 6 || submissionLength > 6) {
+      this.setState({message: "The code needs to be exactly 6 characters"})
+    } else {
+      this.setState({message: ""})
+      console.log(`submission: ${this.state.value}`)
+    }
+    console.log(this.state.value);
+  }
 
-  `;
-
-
-
-export class Landing extends React.Component { // eslint-disable-line react/prefer-stateless-function
- 
   render() {
- 
+
     return (
-      <LandingWraper>
-        <div className= 'container text-center' >
-            <div className= 'row' >
-              <div className= 'col-md-12' >
-                
-              <iframe width="100%" height="450" src="https://www.youtube.com/embed/U5n_FxGmcH8" frameBorder="0"  allowFullScreen="true"></iframe>
+        <div className='container text-center' style={{padding: '5%'}}>
+          <Row>
+            <Col xs={12} sm={8}>
+              <h1>Welcome to the Urban Array MVP Demo App.</h1>
+              <h3>This website is for testing and design purposes only.  THIS IS NOT A LIVE SITE.  Your data will NOT be saved.</h3>
+              <h3>Please Enter your Invitation PASSPHRASE to the right (or below, on mobile) to begin.</h3>
+              <p>For more info about Urban Array, <a href="https://urbanarray.org/">please click here to visit our website</a></p>
+            </Col>
 
-              </div>
-            </div>
+            <Col xs={12} sm={4}>
+              <LandingForm
+                state={this.state}
+                getValidationState={this.getValidationState} 
+                handleChange={this.handleChange}
+                handleSubmit={this.handleSubmit}
+              />
+            </Col>
+          </Row>
         </div>
-
-      </LandingWraper>
     );
   }
 }
