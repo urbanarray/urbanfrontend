@@ -23,21 +23,21 @@ const initialState = fromJS({
   tasks: [
     {
       title:'Gather and Remove Litter',
-      date: '14 March',
+      date: 'March 14',
       description: 'Dispose of trash and waste material',
       startTime: '3pm',
       endTime: '5pm',
-    }, 
+    },
     {
       title:'Mow Grass',
-      date: '14 March',
+      date: 'March 14',
       description: 'Mow grass in corner of lot',
       startTime: '1am',
       endTime: '4am',
     },
     {
       title:'Prep Planting Bed Soil',
-      date: '14 March',
+      date: 'March 14',
       description: 'Fertilizing planting bed',
       startTime: '9:30am',
       endTime: '10am',
