@@ -24,6 +24,7 @@ import { Grid, Row, Col, Panel, Button, Table, Pagination, HelpBlock, FormContro
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
 import { styles } from '../../assets/styles/variables'
+import ResourcesTable from './ResourcesTable';
 
 
 export class NeededResources extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -35,15 +36,10 @@ export class NeededResources extends React.Component { // eslint-disable-line re
       miles: ''
     }
   }
-  
+
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
-  }
-
-  componentDidUpdate(){
-    console.log(this.state);
-
   }
 
   getValidationState() {
@@ -57,8 +53,8 @@ export class NeededResources extends React.Component { // eslint-disable-line re
     this.setState({ zip: e.target.value });
   }
 
-  handleMilesChange(e){
-    this.setState({miles: e})
+  handleMilesChange(e) {
+    this.setState({ miles: e })
 
   }
 
@@ -112,45 +108,46 @@ export class NeededResources extends React.Component { // eslint-disable-line re
             </Col>
 
               <Col md={6}>
-              <form role="form" className="form-inline" >
+                <form role="form" className="form-inline" >
 
-<DropdownButton
-  bsSize="small"
-  title="Miles"
-  id="dropdown-size-extra-small"
-  onSelect={(e)=>this.handleMilesChange(e)}
->
-  <MenuItem eventKey="5">5</MenuItem>
-  <MenuItem eventKey="15">15</MenuItem>
-  <MenuItem eventKey="25">25</MenuItem>
-  <MenuItem eventKey="50">50</MenuItem>
-  <MenuItem eventKey="100">100</MenuItem>
-</DropdownButton>
+                  <DropdownButton
+                    bsSize="small"
+                    title="Miles"
+                    id="dropdown-size-extra-small"
+                    onSelect={(e) => this.handleMilesChange(e)}
+                  >
+                    <MenuItem eventKey="5">5</MenuItem>
+                    <MenuItem eventKey="15">15</MenuItem>
+                    <MenuItem eventKey="25">25</MenuItem>
+                    <MenuItem eventKey="50">50</MenuItem>
+                    <MenuItem eventKey="100">100</MenuItem>
+                  </DropdownButton>
 
-<span style={{ margin: '0 10px' }}> From </span>
+                  <span style={{ margin: '0 10px' }}> From </span>
 
-<FormGroup
-  controlId="formZip"
-  validationState={this.getValidationState()}
->
-  <FormControl
-    type="text"
-    value={this.state.zip}
-    placeholder="Zip"
-    onChange={this.handleZipChange.bind(this)}
-    style={{padding: '0', paddingLeft: '5px', marginTop: '10px', height: '30px', maxWidth: '150px', border: 'none'}}
-  />
-  <FormControl.Feedback />
-  <HelpBlock></HelpBlock>
-</FormGroup>
+                  <FormGroup
+                    controlId="formZip"
+                    validationState={this.getValidationState()}
+                  >
+                    <FormControl
+                      type="text"
+                      value={this.state.zip}
+                      placeholder="Zip"
+                      onChange={this.handleZipChange.bind(this)}
+                      style={{ padding: '0', paddingLeft: '5px', marginTop: '10px', height: '30px', maxWidth: '150px', border: 'none' }}
+                    />
+                    <FormControl.Feedback />
+                    <HelpBlock></HelpBlock>
+                  </FormGroup>
 
-</form>
+                </form>
               </Col>
             </Row>
           </div>
 
           { /* START table-responsive */}
-          <Table id="table-ext-2" responsive striped bordered hover>
+          <ResourcesTable {...this.props} />
+          {/* <Table id="table-ext-2" responsive striped bordered hover>
             <thead>
               <tr>
                 <th style={{ width: '150px' }}>Item</th>
@@ -164,7 +161,7 @@ export class NeededResources extends React.Component { // eslint-disable-line re
             <tbody>
               {this.renderNeededResources()}
             </tbody>
-          </Table>
+          </Table> */}
           { /* END table-responsive */}
           <div className="panel-footer">
             <div className="text-right">
