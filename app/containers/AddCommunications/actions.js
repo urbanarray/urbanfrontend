@@ -14,7 +14,7 @@ export function defaultAction() {
 
 export function createCommunicationsAction(payload) {
   return {
-    type: c.CREATE_COMMUNICATIONS_ACTION,
+    type: c.CREATE_COMMUNICATIONS_ACTION, 
     payload
   };
 }

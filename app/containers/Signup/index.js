@@ -285,7 +285,6 @@ export class Signup extends React.Component { // eslint-disable-line react/prefe
                         />
                         
                       </div>
-
                     </div>
 
                   </div>

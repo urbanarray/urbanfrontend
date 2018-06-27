@@ -37,6 +37,7 @@ import AddCommunications from "../AddCommunications";
 import AddExecution from "../AddExecution";
 import HealthSafety from "../HealthSafety";
 import Documentation from "../Documentation";
+import Resources from "../Resources";
 
 export class ProjectView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -244,6 +245,9 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
               projectId={this.props.match.params.id}
 
             />
+          </Col>
+          <Col md={6}>
+            <Resources/>
           </Col>
         </Row>
 

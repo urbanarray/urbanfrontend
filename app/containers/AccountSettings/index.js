@@ -124,7 +124,6 @@ export class AccountSettings extends React.Component { // eslint-disable-line re
       this.props.listUserSkills(this.props.currentUser.user.id);
     }, 1100);
 
-
   }
 
   render() {

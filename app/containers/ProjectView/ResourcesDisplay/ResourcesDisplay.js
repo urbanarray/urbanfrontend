@@ -1,14 +1,21 @@
 import React from 'react';
 
-import {Col, Table} from 'react-bootstrap';
+import {Row, Col, Table, Model} from 'react-bootstrap';
 import {styles} from '../../../assets/styles/variables';
 
 const ResourcesDisplay = (props) => (
     <Col md={6}>
         <div id="panelDemo8" className="panel panel-primary">
             <div className="panel-heading" style={styles.primaryDark}>
-                Resources
-              </div>
+                <Row>
+                    <Col md={6}>
+                        Resources
+                    </Col>
+                    <Col md={6}>
+                        <button onClick={this.open} className="btn btn-primary pull-right" style={{}}> Resources </button>
+                    </Col>
+                </Row>
+            </div>
             { /* START table-responsive */}
             <Table id="table-ext-2" responsive striped bordered hover>
                 <thead>
