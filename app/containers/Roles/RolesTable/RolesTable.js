@@ -93,7 +93,7 @@ const RolesTable = (props) => {
       )
     }
   }
-  console.log(props)
+
   return (
     <Table id="table-ext-2" responsive striped bordered hover>
       {renderHeader()}
