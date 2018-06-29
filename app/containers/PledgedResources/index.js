@@ -23,11 +23,37 @@ import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGrou
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
 import { styles } from '../../assets/styles/variables'
+import PledgedResourcesTable from './PledgedResourcesTable';
 
-export class PledgedResources extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class PledgedResources extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      width: 0,
+      height: 0
+    }
+
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  }
+
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentDidUpdate() {
+    console.log(this.state)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   renderPledgedResources = () => {
@@ -76,7 +102,8 @@ export class PledgedResources extends React.Component { // eslint-disable-line r
           </div>
 
           { /* START table-responsive */}
-          <Table id="table-ext-2" responsive striped bordered hover>
+          <PledgedResourcesTable windowWidth={this.state.width} pledgedResources={this.props.pledgedresources.pledgedResources} />
+          {/* <Table id="table-ext-2" responsive striped bordered hover>
             <thead>
               <tr>
                 <th style={{ width: '175px' }}>Item</th>
@@ -90,7 +117,7 @@ export class PledgedResources extends React.Component { // eslint-disable-line r
                 this.renderPledgedResources()
               }
             </tbody>
-          </Table>
+          </Table> */}
           { /* END table-responsive */}
 
           <div className="panel-footer">

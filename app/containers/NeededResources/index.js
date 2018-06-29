@@ -33,13 +33,31 @@ export class NeededResources extends React.Component { // eslint-disable-line re
 
     this.state = {
       zip: '',
-      miles: ''
+      miles: '',
+      width: 0,
+      height: 0
     }
+
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentDidUpdate() {
+    console.log(this.state)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   getValidationState() {
@@ -56,45 +74,6 @@ export class NeededResources extends React.Component { // eslint-disable-line re
   handleMilesChange(e) {
     this.setState({ miles: e })
 
-  }
-
-  renderNeededResources = () => {
-    if (this.props.neededresources.neededResources) {
-      return this.props.neededresources.neededResources.map((resource) => {
-        return (
-          <tr key={Math.random()}>
-            <td>
-              {resource.name}
-            </td>
-
-            <td>
-              {resource.quantity}
-            </td>
-            <td>
-              {resource.project}
-            </td>
-            <td>
-              {resource.locationNeeded}
-            </td>
-            <td>
-              {`${resource.startTime} - ${resource.endTime}`}<br />
-              {resource.date}
-            </td>
-            <td>
-              {/* <button type="button" className="btn btn-primary btn-block btn-sm"  > Pledge </button> */}
-              <Link
-                to="/projectView"
-                type="button"
-                className="btn btn-success btn-block btn-sm"
-                style={styles.primary}>Details/Claim
-              </Link>
-            </td>
-
-          </tr>
-
-        );
-      });
-    }
   }
 
   render() {
@@ -145,24 +124,8 @@ export class NeededResources extends React.Component { // eslint-disable-line re
             </Row>
           </div>
 
-          { /* START table-responsive */}
-          <ResourcesTable {...this.props} />
-          {/* <Table id="table-ext-2" responsive striped bordered hover>
-            <thead>
-              <tr>
-                <th style={{ width: '150px' }}>Item</th>
-                <th style={{ width: '100px' }}>Quantity </th>
-                <th style={{ width: '150px' }}>Project</th>
-                <th style={{ width: '150px' }}>Location Needed</th>
-                <th>Date/Time</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.renderNeededResources()}
-            </tbody>
-          </Table> */}
-          { /* END table-responsive */}
+          <ResourcesTable windowWidth={this.state.width} neededResources={this.props.neededresources.neededResources}  />
+          
           <div className="panel-footer">
             <div className="text-right">
               <Link to="#" >View All</Link>

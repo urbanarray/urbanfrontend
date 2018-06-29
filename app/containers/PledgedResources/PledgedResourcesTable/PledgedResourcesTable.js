@@ -1,9 +1,10 @@
 import React from 'react';
-import { Table, Panel } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import {Table, Panel } from 'react-bootstrap';
+
 import { styles } from '../../../assets/styles/variables';
 
-const RolesTable = (props) => {
+const PledgedResourcesTable = (props) => {
 
   const renderHeader = () => {
     if (props.windowWidth < 600) {
@@ -12,12 +13,9 @@ const RolesTable = (props) => {
       return (
         <thead>
           <tr>
-            <th style={{ width: '200px' }}>Role</th>
-            <th style={{ width: '200px' }}>Project </th>
-            <th style={{ width: '150px' }}>Date/Time</th>
-            <th style={{ width: '80px' }}>Duration</th>
-            <th style={{ width: '80px' }}>PTS</th>
-            <th>AC</th>
+            <th style={{ width: '175px' }}>Item</th>
+            <th style={{ width: '175px' }}>Project </th>
+            <th>Date/Time</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -26,28 +24,26 @@ const RolesTable = (props) => {
   }
 
   const renderOpenRoles = () => {
-    if (props.roles) {
+    if (props.pledgedResources) {
       if (props.windowWidth < 600) {
         return (
-          props.roles.map((role, i) => {
+          props.pledgedResources.map((resource, i) => {
             return (
               <Panel bsStyle="primary" key={i}>
                 <Panel.Heading style={styles.primary}>
-                  <Panel.Title componentClass="h3">{role.title}</Panel.Title>
+                  <Panel.Title componentClass="h3">{resource.item}</Panel.Title>
                 </Panel.Heading>
                 <Panel.Body style={{ textAlign: 'center' }}>
-                  Project: {role.project}<br />
-                  Date: {role.date}<br />
-                  Time: {`${role.startTime} - ${role.endTime}`}<br />
-                  Duration: {role.duration}<br />
-                  Pts: {role.pts} | AC: {role.ac}<br />
+                  Project: {resource.project}<br />
+                  Date: {resource.date}<br />
+                  Time: {`${resource.startTime} - ${resource.endTime}`}<br />
                   <Link
                     to="/roleView"
                     type="button"
                     className="btn btn-primary btn-block btn-sm"
                     color="default"
                     style={styles.primaryLight}>Details
-                  </Link>
+                    </Link>
                 </Panel.Body>
               </Panel>
             )
@@ -55,36 +51,27 @@ const RolesTable = (props) => {
         )
       } else {
         return (
-          props.roles.map((role, i) => {
+          props.pledgedResources.map((resource, i) => {
             return (
               <tr key={i}>
                 <td>
-                  {role.title}
+                  {resource.item}
                 </td>
                 <td>
-                  {role.project}
+                  {resource.project}
                 </td>
                 <td>
-                  {`${role.startTime} - ${role.endTime}`}<br />
-                  {role.date}
+                  {`${resource.startTime} - ${resource.endTime}`}<br />
+                  {resource.date}
                 </td>
-                <td>
-                  {role.duration}
-                </td>
-                <td>
-                  {role.pts}
-                </td>
-                <td>
-                  {role.ac}
-                </td>
+
                 <td>
                   <Link
-                    to="/roleView"
+                    to=""
                     type="button"
-                    className="btn btn-primary btn-block btn-sm"
-                    color="default"
+                    className="btn btn-primary btn-xs btn-block"
                     style={styles.primary}>Details
-                      </Link>
+                  </Link>
                 </td>
               </tr>
 
@@ -103,4 +90,4 @@ const RolesTable = (props) => {
   )
 }
 
-export default RolesTable;
+export default PledgedResourcesTable;
