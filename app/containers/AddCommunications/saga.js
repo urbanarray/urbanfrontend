@@ -8,9 +8,7 @@ export function* create() {
   try {
 
     const comm = yield select(makeSelectCreateCommunications());
-    console.log(comm);
     const response = yield call(createCommunicationsApi, comm);
-    console.log(response);
     yield put(createdCommunicationsAction(response.data));
 
   } catch (error) {

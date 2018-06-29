@@ -16,7 +16,7 @@ import { FormGroup, Label, Grid, Table, Row, Col, Input, Panel, Button, ButtonGr
 import Select from 'react-select';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectResources from './selectors';
+import {makeSelectResources, makeSelectListPlaces} from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import ResourcesDisplay from '../ProjectView/ResourcesDisplay/index.js'
@@ -24,17 +24,18 @@ import './style.css';
 import 'react-select/dist/react-select.css';
 import { createCommunicationsAction, listCommunication } from "./actions";
 import {styles} from '../../assets/styles/variables';
-import { addResourcesAction } from './actions'
+import { addResourcesAction, listPlacesAction, listResourcesAction } from './actions'
+import { listResources } from './saga'
 
 
 export class Resources extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props){
     super(props)
-    
+
     this.state = {
       item: '',
       quantity: '',
-      date: '',
+      Dates: '',
       place: '',
       openModel: false
 
@@ -49,12 +50,22 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
 
         item: this.state.item,
         quantity: this.state.quantity,
-        date: this.state.date,
-        place: this.state.place
+        Dates: this.state.Dates,
+        place: this.state.place,
+        projectId: this.props.projectId,
 
-        
       }
    );
+    setTimeout(() =>{
+      this.close();
+    },800);
+
+  }
+
+  componentDidMount(){
+    this.props.listPlace();
+    this.props.listResource(this.props.projectId);
+
   }
 
   handleChange = (e) => {
@@ -74,9 +85,41 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
     });
   }
 
+  renderListPlaces = () =>{
+    if (this.props.resources && this.props.resources.listedPlaces && this.props.resources.listedPlaces.length > 0) {
+      return this.props.resources.listedPlaces.map(places => {
+        return(
+           <option key={Math.random()} value={places._id}>{places.name}</option>
+           )
+      })
+    }
+  }
+  listResources = () => {
+    if (this.props.resources && this.props.resources.listedResources && this.props.resources.listedResources.length > 0) {
+      return this.props.resources.listedResources.map((res) => {
+        return (
+              <tr key={Math.random()}>
+                <td>
+                  {res.item}
+                </td>
+                <td>
+                  {res.quantity}
+                </td>
+                <td>
+                  {res.date}
+                </td>
+                <td>
+                  {this.renderListPlaces(res.place)}
+                </td>
+              </tr>
+            );
+          });
+        }
+      }
+
   render() {
     const { selectedOption } = this.state;
-    return (
+    return(
       <div>
         <Helmet>
           <title>Resources</title>
@@ -89,9 +132,8 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
                   <Col md={6}>
                   <h4 style={{ color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase' }}>Resources</h4>
                   </Col>
-                
                   <Col md={6}>
-                    <button onClick={this.open} className="btn btn-success pull-right" style={{}}> Add Resources </button>
+                    <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Resources </button>
                   </Col>
                 </Row>
               </div>
@@ -100,11 +142,15 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
                 <Table id="table-ext-2" responsive striped bordered hover>
                     <thead>
                         <tr>
-                            <th style={{ width: '120px' }}>Name</th>
-                            <th style={{ width: '120px' }}>Document</th>
+                            <th>Item</th>
+                            <th>Quantity </th>
+                            <th>Location Needed</th>
+                            <th>date/Time</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                      {this.listResources()}
                     </tbody>
                 </Table>
                 { /* END table-responsive */}
@@ -146,24 +192,10 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
                         </Col>
                       </div>
                       <div className="form-group mb">
-                        <label className="col-sm-2 col-sm-offset-1 control-label mb">Location</label>
-                        <Col sm={8}>
-                          <select 
-                            name="place"
-                            value={this.state.place} 
-                            className="form-control"
-                            >
-                            <option value={1}>Urban Farming</option>
-                            <option value={2}>Building Rehab</option>
-                          </select>
-                        </Col>
-
-                      </div>
-                      <div className="form-group mb">
-                        <label className="col-sm-2 col-sm-offset-1 control-label mb">Date</label>
+                        <label className="col-sm-2 col-sm-offset-1 control-label mb">date</label>
                         <Col sm={8}>
                           <input
-                            type="date"
+                            type="text"
                             name="date"
                             value={this.state.date}
                             className="form-control"
@@ -171,9 +203,20 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
                           />
                         </Col>
                       </div>
-                    
+                      <div className="form-group mb">
+                        <label className="col-sm-2 col-sm-offset-1 control-label mb">Place</label>
+                        <Col md={8}>
+                          <p style={{
+                            color: 'red'
+                          }}>
+                            {/* {this.state.projectname} */}
+                          </p>
+                            <select value={this.state.place} name="place" className="form-control">
+                              {this.renderListPlaces()}
+                            </select>
+                        </Col>
+                      </div>
                     </div>
-
                   </Col>
                 </Row>
               </fieldset>
@@ -188,21 +231,26 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
     );
   }
 }
+
 Resources.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
+
   resources: makeSelectResources(),
+  listPlaces: makeSelectListPlaces(),
+
 });
 
-function mapDispatchToProps(dispatch) {
-  return {
+function mapDispatchToProps(dispatch){
+  return{
     dispatch,
-    create: (payload) => dispatch(addResourcesAction(payload))
+    create: (payload) =>dispatch(addResourcesAction(payload)),
+    listPlace: () => dispatch(listPlacesAction()),
+    listResource: (id) => dispatch(listResourcesAction(id)),
   };
 }
-
 
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

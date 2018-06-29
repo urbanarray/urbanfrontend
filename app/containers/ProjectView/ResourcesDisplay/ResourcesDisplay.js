@@ -9,10 +9,10 @@ const ResourcesDisplay = (props) => (
             <div className="panel-heading" style={styles.primaryDark}>
                 <Row>
                     <Col md={6}>
-                        Resources
+                        <h4 style={{color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase'}}>Resources </h4>
                     </Col>
                     <Col md={6}>
-                        <button onClick={this.open} className="btn btn-primary pull-right" style={{}}> Resources </button>
+                        <button style={{marginTop: '3.0px'}} onClick={this.open} className="btn btn-primary pull-right" > Resources </button>
                     </Col>
                 </Row>
             </div>

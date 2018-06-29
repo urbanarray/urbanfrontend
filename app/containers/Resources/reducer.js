@@ -9,13 +9,22 @@ import {
   DEFAULT_ACTION,
   ADD_RESOURCES_ACTION,
   ADDED_RESOURCES_ACTION,
+
+  LIST_PLACES_ACTION,
+  LISTED_PLACES_ACTION,
+  
+  LIST_RESOURCES_ACTION,
+  LISTED_RESOURCES_ACTION,
+
 } from './constants';
 
 const initialState = fromJS({
 	addResources:[],
-	resources_list:[],
+  listedPlaces: [],
+  listedResources: [],
 	loading: false,
-	done: false
+	done: false,
+  projectId: null,
 });
 
 function resourcesReducer(state = initialState, action) {
@@ -33,6 +42,29 @@ function resourcesReducer(state = initialState, action) {
     		.set('addedResources', null)
     		.set('loading', false )
     		.set('done', true)
+
+    case LIST_PLACES_ACTION:
+      return state
+        .set('loading', true )
+        .set('done', false)
+
+    case LISTED_PLACES_ACTION:
+      return state
+        .set('listedPlaces', action.payload)
+        .set('loading', false)
+        .set('done', true)
+
+    case LIST_RESOURCES_ACTION:
+      return state
+        .set('projectId', action.payload)
+        .set('loading', true)
+        .set('done', false)
+
+    case LISTED_RESOURCES_ACTION:
+      return state
+      .set('listedResources', action.payload)
+      .set('loading', false)
+      .set('done', true)
 
     default:
       return state;

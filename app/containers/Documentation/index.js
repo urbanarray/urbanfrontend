@@ -145,7 +145,7 @@ export class Documentation extends React.Component { // eslint-disable-line reac
                   </Col>
                 
                   <Col md={6}>
-                    <button onClick={this.open} className="btn btn-success pull-right" style={{}}> Add Documentation </button>
+                    <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Documentation </button>
                   </Col>
                 </Row>
               </div>

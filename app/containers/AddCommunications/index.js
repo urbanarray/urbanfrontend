@@ -41,7 +41,6 @@ export class AddCommunications extends React.Component { // eslint-disable-line 
 
     };
 
-
   }
 
   componentDidMount(){
@@ -56,7 +55,7 @@ export class AddCommunications extends React.Component { // eslint-disable-line 
   }
 
   handleMutiValueChange = (value) => {
-    
+
     this.setState({
       moc: value
     })
@@ -64,7 +63,6 @@ export class AddCommunications extends React.Component { // eslint-disable-line 
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
     this.props.create(
       {
         moc: this.state.moc,
@@ -152,10 +150,10 @@ handleChange = (e) => {
                 <div className="panel-heading" style={styles.primaryDark}  >
                     <Row>
                         <Col md={6}>
-                            Communications
+                            <h4 style={{color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase'}}> Communications </h4>
                         </Col>
                         <Col md={6}>
-                            <button onClick={this.open} className="btn btn-success pull-right" style={{}}> Add Communication </button>
+                            <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Communication </button>
                         </Col>
                     </Row>
                 </div>
@@ -187,7 +185,7 @@ handleChange = (e) => {
               <fieldset>
 
                 <div className="form-group mb">
-                  <label className="col-sm-2 col-sm-offset-1 control-label mb">Methods of Communications</label>
+                  <label className="col-sm-2 col-sm-offset-1 control-label mb communicat" style={{ marginLeft: '3%', minWidth: '132px'}}>Methods of Communications</label>
                   <Col sm={8}>
                     <Select.Creatable
                       name="moc"
@@ -198,7 +196,7 @@ handleChange = (e) => {
                     />
                   </Col>
                 </div>
-
+                
                 <div className="form-group mb">
                   <label className="col-sm-2 col-sm-offset-1 control-label mb">Critial Contacts</label>
                   <Col sm={8}>

@@ -228,7 +228,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
                   </Col>
                 
                   <Col md={6}>
-                      <button onClick={this.open} className="btn btn-success pull-right" style={{}}> Add Health & Safety </button>
+                      <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Health & Safety </button>
                   </Col>
                 </Row>
               </div>
@@ -236,7 +236,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
                 <Table id="table-ext-2" responsive striped bordered hover>
                     <thead>
                         <tr>
-                            <th style={{ width: '120px' }}>List of Medical Considerations</th>
+                            <th style={{width: '120px' }}>List of Medical Considerations</th>
                             <th style={{width: '120px'}}>Location of Medical</th>
                             <th style={{width: '120px'}}>Any Safety Considerations</th>
                             <th style={{width: '120px'}}>Security Members Assigned</th>

@@ -11,8 +11,7 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
-import { Grid, Row,Col,Panel,Button,FormControl, Textarea
-} from 'react-bootstrap';
+import { Grid, Row,Col,Panel,Button,FormControl, Textarea} from 'react-bootstrap';
 import ContentWrapper from '../../components/Layout/ContentWrapper';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -111,9 +110,6 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
     
       return places.map((place) => {
         return (
-          
-          
-    
             <option  key={Math.random()} value={place._id}>{place.name}</option>
     
         )

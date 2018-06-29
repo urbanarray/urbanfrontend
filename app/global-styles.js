@@ -1,4 +1,4 @@
-import { injectGlobal } from 'styled-components';
+ import { injectGlobal } from 'styled-components';
 
 /* eslint no-unused-expressions: 0 */
 injectGlobal`
@@ -37,8 +37,10 @@ injectGlobal`
     margin-bottom: 20px;
     margin-top: 20px;
   }
-  
-  
+    
+  .navbar-brand {
+    border-right: 1px solid #d9d9d9;
+  }
   
   .box-header{
     border-bottom:1px solid #ddd;

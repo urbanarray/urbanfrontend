@@ -247,7 +247,9 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
             />
           </Col>
           <Col md={6}>
-            <Resources/>
+            <Resources
+              projectId={this.props.match.params.id}
+            />
           </Col>
         </Row>
 

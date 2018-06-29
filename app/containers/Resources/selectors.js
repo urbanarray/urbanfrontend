@@ -24,9 +24,25 @@ const makeSelectAddResources = () => createSelector(
 	(substate) => substate.get('addResources')
 );
 
+const makeSelectListPlaces = () => createSelector(
+
+	selectResourcesDomain,
+	(substate) => substate.get('listPlaces')
+
+);
+
+const makeSelectProjectId = () => createSelector(
+    selectResourcesDomain,
+    (substate) => substate.get('projectId')
+  );
+
 export default makeSelectResources;
 export {
+
   selectResourcesDomain,
-  makeSelectAddResources
+  makeSelectAddResources,
+  makeSelectListPlaces,
+  makeSelectResources,
+  makeSelectProjectId
 
 };
