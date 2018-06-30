@@ -4,10 +4,11 @@ import {accessToken, clearState} from './persistState';
 
 const onlineServer ='http://mvp.urbanarray.org:3000/v1/';
 const local = 'http://localhost:3000/v1/';
+const ip = 'http://192.168.1.118:3000/v1/';
 
 const api = axios.create({
     
-    baseURL: onlineServer,
+    baseURL: ip,
     timeout: 20000,
 });
 

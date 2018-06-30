@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for PledgedResources
+ * Asynchronously loads the component for Resources
  *
  */
 

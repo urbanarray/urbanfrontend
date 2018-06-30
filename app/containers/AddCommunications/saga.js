@@ -1,16 +1,14 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
 import { CREATE_COMMUNICATIONS_ACTION, LIST_COMMUNICATION_ACTION } from "./constants";
-import { createdCommunicationsAction, listedCommunication} from "./actions";
+import { createdCommunicationsAction, listedCommunication } from "./actions";
 import { makeSelectCreateCommunications, listCommunications } from "./selectors";
-import {createCommunicationsApi, listCommunicationApi} from "./api";
+import { createCommunicationsApi, listCommunicationApi } from "./api";
 
 export function* create() {
   try {
 
     const comm = yield select(makeSelectCreateCommunications());
-    console.log(comm);
     const response = yield call(createCommunicationsApi, comm);
-    console.log(response);
     yield put(createdCommunicationsAction(response.data));
 
   } catch (error) {
@@ -21,8 +19,10 @@ export function* create() {
 export function * listCommunication() {
   try {
 
-    const communicationLIst = yield select(listCommunications());
-    const response = yield call(listCommunicationApi, communicationLIst);
+    const communicationList = yield select(listCommunications());
+    console.log(communicationList);
+    
+    const response = yield call(listCommunicationApi, communicationList);
 
     yield put(listedCommunication(response.data.communication));
 

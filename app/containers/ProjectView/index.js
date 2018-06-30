@@ -37,6 +37,7 @@ import AddCommunications from "../AddCommunications";
 import AddExecution from "../AddExecution";
 import HealthSafety from "../HealthSafety";
 import Documentation from "../Documentation";
+import Resources from "../Resources";
 
 export class ProjectView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -54,7 +55,6 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
   }
 
   handleSelect(key) {
-    // console.log('Tab selected ' + key);
     this.setState({
       key
     });
@@ -243,6 +243,11 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
 
               projectId={this.props.match.params.id}
 
+            />
+          </Col>
+          <Col md={12}>
+            <Resources
+              projectId={this.props.match.params.id}
             />
           </Col>
         </Row>

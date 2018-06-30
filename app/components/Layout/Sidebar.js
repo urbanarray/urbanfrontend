@@ -203,8 +203,8 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('dashboard')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="dashboard" title="Calander">
-                                                <span>Calander</span>
+                                            <Link to="/dashboard" title="Calendar">
+                                                <span>Calendar</span>
                                             </Link>
                                         </li>
 
@@ -233,7 +233,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('account-settings')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="account-settings" title="Profile Setting">
+                                            <Link to="/account-settings" title="Profile Setting">
                                                 <span>Profile</span>
                                             </Link>
                                         </li>
@@ -263,7 +263,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('list-volunteers')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="list-volunteers" title="List Volunteers">
+                                            <Link to="/list-volunteers" title="List Volunteers">
                                                 <span>List Volunteers</span>
                                             </Link>
                                         </li>
@@ -315,7 +315,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('communities')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="dashboard" title="Communities">
+                                            <Link to="/dashboard" title="Communities">
                                                 <span data-localize="sidebar.nav.element.BUTTON">Communities</span>
                                             </Link>
                                         </li>
@@ -324,7 +324,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('projects')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="listProjects" title="Projects">
+                                            <Link to="/listProjects" title="Projects">
                                                 <span data-localize="sidebar.nav.element.BUTTON">Projects</span>
                                             </Link>
                                         </li>
@@ -333,7 +333,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('dm')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="dashboard" title="D.M">
+                                            <Link to="/dashboard" title="D.M">
                                                 <span data-localize="sidebar.nav.element.COLOR">D.M</span>
                                             </Link>
                                         </li>
@@ -370,7 +370,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('openRoles')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="roleView" title="Open Roles">
+                                            <Link to="/roleView" title="Open Roles">
                                                 <span>Open Roles</span>
                                             </Link>
                                         </li>
@@ -378,7 +378,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('myRoles')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="roleView" title="My Roles">
+                                            <Link to="/roleView" title="My Roles">
                                                 <span>My Roles</span>
                                             </Link>
                                         </li>
@@ -386,7 +386,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('allRoles')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="roleView" title="All Roles">
+                                            <Link to="/roleView" title="All Roles">
                                                 <span>All Roles</span>
                                             </Link>
                                         </li>
@@ -415,7 +415,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('places')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="places" title="List">
+                                            <Link to="/places" title="List">
                                                 <span>List Places</span>
                                             </Link>
                                         </li>
@@ -449,14 +449,14 @@ class Sidebar extends React.Component {
                                                 <span>List Projects</span>
                                             </Link>
                                         </li>
-                                        <li
+                                        {/* <li
                                             className={this.routeActive('createProject')
                                                 ? 'active'
                                                 : ''}>
                                             <Link to="/addProject" title="Create Project">
                                                 <span>Create Project</span>
                                             </Link>
-                                        </li>
+                                        </li> */}
 
                                         <li
                                             className={this.routeActive('myProjects')
@@ -497,7 +497,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('add-roles')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="add-roles" title="Add Roles">
+                                            <Link to="/add-roles" title="Add Roles">
                                                 <span>Add Roles</span>
                                             </Link>
                                         </li>
@@ -507,7 +507,7 @@ class Sidebar extends React.Component {
                             </li>
 
                             <li>
-                                <a href="logout" title="Logout">
+                                <a href="/logout" title="Logout">
                                     <em className="icon-power"></em>
                                     <span>Logout</span>
                                 </a>

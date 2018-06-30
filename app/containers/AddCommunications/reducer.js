@@ -8,7 +8,7 @@ import { fromJS } from 'immutable';
 import * as c from './constants';
 
 const initialState = fromJS({
-
+  projectId: null,
   addCommunications: [],
   communication_list: [],
   loading: false,
@@ -32,7 +32,7 @@ function addCommunicationsReducer(state = initialState, action) {
         .set('done', true);
     case c.LIST_COMMUNICATION_ACTION:
       return state
-        .set('communication_list', action.payload)
+        .set('projectId', action.payload)
         .set('loading', true)
         .set('done', false);
     case c.LISTED_COMMUNICATION_ACTION:

@@ -25,7 +25,7 @@ export function* update(params) {
 
   const project = response.data.project;
   yield put(updatedAction(response.data.project));
-
+  yield listProjects();
 
 }
 

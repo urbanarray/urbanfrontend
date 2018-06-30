@@ -23,47 +23,40 @@ import messages from './messages';
 import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
-import { styles } from '../../assets/styles/variables'
+import { styles } from '../../assets/styles/variables';
+import YourRoleTable from './YourRoleTable';
 
 export class YourRole extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      width: 0,
+      height: 0
+    }
+
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  }
 
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
   }
 
-  renderYourRoles = () => {
-    if (this.props.yourrole.yourRoles) {
-      return this.props.yourrole.yourRoles.map((roles) => {
-        return (
-          <tr key={Math.random()}>
-            <td>
-              {roles.role}
-            </td>
-
-            <td>
-              {roles.project}
-            </td>
-            <td>
-              {`${roles.startTime} - ${roles.endTime}`} <br />
-              {roles.date}
-            </td>
-
-            <td>
-              <Link
-                to="/roleView"
-                type="button"
-                className="btn btn-primary btn-xs btn-block"
-                style={styles.primary}>Details
-              </Link>
-            </td>
-
-          </tr>
-
-        );
-      });
-    }
+  componentDidUpdate() {
+    console.log(this.state)
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+  }
+
   render() {
     return (
       <Col md={4}>
@@ -76,21 +69,8 @@ export class YourRole extends React.Component { // eslint-disable-line react/pre
             </Row>
           </div>
 
-          { /* START table-responsive */}
-          <Table id="table-ext-2" responsive striped bordered hover>
-            <thead>
-              <tr>
-                <th style={{ width: '175px' }}>Role</th>
-                <th style={{ width: '175px' }}>Project </th>
-                <th>Date/Time</th>
-                {/* <th></th> */}
-              </tr>
-            </thead>
-            <tbody>
-              {this.renderYourRoles()}
-            </tbody>
-          </Table>
-          { /* END table-responsive */}
+          <YourRoleTable windowWidth={this.state.width} yourRoles={this.props.yourrole.yourRoles} />
+          
 
           <div className="panel-footer">
             <div className="text-right">

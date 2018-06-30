@@ -193,7 +193,7 @@ export class AddExecution extends React.Component { // eslint-disable-line react
                   </Col>
                 
                   <Col md={6}>
-                      <button onClick={this.open} className="btn btn-success btn-block" style={{}}> Add Execution </button>
+                      <button onClick={this.open} className="btn btn-success btn-block" style={{marginTop: '3.0px'}}> Add Execution </button>
                   </Col>
                 </Row>
               </div>
@@ -272,7 +272,7 @@ export class AddExecution extends React.Component { // eslint-disable-line react
                 </div>
 
               </fieldset>
-              <button className="btn-block btn btn-success">Add Exevution</button>
+              <button className="btn-block btn btn-success">Add Execution</button>
             </form>
           </Modal.Body>
           <Modal.Footer>

@@ -10,7 +10,9 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import { FormGroup, Label, Grid, Table, Row, Col, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
+import { FormGroup, Label, Grid, Table, Row, Col, Panel, Button, ButtonGroup, 
+  ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, 
+  PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
 
 import Select from 'react-select';
 import injectSaga from 'utils/injectSaga';
@@ -41,7 +43,6 @@ export class AddCommunications extends React.Component { // eslint-disable-line 
 
     };
 
-
   }
 
   componentDidMount(){
@@ -56,7 +57,7 @@ export class AddCommunications extends React.Component { // eslint-disable-line 
   }
 
   handleMutiValueChange = (value) => {
-    
+
     this.setState({
       moc: value
     })
@@ -64,8 +65,6 @@ export class AddCommunications extends React.Component { // eslint-disable-line 
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
-
     this.props.create(
       {
         moc: this.state.moc,
@@ -85,9 +84,6 @@ export class AddCommunications extends React.Component { // eslint-disable-line 
       setTimeout(() => {
         this.close();
       }, 800);
-      setTimeout(() => {
-        this.props.listCommunication(this.props.projectId);
-      }, 1000);
     }, 500);
   }
 
@@ -108,21 +104,6 @@ handleChange = (e) => {
     });
   }
 
-  renderCC = (critialContacts) => {
-    if (critialContacts && critialContacts.length > 0) {
-      return critialContacts.map((a) => {
-        return (
-          <ul key={Math.random()}>
-              <li>
-                {a.label}
-              </li>
-          </ul>
-        )
-      })
-    }
-  }
-
-  
   renderMoc = (moc) => {
     if (moc && moc.length > 0) {
       return moc.map((a) => {
@@ -136,29 +117,30 @@ handleChange = (e) => {
       })
     }
   }
-  listComm = () => {
-    if (this.props.addcommunications && this.props.addcommunications.communication_list && this.props.addcommunications.communication_list.length > 0) {
-      return this.props.addcommunications.communication_list.map((c) => {
-        return (
-              <tr key={Math.random()}>
-                <td>
-                  {c.revelvantUA}
-                </td>
-                <td>
-                  {c.specialInstruction}
-                </td>
-                <td>
-                  {this.renderMoc(c.moc)}
-                </td>
 
-                <td>
-                  {this.renderCC(c.critialContacts)}
-                </td>
-              </tr>
-            );
-          });
-        }
-      }
+  listComm = () => {
+    
+    if (this.props.addcommunications && this.props.addcommunications.communication_list && this.props.addcommunications.communication_list.length > 0) {
+        return this.props.addcommunications.communication_list.map((c) => {
+            return (
+                <tr key={Math.random()}>
+                  <td>
+                    {c.revelvantUA}
+                  </td>
+                  <td>
+                    {c.specialInstruction}
+                  </td>
+                  <td>
+                    {this.renderMoc(c.moc)}
+                  </td>
+                </tr>
+              );  
+        });
+
+    }
+
+  }
+
   render() {
 
     const { selectedOption } = this.state;
@@ -166,21 +148,19 @@ handleChange = (e) => {
     return (
       <div>
         <Helmet>
-          <title>AddCommunications</title>
+          <title>Add Communications</title>
           <meta name="description" content="Description of AddCommunications" />
         </Helmet>
         <Col md={12}>
-            <div  className="panel panel-default" >
+            <div id="panelDemo8" className="panel panel-primary" >
                 <div className="panel-heading" style={styles.primaryDark}  >
                     <Row>
-                      <Col md={6}>
-                        <h4 style={{color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase'}}>Communications</h4>
-                      </Col>
-                    
-                      <Col md={6}>
-                        <button onClick={this.open} className="btn btn-success pull-right" style={{}}> Add Communication </button>
-                        
-                      </Col>
+                        <Col md={6}>
+                            <h4 style={{color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase'}}> Communications </h4>
+                        </Col>
+                        <Col md={6}>
+                            <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Communication </button>
+                        </Col>
                     </Row>
                 </div>
 
@@ -188,10 +168,9 @@ handleChange = (e) => {
                 <Table id="table-ext-2" responsive striped bordered hover>
                     <thead>
                         <tr>
-                            <th style={{ width: 'auto' }}>List of revelvant UA</th>
-                            <th style={{width: 'auto'}}>special Instruction </th>
-                            <th style={{width: 'auto'}}>Method of Communication </th>
-                            <th style={{width: 'auto'}}>Critial Contacts</th>
+                            <th style={{ width: '120px' }}>List of revelvant UA</th>
+                            <th style={{width: '120px'}}>special Instruction </th>
+                            <th style={{width: '120px'}}>Method of Communication </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -203,9 +182,6 @@ handleChange = (e) => {
             </div>
         </Col>
 
-        
-        
-
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>Add Communication</Modal.Title>
@@ -215,7 +191,7 @@ handleChange = (e) => {
               <fieldset>
 
                 <div className="form-group mb">
-                  <label className="col-sm-2 col-sm-offset-1 control-label mb">Methods of Communications</label>
+                  <label className="col-sm-2 col-sm-offset-1 control-label mb communicat" style={{ marginLeft: '3%', minWidth: '132px'}}>Methods of Communications</label>
                   <Col sm={8}>
                     <Select.Creatable
                       name="moc"
@@ -226,7 +202,7 @@ handleChange = (e) => {
                     />
                   </Col>
                 </div>
-
+                
                 <div className="form-group mb">
                   <label className="col-sm-2 col-sm-offset-1 control-label mb">Critial Contacts</label>
                   <Col sm={8}>

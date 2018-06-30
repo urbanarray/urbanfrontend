@@ -85,10 +85,9 @@ export default function App() {
           <Route path="/add-roles" component={AddRoles} />
           <Route path="/resetpassword/:code" component={ResetPassword} /> 
           <Route path="/completeAccount/:id" component={AcceptInvitation} /> 
-          <Route path="/addProject" component={AddProject} /> 
+          <Route path="/addProject" component={AddProject} />
           <Route path="/listProjects" component={ListProjects} /> 
-          <Route path="/places" component={ListPlaces} /> 
-        
+          <Route path="/places" component={ListPlaces} />
         </Base> 
       </Switch>
     </Router>

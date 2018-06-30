@@ -119,7 +119,7 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
             </td>
 
             <td className="col-md-3">
-              <Link 
+              <Link
                 to="#"
                 type="button"
                 className="btn btn-primary btn-block"

@@ -11,8 +11,7 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
-import { Grid, Row,Col,Panel,Button,FormControl, Textarea
-} from 'react-bootstrap';
+import { Grid, Row, Col, Panel, Button, FormControl, Textarea, Modal, FormGroup } from 'react-bootstrap';
 import ContentWrapper from '../../components/Layout/ContentWrapper';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -44,6 +43,20 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
     this.handleQuill = this.handleQuill.bind(this)
   }
   
+
+  open = () => {
+    this.setState({
+      openModel: true,
+    })
+  }
+
+  close = () => {
+    this.setState({
+      openModel: false,
+    });
+  }
+
+
   handleChange = (e) => {
 
     const {name, value} = e.target;
@@ -71,7 +84,8 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
         description: this.state.description, 
         projectType: this.state.projectType,
         place: this.state.place,
-        date: this.state.date,
+        startDate: this.state.startDate,
+        endDate: this.state.endDate,
         time: this.state.time,
         pgoals: this.state.pgoals,
         pkeywords: this.state.pkeywords,
@@ -79,19 +93,21 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
       setTimeout(() => {
         this.setState(
           {
-            'name':'',
-            'description': '',
-            'projectType': '',
-            'place': '',
-            'date': '',
-            'pgoals': '',
-            'pkeywords': '',
-            'time': '',
+            name:'',
+            description: '',
+            projectType: 1,
+            place: '',
+            startDate: '',
+            endDate:'',
+            pgoals: '',
+            pkeywords: '',
+            time: '',
           }
         );
         
       }, 500);
       this.handleClick(true);
+      this.close();
     }
     
     
@@ -111,9 +127,6 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
     
       return places.map((place) => {
         return (
-          
-          
-    
             <option  key={Math.random()} value={place._id}>{place.name}</option>
     
         )
@@ -123,203 +136,253 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
   }
 
 
-  renderFleshmsh = () => {
-    return ( 
-      <div className={(this.state.show == true ) ? 'show' : 'hide'} >
-        <div className="alert alert-success">
-         <span className="pull-right"  onClick={(e) => this.handleClick(false)} > X </span>
-          Project Created
-        </div>
-      </div>
 
-    )
+  getValidationState(value) {
+    const item = this.state[value];
+    const length = item.length;
+    if (length > 1) return 'success';
+    // else if (length > 1) return 'warning';
+    else if (length < 1) return 'error';
+    return null;
   }
+
+
+
 
   render() {
     return (
       <div>
-        <Helmet>
-          <title>AddProject</title>
-          <meta name="description" content="Description of AddProject" />
-        </Helmet>
-        <ContentWrapper>
-          <Row>
-            <Col md={10} className="col-md-offset-1">
-              <form method="post" action="#" data-parsley-validate="" onChange={this.handleChange} onSubmit={this.handleSubmit} noValidate>
-                <div className="panel panel-default">
-                  <div className="panel-heading">
-                    <div className="panel-title">Create Project</div>
-                  </div>
-                  <div className="panel-body">
-                    {this.renderFleshmsh()}
-                  <Col md={12} >
-                    <div className="form-group">
-                      <label className="control-label">Project Name *</label>
-                      <p style={{
-                        color: 'red'
-                      }}>
-                        {/* {this.state.projectname} */}
-                      </p>
-                      <FormControl
-                        id="name"
-                        type="name"
-                        name="name"
-                        placeholder="Enter Project Name"
-                        value={this.state.name}
-                        required="required"
-                        className="form-control"/>
-                    </div>
-                  </Col>
-                  <Col md={12}>
-                    <div className="form-group">
-                      <label className="control-label">Description</label>
-                      <p style={{
-                        color: 'red'
-                      }}>
-                        {/* {this.state.projectname} */}
-                      </p>
-                      <FormControl
-                        id="description"
-                        type="description"
-                        name="description"
-                        rows="5"
-                        componentClass="textarea"
-                        placeholder="Description"
-                        value={this.state.description}
-                        required="required"
-                        className="form-control" />
-                    </div>
-                  </Col>
-                    <Col md={6}>
-                      <div className="form-group">
-                        <label className="control-label">Project Type</label>
-                        <p style={{
-                          color: 'red'
-                        }}>
-                          {/* {this.state.projectname} */}
-                        </p>
-                        <select value={this.state.projectType} name="projectType" className="form-control">
-                          <option value={1}>Urban Farming</option>
-                          <option value={2}>Building Rehab</option>
-                        </select>
-                      </div>
-                    </Col>
-                  <Col md={6}>
-                    <div className="form-group">
-                      <label className="control-label">Place</label>
-                      <p style={{
-                        color: 'red'
-                      }}>
-                        {/* {this.state.projectname} */}
-                      </p>
-                        <select value={this.state.place} name="place" className="form-control">
-                          {this.renderSelect()}
-                        </select>
-                    </div>
-                  </Col>
+
+        <button onClick={this.open} className="btn btn-primary" > Add New Project </button>
+
+        <Modal show={this.state.openModel} onHide={this.close} >
+          <Modal.Header closeButton>
+            <Modal.Title>Add New Project</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>  
+
+            <Row>
+              <Col md={12} className="col-md-offset-0">
+                <form method="post" action="#" data-parsley-validate="" onChange={this.handleChange} onSubmit={this.handleSubmit} noValidate>
                   
-                  <Col md={6}>
-                    <div className="form-group">
-                      <label className="control-label">Date</label>
-                      <p style={{
-                        color: 'red'
-                      }}>
-                        {/* {this.state.projectname} */}
-                      </p>
-                      <FormControl
-                        id="date  "
-                        type="date"
-                        name="date"
-                        rows="5"
-                        placeholder="date"
-                        value={this.state.date}
-                        className="form-control" />
+
+                  
+                  <div className="panel panel-default">
+                    <div className="panel-heading">
+                      <div className="panel-title"></div>
                     </div>
-                  </Col>
-                    <Col md={6}>
-                      <div className="form-group">
-                        <label className="control-label">Time</label>
-                        <p style={{
-                          color: 'red'
-                        }}>
-                          {/* {this.state.projectname} */}
-                        </p>
-                        <FormControl
-                          id="time"
-                          type="timedate"
-                          name="time"
-                          rows="5"
-                          placeholder="time"
-                          value={this.state.time}
-                          className="form-control" />
-                      </div>
-                    </Col>
+                    <div className="panel-body">
+                      <Row> 
+                        <Col md={6} >
 
-                    <Col md={6}>
-                      <div className="form-group">
-                        <label className="control-label">Project Goals</label>
-                        <p style={{
-                          color: 'red'
-                        }}>
-                          {/* {this.state.projectname} */}
-                        </p>
-                        <ReactQuill 
-                          name="pgoals"
-                          value ={this.state.pgoals}
-                          required="required"
-                          type="text"
-                          onChange={this.handleQuill}
-                           />
-                        {/* <FormControl
-                          id="pgoals"
-                          type="pgoals"
-                          name="pgoals"
-                          rows="5"
-                          componentClass="textarea"
-                          placeholder="Project Goals"
-                          value={this.state.pgoals}
-                          required="required"
-                          className="form-control" /> */}
-                      </div>
-                    </Col>
+                          <FormGroup
+                            validationState={this.getValidationState('name')}
+                          >
+                        
+                            <label className="control-label">Project Name *</label>
+                            <p style={{
+                              color: 'red'
+                            }}>
+                              {/* {this.state.projectname} */}
+                            </p>
+                            <FormControl
+                              id="name"
+                              type="name"
+                              name="name"
+                              placeholder="Enter Project Name"
+                              value={this.state.name}
+                              required="required"
+                              className="form-control"/>
+                          </FormGroup>
 
-                    <Col md={6}>
-                      <div className="form-group">
-                        <label className="control-label">Project Keywords</label>
-                        <p style={{
-                          color: 'red'
-                        }}>
-                          {/* {this.state.projectname} */}
-                        </p>
-                        <FormControl
-                          type="text"
-                          name="pkeywords"
-                          rows="5"
-                          componentClass="textarea"
-                          placeholder="Project Keywords"
-                          value={this.state.pkeywords}
-                          required="required"
-                          className="form-control" />
-                      </div>
-                    </Col>  
+                          <FormGroup
+                            validationState={this.getValidationState('projectType')}
+                          >
+                            <label className="control-label">Project Type</label>
+                            <p style={{
+                              color: 'red'
+                            }}>
+                              {/* {this.state.projectname} */}
+                            </p>
+                            <select value={this.state.projectType} name="projectType" className="form-control">
+                              <option>Select Project Type</option>
+                              <option value={1}>Urban Farming</option>
+                              <option value={2}>Building Rehab</option>
+                            </select>
+                          </FormGroup>
 
-                  </div>
-                  <div className="panel-footer">
-                    <div className="clearfix">
 
-                      <div className="pull-right">
-                        <div className="">
-                          <button type="submit" disabled={!this.state.name} className="btn btn-success">Create Project</button>
+                          <FormGroup
+                            validationState={this.getValidationState('place')}
+                          >
+                            <label className="control-label">Place</label>
+                            <p style={{
+                              color: 'red'
+                            }}>
+                              {/* {this.state.projectname} */}
+                            </p>
+                            <select value={this.state.place} name="place" className="form-control" required>
+                              <option> Select Place</option>
+                              {this.renderSelect()}
+                            </select>
+                          </FormGroup>
+                         
+                        </Col>    
+
+                        <Col md={6}>
+                          <FormGroup
+                            validationState={this.getValidationState('description')}
+                          >
+                            <label className="control-label">Description</label>
+                            <p style={{
+                              color: 'red'
+                            }}>
+                              {/* {this.state.projectname} */}
+                            </p>
+                            <FormControl
+                              id="description"
+                              type="description"
+                              name="description"
+                              rows="5"
+                              componentClass="textarea"
+                              placeholder="Description"
+                              value={this.state.description}
+                              required="required"
+                              className="form-control" />
+                          </FormGroup>
+
+                          <FormGroup
+                            validationState={this.getValidationState('time')}
+                          >
+                            <label className="control-label">Time</label>
+                            <p style={{
+                              color: 'red'
+                            }}>
+                              {/* {this.state.projectname} */}
+                            </p>
+                            <FormControl
+                              id="time"
+                              type="time"
+                              name="time"
+                              rows="5"
+                              placeholder="time"
+                              value={this.state.time}
+                              className="form-control" />
+                          </FormGroup>                          
+
+                        </Col>
+
+                      </Row> 
+                      
+                      <Row> 
+                        <Col md={6}>
+                          <FormGroup
+                            /* validationState={this.getValidationState('startDate')} */
+                          >
+                            <label className="control-label">Start Date</label>
+                            <p style={{
+                              color: 'red'
+                            }}>
+                              {/* {this.state.projectname} */}
+                            </p>
+                            <FormControl
+                              id="date  "
+                              type="date"
+                              name="startDate"
+                              placeholder="Start Date"
+                              value={this.state.startDate}
+                              className="form-control" />
+                          </FormGroup>
+
+                        </Col>
+                        <Col md={6}>
+                          <FormGroup
+                            /* validationState={this.getValidationState('endDate')} */
+                          >
+                            <label className="control-label">End Date</label>
+                            <p style={{
+                              color: 'red'
+                            }}>
+                              {/* {this.state.projectname} */}
+                            </p>
+                            <FormControl
+                              id="date  "
+                              type="date"
+                              name="endDate"
+                              placeholder="End Date"
+                              value={this.state.endDate}
+                              className="form-control" />
+                          </FormGroup>
+                        </Col>
+
+                        <Col md={12}>
+                          <FormGroup
+                            validationState={this.getValidationState('pgoals')}
+                          >
+                            <label className="control-label">Project Goals</label>
+                            <p style={{
+                              color: 'red'
+                            }}>
+                              {/* {this.state.projectname} */}
+                            </p>
+                            <ReactQuill 
+                              name="pgoals"
+                              value ={this.state.pgoals}
+                              required="required"
+                              onChange={this.handleQuill}
+                              />
+                          </FormGroup>
+                         
+                        </Col>
+
+                        <Col md={12}>
+                          <FormGroup
+                            /* validationState={this.getValidationState('pkeywords')} */
+                          >
+                            <label className="control-label">Project Keywords</label>
+                            <p style={{
+                              color: 'red'
+                            }}>
+                              {/* {this.state.projectname} */}
+                            </p>
+                            <FormControl
+                              type="text"
+                              name="pkeywords"
+                              componentClass="input"
+                              placeholder="Project Keywords"
+                              value={this.state.pkeywords}
+                              required="required"
+                              className="form-control" />
+                          </FormGroup>
+                          
+                        </Col>  
+                      </Row> 
+
+                    </div>
+                    <div className="panel-footer">
+                      <div className="clearfix">
+
+                        <div className="pull-right">
+                          <div className="">
+                            <button type="submit" disabled={!this.state.name || !this.state.description } className="btn btn-success">Create Project</button>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                {/* END panel */} 
-              </form>
-            </Col>
-          </Row>
-        </ContentWrapper>
+
+             
+                  {/* END panel */} 
+                </form>
+              </Col>
+            </Row>
+            
+          </Modal.Body>
+          <Modal.Footer>
+            <Button className="btn btn-danger" onClick={this.close}>Cancel</Button>
+          </Modal.Footer>
+        </Modal>
+
       </div>
     );
   }

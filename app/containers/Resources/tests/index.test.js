@@ -1,9 +1,9 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
-// import { PledgedResources } from '../index';
+// import { Resources } from '../index';
 
-describe('<PledgedResources />', () => {
+describe('<Resources />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });

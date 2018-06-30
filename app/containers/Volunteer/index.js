@@ -52,6 +52,7 @@ export class Volunteer extends React.Component { // eslint-disable-line react/pr
             <td> <img src={volunteer.picture} alt="avatar" style={{width:'45px', height:'45px', borderRadius: '50%'}}  /> </td>
             <td> {volunteer.name} </td>
             <td> {volunteer.email} </td>
+            <td> {volunteer.role} </td>
             <td> {(volunteer.status == 1) ? 'Active' : <button onClick={()=>this.handleResendEmail(volunteer.email)} className='btn btn-primary btn-sm' > Resend Invitation </button>}  </td>
           </tr>
         );
@@ -88,7 +89,6 @@ export class Volunteer extends React.Component { // eslint-disable-line react/pr
         </Helmet>
           <h3>Volunteers
             <small>List of all volunteers</small>
-         {console.log(this.props.volunteer.email_sent)} 
           </h3>
           { this.renderMessage() }
           
@@ -106,10 +106,11 @@ export class Volunteer extends React.Component { // eslint-disable-line react/pr
             <Table id="table-ext-1" responsive bordered hover>
               <thead>
                 <tr>
-                  <th>Picture</th>
-                  <th>Username</th>
-                  <th>Email</th>
-                  <th>Invite</th>
+                <th style={{ width: '60px' }} >Picture</th>
+                <th style={{ width: '300px' }} >Username</th>
+                <th style={{ width: '300px' }} >Email</th>
+                <th style={{ width: '300px' }} >Role</th>
+                <th style={{ width: '200px' }} >Invite</th>
                   
                 </tr>
               </thead>
