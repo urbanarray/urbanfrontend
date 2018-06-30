@@ -272,7 +272,7 @@ export class AddExecution extends React.Component { // eslint-disable-line react
                 </div>
 
               </fieldset>
-              <button className="btn-block btn btn-success">Add Exevution</button>
+              <button className="btn-block btn btn-success">Add Execution</button>
             </form>
           </Modal.Body>
           <Modal.Footer>

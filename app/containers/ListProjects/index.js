@@ -22,9 +22,9 @@ import saga from './saga';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-
-
 import * as a from "./actions";
+import AddProject from 'containers/AddProject';
+
 
 
 export class ListProjects extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -36,7 +36,8 @@ export class ListProjects extends React.Component { // eslint-disable-line react
       description: '',
       projectType: '',
       place: '',
-      date: null,
+      startDate: null,
+      endDate: null,
       time: null,
       pgoals: '',
       pkeywords: '',
@@ -48,7 +49,8 @@ export class ListProjects extends React.Component { // eslint-disable-line react
         description: '',
         projectType: '',
         place: '',
-        date: null,
+        startDate: null,
+        endDate: null,
         time: null,
         pgoals: '',
         pkeywords: '',
@@ -126,7 +128,6 @@ export class ListProjects extends React.Component { // eslint-disable-line react
   }
   
   handleQuill = (value) => {
-    console.log(value);
     const toedit = this.state.toedit;
     
     toedit[name] = value;
@@ -163,11 +164,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
 
       return places.map((place) => {
         return (
-
-
-
           <option key={Math.random()} value={place._id}>{place.name}</option>
-
         )
       })
     }
@@ -184,22 +181,16 @@ export class ListProjects extends React.Component { // eslint-disable-line react
             <tr key={Math.random()} >
               <td> {projects.name} </td>
 
-
               <td>{projects.description}</td>
+              <td>{projects.place.name}</td>
               
               <td>
 
+                  <i title="view project" style={{marginLeft: '30px'}}  onClick={() => this.projectFullInfo(projects._id)} className="fa fa-eye"> </i>  
 
-                <button className='btn btn-labeled btn-danger mr btn btn-labeled btn-danger mr-default pull-right' onClick={() => this.openDelete(projects._id)}>
-                    <span  className="btn-label" > <i className="fa fa-times"> </i> </span> Delete </button>  
-                
-                
-                <button  className='btn btn-labeled btn-success mr btn btn-labeled btn-success mr-default pull-right' onClick={() => this.open(projects)}> 
-                    <span className="btn-label" ><i className="fa fa-check"></i></span> Update</button> 
-                    
-
-                <button className='btn btn-labeled btn-info mr btn btn-labeled btn-info mr-default pull-right' onClick={() => this.projectFullInfo(projects._id)}>
-                  <span className="btn-label" > <i className="fa fa-info"> </i> </span> Info </button>
+                  <i title="update project" style={{marginLeft: '30px'}}  onClick={() => this.open(projects)} className="fa fa-pencil"></i>
+                  
+                  <i title="delete project" style={{marginLeft: '30px'}}  onClick={() => this.openDelete(projects._id)}  className="fa fa-times"> </i> 
               
               </td>
               
@@ -213,14 +204,34 @@ export class ListProjects extends React.Component { // eslint-disable-line react
   render() {
     return (
       <ContentWrapper>
-      
+
         <Helmet>
-          <title>Volunteer</title>
-          <meta name="description" content="Description of Volunteer" />
+          <title>Project</title>
+          <meta name="description" content="Description of Project" />
         </Helmet>
+        <h3>Projects
+            <small>List of all projects</small>
+        </h3>  
+        { /* START panel */}
+        <div className="panel panel-default">
+          <div className="panel-heading">
+
+            <div className='pull-right' >
+              <AddProject />
+            </div>
+            <br />
+          </div>
+          <hr style={{ marginTop: '12px', marginBottom: '0px' }} />
+          
             { /* START table-responsive */}
             <Table id="table-ext-1" responsive bordered hover>
               <thead>
+                <tr>
+                  <th style={{ width: '200px' }} >Project Name</th>
+                  <th style={{ width: '500px' }}>Description</th>
+                  <th style={{ width: '200px' }} >Place</th>
+                  <th>Actions</th>
+                </tr>
               </thead>
               <tbody>
               {this.listPojects()}
@@ -228,6 +239,8 @@ export class ListProjects extends React.Component { // eslint-disable-line react
              
             </Table>
 
+            <hr style={{ marginTop: '12px', marginBottom: '0px' }} />
+      
             <Row>
               <Col  className="text-center">
                 <Pagination>
@@ -247,7 +260,10 @@ export class ListProjects extends React.Component { // eslint-disable-line react
               </Col>
             </Row>
           
-          
+        </div>
+        { /* END panel */}
+        { /* START panel */}
+
           <Modal show={this.state.showModal} onHide={this.close}>
             <Modal.Header closeButton >
               <Modal.Title>Update Project</Modal.Title>
@@ -260,14 +276,14 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                     <Row>
                         <label className="col-sm-3 control-label mb">Project Name</label>
                         <Col md={8} >
-                          <input onChange={this.handleUpdateChange} className="form-control" type="text" name="name" value={this.state.toedit.name} placeholder="Project Name" required />
+                          <input onChange={this.handleUpdateChange} className="form-control" type="text" name="name" value={(this.state.toedit)?this.state.toedit.name:''} placeholder="Project Name" required />
                         </Col>
                     </Row>
                     
                     <Row>
-                      <label className="col-sm-3 control-label mb">description</label>
+                      <label className="col-sm-3 control-label mb">Description</label>
                       <Col md={8}>
-                        <textarea rows="5" style={{marginTop: '10px'}} onChange={this.handleUpdateChange} className="form-control" type="text" name="description" value={this.state.toedit.description} placeholder="description" required />
+                      <textarea rows="5" style={{ marginTop: '10px' }} onChange={this.handleUpdateChange} className="form-control" type="text" name="description" value={(this.state.toedit) ?this.state.toedit.description: ''} placeholder="description" required />
                       </Col>
 
                     </Row>
@@ -275,7 +291,8 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                     <Row>
                       <label className="col-sm-3 control-label mb">Project Type</label>
                       <Col md={8}>
-                      <select value={this.state.toedit.projectType} style={{marginTop: '10px'}} name="projectType" className="form-control">
+                      <select value={this.state.toedit.projectType } style={{marginTop: '10px'}} name="projectType" className="form-control">
+                        <option>Select Project Type</option>
                         <option value={1}>Urban Farming</option>
                         <option value={2}>Building Rehab</option>
                       </select>
@@ -286,7 +303,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                     <Row>
                       <label className="col-sm-3 control-label mb">Place</label>
                       <Col sm={8}>
-                      <select style={{marginTop: '10px'}} onChange={this.handleUpdateChange} value={this.state.toedit.place} name="place" className="form-control">
+                      <select style={{marginTop: '10px'}} onChange={this.handleUpdateChange} value={(this.state.toedit && this.state.toedit.place)? this.state.toedit.place._id:''} name="place" className="form-control">
                         {this.renderPlaces()}
                       </select>
                       {/* <input  style={{marginTop: '10px'}} className="form-control" type="text" name="place" value={this.state.toedit.place} placeholder="place"/> */}
@@ -295,12 +312,36 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                     
                     <Row>
                       
-                      <label className="col-sm-3 control-label mb">date and Time</label>
+                      <label className="col-sm-3 control-label mb">Time</label>
                       {/* <Col sm={4}>
                         <input rows="5" onChange={this.handleUpdateChange} className="form-control" type="text" name="date" value={this.state.toedit.date} placeholder="date" required />
                       </Col> */}
                       <Col md={8}>
-                        <input rows="5" style={{marginTop: '10px'}} onChange={this.handleUpdateChange} className="form-control" type="text" name="time" value={this.state.toedit.time} placeholder="time" required />
+                      <input style={{ marginTop: '10px' }} onChange={this.handleUpdateChange} className="form-control" type="time" name="time" value={(this.state.toedit) ? this.state.toedit.time: ''} placeholder="time" required />
+                      </Col>
+
+                    </Row>
+                    
+                      
+                    <Row>
+                      <label className="col-sm-3 control-label mb">Start Date</label>
+                      {/* <Col sm={4}>
+                        <input rows="5" onChange={this.handleUpdateChange} className="form-control" type="text" name="date" value={this.state.toedit.date} placeholder="date" required />
+                      </Col> */}
+                      <Col md={8}>
+                      <input style={{ marginTop: '10px' }} onChange={this.handleUpdateChange} className="form-control" type="date" name="startDate" value={(this.state.toedit) ? this.state.toedit.startDate:''} placeholder="Date" required />
+                      </Col>
+
+                    </Row>
+                    
+                      
+                    <Row>
+                      <label className="col-sm-3 control-label mb">End Date</label>
+                      {/* <Col sm={4}>
+                        <input rows="5" onChange={this.handleUpdateChange} className="form-control" type="text" name="date" value={this.state.toedit.date} placeholder="date" required />
+                      </Col> */}
+                      <Col md={8}>
+                      <input style={{ marginTop: '10px' }} onChange={this.handleUpdateChange} className="form-control" type="date" name="endDate" value={(this.state.toedit) ? this.state.toedit.endDate: ''} placeholder="End Date" required />
                       </Col>
 
                     </Row>
@@ -310,7 +351,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                       <Col sm={8}>
                         <ReactQuill 
                           name="pgoals"
-                          value ={this.state.toedit.pgoals}
+                        value={(this.state.toedit) ? this.state.toedit.pgoals:''}
                           type="text"
                           style={{marginTop: '10px'}}
                           // onChange={this.handleUpdateChange} 
@@ -327,7 +368,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                     <Row>
                       <label className="col-sm-3 control-label mb">Project keywords</label>
                       <Col sm={8}>
-                      <textarea rows="3" style={{marginTop: '10px'}} onChange={this.handleUpdateChange} className="form-control" type="text" name="pkeywords" value={this.state.toedit.pkeywords} placeholder="Project Keywords"/>
+                      <textarea rows="3" style={{ marginTop: '10px' }} onChange={this.handleUpdateChange} className="form-control" type="text" name="pkeywords" value={(this.state.toedit) ? this.state.toedit.pkeywords:''} placeholder="Project Keywords"/>
                       </Col>
                     </Row>
 

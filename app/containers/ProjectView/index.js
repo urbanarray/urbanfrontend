@@ -55,7 +55,6 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
   }
 
   handleSelect(key) {
-    // console.log('Tab selected ' + key);
     this.setState({
       key
     });
@@ -246,7 +245,7 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
 
             />
           </Col>
-          <Col md={6}>
+          <Col md={12}>
             <Resources
               projectId={this.props.match.params.id}
             />

@@ -111,5 +111,14 @@ injectGlobal`
     height: 100%;
     width: 100%;
   }
+
+  .modal-dialog{
+    width:800px;
+  }
+
+  .quill{
+    height: 100px;
+    margin-bottom: 50px;
+  }
 `;
   

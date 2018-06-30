@@ -19,8 +19,10 @@ export function* create() {
 export function * listCommunication() {
   try {
 
-    const communicationLIst = yield select(listCommunications());
-    const response = yield call(listCommunicationApi, communicationLIst);
+    const communicationList = yield select(listCommunications());
+    console.log(communicationList);
+    
+    const response = yield call(listCommunicationApi, communicationList);
 
     yield put(listedCommunication(response.data.communication));
 

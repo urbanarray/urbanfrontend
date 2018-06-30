@@ -10,7 +10,9 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import { FormGroup, Label, Grid, Table, Row, Col, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
+import { FormGroup, Label, Grid, Table, Row, Col, Panel, Button, ButtonGroup, 
+  ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, 
+  PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
 
 import Select from 'react-select';
 import injectSaga from 'utils/injectSaga';
@@ -117,24 +119,28 @@ handleChange = (e) => {
   }
 
   listComm = () => {
+    
     if (this.props.addcommunications && this.props.addcommunications.communication_list && this.props.addcommunications.communication_list.length > 0) {
-      return this.props.addcommunications.communication_list.map((c) => {
-        return (
-              <tr key={Math.random()}>
-                <td>
-                  {c.revelvantUA}
-                </td>
-                <td>
-                  {c.specialInstruction}
-                </td>
-                <td>
-                  {this.renderMoc(c.moc)}
-                </td>
-              </tr>
-            );
-          });
-        }
-      }
+        return this.props.addcommunications.communication_list.map((c) => {
+            return (
+                <tr key={Math.random()}>
+                  <td>
+                    {c.revelvantUA}
+                  </td>
+                  <td>
+                    {c.specialInstruction}
+                  </td>
+                  <td>
+                    {this.renderMoc(c.moc)}
+                  </td>
+                </tr>
+              );  
+        });
+
+    }
+
+  }
+
   render() {
 
     const { selectedOption } = this.state;
@@ -142,7 +148,7 @@ handleChange = (e) => {
     return (
       <div>
         <Helmet>
-          <title>AddCommunications</title>
+          <title>Add Communications</title>
           <meta name="description" content="Description of AddCommunications" />
         </Helmet>
         <Col md={12}>

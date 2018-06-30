@@ -26,7 +26,7 @@ const makeSelectCreateCommunications = () => createSelector(
 
 const listCommunications = () => createSelector(
   selectAddCommunicationsDomain,
-(substate) => substate.get('communication_list')
+  (substate) => substate.get('projectId')
 );
 
 export default makeSelectAddCommunications;
