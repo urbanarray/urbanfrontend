@@ -77,6 +77,7 @@ export class NeededResources extends React.Component { // eslint-disable-line re
   }
 
   render() {
+    console.log(this.state.width)
     return (
       <Col md={8}>
         <div id="panelDemo8" className="panel panel-primary">
