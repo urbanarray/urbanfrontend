@@ -1,8 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Table, Panel } from 'react-bootstrap';
 
 import { styles } from '../../../assets/styles/variables';
+import ClaimButton from './ClaimButton';
 
 const ResourcesTable = (props) => {
 
@@ -26,6 +27,7 @@ const ResourcesTable = (props) => {
     }
 
     const renderTable = () => {
+        console.log(props)
         if (props.neededResources) {
             if (props.windowWidth < 600) {
                 return (
@@ -40,13 +42,7 @@ const ResourcesTable = (props) => {
                                     Location: {resource.locationNeeded}
                                     Date: {resource.date}<br />
                                     Time: {`${resource.startTime} - ${resource.endTime}`}<br />
-                                    <Link
-                                        to="/roleView"
-                                        type="button"
-                                        className="btn btn-primary btn-block btn-sm"
-                                        color="default"
-                                        style={styles.primaryLight}>Details
-                                    </Link>
+                                    <ClaimButton />
                                 </Panel.Body>
                             </Panel>
                         )
@@ -74,12 +70,7 @@ const ResourcesTable = (props) => {
                                 {resource.date}
                             </td>
                             <td>
-                                <Link
-                                    to="/projectView"
-                                    type="button"
-                                    className="btn btn-success btn-block btn-sm"
-                                    style={styles.primary}>Details/Claim
-                                </Link>
+                                <ClaimButton />
                             </td>
                         </tr>
 
