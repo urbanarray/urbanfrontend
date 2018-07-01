@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import {Modal, Col, Button} from 'react-bootstrap';
+import {styles} from '../../../assets/styles/variables';
 
 class ClaimButton extends Component {
     constructor(props, context) {
@@ -48,7 +49,7 @@ class ClaimButton extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.open} className="btn btn-primary btn-block" >
+                <button onClick={this.open} className="btn btn-block" style={styles.primary} >
                 {/* need span to wrap text, otherwise we get a nodeparent error */}
                     <span> Details/Claim </span> 
                 </button>
