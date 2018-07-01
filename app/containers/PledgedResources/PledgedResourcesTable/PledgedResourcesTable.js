@@ -82,12 +82,23 @@ const PledgedResourcesTable = (props) => {
     }
   }
 
-  return (
-    <Table id="table-ext-2" responsive striped bordered hover>
-      {renderHeader()}
-      {renderOpenRoles()}
-    </Table>
-  )
+  if (props.windowWidth < 600) {
+    return(
+      <div>
+        {renderHeader()}
+        {renderOpenRoles()}
+      </div>
+    )
+  } else {
+    return (
+      <Table id="table-ext-2" responsive striped bordered hover>
+        {renderHeader()}
+        <tbody>
+          {renderOpenRoles()}
+        </tbody>
+      </Table>
+    )
+  }
 }
 
 export default PledgedResourcesTable;
