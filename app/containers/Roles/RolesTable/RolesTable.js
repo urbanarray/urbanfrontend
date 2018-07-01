@@ -32,7 +32,7 @@ const RolesTable = (props) => {
           props.roles.map((role, i) => {
             return (
               <Panel bsStyle="primary" key={i}>
-                <Panel.Heading style={styles.primary}>
+                <Panel.Heading style={{textAlign: 'center', backgroundColor: 'white', color: 'black'}}>
                   <Panel.Title componentClass="h3">{role.title}</Panel.Title>
                 </Panel.Heading>
                 <Panel.Body style={{ textAlign: 'center' }}>
@@ -46,7 +46,7 @@ const RolesTable = (props) => {
                     type="button"
                     className="btn btn-primary btn-block btn-sm"
                     color="default"
-                    style={styles.primaryLight}>Details
+                    style={styles.primary}>Details
                   </Link>
                 </Panel.Body>
               </Panel>
