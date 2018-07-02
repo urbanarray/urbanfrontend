@@ -66,98 +66,10 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
   }
 
 
-  renderTasks = () => {
-    if (this.props.roleview.tasks && this.props.roleview.tasks.length) {
-      return this.props.roleview.tasks.map((task) => {
-        return (
-          <tr key={Math.random()} >
-            <td>{task.title}</td>
-            <td>{task.description}</td>
-            <td>{`${task.date}`}<br />
-              {`${task.startTime} - ${task.endTime}`}
-            </td>
-            <td>
-              <Link
-                to="#"
-                type="button"
-                className="btn btn-sm btn-primary btn-block"
-                style={[{ marginRight: '10px' }, styles.primary]}>Details
-              </Link>
-              <Link
-                to="#"
-                type="button"
-                className="btn btn-sm btn-success btn-block"
-                style={[{ marginRight: '10px' }, styles.secondary]}>Resources
-              </Link>
-            </td>
-
-          </tr>
-        );
-      });
-    }
-  }
-
-  renderResources = () => {
-    if (this.props.roleview.resources && this.props.roleview.resources.length) {
-      return this.props.roleview.resources.map((resource) => {
-        return (
-          <tr key={Math.random()}>
-            <td>
-              {resource}
-            </td>
-
-            <td>
-              <Link
-                to="#"
-                type="button"
-                className="btn btn-primary btn-xs btn-block"
-                style={[{ marginLeft: '30px' }, styles.primary]}>Details
-              </Link>
-            </td>
-
-          </tr>
-
-        );
-      });
-    }
-  }
-
-  renderSimilarRoles = () => {
-    if (this.props.roleview.similarRoles && this.props.roleview.similarRoles.length > 0) {
-      return this.props.roleview.similarRoles.map((similarRole) => {
-        return (
-          <tr key={Math.random()}>
-            <td>{similarRole.role}</td>
-            <td>{similarRole.description}</td>
-
-            <td>{similarRole.date}<br />
-              {`${similarRole.startTime} - ${similarRole.endTime}`}
-            </td>
-
-            <td className="col-md-3">
-              <Link
-                to="#"
-                type="button"
-                className="btn btn-primary btn-block"
-                style={styles.primary}>Claim
-              </Link>
-            </td>
-
-          </tr>
-        );
-      });
-    }
-  }
-
-
   render() {
     return (
       <ContentWrapper>
-        <h3>Role View
-          <small>
-
-          </small>
-        </h3>
+        <h3>Role View</h3>
         <Row>
 
           <Helmet>
@@ -170,11 +82,11 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
         </Row>
 
         <Row>
-          <TasksDisplay renderTasks={this.renderTasks} {...this.props} />
-          <ResourcesNeeded renderResources={this.renderResources} {...this.props} />
+          <TasksDisplay tasks={this.props.roleview.tasks} windowWidth={this.state.width} />
+          <ResourcesNeeded resources={this.props.roleview.resources} windowWidth={this.state.width} />
         </Row>
 
-        <SimilarRoles renderSimilarRoles={this.renderSimilarRoles} {...this.props} />
+        <SimilarRoles similarRoles={this.props.roleview.similarRoles} windowWidth={this.state.width} />
 
 
       </ContentWrapper>

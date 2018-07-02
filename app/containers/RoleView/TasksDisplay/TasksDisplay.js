@@ -1,40 +1,133 @@
 import React from 'react';
 
-import {Link} from 'react-router-dom';
-import {Col, Table} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Col, Table, Panel } from 'react-bootstrap';
 
 import { styles } from '../../../assets/styles/variables';
 
-const TasksDisplay = (props) => (
-    <Col md={8}>
-        <div id="panelDemo8" className="panel panel-primary">
-            <div className="panel-heading" style={styles.primaryDark}>
-                Tasks
-              </div>
+const TasksDisplay = (props) => {
 
-            { /* START table-responsive */}
-            <Table id="table-ext-2" responsive striped bordered hover>
+    const renderHeader = () => {
+        if (props.windowWidth < 600) {
+            return null;
+        } else {
+            return (
                 <thead>
                     <tr>
-                        <th style={{width: '150px'}}>Title</th>
+                        <th style={{ width: '150px' }}>Title</th>
                         <th>Description </th>
-                        <th style={{width: '120px'}}>Date/Time</th>
+                        <th style={{ width: '120px' }}>Date/Time</th>
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {props.renderTasks()}
-                </tbody>
-            </Table>
-            { /* END table-responsive */}
+            )
+        }
+    }
 
-            <div className="panel-footer">
-                <div className="text-right">
-                    <Link to="#" >View All</Link>
+    const renderTable = () => {
+        if (props.tasks && props.tasks.length) {
+            if (props.windowWidth < 600) {
+                return props.tasks.map((task, i) => {
+                    return (
+                        <Panel bsStyle="primary" key={i}>
+                            <Panel.Heading style={{ textAlign: 'center', backgroundColor: 'white', color: 'black' }}>
+                                <Panel.Title componentClass="h3">{task.title}</Panel.Title>
+                            </Panel.Heading>
+                            <Panel.Body style={{ textAlign: 'center' }}>
+                                Description: {task.description}<br />
+                                Date: {task.date}<br />
+                                Time: {`${task.startTime} - ${task.endTime}`}<br />
+                            </Panel.Body>
+                            <Link
+                                to="#"
+                                type="button"
+                                className="btn btn-sm btn-primary btn-block"
+                                style={[{ marginRight: '10px' }, styles.primary]}>Details
+                            </Link>
+                            <Link
+                                to="#"
+                                type="button"
+                                className="btn btn-sm btn-success btn-block"
+                                style={[{ marginRight: '10px' }, styles.secondary]}>Resources
+                            </Link>
+                        </Panel>
+                    )
+                })
+            } else {
+                return props.tasks.map((task, i) => {
+                    return (
+                        <tr key={i} >
+                            <td>{task.title}</td>
+                            <td>{task.description}</td>
+                            <td>{`${task.date}`}<br />
+                                {`${task.startTime} - ${task.endTime}`}
+                            </td>
+                            <td>
+                                <Link
+                                    to="#"
+                                    type="button"
+                                    className="btn btn-sm btn-primary btn-block"
+                                    style={[{ marginRight: '10px' }, styles.primary]}>Details
+                                </Link>
+                                <Link
+                                    to="#"
+                                    type="button"
+                                    className="btn btn-sm btn-success btn-block"
+                                    style={[{ marginRight: '10px' }, styles.secondary]}>Resources
+                                </Link>
+                            </td>
+
+                        </tr>
+                    );
+                });
+            }
+        }
+
+    }
+
+    if (props.windowWidth < 600) {
+        return (
+            <Col md={8}>
+                <div id="panelDemo8" className="panel panel-primary">
+                    <div className="panel-heading" style={styles.primaryDark}>
+                        Tasks
+                  </div>
+
+                    {renderHeader()}
+                    {renderTable()}
+
+                    <div className="panel-footer">
+                        <div className="text-right">
+                            <Link to="#" >View All</Link>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </Col>
-)
+            </Col>
+        )
+    } else {
+        return (
+            <Col md={8}>
+                <div id="panelDemo8" className="panel panel-primary">
+                    <div className="panel-heading" style={styles.primaryDark}>
+                        Tasks
+                  </div>
+
+                    <Table id="table-ext-2" responsive striped bordered hover>
+                        {renderHeader()}
+                        <tbody>
+                            {renderTable()}
+                        </tbody>
+                    </Table>
+
+                    <div className="panel-footer">
+                        <div className="text-right">
+                            <Link to="#" >View All</Link>
+                        </div>
+                    </div>
+                </div>
+            </Col>
+        )
+    }
+}
 
 export default TasksDisplay;
