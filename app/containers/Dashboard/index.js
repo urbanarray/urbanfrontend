@@ -34,13 +34,27 @@ export class Dashboard extends Component { // eslint-disable-line react/prefer-s
   constructor(props, context) {
     super(props, context);
     this.state = {
-      key: 1
+      key: 1,
+      width: 0,
+      height: 0
     };
+
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   handleSelect(key) {
@@ -58,32 +72,27 @@ export class Dashboard extends Component { // eslint-disable-line react/prefer-s
           <meta name="description" content="Description of Dashboard" />
         </Helmet>
 
-        <h3>DASHBOARD
-          <small>
-
-          </small>
-
-        </h3>
+        <h3>DASHBOARD</h3>
 
         <Grid fluid>
 
           { /* START widgets box */}
           <Row>
-            <HoursWorked />
-            <PointsDisplay />
-            <CoinDisplay />
-            <Clock />
+            <HoursWorked windowWidth={this.state.width} />
+            <PointsDisplay windowWidth={this.state.width} />
+            <CoinDisplay windowWidth={this.state.width} />
+            <Clock windowWidth={this.state.width} />
           </Row>
           { /* END widgets box */}
           
           <Row>
-            <Roles />
-            <YourRole />
+            <Roles windowWidth={this.state.width} />
+            <YourRole windowWidth={this.state.width} />
           </Row>
 
           <Row>
-            <NeededResources />
-            <PledgedResources />
+            <NeededResources windowWidth={this.state.width} />
+            <PledgedResources windowWidth={this.state.width} />
           </Row>
 
           { /* END row */}

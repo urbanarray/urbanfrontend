@@ -1,8 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Table, Panel } from 'react-bootstrap';
 
 import { styles } from '../../../assets/styles/variables';
+import ClaimButton from './ClaimButton';
 
 const ResourcesTable = (props) => {
 
@@ -32,7 +33,7 @@ const ResourcesTable = (props) => {
                     props.neededResources.map((resource, i) => {
                         return (
                             <Panel bsStyle="primary" key={i}>
-                                <Panel.Heading style={styles.primary}>
+                                <Panel.Heading style={{textAlign: 'center', backgroundColor: 'white', color: 'black'}}>
                                     <Panel.Title componentClass="h3">{resource.name}</Panel.Title>
                                 </Panel.Heading>
                                 <Panel.Body style={{ textAlign: 'center' }}>
@@ -40,13 +41,7 @@ const ResourcesTable = (props) => {
                                     Location: {resource.locationNeeded}
                                     Date: {resource.date}<br />
                                     Time: {`${resource.startTime} - ${resource.endTime}`}<br />
-                                    <Link
-                                        to="/roleView"
-                                        type="button"
-                                        className="btn btn-primary btn-block btn-sm"
-                                        color="default"
-                                        style={styles.primaryLight}>Details
-                                    </Link>
+                                    <ClaimButton />
                                 </Panel.Body>
                             </Panel>
                         )
@@ -74,12 +69,7 @@ const ResourcesTable = (props) => {
                                 {resource.date}
                             </td>
                             <td>
-                                <Link
-                                    to="/projectView"
-                                    type="button"
-                                    className="btn btn-success btn-block btn-sm"
-                                    style={styles.primary}>Details/Claim
-                                </Link>
+                                <ClaimButton />
                             </td>
                         </tr>
 
@@ -89,12 +79,23 @@ const ResourcesTable = (props) => {
         }
     }
 
-    return (
-        <Table id="table-ext-2" responsive striped bordered hover>
-            {renderHeader()}
-            {renderTable()}
-        </Table>
-    )
+    if (props.windowWidth < 600) {
+        return(
+            <div>
+                {renderHeader()}
+                {renderTable()}
+            </div>
+        )
+    } else {
+        return (
+            <Table id="table-ext-2" responsive striped bordered hover>
+                {renderHeader()}
+                <tbody>
+                    {renderTable()}
+                </tbody>
+            </Table>
+        )
+    }
 }
 
 export default ResourcesTable;
