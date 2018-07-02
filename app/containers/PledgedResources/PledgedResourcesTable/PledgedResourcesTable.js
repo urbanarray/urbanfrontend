@@ -66,12 +66,6 @@ const PledgedResourcesTable = (props) => {
                 </td>
 
                 <td>
-                  {/* <Link
-                    to=""
-                    type="button"
-                    className="btn btn-primary btn-xs btn-block"
-                    style={styles.primary}>Details
-                  </Link> */}
                     <DetailsButton item={resource.item}/>
                 </td>
               </tr>
