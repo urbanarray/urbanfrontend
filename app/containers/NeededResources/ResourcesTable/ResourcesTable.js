@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Table, Panel } from 'react-bootstrap';
 
-import { styles } from '../../../assets/styles/variables';
+import { styles, headings } from '../../../assets/styles/variables';
 import ClaimButton from './ClaimButton';
 
 const ResourcesTable = (props) => {
@@ -35,7 +35,7 @@ const ResourcesTable = (props) => {
                         return (
                             <Panel bsStyle="primary" key={i}>
                                 <Panel.Heading style={styles.primary}>
-                                    <Panel.Title componentClass="h3">{resource.name}</Panel.Title>
+                                    <Panel.Title componentClass="h3" style={headings.subHeading}>{resource.name}</Panel.Title>
                                 </Panel.Heading>
                                 <Panel.Body style={{ textAlign: 'center' }}>
                                     Project: {resource.project}<br />

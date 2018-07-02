@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { Col, Table } from 'react-bootstrap';
-import { styles } from '../../../assets/styles/variables';
+import { styles, headings } from '../../../assets/styles/variables';
 
 const RoleDisplay = (props) => (
     <Col md={12}>
         <div id="panelDemo8" className="panel panel-primary">
             <div className="panel-heading" style={styles.primaryDark}>
-                Role: {props.roleview.roleDetail.role}
+                <h4 style={headings.tableHeading}>Role: {props.roleview.roleDetail.role}</h4>
             </div>
 
             { /* START table-responsive */}
@@ -24,7 +24,7 @@ const RoleDisplay = (props) => (
                             {props.roleview.roleDetail.project}
                         </td>
                         <td>
-                            {`${props.roleview.roleDetail.date} 
+                            {`${props.roleview.roleDetail.date}
                                 ${props.roleview.roleDetail.startTime} to ${props.roleview.roleDetail.endTime}`}
                         </td>
                     </tr>

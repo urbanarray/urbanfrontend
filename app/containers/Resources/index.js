@@ -23,7 +23,7 @@ import ResourcesDisplay from '../ProjectView/ResourcesDisplay/index.js'
 import './style.css';
 import 'react-select/dist/react-select.css';
 import { createCommunicationsAction, listCommunication } from "./actions";
-import {styles} from '../../assets/styles/variables';
+import { styles, headings } from '../../assets/styles/variables';
 import { addResourcesAction, listPlacesAction, listResourcesAction } from './actions'
 import { listResources } from './saga'
 
@@ -130,7 +130,7 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
               <div className="panel-heading" style={styles.primaryDark} >
                 <Row>
                   <Col md={6}>
-                  <h4 style={{ color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase' }}>Resources</h4>
+                  <h4 style={headings.tableHeading}>Resources</h4>
                   </Col>
                   <Col md={6}>
                     <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Resources </button>

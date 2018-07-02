@@ -23,7 +23,7 @@ import messages from './messages';
 import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
-import { styles } from '../../assets/styles/variables';
+import { styles, headings } from '../../assets/styles/variables';
 import YourRoleTable from './YourRoleTable';
 
 export class YourRole extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -64,13 +64,13 @@ export class YourRole extends React.Component { // eslint-disable-line react/pre
           <div className="panel-heading" style={styles.primaryDark}>
             <Row>
               <Col md={12}>
-                YOUR ROLES
+                <h4 style={headings.tableHeading}>YOUR ROLES</h4>
             </Col>
             </Row>
           </div>
 
           <YourRoleTable windowWidth={this.state.width} yourRoles={this.props.yourrole.yourRoles} />
-          
+
 
           <div className="panel-footer">
             <div className="text-right">

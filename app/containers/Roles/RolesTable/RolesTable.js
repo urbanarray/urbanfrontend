@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table, Panel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { styles } from '../../../assets/styles/variables';
+import { styles, headings } from '../../../assets/styles/variables';
 
 const RolesTable = (props) => {
 
@@ -33,7 +33,7 @@ const RolesTable = (props) => {
             return (
               <Panel bsStyle="primary" key={i}>
                 <Panel.Heading style={styles.primary}>
-                  <Panel.Title componentClass="h3">{role.title}</Panel.Title>
+                  <Panel.Title componentClass="h3" style={headings.subHeading}>{role.title}</Panel.Title>
                 </Panel.Heading>
                 <Panel.Body style={{ textAlign: 'center' }}>
                   Project: {role.project}<br />

@@ -21,9 +21,11 @@ import saga from './saga';
 import { listPlacesAction, deletePlacesAction, updatePlacesAction } from "./actions";
 import AddPlace from "containers/AddPlace";
 import {makeSelectCurrentUser} from 'containers/App/selectors';
+import { styles, headings } from '../../assets/styles/variables';
+
 
 export class Places extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+
   constructor(props, content){
 
     super(props);
@@ -48,7 +50,7 @@ export class Places extends React.Component { // eslint-disable-line react/prefe
         googleMap: '',
         userId: '',
       }
-    
+
 
     }
   }
@@ -126,10 +128,10 @@ export class Places extends React.Component { // eslint-disable-line react/prefe
             <td> {places.name} </td>
             <td> {places.city} </td>
             <td> {places.description} </td>
-            <td> 
-              <a className="btn btn-danger" onClick={() => this.openDelete(places._id)}>Delete</a> 
-              <a className="btn btn-warning" onClick={() => this.openUpdateModel(places)}>Update</a> 
-              
+            <td>
+              <a className="btn btn-danger" onClick={() => this.openDelete(places._id)}>Delete</a>
+              <a className="btn btn-warning" onClick={() => this.openUpdateModel(places)}>Update</a>
+
               </td>
           </tr>
         );
@@ -137,8 +139,8 @@ export class Places extends React.Component { // eslint-disable-line react/prefe
     }
 
   }
-  
-  
+
+
   render() {
     return (
       <div>
@@ -159,8 +161,8 @@ export class Places extends React.Component { // eslint-disable-line react/prefe
 
           { /* START panel */}
           <div className="panel panel-default">
-            <div className="panel-heading">
-
+            <div className="panel-heading" style={styles.primaryDark}>
+              <h4 style={headings.tableHeading}></h4>
               <div className='pull-right' >
                 <AddPlace/>
               </div>
@@ -276,7 +278,7 @@ export class Places extends React.Component { // eslint-disable-line react/prefe
 
             </Modal.Body>
           </Modal>
-        </ContentWrapper> 
+        </ContentWrapper>
       </div>
     );
   }

@@ -18,10 +18,10 @@ import makeSelectDocumentation from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { createDocumentAction, listDocumentAction } from "./actions";
-import {styles} from '../../assets/styles/variables';
+import { styles, headings } from '../../assets/styles/variables';
 
 export class Documentation extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+
   constructor(props){
     super(props)
     this.state = {
@@ -58,10 +58,10 @@ export class Documentation extends React.Component { // eslint-disable-line reac
     formData.append('projectId', this.props.projectId)
     formData.append('name', this.state.name)
     this.props.create(
-      
+
         formData,
-        
-      
+
+
     );
     setTimeout(() => {
       this.setState({
@@ -89,7 +89,7 @@ export class Documentation extends React.Component { // eslint-disable-line reac
       const { value } = e.target;
       this.setState({
         [name]: value,
-        
+
       });
     // this.props.history.push('dashboard');
   }
@@ -102,7 +102,7 @@ export class Documentation extends React.Component { // eslint-disable-line reac
           <ul key={Math.random()}  style={{textDecoration: 'none', listStyleType: 'none'}}>
             <li>
               <a className="btn btn-info" target="blank" href={`http://mvp.urbanarray.org:3000/v1/uploads/documents/` + a}>View Document </a>
-              
+
             </li>
           </ul>
         )
@@ -141,9 +141,9 @@ export class Documentation extends React.Component { // eslint-disable-line reac
               <div className="panel-heading" style={styles.primaryDark} >
                 <Row>
                   <Col md={6}>
-                  <h4 style={{ color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase' }}>Documentation</h4>
+                  <h4 style={headings.tableHeading}>Documentation</h4>
                   </Col>
-                
+
                   <Col md={6}>
                     <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Documentation </button>
                   </Col>
@@ -194,14 +194,14 @@ export class Documentation extends React.Component { // eslint-disable-line reac
                         </Col>
                       </div>
                       <div className=" form-group mb">
-                        <input 
+                        <input
                           type="file"
                           name="attachments"
                           value={this.state.document}
                         />
                       </div>
 
-                    
+
                     </div>
 
                   </Col>

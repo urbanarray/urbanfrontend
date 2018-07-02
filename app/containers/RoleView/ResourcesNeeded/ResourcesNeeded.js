@@ -3,13 +3,13 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {Col, Table} from 'react-bootstrap';
 
-import {styles} from '../../../assets/styles/variables';
+import { styles, headings } from '../../../assets/styles/variables';
 
 const ResourcesNeeded = (props) => (
     <Col md={4}>
         <div id="panelDemo8" className="panel panel-primary">
             <div className="panel-heading" style={styles.primaryDark}>
-                All Resources Needed
+                <h4 style={headings.tableHeading}>All Resources Needed</h4>
               </div>
 
             { /* START table-responsive */}

@@ -3,14 +3,14 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {Row, Col, Table} from 'react-bootstrap';
 
-import {styles} from '../../../assets/styles/variables';
+import { styles, headings } from '../../../assets/styles/variables';
 
 const SimilarRoles = (props) => (
     <Row>
         <Col md={12}>
             <div id="panelDemo8" className="panel panel-primary">
                 <div className="panel-heading" style={styles.primaryDark}>
-                    Similar Roles
+                    <h4 style={headings.tableHeading}>Similar Roles</h4>
               </div>
 
                 { /* START table-responsive */}

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Table, Panel } from 'react-bootstrap';
 
-import { styles } from '../../../assets/styles/variables';
+import { styles, headings } from '../../../assets/styles/variables';
 
 const YourRoleTable = (props) => {
 
@@ -16,7 +16,7 @@ const YourRoleTable = (props) => {
             <th style={{ width: '175px' }}>Role</th>
             <th style={{ width: '175px' }}>Project </th>
             <th>Date/Time</th>
-
+            <th>Action</th>
           </tr>
         </thead>
       )
@@ -31,7 +31,7 @@ const YourRoleTable = (props) => {
             return (
               <Panel bsStyle="primary" key={i}>
                 <Panel.Heading style={styles.primary}>
-                  <Panel.Title componentClass="h3">{role.role}</Panel.Title>
+                  <Panel.Title componentClass="h3" style={headings.subHeading}>{role.role}</Panel.Title>
                 </Panel.Heading>
                 <Panel.Body style={{ textAlign: 'center' }}>
                   Project: {role.project}<br />
@@ -70,7 +70,7 @@ const YourRoleTable = (props) => {
                   to="/roleView"
                   type="button"
                   className="btn btn-primary btn-xs btn-block"
-                  style={styles.primary}>Details
+                  style={styles.primaryLight}>Details
                         </Link>
               </td>
 

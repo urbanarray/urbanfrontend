@@ -23,7 +23,7 @@ import ContentWrapper from 'components/Layout/ContentWrapper';
 import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
-import { styles } from '../../assets/styles/variables';
+import { styles, headings } from '../../assets/styles/variables';
 import RoleDisplay from './RoleDisplay';
 import TasksDisplay from './TasksDisplay';
 import ResourcesNeeded from './ResourcesNeeded';

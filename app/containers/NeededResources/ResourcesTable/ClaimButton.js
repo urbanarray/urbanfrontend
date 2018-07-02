@@ -49,13 +49,13 @@ class ClaimButton extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.open} className="btn btn-block" style={styles.primary} >
+                <button onClick={this.open} className="btn btn-block btn-primary" style={styles.primaryLight} >
                 {/* need span to wrap text, otherwise we get a nodeparent error */}
-                    <span> Details/Claim </span> 
+                    <span> Details/Claim </span>
                 </button>
                 {this.renderModal()}
             </div>
-            
+
         )
     }
 

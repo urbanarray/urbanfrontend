@@ -21,7 +21,7 @@ import { makeSelectCurrentUser } from 'containers/App/selectors';
 import {createPlaceAction} from "./actions";
 
 export class AddPlace extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+
   constructor(props, context){
     super(props, context);
 
@@ -50,7 +50,7 @@ export class AddPlace extends React.Component { // eslint-disable-line react/pre
       zipcode: this.state.zipcode,
       googleMap: this.state.googleMap,
       userId: this.state.userId,
-      
+
     });
     setTimeout(() => {
       this.setState(
@@ -66,8 +66,8 @@ export class AddPlace extends React.Component { // eslint-disable-line react/pre
       )
       this.props.listPlaces
     }, 500);
-    
-        
+
+
   }
 
 
@@ -90,7 +90,7 @@ export class AddPlace extends React.Component { // eslint-disable-line react/pre
       addModel: false,
     })
   }
- 
+
   render() {
     return (
       <div>
@@ -99,7 +99,7 @@ export class AddPlace extends React.Component { // eslint-disable-line react/pre
           <meta name="description" content="Description of AddPlace" />
         </Helmet>
 
-        <button onClick={this.open} className="btn btn-primary"> Add Place </button>
+        <button onClick={this.open} className="btn btn-primary btn-success"> Add Place </button>
 
         <Modal show={this.state.addModel} onHide={this.close}>
           <Modal.Header closeButton>
@@ -160,7 +160,7 @@ export class AddPlace extends React.Component { // eslint-disable-line react/pre
 
 
               </fieldset>
-            
+
               <button className="btn-block btn btn-success">Add Place</button>
             </form>
           </Modal.Body>
