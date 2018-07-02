@@ -32,7 +32,7 @@ const RolesTable = (props) => {
           props.roles.map((role, i) => {
             return (
               <Panel bsStyle="primary" key={i}>
-                <Panel.Heading style={styles.primary}>
+                <Panel.Heading style={{textAlign: 'center', backgroundColor: 'white', color: 'black'}}>
                   <Panel.Title componentClass="h3">{role.title}</Panel.Title>
                 </Panel.Heading>
                 <Panel.Body style={{ textAlign: 'center' }}>
@@ -46,7 +46,7 @@ const RolesTable = (props) => {
                     type="button"
                     className="btn btn-primary btn-block btn-sm"
                     color="default"
-                    style={styles.primaryLight}>Details
+                    style={styles.primary}>Details
                   </Link>
                 </Panel.Body>
               </Panel>
@@ -84,7 +84,7 @@ const RolesTable = (props) => {
                     className="btn btn-primary btn-block btn-sm"
                     color="default"
                     style={styles.primary}>Details
-                      </Link>
+                  </Link>
                 </td>
               </tr>
 
@@ -95,12 +95,23 @@ const RolesTable = (props) => {
     }
   }
 
-  return (
-    <Table id="table-ext-2" responsive striped bordered hover>
-      {renderHeader()}
-      {renderOpenRoles()}
-    </Table>
-  )
+  if (props.windowWidth < 600) {
+    return (
+      <div>
+        {renderHeader()}
+        {renderOpenRoles()}
+      </div>
+    )
+  } else {
+    return (
+      <Table id="table-ext-2" responsive striped bordered hover>
+          {renderHeader()}
+        <tbody>
+          {renderOpenRoles()}
+        </tbody>
+      </Table>
+    )
+  }
 }
 
 export default RolesTable;
