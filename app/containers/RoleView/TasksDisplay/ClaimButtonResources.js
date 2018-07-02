@@ -26,7 +26,7 @@ class ClaimButtonResources extends Component {
 
     componentDidMount() {
         this.setState({
-            details: "Details about needed resource coming soon!"
+            details: "Details about resources coming soon!"
         })
     }
 
@@ -34,7 +34,7 @@ class ClaimButtonResources extends Component {
         return(
             <Modal show={this.state.showModal} onHide={this.close}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Details</Modal.Title>
+                    <Modal.Title>Resources</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {this.state.details}
@@ -49,7 +49,7 @@ class ClaimButtonResources extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.open} className="btn btn-block" style={styles.primary} >
+                <button onClick={this.open} className="btn btn-block" style={styles.secondary} >
                 {/* need span to wrap text, otherwise we get a nodeparent error */}
                     <span> Resources </span>
                 </button>

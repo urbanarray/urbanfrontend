@@ -30,6 +30,8 @@ import ResourcesNeeded from './ResourcesNeeded';
 import SimilarRoles from './SimilarRoles';
 import ClaimButton from './TasksDisplay/ClaimButton';
 import ClaimButtonResources from './TasksDisplay/ClaimButtonResources';
+import ClaimsResourcesNeededButton from './ResourcesNeeded/ClaimsResourcesNeededButton';
+import ClaimSimlarRolesBtn from './SimilarRoles/ClaimSimlarRolesBtn';
 
 export class RoleView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -83,7 +85,7 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
             </td>
 
             <td>
-              <ClaimButton />
+              <ClaimsResourcesNeededButton />
             </td>
 
           </tr>
@@ -106,7 +108,7 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
             </td>
 
             <td className="col-md-3">
-            <ClaimButton />
+            <ClaimSimlarRolesBtn />
             </td>
 
           </tr>
