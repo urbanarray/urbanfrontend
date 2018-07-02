@@ -33,15 +33,31 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
 
   constructor(props, context) {
     super(props, context);
+    
     this.state = {
-      key: 1
+      key: 1,
+      width: 0,
+      height: 0
     };
+
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+  }
+
   handleSelect(key) {
     console.log('Tab selected ' + key);
     this.setState({
@@ -149,7 +165,7 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
             <meta name="description" content="Description of RoleView" />
           </Helmet>
 
-          <RoleDisplay {...this.props} />
+          <RoleDisplay {...this.props} windowWidth={this.state.width} />
 
         </Row>
 
