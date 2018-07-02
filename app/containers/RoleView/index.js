@@ -29,11 +29,12 @@ import TasksDisplay from './TasksDisplay';
 import ResourcesNeeded from './ResourcesNeeded';
 import SimilarRoles from './SimilarRoles';
 
+
 export class RoleView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props, context) {
     super(props, context);
-    
+
     this.state = {
       key: 1,
       width: 0,
@@ -63,6 +64,7 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
     this.setState({
       key
     });
+
   }
 
 

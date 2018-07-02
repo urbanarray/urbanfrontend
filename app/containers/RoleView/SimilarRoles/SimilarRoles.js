@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Row, Col, Table, Panel } from 'react-bootstrap';
 
 import { styles } from '../../../assets/styles/variables';
+import ClaimButton from './ClaimButton';
 
 const SimilarRoles = (props) => {
 
@@ -36,12 +37,7 @@ const SimilarRoles = (props) => {
                                 Date: {similarRole.date}<br />
                                 Time: {`${similarRole.startTime} - ${similarRole.endTime}`}<br />
                             </Panel.Body>
-                            <Link
-                                to="#"
-                                type="button"
-                                className="btn btn-primary btn-block"
-                                style={styles.primary}>Claim
-                            </Link>
+                            <ClaimButton similarRole={similarRole}  />
                         </Panel>
                     )
                 })
@@ -57,12 +53,8 @@ const SimilarRoles = (props) => {
                             </td>
 
                             <td className="col-md-3">
-                                <Link
-                                    to="#"
-                                    type="button"
-                                    className="btn btn-primary btn-block"
-                                    style={styles.primary}>Claim
-                                </Link>
+
+                              <ClaimButton similarRole={similarRole}/>
                             </td>
                         </tr>
                     );

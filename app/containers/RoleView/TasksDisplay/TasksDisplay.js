@@ -5,7 +5,10 @@ import { Col, Table, Panel } from 'react-bootstrap';
 
 import { styles } from '../../../assets/styles/variables';
 
+import DetailsButton from './DetailsButton';
+import ResourcesButton from './ResourcesButton';
 const TasksDisplay = (props) => {
+
 
     const renderHeader = () => {
         if (props.windowWidth < 600) {
@@ -38,18 +41,8 @@ const TasksDisplay = (props) => {
                                 Date: {task.date}<br />
                                 Time: {`${task.startTime} - ${task.endTime}`}<br />
                             </Panel.Body>
-                            <Link
-                                to="#"
-                                type="button"
-                                className="btn btn-sm btn-primary btn-block"
-                                style={[{ marginRight: '10px' }, styles.primary]}>Details
-                            </Link>
-                            <Link
-                                to="#"
-                                type="button"
-                                className="btn btn-sm btn-success btn-block"
-                                style={[{ marginRight: '10px' }, styles.secondary]}>Resources
-                            </Link>
+                            <DetailsButton  task={task} />
+                            <ResourcesButton  task={task} />
                         </Panel>
                     )
                 })
@@ -63,18 +56,8 @@ const TasksDisplay = (props) => {
                                 {`${task.startTime} - ${task.endTime}`}
                             </td>
                             <td>
-                                <Link
-                                    to="#"
-                                    type="button"
-                                    className="btn btn-sm btn-primary btn-block"
-                                    style={[{ marginRight: '10px' }, styles.primary]}>Details
-                                </Link>
-                                <Link
-                                    to="#"
-                                    type="button"
-                                    className="btn btn-sm btn-success btn-block"
-                                    style={[{ marginRight: '10px' }, styles.secondary]}>Resources
-                                </Link>
+                                <DetailsButton  task={task} />
+                                <ResourcesButton  task={task} />
                             </td>
 
                         </tr>

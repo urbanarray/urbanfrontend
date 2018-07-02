@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Col, Table, Panel } from 'react-bootstrap';
 
 import { styles } from '../../../assets/styles/variables';
+import DetailsButton from './DetailsButton';
 
 const ResourcesNeeded = (props) => {
 
@@ -33,12 +34,7 @@ const ResourcesNeeded = (props) => {
                             <Panel.Heading style={{ textAlign: 'center', backgroundColor: 'white', color: 'black' }}>
                                 <Panel.Title componentClass="h3">{resource}</Panel.Title>
                             </Panel.Heading>
-                            <Link
-                                to="#"
-                                type="button"
-                                className="btn btn-primary btn-xs btn-block"
-                                style={[{ marginLeft: '30px' }, styles.primary]}>Details
-                            </Link>
+                            <DetailsButton resource={resource}/>
                         </Panel>
                     )
                 })
@@ -51,12 +47,7 @@ const ResourcesNeeded = (props) => {
                             </td>
 
                             <td>
-                                <Link
-                                    to="#"
-                                    type="button"
-                                    className="btn btn-primary btn-xs btn-block"
-                                    style={[{ marginLeft: '30px' }, styles.primary]}>Details
-                                </Link>
+                              <DetailsButton resource={resource} />
                             </td>
 
                         </tr>

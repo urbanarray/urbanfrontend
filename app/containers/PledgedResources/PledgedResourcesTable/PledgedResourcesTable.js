@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {Table, Panel } from 'react-bootstrap';
 
 import { styles } from '../../../assets/styles/variables';
-
+import DetailsButton from './DetailsButton';
 const PledgedResourcesTable = (props) => {
 
   const renderHeader = () => {
@@ -66,12 +66,7 @@ const PledgedResourcesTable = (props) => {
                 </td>
 
                 <td>
-                  <Link
-                    to=""
-                    type="button"
-                    className="btn btn-primary btn-xs btn-block"
-                    style={styles.primary}>Details
-                  </Link>
+                    <DetailsButton item={resource.item}/>
                 </td>
               </tr>
 
