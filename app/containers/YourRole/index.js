@@ -27,34 +27,10 @@ import { styles, headings } from '../../assets/styles/variables';
 import YourRoleTable from './YourRoleTable';
 
 export class YourRole extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      width: 0,
-      height: 0
-    }
-
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-  }
 
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
-    this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
-  }
-
-  componentDidUpdate() {
-    console.log(this.state)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions);
-  }
-
-  updateWindowDimensions() {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   render() {
@@ -69,7 +45,7 @@ export class YourRole extends React.Component { // eslint-disable-line react/pre
             </Row>
           </div>
 
-          <YourRoleTable windowWidth={this.state.width} yourRoles={this.props.yourrole.yourRoles} />
+          <YourRoleTable windowWidth={this.props.windowWidth} yourRoles={this.props.yourrole.yourRoles} />
 
 
           <div className="panel-footer">

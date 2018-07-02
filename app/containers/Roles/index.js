@@ -34,25 +34,12 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
     this.state = {
       zip: '',
       miles: '',
-      width: 0,
-      height: 0
     }
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
-    this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions);
-  }
-
-  updateWindowDimensions() {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   getValidationState() {
@@ -119,7 +106,7 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
             </Row>
           </div>
 
-          <RolesTable roles={this.props.roles.openRoles} windowWidth={this.state.width} />
+          <RolesTable roles={this.props.roles.openRoles} windowWidth={this.props.windowWidth} />
 
 
           <div className="panel-footer">

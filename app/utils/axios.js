@@ -7,8 +7,8 @@ const local = 'http://localhost:3000/v1/';
 const ip = 'http://192.168.1.118:3000/v1/';
 
 const api = axios.create({
-    
-    baseURL: onlineServer,
+
+    baseURL: local,
     timeout: 20000,
 });
 
@@ -23,7 +23,7 @@ api.interceptors.response.use((response) =>{
         clearState();
         history.push('/login');
     }
-    
+
     throw error;
 });
 

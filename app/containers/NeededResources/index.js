@@ -33,31 +33,13 @@ export class NeededResources extends React.Component { // eslint-disable-line re
 
     this.state = {
       zip: '',
-      miles: '',
-      width: 0,
-      height: 0
+      miles: ''
     }
-
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
-    this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
-  }
-
-  componentDidUpdate() {
-    console.log(this.state)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions);
-  }
-
-  updateWindowDimensions() {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   getValidationState() {
@@ -77,7 +59,6 @@ export class NeededResources extends React.Component { // eslint-disable-line re
   }
 
   render() {
-    console.log(this.state.width)
     return (
       <Col md={8}>
         <div id="panelDemo8" className="panel panel-primary">
@@ -125,7 +106,7 @@ export class NeededResources extends React.Component { // eslint-disable-line re
             </Row>
           </div>
 
-          <ResourcesTable windowWidth={this.state.width} neededResources={this.props.neededresources.neededResources}  />
+          <ResourcesTable windowWidth={this.props.windowWidth} neededResources={this.props.neededresources.neededResources}  />
 
           <div className="panel-footer">
             <div className="text-right">

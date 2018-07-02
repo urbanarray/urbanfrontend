@@ -42,7 +42,7 @@ const YourRoleTable = (props) => {
                     type="button"
                     className="btn btn-block btn-sm"
                     color="default"
-                    style={styles.primaryLight}>Details
+                    style={styles.primary}>Details
                         </Link>
                 </Panel.Body>
               </Panel>
@@ -82,12 +82,23 @@ const YourRoleTable = (props) => {
     }
   }
 
-  return (
-    <Table id="table-ext-2" responsive striped bordered hover>
-      {renderHeader()}
-      {renderTable()}
-    </Table>
-  )
+  if (props.windowWidth < 600) {
+    return (
+      <div>
+        {renderHeader()}
+        {renderTable()}
+      </div>
+    )
+  } else {
+    return (
+      <Table id="table-ext-2" responsive striped bordered hover>
+        {renderHeader()}
+        <tbody>
+          {renderTable()}
+        </tbody>
+      </Table>
+    )
+  }
 }
 
 export default YourRoleTable;

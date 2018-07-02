@@ -27,7 +27,6 @@ const ResourcesTable = (props) => {
     }
 
     const renderTable = () => {
-        console.log(props)
         if (props.neededResources) {
             if (props.windowWidth < 600) {
                 return (
@@ -80,12 +79,23 @@ const ResourcesTable = (props) => {
         }
     }
 
-    return (
-        <Table id="table-ext-2" responsive striped bordered hover>
-            {renderHeader()}
-            {renderTable()}
-        </Table>
-    )
+    if (props.windowWidth < 600) {
+        return(
+            <div>
+                {renderHeader()}
+                {renderTable()}
+            </div>
+        )
+    } else {
+        return (
+            <Table id="table-ext-2" responsive striped bordered hover>
+                {renderHeader()}
+                <tbody>
+                    {renderTable()}
+                </tbody>
+            </Table>
+        )
+    }
 }
 
 export default ResourcesTable;
