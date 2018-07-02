@@ -1,10 +1,9 @@
-
 import React, { Component } from 'react';
 
 import {Modal, Col, Button} from 'react-bootstrap';
 import {styles} from '../../../assets/styles/variables';
 
-class ClaimsResourcesNeededButton extends Component {
+class ClaimButton extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -27,7 +26,7 @@ class ClaimsResourcesNeededButton extends Component {
 
     componentDidMount() {
         this.setState({
-            details: "Details about needed resources coming soon!"
+            details: "Check back later to claim!"
         })
     }
 
@@ -35,7 +34,7 @@ class ClaimsResourcesNeededButton extends Component {
         return(
             <Modal show={this.state.showModal} onHide={this.close}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Resources</Modal.Title>
+                    <Modal.Title>{this.props.similarRole.role}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {this.state.details}
@@ -52,7 +51,7 @@ class ClaimsResourcesNeededButton extends Component {
             <div>
                 <button onClick={this.open} className="btn btn-block" style={styles.primary} >
                 {/* need span to wrap text, otherwise we get a nodeparent error */}
-                    <span> Resources </span>
+                    <span> Claims </span>
                 </button>
                 {this.renderModal()}
             </div>
@@ -62,4 +61,4 @@ class ClaimsResourcesNeededButton extends Component {
 
 }
 
-export default ClaimsResourcesNeededButton;
+export default ClaimButton;

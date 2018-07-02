@@ -28,104 +28,50 @@ import RoleDisplay from './RoleDisplay';
 import TasksDisplay from './TasksDisplay';
 import ResourcesNeeded from './ResourcesNeeded';
 import SimilarRoles from './SimilarRoles';
-import ClaimButton from './TasksDisplay/ClaimButton';
-import ClaimButtonResources from './TasksDisplay/ClaimButtonResources';
-import ClaimsResourcesNeededButton from './ResourcesNeeded/ClaimsResourcesNeededButton';
-import ClaimSimlarRolesBtn from './SimilarRoles/ClaimSimlarRolesBtn';
+
 
 export class RoleView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props, context) {
     super(props, context);
+
     this.state = {
-      key: 1
+      key: 1,
+      width: 0,
+      height: 0
     };
+
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+  }
+
   handleSelect(key) {
     console.log('Tab selected ' + key);
     this.setState({
       key
     });
-  }
 
-
-  renderTasks = () => {
-    if (this.props.roleview.tasks && this.props.roleview.tasks.length) {
-      return this.props.roleview.tasks.map((task) => {
-        return (
-          <tr key={Math.random()} >
-            <td>{task.title}</td>
-            <td>{task.description}</td>
-            <td>{`${task.date}`}<br />
-              {`${task.startTime} - ${task.endTime}`}
-            </td>
-            <td>
-            <ClaimButton />
-              <ClaimButtonResources />
-            </td>
-
-          </tr>
-        );
-      });
-    }
-  }
-
-  renderResources = () => {
-    if (this.props.roleview.resources && this.props.roleview.resources.length) {
-      return this.props.roleview.resources.map((resource) => {
-        return (
-          <tr key={Math.random()}>
-            <td>
-              {resource}
-            </td>
-
-            <td>
-              <ClaimsResourcesNeededButton />
-            </td>
-
-          </tr>
-
-        );
-      });
-    }
-  }
-
-  renderSimilarRoles = () => {
-    if (this.props.roleview.similarRoles && this.props.roleview.similarRoles.length > 0) {
-      return this.props.roleview.similarRoles.map((similarRole) => {
-        return (
-          <tr key={Math.random()}>
-            <td>{similarRole.role}</td>
-            <td>{similarRole.description}</td>
-
-            <td>{similarRole.date}<br />
-              {`${similarRole.startTime} - ${similarRole.endTime}`}
-            </td>
-
-            <td className="col-md-3">
-            <ClaimSimlarRolesBtn />
-            </td>
-
-          </tr>
-        );
-      });
-    }
   }
 
 
   render() {
     return (
       <ContentWrapper>
-        <h3>Role View
-          <small>
-
-          </small>
-        </h3>
+        <h3>Role View</h3>
         <Row>
 
           <Helmet>
@@ -133,16 +79,16 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
             <meta name="description" content="Description of RoleView" />
           </Helmet>
 
-          <RoleDisplay {...this.props} />
+          <RoleDisplay {...this.props} windowWidth={this.state.width} />
 
         </Row>
 
         <Row>
-          <TasksDisplay renderTasks={this.renderTasks} {...this.props} />
-          <ResourcesNeeded renderResources={this.renderResources} {...this.props} />
+          <TasksDisplay tasks={this.props.roleview.tasks} windowWidth={this.state.width} />
+          <ResourcesNeeded resources={this.props.roleview.resources} windowWidth={this.state.width} />
         </Row>
 
-        <SimilarRoles renderSimilarRoles={this.renderSimilarRoles} {...this.props} />
+        <SimilarRoles similarRoles={this.props.roleview.similarRoles} windowWidth={this.state.width} />
 
 
       </ContentWrapper>

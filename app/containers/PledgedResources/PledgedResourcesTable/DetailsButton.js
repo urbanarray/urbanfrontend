@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {Modal, Col, Button} from 'react-bootstrap';
 import {styles} from '../../../assets/styles/variables';
 
-class ClaimButton extends Component {
+class DetailsButton extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -34,7 +34,7 @@ class ClaimButton extends Component {
         return(
             <Modal show={this.state.showModal} onHide={this.close}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Details</Modal.Title>
+                    <Modal.Title>{this.props.item}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {this.state.details}
@@ -51,7 +51,7 @@ class ClaimButton extends Component {
             <div>
                 <button onClick={this.open} className="btn btn-block" style={styles.primary} >
                 {/* need span to wrap text, otherwise we get a nodeparent error */}
-                    <span> Pledged Resources </span>
+                    <span> Details </span>
                 </button>
                 {this.renderModal()}
             </div>
@@ -61,4 +61,4 @@ class ClaimButton extends Component {
 
 }
 
-export default ClaimButton;
+export default DetailsButton;

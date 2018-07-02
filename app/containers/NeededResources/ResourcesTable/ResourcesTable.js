@@ -27,14 +27,13 @@ const ResourcesTable = (props) => {
     }
 
     const renderTable = () => {
-        console.log(props)
         if (props.neededResources) {
             if (props.windowWidth < 600) {
                 return (
                     props.neededResources.map((resource, i) => {
                         return (
                             <Panel bsStyle="primary" key={i}>
-                                <Panel.Heading style={styles.primary}>
+                                <Panel.Heading style={{textAlign: 'center', backgroundColor: 'white', color: 'black'}}>
                                     <Panel.Title componentClass="h3">{resource.name}</Panel.Title>
                                 </Panel.Heading>
                                 <Panel.Body style={{ textAlign: 'center' }}>
@@ -80,12 +79,23 @@ const ResourcesTable = (props) => {
         }
     }
 
-    return (
-        <Table id="table-ext-2" responsive striped bordered hover>
-            {renderHeader()}
-            {renderTable()}
-        </Table>
-    )
+    if (props.windowWidth < 600) {
+        return(
+            <div>
+                {renderHeader()}
+                {renderTable()}
+            </div>
+        )
+    } else {
+        return (
+            <Table id="table-ext-2" responsive striped bordered hover>
+                {renderHeader()}
+                <tbody>
+                    {renderTable()}
+                </tbody>
+            </Table>
+        )
+    }
 }
 
 export default ResourcesTable;
