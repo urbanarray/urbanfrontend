@@ -28,6 +28,8 @@ import RoleDisplay from './RoleDisplay';
 import TasksDisplay from './TasksDisplay';
 import ResourcesNeeded from './ResourcesNeeded';
 import SimilarRoles from './SimilarRoles';
+import ClaimButton from './TasksDisplay/ClaimButton';
+import ClaimButtonResources from './TasksDisplay/ClaimButtonResources';
 
 export class RoleView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -61,18 +63,8 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
               {`${task.startTime} - ${task.endTime}`}
             </td>
             <td>
-              <Link
-                to="#"
-                type="button"
-                className="btn btn-sm btn-primary btn-block"
-                style={[{ marginRight: '10px' }, styles.primary]}>Details
-              </Link>
-              <Link
-                to="#"
-                type="button"
-                className="btn btn-sm btn-success btn-block"
-                style={[{ marginRight: '10px' }, styles.secondary]}>Resources
-              </Link>
+            <ClaimButton />
+              <ClaimButtonResources />
             </td>
 
           </tr>
@@ -91,12 +83,7 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
             </td>
 
             <td>
-              <Link
-                to="#"
-                type="button"
-                className="btn btn-primary btn-xs btn-block"
-                style={[{ marginLeft: '30px' }, styles.primary]}>Details
-              </Link>
+              <ClaimButton />
             </td>
 
           </tr>
@@ -119,12 +106,7 @@ export class RoleView extends React.Component { // eslint-disable-line react/pre
             </td>
 
             <td className="col-md-3">
-              <Link
-                to="#"
-                type="button"
-                className="btn btn-primary btn-block"
-                style={styles.primary}>Claim
-              </Link>
+            <ClaimButton />
             </td>
 
           </tr>

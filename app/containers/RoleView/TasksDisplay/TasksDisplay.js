@@ -5,6 +5,7 @@ import {Col, Table} from 'react-bootstrap';
 
 import { styles } from '../../../assets/styles/variables';
 
+
 const TasksDisplay = (props) => (
     <Col md={8}>
         <div id="panelDemo8" className="panel panel-primary">
