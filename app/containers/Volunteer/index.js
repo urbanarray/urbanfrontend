@@ -55,7 +55,7 @@ export class Volunteer extends React.Component { // eslint-disable-line react/pr
             <td> {volunteer.name} </td>
             <td> {volunteer.email} </td>
             <td> {volunteer.role} </td>
-            <td> {(volunteer.status == 1) ? 'Active' : <button onClick={()=>this.handleResendEmail(volunteer.email)} className='btn btn-primary btn-sm' > Resend Invitation </button>}  </td>
+            <td> {(volunteer.status == 1) ? 'Active' : <button onClick={()=>this.handleResendEmail(volunteer.email)} className='btn btn-sm' style={styles.primaryLight}> Resend Invitation </button>}  </td>
           </tr>
         );
       });

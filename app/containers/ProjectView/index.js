@@ -62,39 +62,39 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
 
 
   renderLeadership = () => {
-    
-    if (this.props.projectview.leadership && this.props.projectview.leadership.length > 0) {      
+
+    if (this.props.projectview.leadership && this.props.projectview.leadership.length > 0) {
         return this.props.projectview.leadership.map((leadership) => {
           return(
             <div key={Math.random()} className="col-md-4">
                 <img style={{width:'50px', height:'50px', borderRadius:'50%' }} src={Avatar} />
                 <span> {leadership.firstName} </span>
             </div>
-          ) 
+          )
         });
     }
   }
-  
+
   renderTeam = () => {
-    
-    if (this.props.projectview.team && this.props.projectview.team.length > 0) {      
+
+    if (this.props.projectview.team && this.props.projectview.team.length > 0) {
         return this.props.projectview.team.map((team) => {
           return(
             <div key={Math.random()} className="col-md-4">
               <img style={{width:'50px', height:'50px', borderRadius:'50%' }} src={Avatar} />
               <span> {team.firstName} </span>
             </div>
-          ) 
+          )
         });
     }
   }
 
   functionDisplay = () => {
     if(this.props.projectview && this.props.projectview.projectDetail && this.props.projectview.projectDetail.place) {
-   
+
       return (
         <LocationDisplay location={this.props.projectview.projectDetail.place} />
-        
+
       )
     }
   }
@@ -123,21 +123,21 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
                 {roles.ac}
               </td>
               <td>
-                <Link 
+                <Link
                   to="/roleView"
-                  type="button" 
-                  className="btn btn-primary btn-sm btn-block" 
-                  color="default" 
-                  style={styles.primary}>Details
+                  type="button"
+                  className="btn btn-primary btn-sm btn-block"
+                  color="default"
+                  style={styles.primaryLight}>Details
                 </Link>
               </td>
 
             </tr>
-   
+
           );
         });
-    }  
-    
+    }
+
   }
 
 
@@ -162,11 +162,11 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
             </td>
             <td>
               {/* <button type="button" className="btn btn-primary btn-block btn-sm"  > Pledge </button> */}
-              <Link 
-                to="/projectView" 
-                type="button" 
-                className="btn btn-success btn-block btn-sm" 
-                style={styles.primary}>Details/Claim 
+              <Link
+                to="/projectView"
+                type="button"
+                className="btn btn-success btn-block btn-sm"
+                style={styles.primaryLight}>Details/Claim
               </Link>
             </td>
 
@@ -178,7 +178,7 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
 
   renderProjectDetails = () => {
     if (this.props.projectview.projectDetail) {
-          return <ProjectDetails projectId={this.props.match.params.id} projectDetail = {this.props.projectview.projectDetail} />      
+          return <ProjectDetails projectId={this.props.match.params.id} projectDetail = {this.props.projectview.projectDetail} />
     }
   }
 
@@ -190,24 +190,24 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
             <meta name="description" content="Description of ProjectView" />
           </Helmet>
           <h3>{(this.props.projectview && this.props.projectview.projectDetail)? this.props.projectview.projectDetail.name : ''}
-          
+
             <small>
               Project Details
             </small>
-            
+
           </h3>
-        
+
         <Row>
           {this.renderProjectDetails()}
-          
+
           <Col md={6}>
            <Row>
               {this.functionDisplay()}
               <ProjectTime {...this.props} />
            </Row>
-           
+
            <TeamDisplay renderLeadership={this.renderLeadership} renderTeam={this.renderTeam} {...this.props}/>
-          
+
           </Col>
 
         </Row>
@@ -226,7 +226,7 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
             <HealthSafety
 
               projectId={this.props.match.params.id}
-            
+
             />
 
           </Col>
