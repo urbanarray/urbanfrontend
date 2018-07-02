@@ -40,7 +40,7 @@ const YourRoleTable = (props) => {
                   <Link
                     to="/roleView"
                     type="button"
-                    className="btn btn-primary btn-block btn-sm"
+                    className="btn btn-block btn-sm"
                     color="default"
                     style={styles.primary}>Details
                         </Link>
