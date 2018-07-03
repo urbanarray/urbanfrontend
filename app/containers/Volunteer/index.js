@@ -23,9 +23,11 @@ import saga from './saga';
 import messages from './messages';
 import { listVolunteerAction, resendInvitationAction } from './actions';
 import AddVolunteer from 'containers/AddVolunteer';
+import { styles, headings } from '../../assets/styles/variables';
+
 
 export class Volunteer extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+
   constructor(props, context) {
     super(props)
 
@@ -53,7 +55,7 @@ export class Volunteer extends React.Component { // eslint-disable-line react/pr
             <td> {volunteer.name} </td>
             <td> {volunteer.email} </td>
             <td> {volunteer.role} </td>
-            <td> {(volunteer.status == 1) ? 'Active' : <button onClick={()=>this.handleResendEmail(volunteer.email)} className='btn btn-primary btn-sm' > Resend Invitation </button>}  </td>
+            <td> {(volunteer.status == 1) ? 'Active' : <button onClick={()=>this.handleResendEmail(volunteer.email)} className='btn btn-sm' style={styles.primaryLight}> Resend Invitation </button>}  </td>
           </tr>
         );
       });
@@ -82,7 +84,7 @@ export class Volunteer extends React.Component { // eslint-disable-line react/pr
   render() {
     return (
       <ContentWrapper>
-      
+
         <Helmet>
           <title>Volunteer</title>
           <meta name="description" content="Description of Volunteer" />
@@ -91,15 +93,15 @@ export class Volunteer extends React.Component { // eslint-disable-line react/pr
             <small>List of all volunteers</small>
           </h3>
           { this.renderMessage() }
-          
+
           { /* START panel */}
           <div className="panel panel-default">
-          <div className="panel-heading">
-             
-            <div className='pull-right' > 
-              <AddVolunteer/>
+          <div className="panel-heading" style={styles.primaryDark}>
+            <h4 style={headings.tableHeading}>Volunteers</h4>
+            <div className='pull-right' >
+              <AddVolunteer />
             </div>
-             <br/>   
+             <br/>
           </div>
           <hr style={{marginTop: '12px', marginBottom: '0px'}} />
             { /* START table-responsive */}
@@ -111,7 +113,7 @@ export class Volunteer extends React.Component { // eslint-disable-line react/pr
                 <th style={{ width: '300px' }} >Email</th>
                 <th style={{ width: '300px' }} >Role</th>
                 <th style={{ width: '200px' }} >Invite</th>
-                  
+
                 </tr>
               </thead>
               <tbody>
@@ -119,12 +121,12 @@ export class Volunteer extends React.Component { // eslint-disable-line react/pr
               </tbody>
             </Table>
             { /* END table-responsive */}
-          
+
           </div>
           { /* END panel */}
           { /* START panel */}
-      
-        </ContentWrapper>      
+
+        </ContentWrapper>
 
 
     );
@@ -135,7 +137,7 @@ Volunteer.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({  
+const mapStateToProps = createStructuredSelector({
   volunteer: makeSelectVolunteer(),
 });
 
@@ -145,7 +147,7 @@ function mapDispatchToProps(dispatch) {
     listVolunteers:() => dispatch(listVolunteerAction()),
     resendEmail: (payload) => dispatch(resendInvitationAction(payload)),
   };
-} 
+}
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 

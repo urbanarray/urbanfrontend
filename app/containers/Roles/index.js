@@ -24,7 +24,7 @@ import './style.css';
 import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, HelpBlock, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
-import { styles } from '../../assets/styles/variables';
+import { styles, headings } from '../../assets/styles/variables';
 import RolesTable from './RolesTable';
 
 export class Roles extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -65,7 +65,7 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
           <div className="panel-heading" style={styles.primaryDark}>
             <Row>
               <Col md={6}>
-                OPEN ROLES (Suggested)
+                <h4 style={headings.tableHeading}>OPEN ROLES (Suggested)</h4>
               </Col>
 
               <Col md={6}>
@@ -84,7 +84,7 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
                     <MenuItem eventKey="100">100</MenuItem>
                   </DropdownButton>
 
-                  <span style={{ margin: '0 10px' }}> From </span>
+                  <span style={{ margin: '0 10px' }, headings.tableHeading}> From </span>
 
                   <FormGroup
                     controlId="formZip"
@@ -107,7 +107,7 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
           </div>
 
           <RolesTable roles={this.props.roles.openRoles} windowWidth={this.props.windowWidth} />
-          
+
 
           <div className="panel-footer">
             <div className="text-right">

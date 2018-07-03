@@ -21,9 +21,11 @@ import saga from './saga';
 import { listPlacesAction, deletePlacesAction, updatePlacesAction } from "./actions";
 import AddPlace from "containers/AddPlace";
 import {makeSelectCurrentUser} from 'containers/App/selectors';
+import { styles, headings } from '../../assets/styles/variables';
+
 
 export class Places extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+
   constructor(props, content){
 
     super(props);
@@ -48,7 +50,7 @@ export class Places extends React.Component { // eslint-disable-line react/prefe
         googleMap: '',
         userId: '',
       }
-    
+
 
     }
   }
@@ -123,6 +125,7 @@ export class Places extends React.Component { // eslint-disable-line react/prefe
       return placesList.listPlaces.map((places) => {
         return (
           <tr key={Math.random()} >
+
             <td style={{padding: '14px 8px'}}> {places.name} </td>
             <td style={{padding: '14px 8px'}}> {places.city} </td>
             <td style={{padding: '14px 8px'}}> {places.description} </td>
@@ -138,8 +141,8 @@ export class Places extends React.Component { // eslint-disable-line react/prefe
     }
 
   }
-  
-  
+
+
   render() {
     return (
       <div>
@@ -160,8 +163,8 @@ export class Places extends React.Component { // eslint-disable-line react/prefe
 
           { /* START panel */}
           <div className="panel panel-default">
-            <div className="panel-heading">
-
+            <div className="panel-heading" style={styles.primaryDark}>
+              <h4 style={headings.tableHeading}></h4>
               <div className='pull-right' >
                 <AddPlace/>
               </div>
@@ -277,7 +280,7 @@ export class Places extends React.Component { // eslint-disable-line react/prefe
 
             </Modal.Body>
           </Modal>
-        </ContentWrapper> 
+        </ContentWrapper>
       </div>
     );
   }

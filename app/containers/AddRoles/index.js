@@ -20,6 +20,8 @@ import saga from './saga';
 import messages from './messages';
 import {createRolesAction, listRolesAction} from './actions';
 import { Grid, Row, Col, Panel, Button, Table, Pagination, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { styles, headings } from '../../assets/styles/variables';
+
 
 export class AddRoles extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -47,9 +49,9 @@ export class AddRoles extends React.Component { // eslint-disable-line react/pre
     setTimeout(() => {
       this.setState({'name':''});
       this.props.listRoles();
-      
+
     }, 500);
-  } 
+  }
 
 
   renderRoles = () => {
@@ -70,14 +72,16 @@ export class AddRoles extends React.Component { // eslint-disable-line react/pre
           <title>Add Roles</title>
           <meta name="description" content="Description of Add Roles" />
         </Helmet>
-        <div className="container">
+        <div className="container" style={{marginTop: '25px'}}>
           <div className="row">
-            <div className="col-lg-6 col-lg-offset-0 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 ">
+            <Col md={6}>
 
               <div className="user-detail" id="user-detail"  >
 
-                <div className="heading">
-                  <h1 className="text-center" >Add Roles</h1>
+                <div className="panel-heading" style={styles.primaryDark}>
+                  <h4 className="text-center" style={headings.tableHeading} >Add Roles</h4>
+                </div>
+                <div className="panel" style={{paddingTop: '10px'}}>
 
                   <div className="sign-up-box">
                     <Form onChange={this.changeAll} onSubmit={this.handleSubmit} >
@@ -95,19 +99,23 @@ export class AddRoles extends React.Component { // eslint-disable-line react/pre
                   </div>
                 </div>
               </div>
-            </div>
+            </Col>
 
             { /* START table-responsive */}
-            <Table id="table-ext-1" responsive bordered hover>
+            <Col md={6}>
+              <div className="user-detail" id="user-detail"  >
+            <Table id="table-ext-1" className="panel" responsive bordered hover>
               <thead>
-                <tr>
-                  <th>Roles List</th>
-                </tr>
+                <div style={styles.primaryDark} className="panel-heading">
+                  <h4  style={headings.tableHeading}>Roles List</h4>
+                </div>
               </thead>
               <tbody>
                 {this.renderRoles()}
               </tbody>
             </Table>
+              </div>
+            </Col>
             { /* END table-responsive */}
 
           </div>

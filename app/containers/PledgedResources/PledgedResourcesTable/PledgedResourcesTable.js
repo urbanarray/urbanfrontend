@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {Table, Panel } from 'react-bootstrap';
 
-import { styles } from '../../../assets/styles/variables';
+import { styles, headings } from '../../../assets/styles/variables';
 import DetailsButton from './DetailsButton';
 const PledgedResourcesTable = (props) => {
 
@@ -30,8 +30,8 @@ const PledgedResourcesTable = (props) => {
           props.pledgedResources.map((resource, i) => {
             return (
               <Panel bsStyle="primary" key={i}>
-                <Panel.Heading style={{textAlign: 'center', backgroundColor: 'white', color: 'black'}}>
-                  <Panel.Title componentClass="h3">{resource.item}</Panel.Title>
+                <Panel.Heading style={styles.primary}>
+                  <Panel.Title componentClass="h3" style={headings.subHeading}>{resource.item}</Panel.Title>
                 </Panel.Heading>
                 <Panel.Body style={{ textAlign: 'center' }}>
                   Project: {resource.project}<br />

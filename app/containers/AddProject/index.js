@@ -23,8 +23,9 @@ import {addProjectAction, listPlacesAction} from './actions';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
+
 export class AddProject extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+
   constructor(props){
     super(props);
     this.state = {
@@ -43,7 +44,7 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
     }
     this.handleQuill = this.handleQuill.bind(this)
   }
-  
+
 
   open = () => {
     this.setState({
@@ -62,7 +63,7 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
 
     const {name, value} = e.target;
     this.setState({[name]: value});
-    
+
   }
 
   handleQuill = (value) => {
@@ -70,10 +71,10 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
     this.setState({
       pgoals: value,
     });
-    
+
   }
 
-  
+
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -81,8 +82,8 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
     // userid = this
     this.props.addPro(
       {
-        name: this.state.name, 
-        description: this.state.description, 
+        name: this.state.name,
+        description: this.state.description,
         projectType: this.state.projectType,
         place: this.state.place,
         locationname: this.state.locationname,
@@ -107,13 +108,13 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
             time: '',
           }
         );
-        
+
       }, 500);
       this.handleClick(true);
       this.close();
     }
-    
-    
+
+
     handleClick = (value) => {
     this.setState({
       show: value,
@@ -126,15 +127,15 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
 
   renderSelect = () => {
     if(this.props.addproject && this.props.addproject.list_places && this.props.addproject.list_places.places){
-      const places = this.props.addproject.list_places.places; 
-    
+      const places = this.props.addproject.list_places.places;
+
       return places.map((place) => {
         return (
             <option  key={Math.random()} value={place._id}>{place.name}</option>
-    
+
         )
       })
-    } 
+    }
 
   }
 
@@ -156,32 +157,32 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
     return (
       <div>
 
-        <button onClick={this.open} className="btn btn-primary" > Add New Project </button>
+        <button onClick={this.open} className="btn btn-primary btn-success" > Add New Project </button>
 
         <Modal show={this.state.openModel} onHide={this.close} >
           <Modal.Header closeButton>
             <Modal.Title>Add New Project</Modal.Title>
           </Modal.Header>
-          <Modal.Body>  
+          <Modal.Body>
 
             <Row>
               <Col md={12} className="col-md-offset-0">
                 <form method="post" action="#" data-parsley-validate="" onChange={this.handleChange} onSubmit={this.handleSubmit} noValidate>
-                  
 
-                  
+
+
                   <div className="panel panel-default">
                     <div className="panel-heading">
                       <div className="panel-title"></div>
                     </div>
                     <div className="panel-body">
-                      <Row> 
+                      <Row>
                         <Col md={6} >
 
                           <FormGroup
                             validationState={this.getValidationState('name')}
                           >
-                        
+
                             <label className="control-label">Project Name *</label>
                             <p style={{
                               color: 'red'
@@ -250,8 +251,8 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
                               </Col>
                               </Row>
                           </FormGroup>
-                         
-                        </Col>    
+
+                        </Col>
 
                         <Col md={6}>
                           <FormGroup
@@ -292,13 +293,13 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
                               placeholder="time"
                               value={this.state.time}
                               className="form-control" />
-                          </FormGroup>                          
+                          </FormGroup>
 
                         </Col>
 
-                      </Row> 
-                      
-                      <Row> 
+                      </Row>
+
+                      <Row>
                         <Col md={6}>
                           <FormGroup
                             /* validationState={this.getValidationState('startDate')} */
@@ -349,14 +350,14 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
                             }}>
                               {/* {this.state.projectname} */}
                             </p>
-                            <ReactQuill 
+                            <ReactQuill
                               name="pgoals"
                               value ={this.state.pgoals}
                               required="required"
                               onChange={this.handleQuill}
                               />
                           </FormGroup>
-                         
+
                         </Col>
 
                         <Col md={12}>
@@ -378,9 +379,9 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
                               required="required"
                               className="form-control" />
                           </FormGroup>
-                          
-                        </Col>  
-                      </Row> 
+
+                        </Col>
+                      </Row>
 
                     </div>
                     <div className="panel-footer">
@@ -395,12 +396,12 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
                     </div>
                   </div>
 
-             
-                  {/* END panel */} 
+
+                  {/* END panel */}
                 </form>
               </Col>
             </Row>
-            
+
           </Modal.Body>
           <Modal.Footer>
             <Button className="btn btn-danger" onClick={this.close}>Cancel</Button>
@@ -420,16 +421,16 @@ const mapStateToProps = createStructuredSelector({
   addproject: makeSelectAddProject(),
   currentUser: makeSelectCurrentUser(),
   ListPlace: makeSelectListPlaces(),
-  
+
 });
- 
+
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     addPro : (payload) => dispatch(addProjectAction(payload)),
     listPlace: () => dispatch(listPlacesAction()),
 
-    
+
   };
 }
 

@@ -24,14 +24,15 @@ import ContentWrapper from 'components/Layout/ContentWrapper';
 import {Grid, Row, Col, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
 
 import { makeSelectCurrentUser } from 'containers/App/selectors';
-import { 
-  skillsListAction, 
-  listUserSkillsAction, 
+import {
+  skillsListAction,
+  listUserSkillsAction,
   createUserSkillsAction,
   deleteUserSkillsAction,
 } from './actions';
 
 import ProfileDetails from 'containers/ProfileDetails';
+import { styles, headings } from '../../assets/styles/variables';
 
 
 
@@ -45,7 +46,7 @@ export class AccountSettings extends React.Component { // eslint-disable-line re
     };
   }
 
-  
+
 
   close = () => {
     this.setState({
@@ -93,15 +94,15 @@ export class AccountSettings extends React.Component { // eslint-disable-line re
     if (listSkills && listSkills.length > 0) {
      return listSkills.map((skill) => {
        return (
-         <option key={skill._id} value={skill._id}> {skill.name} </option>         
+         <option key={skill._id} value={skill._id}> {skill.name} </option>
        );
      });
-   } 
+   }
   }
 
   handleChange = (e) => {
     const { name, value } = e.target;
-    
+
     this.setState({
       [name]: value,
     });
@@ -113,13 +114,13 @@ export class AccountSettings extends React.Component { // eslint-disable-line re
       userId: this.props.currentUser.user.id,
       skillId: this.state.skillId,
     };
-    
+
     this.props.createUserSkills(addUserSkills);
-    
+
     setTimeout(() => {
       this.close();
     }, 1000);
-    
+
     setTimeout(() => {
       this.props.listUserSkills(this.props.currentUser.user.id);
     }, 1100);
@@ -140,19 +141,20 @@ export class AccountSettings extends React.Component { // eslint-disable-line re
                 <div className="mv-lg">
                   <p>{(this.props.currentUser && this.props.currentUser.user ) ? this.props.currentUser.user.role : 'Role is not defined' }</p>
                 </div>
-                <div className="text-center"><a href="#" className="btn btn-primary">Send message</a>
+                <div className="text-center"><a href="#" className="btn" style={styles.primary}>Send message</a>
                 </div>
               </div>
             </div>
             <div className="panel panel-default hidden-xs hidden-sm">
-              <div className="panel-heading">
-                <div className="panel-title">User Skills <span onClick={this.open}  className="pull-right">Add Skills <em className=" icon-note"></em> </span> </div>
+              <div className="panel-heading" style={styles.primaryDark}>
+                <h4 style={headings.tableHeading} className="panel-title">User Skills  </h4>
+                <button onClick={this.open}  className="pull-right btn-success">Add Skills </button>
               </div>
               <div className="panel-body">
 
                 {this.renderUserSkills()}
 
-                {/* Add user skills using pop up model */}  
+                {/* Add user skills using pop up model */}
                 {/* <Button bsStyle="primary" bsSize="large" onClick={this.open}>
                   Launch demo modal
                 </Button> */}
@@ -177,7 +179,7 @@ export class AccountSettings extends React.Component { // eslint-disable-line re
                           </Col>
                         </div>
                         <div className="col-sm-6 col-sm-offset-3 text-center" >
-                          <input type="submit" value="Add Skill" className="btn btn-primary" /> 
+                          <input type="submit" value="Add Skill" className="btn btn-primary" />
                         </div>
                       </fieldset>
                     </form>

@@ -49,7 +49,7 @@ class DetailsButton extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.open} className="btn btn-block" style={styles.primary} >
+                <button onClick={this.open} className="btn btn-block" style={styles.primaryLight} >
                 {/* need span to wrap text, otherwise we get a nodeparent error */}
                     <span> Details </span>
                 </button>

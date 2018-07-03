@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Table, Panel } from 'react-bootstrap';
 
-import { styles } from '../../../assets/styles/variables';
+import { styles, headings } from '../../../assets/styles/variables';
 import DetailsButton from './DetailsButton';
 
 const ResourcesNeeded = (props) => {
@@ -32,7 +32,7 @@ const ResourcesNeeded = (props) => {
                     return (
                         <Panel bsStyle="primary" key={i}>
                             <Panel.Heading style={{ textAlign: 'center', backgroundColor: 'white', color: 'black' }}>
-                                <Panel.Title componentClass="h3">{resource}</Panel.Title>
+                                <Panel.Title componentClass="h3" style={headings.tableHeading}>{resource}</Panel.Title>
                             </Panel.Heading>
                             <DetailsButton resource={resource}/>
                         </Panel>
@@ -63,7 +63,7 @@ const ResourcesNeeded = (props) => {
             <Col md={4}>
                 <div id="panelDemo8" className="panel panel-primary">
                     <div className="panel-heading" style={styles.primaryDark}>
-                        All Resources Needed
+                        <h4 style={headings.tableHeading}>All Resources Needed</h4>
                     </div>
 
                         {renderHeader()}
@@ -83,7 +83,7 @@ const ResourcesNeeded = (props) => {
             <Col md={4}>
                 <div id="panelDemo8" className="panel panel-primary">
                     <div className="panel-heading" style={styles.primaryDark}>
-                        All Resources Needed
+                        <h4 style={headings.tableHeading}>All Resources Needed</h4>
                     </div>
 
                     <Table id="table-ext-2" responsive striped bordered hover>
