@@ -8,19 +8,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import ContentWrapper from 'components/Layout/ContentWrapper';
-import { Grid, Row, Col, Panel, Button, Table, Pagination } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectVolunteer from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
 import { listVolunteerAction, resendInvitationAction } from './actions';
 import AddVolunteer from 'containers/AddVolunteer';
 import { styles, headings } from '../../assets/styles/variables';
@@ -28,7 +26,7 @@ import { styles, headings } from '../../assets/styles/variables';
 
 export class Volunteer extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-  constructor(props, context) {
+  constructor(props) {
     super(props)
 
     this.state = {
