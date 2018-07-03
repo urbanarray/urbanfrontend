@@ -33,6 +33,7 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
       description: '',
       projectType: '',
       place: '',
+      locationname: '',
       date: '',
       time: '',
       pgoals: '',
@@ -85,6 +86,7 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
         description: this.state.description,
         projectType: this.state.projectType,
         place: this.state.place,
+        locationname: this.state.locationname,
         startDate: this.state.startDate,
         endDate: this.state.endDate,
         time: this.state.time,
@@ -98,6 +100,7 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
             description: '',
             projectType: 1,
             place: '',
+            locationname: '',
             startDate: '',
             endDate:'',
             pgoals: '',
@@ -212,20 +215,41 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
                             </select>
                           </FormGroup>
 
-
+                          
                           <FormGroup
                             validationState={this.getValidationState('place')}
                           >
+                          
                             <label className="control-label">Place</label>
                             <p style={{
                               color: 'red'
                             }}>
                               {/* {this.state.projectname} */}
                             </p>
+                            <Row>
+                            <Col md={6}>
                             <select value={this.state.place} name="place" className="form-control" required>
                               <option> Select Place</option>
                               {this.renderSelect()}
                             </select>
+                            <p style={{
+                              color: 'red'
+                            }}>
+                              {/* {this.state.projectname} */}
+                            </p>
+                            </Col>
+                            
+                            <Col md={6}>
+                            <FormControl
+                              id="locationname"
+                              type="locationame"
+                              name="locationname"
+                              placeholder="Location Nickname"
+                              value={this.state.nickname}
+                              required="required"
+                              className="form-control"/>
+                              </Col>
+                              </Row>
                           </FormGroup>
 
                         </Col>

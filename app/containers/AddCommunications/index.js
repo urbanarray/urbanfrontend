@@ -181,7 +181,6 @@ handleChange = (e) => {
                 {/* <div className="panel-footer">Panel Footer</div> */}
             </div>
         </Col>
-
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>Add Communication</Modal.Title>
@@ -191,7 +190,7 @@ handleChange = (e) => {
               <fieldset>
 
                 <div className="form-group mb">
-                  <label className="col-sm-2 col-sm-offset-1 control-label mb communicat" style={{ marginLeft: '3%', minWidth: '132px'}}>Methods of Communications</label>
+                  <label className="col-sm-2 col-sm-offset-1 control-label mb communicat" style={{ marginLeft: '8%'}}>Methods of Communications</label>
                   <Col sm={8}>
                     <Select.Creatable
                       name="moc"

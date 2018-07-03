@@ -218,7 +218,6 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
           <title>HealthSafety</title>
           <meta name="description" content="Description of HealthSafety" />
         </Helmet>
-
         <Col md={12}>
             <div id="panelDemo8" className="panel panel-primary" >
               <div className="panel-heading" style={styles.primaryDark} >
@@ -252,7 +251,6 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
                 {/* <div className="panel-footer">Panel Footer</div> */}
             </div>
         </Col>
-
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>Health and Safety</Modal.Title>
@@ -260,9 +258,8 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
           <Modal.Body>
             <form className="form-horizontal" onChange={this.handleChange} onSubmit={this.handleSubmit} >
               <fieldset>
-
                 <div className="form-group mb">
-                  <label className="col-sm-2 col-sm-offset-1 control-label mb">Emergency Contact Numbers</label>
+                  <label style={{paddingTop: '0'}} className="col-sm-2 col-sm-offset-1 control-label mb">Emergency Contact Numbers</label>
                   <Col sm={8}>
                     <Select.Creatable
                       name="ecn"
@@ -275,7 +272,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
                 </div>
 
                 <div className="form-group mb">
-                  <label className="col-sm-2 col-sm-offset-1 control-label mb">Medical Members Assigned</label>
+                  <label style={{paddingTop: '0'}} className="col-sm-2 col-sm-offset-1 control-label mb">Medical Members Assigned</label>
                   <Col sm={8}>
                     <Select.Creatable
                       name="mma"
@@ -288,7 +285,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
                 </div>
 
                 <div className="form-group mb">
-                  <label className="col-sm-2 col-sm-offset-1 control-label mb">Security Members Assigned</label>
+                  <label style={{paddingTop: '0'}} className="col-sm-2 col-sm-offset-1 control-label mb">Security Members Assigned</label>
                   <Col sm={8}>
                     <Select.Creatable
                       name="sma"
@@ -301,7 +298,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
                 </div>
 
                 <div className="form-group mb">
-                  <label className="col-sm-2 col-sm-offset-1 control-label mb"> Location of Medical</label>
+                  <label style={{paddingTop: '0'}} className="col-sm-2 col-sm-offset-1 control-label mb"> Location of Medical</label>
                   <Col sm={8}>
                     <textarea
                       rows="5"
@@ -316,7 +313,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
 
 
                 <div className="form-group mb">
-                  <label className="col-sm-2 col-sm-offset-1 control-label mb"> Any medical considerations</label>
+                  <label style={{paddingTop: '0'}} className="col-sm-2 col-sm-offset-1 control-label mb"> Any medical considerations</label>
                   <Col sm={8}>
                     <textarea
                       rows="5"
@@ -330,7 +327,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
                 </div>
 
                 <div className="form-group mb">
-                  <label className="col-sm-2 col-sm-offset-1 control-label mb"> Any Saftey Considerations</label>
+                  <label style={{paddingTop: '0'}} className="col-sm-2 col-sm-offset-1 control-label mb"> Any Saftey Considerations</label>
                   <Col sm={8}>
                     <textarea
                       rows="5"
@@ -342,6 +339,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
                     />
                   </Col>
                 </div>
+
               </fieldset>
               <button className="btn-block btn btn-success">Add Health & Safety</button>
             </form>

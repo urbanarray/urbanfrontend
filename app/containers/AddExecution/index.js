@@ -183,7 +183,6 @@ export class AddExecution extends React.Component { // eslint-disable-line react
           <title>AddExecution</title>
           <meta name="description" content="Description of AddExecution" />
         </Helmet>
-
         <Col md={12}>
             <div id="panelDemo8" className="panel panel-primary" >
               <div className="panel-heading" style={styles.primaryDark} >
@@ -214,7 +213,7 @@ export class AddExecution extends React.Component { // eslint-disable-line react
                 { /* END table-responsive */}
                 {/* <div className="panel-footer">Panel Footer</div> */}
             </div>
-        </Col>
+        </col>
 
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
@@ -225,7 +224,7 @@ export class AddExecution extends React.Component { // eslint-disable-line react
               <fieldset>
                 <div className="form-group mb">
                   <label className="col-sm-2 control-label mb">Entry</label>
-                  <Col sm={10}>
+                  <Col sm={9}>
                     <QuillWrapper>
                       <ReactQuill
                         name="entry"
@@ -241,7 +240,7 @@ export class AddExecution extends React.Component { // eslint-disable-line react
 
                 <div className="form-group mb">
                   <label className="col-sm-2 control-label mb">Intent</label>
-                  <Col sm={10}>
+                  <Col sm={9}>
                     <QuillWrapper>
                       <ReactQuill
                         name="intent"
@@ -257,7 +256,7 @@ export class AddExecution extends React.Component { // eslint-disable-line react
 
                 <div className="form-group mb">
                   <label className="col-sm-2 control-label mb">Concept of Operation</label>
-                  <Col sm={10}>
+                  <Col sm={9}>
                     <QuillWrapper>
                       <ReactQuill
                         name="conceptOperation"

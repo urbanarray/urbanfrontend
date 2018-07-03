@@ -253,11 +253,14 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
         </Row>
 
         <Row>
-          <RolesDisplay renderRoles={this.renderRoles} {...this.props}/>
-          <ResourcesDisplay renderProjectResources={this.renderProjectResources} {...this.props}/>
+          <Col md={6}>
+            <RolesDisplay renderRoles={this.renderRoles} {...this.props}/>
+          </Col>
+          <Col md={6}>
+            <TimelineRoles />
+          </Col>
         </Row>
 
-        <TimelineRoles />
 
       </ContentWrapper>
     );
