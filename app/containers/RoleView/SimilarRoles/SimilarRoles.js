@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Table, Panel } from 'react-bootstrap';
 
-import { styles } from '../../../assets/styles/variables';
+import { styles, headings } from '../../../assets/styles/variables';
 import ClaimButton from './ClaimButton';
 
 const SimilarRoles = (props) => {
@@ -30,7 +30,7 @@ const SimilarRoles = (props) => {
                     return (
                         <Panel bsStyle="primary" key={i}>
                             <Panel.Heading style={{ textAlign: 'center', backgroundColor: 'white', color: 'black' }}>
-                                <Panel.Title componentClass="h3">{similarRole.role}</Panel.Title>
+                                <Panel.Title componentClass="h3" style={headings.tableHeading}>{similarRole.role}</Panel.Title>
                             </Panel.Heading>
                             <Panel.Body style={{ textAlign: 'center' }}>
                                 Description: {similarRole.description}<br />
@@ -69,7 +69,7 @@ const SimilarRoles = (props) => {
                 <Col md={12}>
                     <div id="panelDemo8" className="panel panel-primary">
                         <div className="panel-heading" style={styles.primaryDark}>
-                            Similar Roles
+                            <h4 style={headings.tableHeading}>Similar Roles</h4>
                     </div>
 
                         {renderHeader()}
@@ -90,7 +90,7 @@ const SimilarRoles = (props) => {
                 <Col md={12}>
                     <div id="panelDemo8" className="panel panel-primary">
                         <div className="panel-heading" style={styles.primaryDark}>
-                            Similar Roles
+                            <h4 style={headings.tableHeading}>Similar Roles</h4>
                     </div>
 
                         <Table id="table-ext-2" responsive striped bordered hover>

@@ -22,7 +22,7 @@ import messages from './messages';
 import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
-import { styles } from '../../assets/styles/variables'
+import { styles, headings } from '../../assets/styles/variables'
 import PledgedResourcesTable from './PledgedResourcesTable';
 
 export class PledgedResources extends React.Component {
@@ -72,7 +72,7 @@ export class PledgedResources extends React.Component {
           <div className="panel-heading" style={styles.primaryDark}>
             <Row>
               <Col md={12}>
-                PLEDGED RESOURCES
+                <h4 style={headings.tableHeading}>PLEDGED RESOURCES</h4>
             </Col>
             </Row>
           </div>

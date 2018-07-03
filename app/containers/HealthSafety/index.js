@@ -43,10 +43,10 @@ import makeSelectHealthSafety from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import {listHealthSafetyAction} from './actions';
-import { styles } from '../../assets/styles/variables';
+import { styles, headings } from '../../assets/styles/variables';
 
 export class HealthSafety extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+
   constructor(props){
     super(props)
 
@@ -58,10 +58,10 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
       location: '',
       lmc: '',
       lsc: '',
-      
+
     }
   }
-  
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.create(
@@ -86,7 +86,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
       })
       setTimeout(() => {
         this.close();
-        
+
       }, 800);
       setTimeout(() => {
         this.props.listHealthSafety(this.props.projectId);
@@ -95,7 +95,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
   }
 
   handleMutiChange = (selectedOption) => {
- 
+
     this.setState({
       critialContacts: selectedOption
     });
@@ -104,38 +104,38 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
   componentDidMount (){
     this.props.listHealthSafety(this.props.projectId);
   }
-  
+
   ECN = (ec) => {
-    
+
     this.setState({
       ecn: ec
     })
   }
   MMA = (ec) => {
-    
+
     this.setState({
       mma: ec
     })
   }
   SMA = (ec) => {
-    
+
     this.setState({
       sma: ec
     })
   }
-  
+
 
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   }
-  
+
   open = () => {
     this.setState({
       openModel: true,
     })
   }
-  
+
   close = () => {
     this.setState({
       openModel: false,
@@ -146,7 +146,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
     if(sma && sma.length > 0 ){
       return sma.map((c) => {
         return (
-          <ul key={Math.random()}> 
+          <ul key={Math.random()}>
             <li>
               {c.label}
             </li>
@@ -210,7 +210,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
           });
         }
   }
-  
+
   render() {
     return (
       <div>
@@ -218,39 +218,39 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
           <title>HealthSafety</title>
           <meta name="description" content="Description of HealthSafety" />
         </Helmet>
+        <Col md={12}>
+            <div id="panelDemo8" className="panel panel-primary" >
+              <div className="panel-heading" style={styles.primaryDark} >
+                <Row>
+                  <Col md={6}>
+                    <h4 style={headings.tableHeading}>Health & Safety</h4>
+                  </Col>
 
-        <div id="panelDemo8" className="panel panel-primary" >
-          <div className="panel-heading" style={styles.primaryDark} >
-            <Row>
-              <Col md={6}>
-                <h4 style={{color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase'}}>Health & Safety</h4>
-              </Col>
-            
-              <Col md={6}>
-                  <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Health & Safety </button>
-              </Col>
-            </Row>
-          </div>
-            { /* START table-responsive */}
-            <Table id="table-ext-2" responsive striped bordered hover>
-                <thead>
-                    <tr>
-                        <th style={{width: '120px' }}>List of Medical Considerations</th>
-                        <th style={{width: '120px'}}>Location of Medical</th>
-                        <th style={{width: '120px'}}>Any Safety Considerations</th>
-                        <th style={{width: '120px'}}>Security Members Assigned</th>
-                        <th style={{width: '120px'}}>Medical Members Assigned</th>
-                        <th style={{width: '120px'}}>Emergency Contact Number</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  {this.listHealth()}
-                </tbody>
-            </Table>
-            { /* END table-responsive */}
-            {/* <div className="panel-footer">Panel Footer</div> */}
-        </div>
-
+                  <Col md={6}>
+                      <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Health & Safety </button>
+                  </Col>
+                </Row>
+              </div>
+                { /* START table-responsive */}
+                <Table id="table-ext-2" responsive striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th style={{width: '120px' }}>List of Medical Considerations</th>
+                            <th style={{width: '120px'}}>Location of Medical</th>
+                            <th style={{width: '120px'}}>Any Safety Considerations</th>
+                            <th style={{width: '120px'}}>Security Members Assigned</th>
+                            <th style={{width: '120px'}}>Medical Members Assigned</th>
+                            <th style={{width: '120px'}}>Emergency Contact Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {this.listHealth()}
+                    </tbody>
+                </Table>
+                { /* END table-responsive */}
+                {/* <div className="panel-footer">Panel Footer</div> */}
+            </div>
+        </Col>
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>Health and Safety</Modal.Title>

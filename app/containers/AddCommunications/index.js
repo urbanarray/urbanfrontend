@@ -10,8 +10,8 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import { FormGroup, Label, Grid, Table, Row, Col, Panel, Button, ButtonGroup, 
-  ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, 
+import { FormGroup, Label, Grid, Table, Row, Col, Panel, Button, ButtonGroup,
+  ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager,
   PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
 
 import Select from 'react-select';
@@ -23,15 +23,15 @@ import saga from './saga';
 import './style.css';
 import 'react-select/dist/react-select.css';
 import { createCommunicationsAction, listCommunication } from "./actions";
-import {styles} from '../../assets/styles/variables';
+import { styles, headings } from '../../assets/styles/variables';
 
 
 export class AddCommunications extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+
 
   constructor(props){
     super(props)
-    
+
     this.state = {
       moc: [],
       critialContacts: [],
@@ -50,8 +50,8 @@ export class AddCommunications extends React.Component { // eslint-disable-line 
   }
 
   handleMutiChange = (selectedOption) => {
-    
-    this.setState({ 
+
+    this.setState({
       critialContacts : selectedOption
      });
   }
@@ -119,7 +119,7 @@ handleChange = (e) => {
   }
 
   listComm = () => {
-    
+
     if (this.props.addcommunications && this.props.addcommunications.communication_list && this.props.addcommunications.communication_list.length > 0) {
         return this.props.addcommunications.communication_list.map((c) => {
             return (
@@ -134,7 +134,7 @@ handleChange = (e) => {
                     {this.renderMoc(c.moc)}
                   </td>
                 </tr>
-              );  
+              );
         });
 
     }
@@ -144,42 +144,43 @@ handleChange = (e) => {
   render() {
 
     const { selectedOption } = this.state;
-    
+
     return (
       <div>
         <Helmet>
           <title>Add Communications</title>
           <meta name="description" content="Description of AddCommunications" />
         </Helmet>
-          <div id="panelDemo8" className="panel panel-primary" >
-              <div className="panel-heading" style={styles.primaryDark}  >
-                  <Row>
-                      <Col md={6}>
-                          <h4 style={{color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase'}}> Communications </h4>
-                      </Col>
-                      <Col md={6}>
-                          <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Communication </button>
-                      </Col>
-                  </Row>
-              </div>
+        <Col md={12}>
+            <div id="panelDemo8" className="panel panel-primary" >
+                <div className="panel-heading" style={styles.primaryDark}  >
+                    <Row>
+                        <Col md={6}>
+                            <h4 style={headings.tableHeading}> Communications </h4>
+                        </Col>
+                        <Col md={6}>
+                            <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Communication </button>
+                        </Col>
+                    </Row>
+                </div>
 
-              { /* START table-responsive */}
-              <Table id="table-ext-2" responsive striped bordered hover>
-                  <thead>
-                      <tr>
-                          <th style={{ width: '120px' }}>List of revelvant UA</th>
-                          <th style={{width: '120px'}}>special Instruction </th>
-                          <th style={{width: '120px'}}>Method of Communication </th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                    {this.listComm()}
-                  </tbody>
-              </Table>
-              { /* END table-responsive */}
-              {/* <div className="panel-footer">Panel Footer</div> */}
-          </div>
-
+                { /* START table-responsive */}
+                <Table id="table-ext-2" responsive striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th style={{ width: '120px' }}>List of revelvant UA</th>
+                            <th style={{width: '120px'}}>special Instruction </th>
+                            <th style={{width: '120px'}}>Method of Communication </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {this.listComm()}
+                    </tbody>
+                </Table>
+                { /* END table-responsive */}
+                {/* <div className="panel-footer">Panel Footer</div> */}
+            </div>
+        </Col>
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>Add Communication</Modal.Title>
@@ -196,11 +197,11 @@ handleChange = (e) => {
                       value={this.state.moc}
                       onChange={this.handleMutiValueChange}
                       multi={true}
-                      
+
                     />
                   </Col>
                 </div>
-                
+
                 <div className="form-group mb">
                   <label className="col-sm-2 col-sm-offset-1 control-label mb">Critial Contacts</label>
                   <Col sm={8}>
@@ -223,13 +224,13 @@ handleChange = (e) => {
                 <div className="form-group mb">
                   <label className="col-sm-2 col-sm-offset-1 control-label mb">Special Instructions</label>
                   <Col sm={8}>
-                      <textarea 
-                        rows="5" 
-                        type="text" 
-                        name="specialInstruction" 
-                        value={this.state.specialInstruction} 
-                        className="form-control" 
-                        placeholder="Special Instructions" 
+                      <textarea
+                        rows="5"
+                        type="text"
+                        name="specialInstruction"
+                        value={this.state.specialInstruction}
+                        className="form-control"
+                        placeholder="Special Instructions"
                       />
                   </Col>
                 </div>

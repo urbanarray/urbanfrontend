@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Col, Table, Panel } from 'react-bootstrap';
-import { styles } from '../../../assets/styles/variables';
+import { styles, headings } from '../../../assets/styles/variables';
 
 const RoleDisplay = (props) => {
 
@@ -25,7 +25,7 @@ const RoleDisplay = (props) => {
             return (
                 <Panel bsStyle="primary">
                     <Panel.Heading style={{ textAlign: 'center', backgroundColor: 'white', color: 'black' }}>
-                        <Panel.Title componentClass="h3">{props.roleview.roleDetail.role}</Panel.Title>
+                        <Panel.Title componentClass="h3" style={headings.tableHeading}>{props.roleview.roleDetail.role}</Panel.Title>
                     </Panel.Heading>
                     <Panel.Body style={{ textAlign: 'center' }}>
                         Project: {props.roleview.roleDetail.project}<br />
@@ -42,7 +42,7 @@ const RoleDisplay = (props) => {
                             {props.roleview.roleDetail.project}
                         </td>
                         <td>
-                            {`${props.roleview.roleDetail.date} 
+                            {`${props.roleview.roleDetail.date}
                                 ${props.roleview.roleDetail.startTime} to ${props.roleview.roleDetail.endTime}`}
                         </td>
                     </tr>
@@ -56,9 +56,9 @@ const RoleDisplay = (props) => {
             <Col md={12}>
                 <div id="panelDemo8" className="panel panel-primary">
                     <div className="panel-heading" style={styles.primaryDark}>
-                        Role: {props.roleview.roleDetail.role}
+                        <h4 style={headings.tableHeading}>Role: {props.roleview.roleDetail.role}</h4>
                     </div>
-    
+
                     {renderHeader()}
                     {renderTable()}
                 </div>
@@ -69,9 +69,9 @@ const RoleDisplay = (props) => {
             <Col md={12}>
                 <div id="panelDemo8" className="panel panel-primary">
                     <div className="panel-heading" style={styles.primaryDark}>
-                        Role: {props.roleview.roleDetail.role}
+                        <h4 style={headings.tableHeading}>Role: {props.roleview.roleDetail.role}</h4>
                     </div>
-    
+
                     <Table id="table-ext-2" responsive striped bordered hover>
                         {renderHeader()}
                         {renderTable()}

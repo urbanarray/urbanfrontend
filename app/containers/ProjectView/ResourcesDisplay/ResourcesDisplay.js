@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Row, Col, Table, Model} from 'react-bootstrap';
-import {styles} from '../../../assets/styles/variables';
+import {styles, headings} from '../../../assets/styles/variables';
 
 const ResourcesDisplay = (props) => (
     <Col md={6}>
@@ -9,7 +9,10 @@ const ResourcesDisplay = (props) => (
             <div className="panel-heading" style={styles.primaryDark}>
                 <Row>
                     <Col md={6}>
-                        <h4 style={{color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase'}}>Resources </h4>
+                        <h4 style={headings.tableHeading}>Resources </h4>
+                    </Col>
+                    <Col md={6}>
+                        <button style={{marginTop: '3.0px'}} onClick={this.open} className="btn btn-primary btn-success pull-right" > Resources </button>
                     </Col>
                 </Row>
             </div>

@@ -3,28 +3,28 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Table, Panel } from 'react-bootstrap';
 
-import { styles } from '../../../assets/styles/variables';
+import { styles, headings } from '../../../assets/styles/variables';
 
 import DetailsButton from './DetailsButton';
 import ResourcesButton from './ResourcesButton';
+
 const TasksDisplay = (props) => {
 
-
     const renderHeader = () => {
-        if (props.windowWidth < 600) {
-            return null;
-        } else {
-            return (
-                <thead>
-                    <tr>
-                        <th style={{ width: '150px' }}>Title</th>
-                        <th>Description </th>
-                        <th style={{ width: '120px' }}>Date/Time</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-            )
-        }
+      if (props.windowWidth < 600) {
+          return null;
+      } else {
+          return (
+              <thead>
+                  <tr>
+                      <th style={{ width: '150px' }}>Title</th>
+                      <th>Description </th>
+                      <th style={{ width: '120px' }}>Date/Time</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+          )
+      }
     }
 
     const renderTable = () => {
@@ -73,7 +73,7 @@ const TasksDisplay = (props) => {
             <Col md={8}>
                 <div id="panelDemo8" className="panel panel-primary">
                     <div className="panel-heading" style={styles.primaryDark}>
-                        Tasks
+                        <h4 style={headings.tableHeading}>Tasks</h4>
                   </div>
 
                     {renderHeader()}
@@ -92,7 +92,7 @@ const TasksDisplay = (props) => {
             <Col md={8}>
                 <div id="panelDemo8" className="panel panel-primary">
                     <div className="panel-heading" style={styles.primaryDark}>
-                        Tasks
+                        <h4 style={headings.tableHeading}>Tasks</h4>
                   </div>
 
                     <Table id="table-ext-2" responsive striped bordered hover>

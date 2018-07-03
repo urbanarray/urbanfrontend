@@ -48,7 +48,7 @@ export class AddVolunteer extends React.Component { // eslint-disable-line react
   componentDidMount(){
     this.props.listRoles();
   }
-  
+
 
   renderRoles = () => {
     const {roles_list} = this.props.addvolunteer;
@@ -58,7 +58,7 @@ export class AddVolunteer extends React.Component { // eslint-disable-line react
           <option key={Math.random()} value={role.name} >{role.name}</option>
         );
       });
-    }   
+    }
   }
 
 
@@ -95,7 +95,7 @@ export class AddVolunteer extends React.Component { // eslint-disable-line react
       email: this.state.email,
       role: this.state.role
     }
-  
+
     this.props.create(obj);
 
     setTimeout(() => {
@@ -113,7 +113,7 @@ export class AddVolunteer extends React.Component { // eslint-disable-line react
           <meta name="description" content="Description of AddVolunteer" />
         </Helmet>
 
-        <button onClick={this.open} className="btn btn-primary" > Add Volunteer </button>
+        <button onClick={this.open} className="btn btn-primary btn-success" style={{marginTop: '2.0px'}}> Add Volunteer </button>
 
 
         <Modal show={this.state.showModal} onHide={this.close}>

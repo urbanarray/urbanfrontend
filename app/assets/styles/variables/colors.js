@@ -8,7 +8,8 @@ export const styles = {
         color: 'white'
     },
     primaryLight: {
-        backgroundColor: '#80cafe'
+        backgroundColor: '#80cafe',
+        color: 'white'
     },
     secondary: {
         backgroundColor: '#91c63f',
