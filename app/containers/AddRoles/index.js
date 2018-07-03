@@ -8,7 +8,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -17,15 +16,14 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectAddRoles from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
 import {createRolesAction, listRolesAction} from './actions';
-import { Grid, Row, Col, Panel, Button, Table, Pagination, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Col, Table, Form, FormGroup, Label, Input } from 'reactstrap';
 import { styles, headings } from '../../assets/styles/variables';
 
 
 export class AddRoles extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-  constructor(props, context) {
+  constructor(props) {
     super(props);
     this.state = {
       name: '',

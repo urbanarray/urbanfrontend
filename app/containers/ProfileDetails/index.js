@@ -8,17 +8,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import { FormGroup, Label, Grid, Row, Col, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
+import { Row, Col, Button, DropdownButton, MenuItem, Modal } from 'react-bootstrap';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectProfileDetails from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
 import { makeSelectCurrentUser } from 'containers/App/selectors';
 import { updateAction } from './actions';
 import { styles, headings } from '../../assets/styles/variables';

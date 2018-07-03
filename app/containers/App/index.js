@@ -7,8 +7,7 @@
  */
 
 import React from 'react';
-import styled from 'styled-components';
-import { browserHistory, Route, BrowserRouter, withRouter, Switch, BrowserRouter as Router, Redirect, Miss } from 'react-router-dom';
+import { browserHistory, Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
 
 import Landing from 'containers/Landing';
@@ -23,39 +22,16 @@ import ResendEmail from 'containers/ResendEmail';
 import VerifyAccount from 'containers/VerifyAccount';
 import ForgetPassword from 'containers/ForgetPassword';
 import ResetPassword from 'containers/ResetPassword';
-// import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Logout from 'containers/Logout/Loadable';
 import AccountSettings from 'containers/AccountSettings/Loadable';
 import Volunteer from 'containers/Volunteer/Loadable';
 import Base from 'components/Layout/Base';
-import Auth from 'containers/Auth';
 import AddRoles from 'containers/AddRoles';
 import AcceptInvitation from 'containers/AcceptInvitation';
 import './style.css';
 import AddProject  from 'containers/AddProject';
 import ListProjects  from 'containers/ListProjects';
 import ListPlaces  from 'containers/Places';
-  
-// List of routes that uses the page layout
-// listed here to Switch between layouts
-// depending on the current pathname
-const listofPages = [
-    '/',
-    '/login',
-    '/signup',
-    '/profile',
-    '/logout',
-    '/notfound',
-    '/error500',
-    '/maintenance',
-];
-
-
-
-const currentKey = Math.random();
-const timeout = { enter: 500, exit: 500 };
-const animationName = 'rag-fadeIn';
-
 
 export default function App() {
 

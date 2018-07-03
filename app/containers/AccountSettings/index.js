@@ -7,8 +7,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -17,11 +15,10 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectAccountSettings from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
 
 import ContentWrapper from 'components/Layout/ContentWrapper';
 
-import {Grid, Row, Col, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
+import {Row, Col, Button, Alert, Modal } from 'react-bootstrap';
 
 import { makeSelectCurrentUser } from 'containers/App/selectors';
 import {
