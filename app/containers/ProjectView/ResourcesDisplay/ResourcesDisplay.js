@@ -11,9 +11,6 @@ const ResourcesDisplay = (props) => (
                     <Col md={6}>
                         <h4 style={{color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase'}}>Resources </h4>
                     </Col>
-                    <Col md={6}>
-                        <button style={{marginTop: '3.0px'}} onClick={this.open} className="btn btn-primary pull-right" > Resources </button>
-                    </Col>
                 </Row>
             </div>
             { /* START table-responsive */}

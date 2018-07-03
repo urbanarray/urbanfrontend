@@ -123,14 +123,15 @@ export class Places extends React.Component { // eslint-disable-line react/prefe
       return placesList.listPlaces.map((places) => {
         return (
           <tr key={Math.random()} >
-            <td> {places.name} </td>
-            <td> {places.city} </td>
-            <td> {places.description} </td>
-            <td> 
-              <a className="btn btn-danger" onClick={() => this.openDelete(places._id)}>Delete</a> 
-              <a className="btn btn-warning" onClick={() => this.openUpdateModel(places)}>Update</a> 
+            <td style={{padding: '14px 8px'}}> {places.name} </td>
+            <td style={{padding: '14px 8px'}}> {places.city} </td>
+            <td style={{padding: '14px 8px'}}> {places.description} </td>
+            <td style={{padding: '14px 8px'}}> 
               
-              </td>
+              <i title="delete project" style={{marginLeft: '30px'}}  onClick={() => this.openDelete(places._id)} className="fa fa-times"> </i>
+              <i title="update project" style={{marginLeft: '30px'}}  onClick={() => this.openUpdateModel(places)} className="fa fa-pencil"></i>
+                  
+            </td>
           </tr>
         );
       });
@@ -190,7 +191,7 @@ export class Places extends React.Component { // eslint-disable-line react/prefe
 
           <Modal show={this.state.showUpdateModel} onHide={this.closeUpdateModel}>
             <Modal.Header closeButton >
-              <Modal.Title>Update Project</Modal.Title>
+              <Modal.Title>Update Place</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <form className="form-horizontal" onSubmit={this.handleUpdateSubmit} onChange={this.changeAll}  >

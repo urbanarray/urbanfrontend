@@ -25,7 +25,7 @@ export class Documentation extends React.Component { // eslint-disable-line reac
   constructor(props){
     super(props)
     this.state = {
-      name: null,
+      name: '',
       attachments: [],
       openModel: false,
     }
@@ -136,37 +136,34 @@ export class Documentation extends React.Component { // eslint-disable-line reac
         </Helmet>
 
 
-        <Col md={12}>
-            <div id="panelDemo8" className="panel panel-primary" >
-              <div className="panel-heading" style={styles.primaryDark} >
-                <Row>
-                  <Col md={6}>
-                  <h4 style={{ color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase' }}>Documentation</h4>
-                  </Col>
-                
-                  <Col md={6}>
-                    <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Documentation </button>
-                  </Col>
-                </Row>
-              </div>
-
-                { /* START table-responsive */}
-                <Table id="table-ext-2" responsive striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th style={{ width: '120px' }}>Name</th>
-                            <th style={{ width: '120px' }}>Document</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      {this.listD()}
-                    </tbody>
-                </Table>
-                { /* END table-responsive */}
-                {/* <div className="panel-footer">Panel Footer</div> */}
+          <div id="panelDemo8" className="panel panel-primary" >
+            <div className="panel-heading" style={styles.primaryDark} >
+              <Row>
+                <Col md={6}>
+                <h4 style={{ color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase' }}>Documentation</h4>
+                </Col>
+              
+                <Col md={6}>
+                  <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Documentation </button>
+                </Col>
+              </Row>
             </div>
-        </Col>
 
+              { /* START table-responsive */}
+              <Table id="table-ext-2" responsive striped bordered hover>
+                  <thead>
+                      <tr>
+                          <th style={{ width: '120px' }}>Name</th>
+                          <th style={{ width: '120px' }}>Document</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {this.listD()}
+                  </tbody>
+              </Table>
+              { /* END table-responsive */}
+              {/* <div className="panel-footer">Panel Footer</div> */}
+          </div>
 
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
@@ -180,10 +177,12 @@ export class Documentation extends React.Component { // eslint-disable-line reac
                       <label className=" col-md-offset-1 control-label mb">Methods of Communications</label>
                   </Col>
                   <Col sm={10}>
+                    <Row>
+                    </Row>
                     <div className="col-md-offset-1">
                       <div className="form-group mb">
-                        <label className="col-sm-2 col-sm-offset-1 control-label mb">Special Instructions</label>
-                        <Col sm={8}>
+                        <label className="col-sm-2  control-label mb" style={{paddingTop: '0'}}>Special Instructions</label>
+                        <Col sm={10}>
                           <input
                             type="text"
                             name="name"
@@ -198,6 +197,7 @@ export class Documentation extends React.Component { // eslint-disable-line reac
                           type="file"
                           name="attachments"
                           value={this.state.document}
+                          style={{marginLeft: '14px'}}
                         />
                       </div>
 

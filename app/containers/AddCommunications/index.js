@@ -151,36 +151,34 @@ handleChange = (e) => {
           <title>Add Communications</title>
           <meta name="description" content="Description of AddCommunications" />
         </Helmet>
-        <Col md={12}>
-            <div id="panelDemo8" className="panel panel-primary" >
-                <div className="panel-heading" style={styles.primaryDark}  >
-                    <Row>
-                        <Col md={6}>
-                            <h4 style={{color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase'}}> Communications </h4>
-                        </Col>
-                        <Col md={6}>
-                            <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Communication </button>
-                        </Col>
-                    </Row>
-                </div>
+          <div id="panelDemo8" className="panel panel-primary" >
+              <div className="panel-heading" style={styles.primaryDark}  >
+                  <Row>
+                      <Col md={6}>
+                          <h4 style={{color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase'}}> Communications </h4>
+                      </Col>
+                      <Col md={6}>
+                          <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Communication </button>
+                      </Col>
+                  </Row>
+              </div>
 
-                { /* START table-responsive */}
-                <Table id="table-ext-2" responsive striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th style={{ width: '120px' }}>List of revelvant UA</th>
-                            <th style={{width: '120px'}}>special Instruction </th>
-                            <th style={{width: '120px'}}>Method of Communication </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      {this.listComm()}
-                    </tbody>
-                </Table>
-                { /* END table-responsive */}
-                {/* <div className="panel-footer">Panel Footer</div> */}
-            </div>
-        </Col>
+              { /* START table-responsive */}
+              <Table id="table-ext-2" responsive striped bordered hover>
+                  <thead>
+                      <tr>
+                          <th style={{ width: '120px' }}>List of revelvant UA</th>
+                          <th style={{width: '120px'}}>special Instruction </th>
+                          <th style={{width: '120px'}}>Method of Communication </th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {this.listComm()}
+                  </tbody>
+              </Table>
+              { /* END table-responsive */}
+              {/* <div className="panel-footer">Panel Footer</div> */}
+          </div>
 
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
@@ -191,7 +189,7 @@ handleChange = (e) => {
               <fieldset>
 
                 <div className="form-group mb">
-                  <label className="col-sm-2 col-sm-offset-1 control-label mb communicat" style={{ marginLeft: '3%', minWidth: '132px'}}>Methods of Communications</label>
+                  <label className="col-sm-2 col-sm-offset-1 control-label mb communicat" style={{ marginLeft: '8%'}}>Methods of Communications</label>
                   <Col sm={8}>
                     <Select.Creatable
                       name="moc"
