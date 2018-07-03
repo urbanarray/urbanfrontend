@@ -1,6 +1,6 @@
 /**
  *
- * Resources
+ * UpdateResources
  *
  */
 
@@ -10,26 +10,16 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-// import { Button, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
-
 import { FormGroup, Label, Grid, Table, Row, Col, Input, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
+
 import Select from 'react-select';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import {makeSelectResources, makeSelectListPlaces} from './selectors';
+import makeSelectUpdateResources from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import ResourcesDisplay from '../ProjectView/ResourcesDisplay/index.js'
-import './style.css';
-import 'react-select/dist/react-select.css';
-import { createCommunicationsAction, listCommunication } from "./actions";
-import {styles} from '../../assets/styles/variables';
-import { addResourcesAction, listPlacesAction, listResourcesAction } from './actions'
-import { listResources } from './saga'
-import { UpdateResources }from './UpdateResources/index'
- 
 
-export class Resources extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class UpdateResources extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props){
     super(props)
 
@@ -42,44 +32,7 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
 
     };
   }
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.create(
-      {
-
-        item: this.state.item,
-        quantity: this.state.quantity,
-        placeId: this.state.place,
-        dateId: this.state.date,
-        projectId: this.props.projectId,
-
-
-      },
-      this.props.listResource(this.props.projectId)
-      
-   );
-    setTimeout(() =>{
-      this.close();
-    },800);
-
-  }
-
-  componentDidMount(){
-    this.props.listPlace();
-    this.props.listResource(this.props.projectId);
-
-  }
-  updateModelOpen = () => {
-    this.props({
-      updateModel : true,
-    })
-  }
-
-  handleChange = (e) => {
-    const {name, value} = e.target;
-    this.setState({[name]: value});
-  }
+  
   open = () => {
     this.setState({
       openModel : true,
@@ -91,7 +44,6 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
       openModel : false,
     });
   }
-
   renderListPlaces = () =>{
     if (this.props.resources && this.props.resources.listedPlaces && this.props.resources.listedPlaces.length > 0) {
       return this.props.resources.listedPlaces.map(places => {
@@ -102,79 +54,23 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
     }
   }
 
-  listResources = () => {
-    
-    if (this.props.resources && this.props.resources.listedResources && this.props.resources.listedResources.length > 0) {
-        
-      return this.props.resources.listedResources.map((res) => {
-
-        return (
-              <tr key={Math.random()}>
-                <td>
-                  {res.item}
-                </td>
-                <td>
-                  {res.quantity}
-                </td>
-                <td>
-                  {(res.placeId) ? res.placeId.name : ''}
-                </td>
-                <td>
-                  {res.dateId}
-                </td>
-                <td>
-                  <UpdateResources/>
-                </td>
-              </tr>
-            );
-          });
-        }
-      }
-
   render() {
-    return(
+    return (
       <div>
         <Helmet>
-          <title>Resources</title>
-          <meta name="description" content="Description of Resources" />
+          <title>UpdateResources</title>
+          <meta name="description" content="Description of UpdateResources" />
         </Helmet>
-        <div id="panelDemo8" className="panel panel-primary" >
-          <div className="panel-heading" style={styles.primaryDark} >
-            <Row>
-              <Col md={6}>
-              <h4 style={{ color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase' }}>Resources</h4>
-              </Col>
-              <Col md={6}>
-                <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Resources </button>
-              </Col>
-            </Row>
-          </div>
+            <button onClick={this.open} className="btn btn-primary" >UpdateResources </button>
 
-            { /* START table-responsive */}
-            <Table id="table-ext-2" responsive striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Quantity </th>
-                        <th>Location Needed</th>
-                        <th>date/Time</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                  {this.listResources()}
-                </tbody>
-            </Table>
             { /* END table-responsive */}
             {/* <div className="panel-footer">Panel Footer</div> */}
-        </div>
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
-            <Modal.Title>Add Resources</Modal.Title>
+            <Modal.Title>UpdateResources</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form className="form-horizontal" onChange={this.handleChange} onSubmit={this.handleSubmit} >
+            <form className="form-horizontal"  >
               <fieldset>
                 <Row>
                   <Col sm={10}>
@@ -184,8 +80,6 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
                         <Col sm={10}>
                           <input
                             type="text"
-                            name="item"
-                            value={this.state.item}
                             className="form-control"
                             placeholder="Please Add item"
                           />
@@ -197,7 +91,6 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
                           <input
                             type="number"
                             name="quantity"
-                            value={this.state.quantity}
                             className="form-control"
                             placeholder="Quantity number"
                           />
@@ -209,7 +102,6 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
                           <input
                             type="date"
                             name="date"
-                            value={this.state.date}
                             className="form-control"
                             placeholder="date"
                           />
@@ -244,34 +136,27 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
   }
 }
 
-Resources.propTypes = {
+UpdateResources.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-
-  resources: makeSelectResources(),
-  listPlaces: makeSelectListPlaces(),
-
+  updateresources: makeSelectUpdateResources(),
 });
 
-function mapDispatchToProps(dispatch){
-  return{
+function mapDispatchToProps(dispatch) {
+  return {
     dispatch,
-    create: (payload) =>dispatch(addResourcesAction(payload)),
-    listPlace: () => dispatch(listPlacesAction()),
-    listResource: (id) => dispatch(listResourcesAction(id)),
   };
 }
 
-
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-const withReducer = injectReducer({ key: 'resources', reducer });
-const withSaga = injectSaga({ key: 'resources', saga });
+const withReducer = injectReducer({ key: 'updateResources', reducer });
+const withSaga = injectSaga({ key: 'updateResources', saga });
 
 export default compose(
   withReducer,
   withSaga,
   withConnect,
-)(Resources);
+)(UpdateResources);

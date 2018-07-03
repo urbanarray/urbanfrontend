@@ -11,7 +11,6 @@ import styled from 'styled-components';
 import { browserHistory, Route, BrowserRouter, withRouter, Switch, BrowserRouter as Router, Redirect, Miss } from 'react-router-dom';
 
 
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Landing from 'containers/Landing';
 
 import Signup from 'containers/Signup/Loadable';
