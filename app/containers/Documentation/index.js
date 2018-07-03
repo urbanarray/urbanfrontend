@@ -163,7 +163,7 @@ export class Documentation extends React.Component { // eslint-disable-line reac
                 { /* END table-responsive */}
                 {/* <div className="panel-footer">Panel Footer</div> */}
           </div>
-        </col>
+        </Col>
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>Add Documentation</Modal.Title>

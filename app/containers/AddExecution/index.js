@@ -184,36 +184,36 @@ export class AddExecution extends React.Component { // eslint-disable-line react
           <meta name="description" content="Description of AddExecution" />
         </Helmet>
         <Col md={12}>
-            <div id="panelDemo8" className="panel panel-primary" >
-              <div className="panel-heading" style={styles.primaryDark} >
-                <Row>
-                  <Col md={6}>
-                    <h4 style={headings.tableHeading}>Execution</h4>
-                  </Col>
+          <div id="panelDemo8" className="panel panel-primary" >
+            <div className="panel-heading" style={styles.primaryDark} >
+              <Row>
+                <Col md={6}>
+                  <h4 style={headings.tableHeading}>Execution</h4>
+                </Col>
 
-                  <Col md={6}>
-                      <button onClick={this.open} className="btn btn-success btn-block" style={{marginTop: '3.0px'}}> Add Execution </button>
-                  </Col>
-                </Row>
-              </div>
-
-                { /* START table-responsive */}
-                <Table id="table-ext-2" responsive striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th style={{ width: '120px' }}>Concept Operation</th>
-                            <th style={{width: '120px'}}>Entry</th>
-                            <th style={{width: '120px'}}>intent</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      {this.listExc()}
-                    </tbody>
-                </Table>
-                { /* END table-responsive */}
-                {/* <div className="panel-footer">Panel Footer</div> */}
+                <Col md={6}>
+                    <button onClick={this.open} className="btn btn-success btn-block" style={{marginTop: '3.0px'}}> Add Execution </button>
+                </Col>
+              </Row>
             </div>
-        </col>
+
+              { /* START table-responsive */}
+              <Table id="table-ext-2" responsive striped bordered hover>
+                  <thead>
+                      <tr>
+                          <th style={{ width: '120px' }}>Concept Operation</th>
+                          <th style={{width: '120px'}}>Entry</th>
+                          <th style={{width: '120px'}}>intent</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {this.listExc()}
+                  </tbody>
+              </Table>
+              { /* END table-responsive */}
+              {/* <div className="panel-footer">Panel Footer</div> */}
+          </div>
+        </Col>
 
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>

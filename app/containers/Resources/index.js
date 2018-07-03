@@ -151,25 +151,26 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
                 </Row>
               </div>
 
-            { /* START table-responsive */}
-            <Table id="table-ext-2" responsive striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Quantity </th>
-                        <th>Location Needed</th>
-                        <th>date/Time</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
+              { /* START table-responsive */}
+              <Table id="table-ext-2" responsive striped bordered hover>
+                  <thead>
+                      <tr>
+                          <th>Item</th>
+                          <th>Quantity </th>
+                          <th>Location Needed</th>
+                          <th>date/Time</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
 
-                  {this.listResources()}
-                </tbody>
-            </Table>
-            { /* END table-responsive */}
-            {/* <div className="panel-footer">Panel Footer</div> */}
-        </div>
+                    {this.listResources()}
+                  </tbody>
+              </Table>
+              { /* END table-responsive */}
+              {/* <div className="panel-footer">Panel Footer</div> */}
+          </div>
+        </Col>
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>Add Resources</Modal.Title>
