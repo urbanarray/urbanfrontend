@@ -2,8 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {Table, Panel } from 'react-bootstrap';
 
-import { styles } from '../../../assets/styles/variables';
-
+import { styles, headings } from '../../../assets/styles/variables';
+import DetailsButton from './DetailsButton';
 const PledgedResourcesTable = (props) => {
 
   const renderHeader = () => {
@@ -31,7 +31,7 @@ const PledgedResourcesTable = (props) => {
             return (
               <Panel bsStyle="primary" key={i}>
                 <Panel.Heading style={styles.primary}>
-                  <Panel.Title componentClass="h3">{resource.item}</Panel.Title>
+                  <Panel.Title componentClass="h3" style={headings.subHeading}>{resource.item}</Panel.Title>
                 </Panel.Heading>
                 <Panel.Body style={{ textAlign: 'center' }}>
                   Project: {resource.project}<br />
@@ -42,7 +42,7 @@ const PledgedResourcesTable = (props) => {
                     type="button"
                     className="btn btn-primary btn-block btn-sm"
                     color="default"
-                    style={styles.primaryLight}>Details
+                    style={styles.primary}>Details
                     </Link>
                 </Panel.Body>
               </Panel>
@@ -66,12 +66,7 @@ const PledgedResourcesTable = (props) => {
                 </td>
 
                 <td>
-                  <Link
-                    to=""
-                    type="button"
-                    className="btn btn-primary btn-xs btn-block"
-                    style={styles.primary}>Details
-                  </Link>
+                    <DetailsButton item={resource.item}/>
                 </td>
               </tr>
 
@@ -82,12 +77,23 @@ const PledgedResourcesTable = (props) => {
     }
   }
 
-  return (
-    <Table id="table-ext-2" responsive striped bordered hover>
-      {renderHeader()}
-      {renderOpenRoles()}
-    </Table>
-  )
+  if (props.windowWidth < 600) {
+    return(
+      <div>
+        {renderHeader()}
+        {renderOpenRoles()}
+      </div>
+    )
+  } else {
+    return (
+      <Table id="table-ext-2" responsive striped bordered hover>
+        {renderHeader()}
+        <tbody>
+          {renderOpenRoles()}
+        </tbody>
+      </Table>
+    )
+  }
 }
 
 export default PledgedResourcesTable;

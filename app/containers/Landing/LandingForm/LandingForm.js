@@ -3,7 +3,6 @@ import React from 'react';
 import {FormGroup, ControlLabel, FormControl, HelpBlock, Button } from 'react-bootstrap';
 
 const LandingForm = (props) => {
-    console.log(props);
     return (
         <form onSubmit={(e) => props.handleSubmit(e)}>
             <FormGroup

@@ -23,7 +23,7 @@ import messages from './messages';
 import { Grid, Row, Col, Panel, Button, Table, Pagination, HelpBlock, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
-import { styles } from '../../assets/styles/variables'
+import { styles, headings } from '../../assets/styles/variables'
 import ResourcesTable from './ResourcesTable';
 
 
@@ -33,31 +33,13 @@ export class NeededResources extends React.Component { // eslint-disable-line re
 
     this.state = {
       zip: '',
-      miles: '',
-      width: 0,
-      height: 0
+      miles: ''
     }
-
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
-    this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
-  }
-
-  componentDidUpdate() {
-    console.log(this.state)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions);
-  }
-
-  updateWindowDimensions() {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   getValidationState() {
@@ -83,7 +65,7 @@ export class NeededResources extends React.Component { // eslint-disable-line re
           <div className="panel-heading" style={styles.primaryDark}>
             <Row>
               <Col md={6}>
-                NEEDED RESOURCES
+                <h4 style={headings.tableHeading}>NEEDED RESOURCES</h4>
             </Col>
 
               <Col md={6}>
@@ -102,7 +84,7 @@ export class NeededResources extends React.Component { // eslint-disable-line re
                     <MenuItem eventKey="100">100</MenuItem>
                   </DropdownButton>
 
-                  <span style={{ margin: '0 10px' }}> From </span>
+                  <span style={{ margin: '0 10px' }, headings.tableHeading }> From </span>
 
                   <FormGroup
                     controlId="formZip"
@@ -124,8 +106,8 @@ export class NeededResources extends React.Component { // eslint-disable-line re
             </Row>
           </div>
 
-          <ResourcesTable windowWidth={this.state.width} neededResources={this.props.neededresources.neededResources}  />
-          
+          <ResourcesTable windowWidth={this.props.windowWidth} neededResources={this.props.neededresources.neededResources}  />
+
           <div className="panel-footer">
             <div className="text-right">
               <Link to="#" >View All</Link>

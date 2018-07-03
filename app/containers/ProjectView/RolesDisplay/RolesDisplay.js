@@ -1,14 +1,14 @@
 import React from 'react';
 
 import {Col, Table} from 'react-bootstrap';
-import { styles } from '../../../assets/styles/variables';
+import { styles, headings } from '../../../assets/styles/variables';
 
 const RolesDisplay = (props) => (
     <Col md={6}>
         <div id="panelDemo8" className="panel panel-primary">
             <div className="panel-heading" style={styles.primaryDark}>
-                <h4 style={{color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase'}}>Roles</h4>
-              </div>
+                <h4 style={headings.tableHeading}>Roles</h4>
+            </div>
 
             { /* START table-responsive */}
             <Table id="table-ext-2" responsive striped bordered hover>

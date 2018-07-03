@@ -23,10 +23,11 @@ import ResourcesDisplay from '../ProjectView/ResourcesDisplay/index.js'
 import './style.css';
 import 'react-select/dist/react-select.css';
 import { createCommunicationsAction, listCommunication } from "./actions";
-import {styles} from '../../assets/styles/variables';
+import { styles, headings } from '../../assets/styles/variables';
 import { addResourcesAction, listPlacesAction, listResourcesAction } from './actions'
 import { listResources } from './saga'
-
+import { UpdateResources }from './UpdateResources/index'
+ 
 
 export class Resources extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props){
@@ -35,7 +36,7 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
     this.state = {
       item: '',
       quantity: '',
-      Dates: '',
+      date: '',
       place: '',
       openModel: false
 
@@ -45,16 +46,18 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.create(
-
       {
 
         item: this.state.item,
         quantity: this.state.quantity,
-        Dates: this.state.Dates,
-        place: this.state.place,
+        placeId: this.state.place,
+        dateId: this.state.date,
         projectId: this.props.projectId,
 
-      }
+
+      },
+      this.props.listResource(this.props.projectId)
+      
    );
     setTimeout(() =>{
       this.close();
@@ -67,12 +70,16 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
     this.props.listResource(this.props.projectId);
 
   }
+  updateModelOpen = () => {
+    this.props({
+      updateModel : true,
+    })
+  }
 
   handleChange = (e) => {
     const {name, value} = e.target;
     this.setState({[name]: value});
   }
-
   open = () => {
     this.setState({
       openModel : true,
@@ -94,9 +101,13 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
       })
     }
   }
+
   listResources = () => {
+    
     if (this.props.resources && this.props.resources.listedResources && this.props.resources.listedResources.length > 0) {
+        
       return this.props.resources.listedResources.map((res) => {
+
         return (
               <tr key={Math.random()}>
                 <td>
@@ -106,10 +117,13 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
                   {res.quantity}
                 </td>
                 <td>
-                  {res.date}
+                  {(res.placeId) ? res.placeId.name : ''}
                 </td>
                 <td>
-                  {this.renderListPlaces(res.place)}
+                  {res.dateId}
+                </td>
+                <td>
+                  <UpdateResources/>
                 </td>
               </tr>
             );
@@ -118,7 +132,6 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
       }
 
   render() {
-    const { selectedOption } = this.state;
     return(
       <div>
         <Helmet>
@@ -130,7 +143,7 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
               <div className="panel-heading" style={styles.primaryDark} >
                 <Row>
                   <Col md={6}>
-                  <h4 style={{ color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase' }}>Resources</h4>
+                  <h4 style={headings.tableHeading}>Resources</h4>
                   </Col>
                   <Col md={6}>
                     <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Resources </button>
@@ -138,24 +151,25 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
                 </Row>
               </div>
 
-                { /* START table-responsive */}
-                <Table id="table-ext-2" responsive striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Quantity </th>
-                            <th>Location Needed</th>
-                            <th>date/Time</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      {this.listResources()}
-                    </tbody>
-                </Table>
-                { /* END table-responsive */}
-                {/* <div className="panel-footer">Panel Footer</div> */}
-            </div>
+              { /* START table-responsive */}
+              <Table id="table-ext-2" responsive striped bordered hover>
+                  <thead>
+                      <tr>
+                          <th>Item</th>
+                          <th>Quantity </th>
+                          <th>Location Needed</th>
+                          <th>date/Time</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+
+                    {this.listResources()}
+                  </tbody>
+              </Table>
+              { /* END table-responsive */}
+              {/* <div className="panel-footer">Panel Footer</div> */}
+          </div>
         </Col>
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
@@ -168,8 +182,8 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
                   <Col sm={10}>
                     <div className="col-md-offset-1">
                       <div className="form-group mb">
-                        <label className="col-sm-2 col-sm-offset-1 control-label mb">Item</label>
-                        <Col sm={8}>
+                        <label className="col-sm-2 control-label mb">Item</label>
+                        <Col sm={10}>
                           <input
                             type="text"
                             name="item"
@@ -180,8 +194,8 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
                         </Col>
                       </div>
                       <div className="form-group mb">
-                        <label className="col-sm-2 col-sm-offset-1 control-label mb">Quantity</label>
-                        <Col sm={8}>
+                        <label className="col-sm-2 control-label mb">Quantity</label>
+                        <Col sm={10}>
                           <input
                             type="number"
                             name="quantity"
@@ -192,10 +206,10 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
                         </Col>
                       </div>
                       <div className="form-group mb">
-                        <label className="col-sm-2 col-sm-offset-1 control-label mb">date</label>
-                        <Col sm={8}>
+                        <label className="col-sm-2 control-label mb">date</label>
+                        <Col sm={10}>
                           <input
-                            type="text"
+                            type="date"
                             name="date"
                             value={this.state.date}
                             className="form-control"
@@ -204,8 +218,8 @@ export class Resources extends React.Component { // eslint-disable-line react/pr
                         </Col>
                       </div>
                       <div className="form-group mb">
-                        <label className="col-sm-2 col-sm-offset-1 control-label mb">Place</label>
-                        <Col md={8}>
+                        <label className="col-sm-2 control-label mb">Place</label>
+                        <Col md={10}>
                           <p style={{
                             color: 'red'
                           }}>

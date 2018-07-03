@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table, Panel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { styles } from '../../../assets/styles/variables';
+import { styles, headings } from '../../../assets/styles/variables';
 
 const RolesTable = (props) => {
 
@@ -33,7 +33,7 @@ const RolesTable = (props) => {
             return (
               <Panel bsStyle="primary" key={i}>
                 <Panel.Heading style={styles.primary}>
-                  <Panel.Title componentClass="h3">{role.title}</Panel.Title>
+                  <Panel.Title componentClass="h3" style={headings.subHeading}>{role.title}</Panel.Title>
                 </Panel.Heading>
                 <Panel.Body style={{ textAlign: 'center' }}>
                   Project: {role.project}<br />
@@ -44,7 +44,7 @@ const RolesTable = (props) => {
                   <Link
                     to="/roleView"
                     type="button"
-                    className="btn btn-primary btn-block btn-sm"
+                    className="btn btn-sm btn-block"
                     color="default"
                     style={styles.primaryLight}>Details
                   </Link>
@@ -83,8 +83,8 @@ const RolesTable = (props) => {
                     type="button"
                     className="btn btn-primary btn-block btn-sm"
                     color="default"
-                    style={styles.primary}>Details
-                      </Link>
+                    style={styles.primaryLight}>Details
+                  </Link>
                 </td>
               </tr>
 
@@ -95,12 +95,23 @@ const RolesTable = (props) => {
     }
   }
 
-  return (
-    <Table id="table-ext-2" responsive striped bordered hover>
-      {renderHeader()}
-      {renderOpenRoles()}
-    </Table>
-  )
+  if (props.windowWidth < 600) {
+    return (
+      <div>
+        {renderHeader()}
+        {renderOpenRoles()}
+      </div>
+    )
+  } else {
+    return (
+      <Table id="table-ext-2" responsive striped bordered hover>
+          {renderHeader()}
+        <tbody>
+          {renderOpenRoles()}
+        </tbody>
+      </Table>
+    )
+  }
 }
 
 export default RolesTable;

@@ -25,6 +25,8 @@ const initialState = fromJS({
 	loading: false,
 	done: false,
   projectId: null,
+
+
 });
 
 function resourcesReducer(state = initialState, action) {

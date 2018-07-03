@@ -1,12 +1,15 @@
 export const styles = {
     primary: {
-        backgroundColor: '#4a99cb'
+        backgroundColor: '#4a99cb',
+        color: 'white'
     },
     primaryDark: {
-        backgroundColor: '#006b9a'
+        backgroundColor: '#006b9a',
+        color: 'white'
     },
     primaryLight: {
-        backgroundColor: '#80cafe'
+        backgroundColor: '#80cafe',
+        color: 'white'
     },
     secondary: {
         backgroundColor: '#91c63f',

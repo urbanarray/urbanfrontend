@@ -43,10 +43,10 @@ import makeSelectHealthSafety from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import {listHealthSafetyAction} from './actions';
-import { styles } from '../../assets/styles/variables';
+import { styles, headings } from '../../assets/styles/variables';
 
 export class HealthSafety extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+
   constructor(props){
     super(props)
 
@@ -58,10 +58,10 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
       location: '',
       lmc: '',
       lsc: '',
-      
+
     }
   }
-  
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.create(
@@ -86,7 +86,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
       })
       setTimeout(() => {
         this.close();
-        
+
       }, 800);
       setTimeout(() => {
         this.props.listHealthSafety(this.props.projectId);
@@ -95,7 +95,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
   }
 
   handleMutiChange = (selectedOption) => {
- 
+
     this.setState({
       critialContacts: selectedOption
     });
@@ -104,38 +104,38 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
   componentDidMount (){
     this.props.listHealthSafety(this.props.projectId);
   }
-  
+
   ECN = (ec) => {
-    
+
     this.setState({
       ecn: ec
     })
   }
   MMA = (ec) => {
-    
+
     this.setState({
       mma: ec
     })
   }
   SMA = (ec) => {
-    
+
     this.setState({
       sma: ec
     })
   }
-  
+
 
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   }
-  
+
   open = () => {
     this.setState({
       openModel: true,
     })
   }
-  
+
   close = () => {
     this.setState({
       openModel: false,
@@ -146,7 +146,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
     if(sma && sma.length > 0 ){
       return sma.map((c) => {
         return (
-          <ul key={Math.random()}> 
+          <ul key={Math.random()}>
             <li>
               {c.label}
             </li>
@@ -210,7 +210,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
           });
         }
   }
-  
+
   render() {
     return (
       <div>
@@ -218,15 +218,14 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
           <title>HealthSafety</title>
           <meta name="description" content="Description of HealthSafety" />
         </Helmet>
-
         <Col md={12}>
             <div id="panelDemo8" className="panel panel-primary" >
               <div className="panel-heading" style={styles.primaryDark} >
                 <Row>
                   <Col md={6}>
-                    <h4 style={{color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase'}}>Health & Safety</h4>
+                    <h4 style={headings.tableHeading}>Health & Safety</h4>
                   </Col>
-                
+
                   <Col md={6}>
                       <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Health & Safety </button>
                   </Col>
@@ -252,7 +251,6 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
                 {/* <div className="panel-footer">Panel Footer</div> */}
             </div>
         </Col>
-
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>Health and Safety</Modal.Title>
@@ -260,9 +258,8 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
           <Modal.Body>
             <form className="form-horizontal" onChange={this.handleChange} onSubmit={this.handleSubmit} >
               <fieldset>
-
                 <div className="form-group mb">
-                  <label className="col-sm-2 col-sm-offset-1 control-label mb">Emergency Contact Numbers</label>
+                  <label style={{paddingTop: '0'}} className="col-sm-2 col-sm-offset-1 control-label mb">Emergency Contact Numbers</label>
                   <Col sm={8}>
                     <Select.Creatable
                       name="ecn"
@@ -275,7 +272,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
                 </div>
 
                 <div className="form-group mb">
-                  <label className="col-sm-2 col-sm-offset-1 control-label mb">Medical Members Assigned</label>
+                  <label style={{paddingTop: '0'}} className="col-sm-2 col-sm-offset-1 control-label mb">Medical Members Assigned</label>
                   <Col sm={8}>
                     <Select.Creatable
                       name="mma"
@@ -288,7 +285,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
                 </div>
 
                 <div className="form-group mb">
-                  <label className="col-sm-2 col-sm-offset-1 control-label mb">Security Members Assigned</label>
+                  <label style={{paddingTop: '0'}} className="col-sm-2 col-sm-offset-1 control-label mb">Security Members Assigned</label>
                   <Col sm={8}>
                     <Select.Creatable
                       name="sma"
@@ -301,7 +298,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
                 </div>
 
                 <div className="form-group mb">
-                  <label className="col-sm-2 col-sm-offset-1 control-label mb"> Location of Medical</label>
+                  <label style={{paddingTop: '0'}} className="col-sm-2 col-sm-offset-1 control-label mb"> Location of Medical</label>
                   <Col sm={8}>
                     <textarea
                       rows="5"
@@ -316,7 +313,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
 
 
                 <div className="form-group mb">
-                  <label className="col-sm-2 col-sm-offset-1 control-label mb"> Any medical considerations</label>
+                  <label style={{paddingTop: '0'}} className="col-sm-2 col-sm-offset-1 control-label mb"> Any medical considerations</label>
                   <Col sm={8}>
                     <textarea
                       rows="5"
@@ -330,7 +327,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
                 </div>
 
                 <div className="form-group mb">
-                  <label className="col-sm-2 col-sm-offset-1 control-label mb"> Any Saftey Considerations</label>
+                  <label style={{paddingTop: '0'}} className="col-sm-2 col-sm-offset-1 control-label mb"> Any Saftey Considerations</label>
                   <Col sm={8}>
                     <textarea
                       rows="5"
@@ -342,6 +339,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
                     />
                   </Col>
                 </div>
+
               </fieldset>
               <button className="btn-block btn btn-success">Add Health & Safety</button>
             </form>

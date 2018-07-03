@@ -24,6 +24,8 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import * as a from "./actions";
 import AddProject from 'containers/AddProject';
+import { styles, headings } from '../../assets/styles/variables';
+
 
 
 
@@ -43,7 +45,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
       pkeywords: '',
       showModal: false,
       showDeleteModel: false,
-      
+
       toedit: {
         name: '',
         description: '',
@@ -77,7 +79,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
     this.setState({
       showModal: true,
 
-      toedit: obj, 
+      toedit: obj,
     });
   }
 
@@ -89,9 +91,9 @@ export class ListProjects extends React.Component { // eslint-disable-line react
   }
 
   projectFullInfo = (id) => {
-  
+
     this.props.history.push('projectView/' + id);
-    
+
   }
 
 
@@ -104,7 +106,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
 
    handleSubmit = (e) => {
     e.preventDefault();
-  
+
      this.props.update(this.state.toedit);
      this.close()
   }
@@ -126,10 +128,10 @@ export class ListProjects extends React.Component { // eslint-disable-line react
       toedit: toedit,
     });
   }
-  
+
   handleQuill = (value) => {
     const toedit = this.state.toedit;
-    
+
     toedit[name] = value;
     this.setState({
       toedit: toedit,
@@ -140,7 +142,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
   componentDidMount(){
     this.props.listprojects();
     this.props.listPlaces();
-    
+
   }
 
 
@@ -176,31 +178,32 @@ export class ListProjects extends React.Component { // eslint-disable-line react
 
     if (prolists && prolists.length > 0) {
       return prolists.map((projects) => {
-        
+
           return(
             <tr key={Math.random()} >
               <td> {projects.name} </td>
 
               <td>{projects.description}</td>
               <td>{projects.place.name}</td>
-              
+
               <td>
 
-                  <i title="view project" style={{marginLeft: '30px'}}  onClick={() => this.projectFullInfo(projects._id)} className="fa fa-eye"> </i>  
+                  <i title="view project" style={{marginLeft: '30px'}}  onClick={() => this.projectFullInfo(projects._id)} className="fa fa-eye"> </i>
 
                   <i title="update project" style={{marginLeft: '30px'}}  onClick={() => this.open(projects)} className="fa fa-pencil"></i>
-                  
-                  <i title="delete project" style={{marginLeft: '30px'}}  onClick={() => this.openDelete(projects._id)}  className="fa fa-times"> </i> 
-              
+
+                  <i title="delete project" style={{marginLeft: '30px'}}  onClick={() => this.openDelete(projects._id)}  className="fa fa-times"> </i>
+
               </td>
-              
+
             </tr>
           );
-        
+
       });
     }
-    
+
   }
+
   render() {
     return (
       <ContentWrapper>
@@ -211,18 +214,17 @@ export class ListProjects extends React.Component { // eslint-disable-line react
         </Helmet>
         <h3>Projects
             <small>List of all projects</small>
-        </h3>  
+        </h3>
         { /* START panel */}
         <div className="panel panel-default">
-          <div className="panel-heading">
-
-            <div className='pull-right' >
+          <div className="panel-heading" style={styles.primaryDark}>
+            <h4 style={headings.tableHeading}></h4> 
+            <div className='pull-right'>
               <AddProject />
             </div>
             <br />
           </div>
-          <hr style={{ marginTop: '12px', marginBottom: '0px' }} />
-          
+
             { /* START table-responsive */}
             <Table id="table-ext-1" responsive bordered hover>
               <thead>
@@ -236,11 +238,11 @@ export class ListProjects extends React.Component { // eslint-disable-line react
               <tbody>
               {this.listPojects()}
               </tbody>
-             
+
             </Table>
 
             <hr style={{ marginTop: '12px', marginBottom: '0px' }} />
-      
+
             <Row>
               <Col  className="text-center">
                 <Pagination>
@@ -259,7 +261,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                 </Pagination>;
               </Col>
             </Row>
-          
+
         </div>
         { /* END panel */}
         { /* START panel */}
@@ -271,7 +273,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
             <Modal.Body>
               <form className="form-horizontal" onSubmit={this.handleSubmit} onChange={this.changeAll}  >
                 <fieldset>
-                  
+
                   <div className="form-group mb">
                     <Row>
                         <label className="col-sm-3 control-label mb">Project Name</label>
@@ -279,7 +281,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                           <input onChange={this.handleUpdateChange} className="form-control" type="text" name="name" value={(this.state.toedit)?this.state.toedit.name:''} placeholder="Project Name" required />
                         </Col>
                     </Row>
-                    
+
                     <Row>
                       <label className="col-sm-3 control-label mb">Description</label>
                       <Col md={8}>
@@ -287,7 +289,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                       </Col>
 
                     </Row>
-                    
+
                     <Row>
                       <label className="col-sm-3 control-label mb">Project Type</label>
                       <Col md={8}>
@@ -309,9 +311,9 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                       {/* <input  style={{marginTop: '10px'}} className="form-control" type="text" name="place" value={this.state.toedit.place} placeholder="place"/> */}
                       </Col>
                     </Row>
-                    
+
                     <Row>
-                      
+
                       <label className="col-sm-3 control-label mb">Time</label>
                       {/* <Col sm={4}>
                         <input rows="5" onChange={this.handleUpdateChange} className="form-control" type="text" name="date" value={this.state.toedit.date} placeholder="date" required />
@@ -321,8 +323,8 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                       </Col>
 
                     </Row>
-                    
-                      
+
+
                     <Row>
                       <label className="col-sm-3 control-label mb">Start Date</label>
                       {/* <Col sm={4}>
@@ -333,8 +335,8 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                       </Col>
 
                     </Row>
-                    
-                      
+
+
                     <Row>
                       <label className="col-sm-3 control-label mb">End Date</label>
                       {/* <Col sm={4}>
@@ -345,22 +347,22 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                       </Col>
 
                     </Row>
-                    
+
                     <Row>
                       <label className="col-sm-3 control-label mb">Project Goals</label>
                       <Col sm={8}>
-                        <ReactQuill 
+                        <ReactQuill
                           name="pgoals"
                         value={(this.state.toedit) ? this.state.toedit.pgoals:''}
                           type="text"
                           style={{marginTop: '10px'}}
-                          // onChange={this.handleUpdateChange} 
+                          // onChange={this.handleUpdateChange}
                           onChange={this.handleQuill}
                            />
-                        {/* <textarea rows="3" 
-                        style={{marginTop: '10px'}} 
-                        onChange={this.handleUpdateChange} 
-                        className="form-control" type="text" 
+                        {/* <textarea rows="3"
+                        style={{marginTop: '10px'}}
+                        onChange={this.handleUpdateChange}
+                        className="form-control" type="text"
                         name="pgoals" value={this.state.toedit.pgoals} placeholder="Project Goals"/> */}
                       </Col>
                     </Row>
@@ -388,13 +390,13 @@ export class ListProjects extends React.Component { // eslint-disable-line react
 
           <Modal show={this.state.showDeleteModel} onHide={this.closeDelete}>
             <Modal.Body>
-              
+
               <div className="form-group mb text-center">
                 <h3 className="p-v-20 fw-i">Are You Sure To Delete This Project?</h3>
                   <button className="btn btn-labeled btn-lg btn-warning mr btn btn-labeled btn-warning mr-default" onClick={this.closedelete}>
                    <span className="btn-label">
                      <i className="fa fa-warning"></i>
-                   
+
                    </span> No
                    </button>
                   <button className="btn btn-labeled btn-danger btn-lg mr btn btn-labeled btn-danger  mr-default" onClick={() => this.handleRemove(this.state.modal_delete)}>
@@ -429,7 +431,7 @@ function mapDispatchToProps(dispatch) {
     listprojects: () => dispatch(a.listProjectsAction()),
     update : (payload) => dispatch(a.updateAction(payload)),
     deleteProject : (payload) => dispatch(a.deleteAction(payload)),
-    getPagination: (payload) => dispatch(a.getPagination(payload)), 
+    getPagination: (payload) => dispatch(a.getPagination(payload)),
     listPlaces: () => dispatch(a.listPlacesAction())
   };
 }

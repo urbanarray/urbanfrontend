@@ -21,10 +21,11 @@ import saga from './saga';
 import messages from './messages';
 import { makeSelectCurrentUser } from 'containers/App/selectors';
 import { updateAction } from './actions';
+import { styles, headings } from '../../assets/styles/variables';
 
 
 export class ProfileDetails extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -123,11 +124,11 @@ export class ProfileDetails extends React.Component { // eslint-disable-line rea
     }, 500);
 
   }
-  
+
 
 
   renderProfileInfo = () => {
-    
+
     if (this.props.profileDetails) {
       const { user, profile } = this.props.profileDetails;
       return (
@@ -195,7 +196,7 @@ export class ProfileDetails extends React.Component { // eslint-disable-line rea
           <title>ProfileDetails</title>
           <meta name="description" content="Description of ProfileDetails" />
         </Helmet>
-      
+
         <div className="panel panel-default">
           <div className="panel-body">
             <div className="pull-right">
@@ -205,7 +206,9 @@ export class ProfileDetails extends React.Component { // eslint-disable-line rea
                 <MenuItem eventKey="4"><span className="text-warning">Block contact</span></MenuItem>
               </DropdownButton>
             </div>
-            <div className="h4 text-center">Profile Information</div>
+            <div className='panel-heading' style={styles.primaryDark}>
+              <h4 className="text-center" style={headings.tableHeading}>Profile Information</h4>
+            </div>
             <Row className="pv-lg">
               <Col lg={2}></Col>
               <Col lg={8}>
@@ -219,21 +222,21 @@ export class ProfileDetails extends React.Component { // eslint-disable-line rea
                   <Modal.Body>
                     <form className="form-horizontal" onSubmit={this.handleSubmit} onChange={this.changeAll}  >
                       <fieldset>
-                        
+
                         <div className="form-group mb">
                           <label className="col-sm-3 control-label mb">First Name</label>
                           <Col sm={9}>
                             <input className="form-control" type="text" name="firstName" value={this.state.firstName} placeholder="First Name" required />
                           </Col>
                         </div>
-                        
+
                         <div className="form-group mb">
                           <label className="col-sm-3 control-label mb">Last Name</label>
                           <Col sm={9}>
                             <input className="form-control" type="text" name="lastName" value={this.state.lastName} placeholder="First Name" required />
                           </Col>
                         </div>
-                        
+
                         <div className="form-group mb">
                           <label className="col-sm-3 control-label mb">City/Metro Area</label>
                           <Col sm={9}>
@@ -242,7 +245,7 @@ export class ProfileDetails extends React.Component { // eslint-disable-line rea
                             </select>
                           </Col>
                         </div>
-                        
+
                         <div className="form-group mb">
                           <label className="col-sm-3 control-label mb">Contribute</label>
                           <Col sm={9}>
@@ -251,27 +254,27 @@ export class ProfileDetails extends React.Component { // eslint-disable-line rea
                             </select>
                           </Col>
                         </div>
-                        
+
                         <div className="form-group mb">
                           <label className="col-sm-3 control-label mb">Start Date</label>
                           <Col sm={9}>
                             <input title="Set your availability start date" className="form-control" type="date" name="availability_start_date" value={this.state.availability_start_date} />
                           </Col>
                         </div>
-                        
+
                         <div className="form-group mb">
                           <label className="col-sm-3 control-label mb">End Date</label>
                           <Col sm={9}>
                             <input title="Set your availability end date" className="form-control" type="date" name="availability_end_date" value={this.state.availability_end_date} />
                           </Col>
                         </div>
-                        
+
                         <div className="form-group mb">
                           <label  style={{ marginLeft: '70px' }}>
                             <input type="checkbox" id="checkbox1" name="noCriminal" value={this.state.noCriminal} />
                              No Criminal
                           </label>
-                      
+
                           <label  style={{ marginLeft: '40px' }}>
                             <input type="checkbox" id="checkbox2" name="noMedConditions" value={this.state.noMedConditions} />
                             No Med Conditions

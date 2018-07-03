@@ -21,7 +21,7 @@ import saga from './saga';
 import ReactQuill from 'react-quill';
 import { createExecutionAction, listExecutionAction } from "./actions";
 import 'react-quill/dist/quill.snow.css';
-import {styles} from '../../assets/styles/variables';
+import { styles, headings } from '../../assets/styles/variables';
 
 
 const QuillWrapper = styled.div`
@@ -30,7 +30,7 @@ const QuillWrapper = styled.div`
   height: 100px;
   margin-bottom: 50px;
 }
-  
+
 `;
 
 const Textquill = styled.div `
@@ -41,14 +41,14 @@ const Textquill = styled.div `
 
 .ql-editor {
     border-top: 1px solid #ccc;
-    
+
 }
 
 `;
 
 
 export class AddExecution extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+
   constructor(props){
     super(props)
 
@@ -81,11 +81,11 @@ export class AddExecution extends React.Component { // eslint-disable-line react
       openModel: false,
     })
   }
-  
+
   // onChange = (e) => {
 
-   
-    
+
+
   // }
 
 
@@ -95,7 +95,7 @@ export class AddExecution extends React.Component { // eslint-disable-line react
       conceptOperation: value
     });
   }
- 
+
   handleQuillIntent = (value) => {
 
     this.setState({
@@ -183,37 +183,36 @@ export class AddExecution extends React.Component { // eslint-disable-line react
           <title>AddExecution</title>
           <meta name="description" content="Description of AddExecution" />
         </Helmet>
-        
         <Col md={12}>
-            <div id="panelDemo8" className="panel panel-primary" >
-              <div className="panel-heading" style={styles.primaryDark} >
-                <Row>
-                  <Col md={6}>
-                    <h4 style={{color: 'white', fontWeight: '100', letterSpacing: '2.0px', textTransform: 'uppercase'}}>Execution</h4>
-                  </Col>
-                
-                  <Col md={6}>
-                      <button onClick={this.open} className="btn btn-success btn-block" style={{marginTop: '3.0px'}}> Add Execution </button>
-                  </Col>
-                </Row>
-              </div>
+          <div id="panelDemo8" className="panel panel-primary" >
+            <div className="panel-heading" style={styles.primaryDark} >
+              <Row>
+                <Col md={6}>
+                  <h4 style={headings.tableHeading}>Execution</h4>
+                </Col>
 
-                { /* START table-responsive */}
-                <Table id="table-ext-2" responsive striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th style={{ width: '120px' }}>Concept Operation</th>
-                            <th style={{width: '120px'}}>Entry</th>
-                            <th style={{width: '120px'}}>intent</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      {this.listExc()}
-                    </tbody>
-                </Table>
-                { /* END table-responsive */}
-                {/* <div className="panel-footer">Panel Footer</div> */}
+                <Col md={6}>
+                    <button onClick={this.open} className="btn btn-success btn-block" style={{marginTop: '3.0px'}}> Add Execution </button>
+                </Col>
+              </Row>
             </div>
+
+              { /* START table-responsive */}
+              <Table id="table-ext-2" responsive striped bordered hover>
+                  <thead>
+                      <tr>
+                          <th style={{ width: '120px' }}>Concept Operation</th>
+                          <th style={{width: '120px'}}>Entry</th>
+                          <th style={{width: '120px'}}>intent</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {this.listExc()}
+                  </tbody>
+              </Table>
+              { /* END table-responsive */}
+              {/* <div className="panel-footer">Panel Footer</div> */}
+          </div>
         </Col>
 
         <Modal show={this.state.openModel} onHide={this.close}>
@@ -225,7 +224,7 @@ export class AddExecution extends React.Component { // eslint-disable-line react
               <fieldset>
                 <div className="form-group mb">
                   <label className="col-sm-2 control-label mb">Entry</label>
-                  <Col sm={10}>
+                  <Col sm={9}>
                     <QuillWrapper>
                       <ReactQuill
                         name="entry"
@@ -241,7 +240,7 @@ export class AddExecution extends React.Component { // eslint-disable-line react
 
                 <div className="form-group mb">
                   <label className="col-sm-2 control-label mb">Intent</label>
-                  <Col sm={10}>
+                  <Col sm={9}>
                     <QuillWrapper>
                       <ReactQuill
                         name="intent"
@@ -257,7 +256,7 @@ export class AddExecution extends React.Component { // eslint-disable-line react
 
                 <div className="form-group mb">
                   <label className="col-sm-2 control-label mb">Concept of Operation</label>
-                  <Col sm={10}>
+                  <Col sm={9}>
                     <QuillWrapper>
                       <ReactQuill
                         name="conceptOperation"

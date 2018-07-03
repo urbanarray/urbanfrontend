@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Table, Panel } from 'react-bootstrap';
 
-import { styles } from '../../../assets/styles/variables';
+import { styles, headings } from '../../../assets/styles/variables';
 
 const YourRoleTable = (props) => {
 
@@ -16,7 +16,7 @@ const YourRoleTable = (props) => {
             <th style={{ width: '175px' }}>Role</th>
             <th style={{ width: '175px' }}>Project </th>
             <th>Date/Time</th>
-
+            <th>Action</th>
           </tr>
         </thead>
       )
@@ -31,7 +31,7 @@ const YourRoleTable = (props) => {
             return (
               <Panel bsStyle="primary" key={i}>
                 <Panel.Heading style={styles.primary}>
-                  <Panel.Title componentClass="h3">{role.role}</Panel.Title>
+                  <Panel.Title componentClass="h3" style={headings.subHeading}>{role.role}</Panel.Title>
                 </Panel.Heading>
                 <Panel.Body style={{ textAlign: 'center' }}>
                   Project: {role.project}<br />
@@ -40,9 +40,9 @@ const YourRoleTable = (props) => {
                   <Link
                     to="/roleView"
                     type="button"
-                    className="btn btn-primary btn-block btn-sm"
+                    className="btn btn-block btn-sm"
                     color="default"
-                    style={styles.primaryLight}>Details
+                    style={styles.primary}>Details
                         </Link>
                 </Panel.Body>
               </Panel>
@@ -70,7 +70,7 @@ const YourRoleTable = (props) => {
                   to="/roleView"
                   type="button"
                   className="btn btn-primary btn-xs btn-block"
-                  style={styles.primary}>Details
+                  style={styles.primaryLight}>Details
                         </Link>
               </td>
 
@@ -82,12 +82,23 @@ const YourRoleTable = (props) => {
     }
   }
 
-  return (
-    <Table id="table-ext-2" responsive striped bordered hover>
-      {renderHeader()}
-      {renderTable()}
-    </Table>
-  )
+  if (props.windowWidth < 600) {
+    return (
+      <div>
+        {renderHeader()}
+        {renderTable()}
+      </div>
+    )
+  } else {
+    return (
+      <Table id="table-ext-2" responsive striped bordered hover>
+        {renderHeader()}
+        <tbody>
+          {renderTable()}
+        </tbody>
+      </Table>
+    )
+  }
 }
 
 export default YourRoleTable;

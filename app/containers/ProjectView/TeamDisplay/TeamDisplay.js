@@ -2,24 +2,24 @@ import React from 'react';
 
 import {Col, Row} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import {styles} from '../../../assets/styles/variables';
+import {styles, headings} from '../../../assets/styles/variables';
 
 const TeamDisplay = (props) => (
     <Row>
         <Col md={12}>
             <div id="panelDemo8" className="panel panel-primary">
                 <div className="panel-heading" style={styles.primaryDark}>
-                    Leadership & Team
+                    <h4 style={headings.tableHeading}>Leadership & Team</h4>
               </div>
 
                 <div className="panel-body">
 
-                    <p> Leadership</p>
+                    <th> Leadership</th>
                     <div className="row">
                         {props.renderLeadership()}
                     </div>
                     <hr />
-                    <p> Team</p>
+                    <th> Team</th>
                     <div className="row">
                         {props.renderTeam()}
                     </div>

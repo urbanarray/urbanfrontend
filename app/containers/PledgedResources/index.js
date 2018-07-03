@@ -22,38 +22,14 @@ import messages from './messages';
 import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
-import { styles } from '../../assets/styles/variables'
+import { styles, headings } from '../../assets/styles/variables'
 import PledgedResourcesTable from './PledgedResourcesTable';
 
 export class PledgedResources extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      width: 0,
-      height: 0
-    }
-
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-  }
 
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
-    this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
-  }
-
-  componentDidUpdate() {
-    console.log(this.state)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions);
-  }
-
-  updateWindowDimensions() {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   renderPledgedResources = () => {
@@ -96,29 +72,12 @@ export class PledgedResources extends React.Component {
           <div className="panel-heading" style={styles.primaryDark}>
             <Row>
               <Col md={12}>
-                PLEDGED RESOURCES
+                <h4 style={headings.tableHeading}>PLEDGED RESOURCES</h4>
             </Col>
             </Row>
           </div>
 
-          { /* START table-responsive */}
-          <PledgedResourcesTable windowWidth={this.state.width} pledgedResources={this.props.pledgedresources.pledgedResources} />
-          {/* <Table id="table-ext-2" responsive striped bordered hover>
-            <thead>
-              <tr>
-                <th style={{ width: '175px' }}>Item</th>
-                <th style={{ width: '175px' }}>Project </th>
-                <th>Date/Time</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                this.renderPledgedResources()
-              }
-            </tbody>
-          </Table> */}
-          { /* END table-responsive */}
+          <PledgedResourcesTable windowWidth={this.props.windowWidth} pledgedResources={this.props.pledgedresources.pledgedResources} />
 
           <div className="panel-footer">
             <div className="text-right">
