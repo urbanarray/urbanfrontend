@@ -84,7 +84,7 @@ export class NeededResources extends React.Component { // eslint-disable-line re
                     <MenuItem eventKey="100">100</MenuItem>
                   </DropdownButton>
 
-                  <span style={{ margin: '0 10px' }, headings.tableHeading }> From </span>
+                  <span style={[{ margin: '0 10px' }, headings.tableHeading ]}> From </span>
 
                   <FormGroup
                     controlId="formZip"
