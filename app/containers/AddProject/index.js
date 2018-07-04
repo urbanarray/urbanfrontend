@@ -241,7 +241,7 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
                             </p>
                             <Row>
                             <Col md={6}>
-                           {/* TODO: Enter autocomplete box here*/}
+
                            <PlacesAutocomplete
                             name="place"
                             id="place"
