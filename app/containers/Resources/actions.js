@@ -25,7 +25,7 @@ export function defaultAction() {
 }
 
 export function addResourcesAction(payload){
-	return{
+	return {
 		type: ADD_RESOURCES_ACTION,
 		payload,
 
