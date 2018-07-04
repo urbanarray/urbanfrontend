@@ -32,6 +32,8 @@ import {
 
 export class AddProject extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
+  API_KEY = ""
+
   constructor(props){
     super(props);
     this.state = {
@@ -132,8 +134,10 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
   }
 
   componentDidMount(){
+    //this.props.listPlace();
     const script = document.createElement("script")
-    script.src = "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"
+    //script.type = "text/javascript"
+    script.src = "https://maps.googleapis.com/maps/api/js?key="+this.API_KEY+"&libraries=places"
     script.async = true
     document.body.appendChild(script)
   }
@@ -241,7 +245,7 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
                             </p>
                             <Row>
                             <Col md={6}>
-
+                           {/* TODO: Enter autocomplete box here*/}
                            <PlacesAutocomplete
                             name="place"
                             id="place"
