@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import { FormGroup, Label, Grid, Row, Col,Table , Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
+import { Row, Col,Table, Button, Modal } from 'react-bootstrap';
 import styled from "styled-components";
 
 import injectSaga from 'utils/injectSaga';
@@ -81,13 +81,6 @@ export class AddExecution extends React.Component { // eslint-disable-line react
       openModel: false,
     })
   }
-
-  // onChange = (e) => {
-
-
-
-  // }
-
 
   handleQuillconceptOperation = (value) => {
 

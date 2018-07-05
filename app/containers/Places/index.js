@@ -12,7 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import ContentWrapper from 'components/Layout/ContentWrapper';
-import { Grid, Row, Col, Panel, Button, Table, Pagination, Modal } from 'react-bootstrap';
+import { Col, Button, Table, Modal } from 'react-bootstrap';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectPlaces from './selectors';
@@ -20,7 +20,6 @@ import reducer from './reducer';
 import saga from './saga';
 import { listPlacesAction, deletePlacesAction, updatePlacesAction } from "./actions";
 import AddPlace from "containers/AddPlace";
-import {makeSelectCurrentUser} from 'containers/App/selectors';
 import { styles, headings } from '../../assets/styles/variables';
 
 

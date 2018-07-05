@@ -251,6 +251,7 @@
     "react-linkedin-login": "^1.0.3",
     "react-loadable": "4.0.3",
     "react-owl-carousel": "^2.2.0",
+    "react-places-autocomplete": "^7.2.0",
     "react-quill": "^1.2.7",
     "react-redux": "5.0.5",
     "react-router-dom": "4.1.1",

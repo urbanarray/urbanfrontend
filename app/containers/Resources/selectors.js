@@ -1,4 +1,4 @@
-import { createSelector } from 'reselect';
+  import { createSelector } from 'reselect';
 
 /**
  * Direct selector to the resources state domain
@@ -15,13 +15,13 @@ const selectResourcesDomain = (state) => state.get('resources');
  */
 
 const makeSelectResources = () => createSelector(
-  selectResourcesDomain,
-  (substate) => substate.toJS()
+    selectResourcesDomain,
+    (substate) => substate.toJS()
 );
 
 const makeSelectAddResources = () => createSelector(
 	selectResourcesDomain,
-	(substate) => substate.get('addResources')
+	  (substate) => substate.get('addResources')
 );
 
 const makeSelectListPlaces = () => createSelector(

@@ -3,13 +3,21 @@
  * Landing
  *
  */
-
+import { createStructuredSelector } from 'reselect';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Row, Col} from 'react-bootstrap';
 import LandingForm from './LandingForm';
+
+import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
+import { submitCodeAction } from './actions'
+import saga from './saga';
+import reducer from './reducer';
+import SUBMIT_CODE_ACTION from './constants'
+import { makeSelectSubmitCode, makeSelectLanding} from './selectors';
 
 
 
@@ -50,9 +58,9 @@ export class Landing extends Component {
       this.setState({message: "The code needs to be exactly 6 characters"})
     } else {
       this.setState({message: ""})
-      console.log(`submission: ${this.state.value}`)
+     
     }
-    console.log(this.state.value);
+    this.props.create(this.state.value)
   }
 
   render() {
@@ -85,15 +93,26 @@ Landing.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
+const mapStateToProps = createStructuredSelector({
+
+  landing: makeSelectLanding(),
+
+});
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    create: (payload) =>dispatch(submitCodeAction(payload)),
   };
 }
 
-const withConnect = connect(null, mapDispatchToProps);
+const withConnect = connect( mapStateToProps, mapDispatchToProps);
+
+const withReducer = injectReducer({ key: 'landing', reducer });
+const withSaga = injectSaga({ key: 'landing', saga });
 
 export default compose(
+  withReducer,
+  withSaga, 
   withConnect,
 )(Landing);

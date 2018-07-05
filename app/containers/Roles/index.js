@@ -8,8 +8,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -18,10 +16,8 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectRoles from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
-import { From, Input } from 'reactstrap';
 import './style.css';
-import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, HelpBlock, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+import { Row, Col, FormControl, HelpBlock, FormGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
 import { styles, headings } from '../../assets/styles/variables';
@@ -84,7 +80,7 @@ export class Roles extends React.Component { // eslint-disable-line react/prefer
                     <MenuItem eventKey="100">100</MenuItem>
                   </DropdownButton>
 
-                  <span style={{ margin: '0 10px' }, headings.tableHeading}> From </span>
+                  <span style={[{ margin: '0 10px' }, headings.tableHeading]}> From </span>
 
                   <FormGroup
                     controlId="formZip"

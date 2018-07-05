@@ -7,9 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -18,12 +16,10 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectRoleView from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
 import ContentWrapper from 'components/Layout/ContentWrapper';
-import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
-import { styles, headings } from '../../assets/styles/variables';
 import RoleDisplay from './RoleDisplay';
 import TasksDisplay from './TasksDisplay';
 import ResourcesNeeded from './ResourcesNeeded';

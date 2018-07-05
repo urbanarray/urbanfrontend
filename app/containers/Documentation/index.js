@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import { FormGroup, Label, Grid, Table, Row, Col, Input, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
+import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -22,7 +22,7 @@ import { styles, headings } from '../../assets/styles/variables';
 
 export class Documentation extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       name: '',
@@ -44,7 +44,7 @@ export class Documentation extends React.Component { // eslint-disable-line reac
   }
 
   componentDidMount = () => {
-   this.props.listDocs(this.props.projectId);
+    this.props.listDocs(this.props.projectId);
   }
 
   handleSubmit = (e) => {
@@ -59,7 +59,7 @@ export class Documentation extends React.Component { // eslint-disable-line reac
     formData.append('name', this.state.name)
     this.props.create(
 
-        formData,
+      formData,
 
 
     );
@@ -91,15 +91,15 @@ export class Documentation extends React.Component { // eslint-disable-line reac
         [name]: value,
 
       });
-    // this.props.history.push('dashboard');
-  }
+      // this.props.history.push('dashboard');
+    }
   }
 
   docs = (document) => {
     if (document && document.length > 0) {
       return document.map((a) => {
         return (
-          <ul key={Math.random()}  style={{textDecoration: 'none', listStyleType: 'none'}}>
+          <ul key={Math.random()} style={{ textDecoration: 'none', listStyleType: 'none' }}>
             <li>
               <a className="btn btn-info" target="blank" href={`http://mvp.urbanarray.org:3000/v1/uploads/documents/` + a}>View Document </a>
 
@@ -107,7 +107,8 @@ export class Documentation extends React.Component { // eslint-disable-line reac
           </ul>
         )
       }
-    )}
+      )
+    }
   }
 
   listD = () => {
@@ -135,33 +136,33 @@ export class Documentation extends React.Component { // eslint-disable-line reac
           <meta name="description" content="Description of Documentation" />
         </Helmet>
         <Col md={12}>
-            <div id="panelDemo8" className="panel panel-primary" >
-              <div className="panel-heading" style={styles.primaryDark} >
-                <Row>
-                  <Col md={6}>
+          <div id="panelDemo8" className="panel panel-primary" >
+            <div className="panel-heading" style={styles.primaryDark} >
+              <Row>
+                <Col md={6}>
                   <h4 style={headings.tableHeading}>Documentation</h4>
-                  </Col>
+                </Col>
 
-                  <Col md={6}>
-                    <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Documentation </button>
-                  </Col>
-                </Row>
-              </div>
+                <Col md={6}>
+                  <button onClick={this.open} className="btn btn-success pull-right" style={{ marginTop: '3.0px' }}> Add Documentation </button>
+                </Col>
+              </Row>
+            </div>
 
-                { /* START table-responsive */}
-                <Table id="table-ext-2" responsive striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th style={{ width: '120px' }}>Name</th>
-                            <th style={{ width: '120px' }}>Document</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      {this.listD()}
-                    </tbody>
-                </Table>
-                { /* END table-responsive */}
-                {/* <div className="panel-footer">Panel Footer</div> */}
+            { /* START table-responsive */}
+            <Table id="table-ext-2" responsive striped bordered hover>
+              <thead>
+                <tr>
+                  <th style={{ width: '120px' }}>Name</th>
+                  <th style={{ width: '120px' }}>Document</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.listD()}
+              </tbody>
+            </Table>
+            { /* END table-responsive */}
+            {/* <div className="panel-footer">Panel Footer</div> */}
           </div>
         </Col>
         <Modal show={this.state.openModel} onHide={this.close}>
@@ -173,14 +174,14 @@ export class Documentation extends React.Component { // eslint-disable-line reac
               <fieldset>
                 <Row>
                   <Col md={10}>
-                      <label className=" col-md-offset-1 control-label mb">Methods of Communications</label>
+                    <label className=" col-md-offset-1 control-label mb">Methods of Communications</label>
                   </Col>
                   <Col sm={10}>
                     <Row>
                     </Row>
                     <div className="col-md-offset-1">
                       <div className="form-group mb">
-                        <label className="col-sm-2  control-label mb" style={{paddingTop: '0'}}>Special Instructions</label>
+                        <label className="col-sm-2  control-label mb" style={{ paddingTop: '0' }}>Special Instructions</label>
                         <Col sm={10}>
                           <input
                             type="text"
@@ -196,7 +197,7 @@ export class Documentation extends React.Component { // eslint-disable-line reac
                           type="file"
                           name="attachments"
                           value={this.state.document}
-                          style={{marginLeft: '14px'}}
+                          style={{ marginLeft: '14px' }}
                         />
                       </div>
 
@@ -230,8 +231,8 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    create : (payload) => dispatch(createDocumentAction(payload)),
-    listDocs : (payload) => dispatch(listDocumentAction(payload))
+    create: (payload) => dispatch(createDocumentAction(payload)),
+    listDocs: (payload) => dispatch(listDocumentAction(payload))
   };
 }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import {Modal, Col, Button} from 'react-bootstrap';
+import {Modal, Button} from 'react-bootstrap';
 import {styles} from '../../../assets/styles/variables';
 
 class DetailsButton extends Component {

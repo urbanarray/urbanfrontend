@@ -11,27 +11,10 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import {
-  FormGroup,
-  Label,
-  Grid,
   Row,
   Col,
-  Panel,
   Table,
   Button,
-  ButtonGroup,
-  ButtonToolbar,
-  SplitButton,
-  DropdownButton,
-  MenuItem,
-  Pagination,
-  Pager,
-  PageItem,
-  Alert,
-  ProgressBar,
-  OverlayTrigger,
-  Tooltip,
-  Popover,
   Modal
 } from 'react-bootstrap';
 
