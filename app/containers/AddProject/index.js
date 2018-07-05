@@ -7,12 +7,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
-import { Grid, Row, Col, Panel, Button, FormControl, Textarea, Modal, FormGroup } from 'react-bootstrap';
-import ContentWrapper from '../../components/Layout/ContentWrapper';
+import { Row, Col, Button, FormControl, Modal, FormGroup } from 'react-bootstrap';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import  {makeSelectAddProject, makeSelectListPlaces} from './selectors';

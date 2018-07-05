@@ -8,17 +8,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import { FormGroup, Label, Grid, Row, Col, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
+import { Col, Button, Modal } from 'react-bootstrap';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectAddVolunteer from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
 import {listRolesAction, createAction} from './actions';
 
 export class AddVolunteer extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -86,7 +84,6 @@ export class AddVolunteer extends React.Component { // eslint-disable-line react
         [name]: value,
       });
     }
-    // this.props.history.push('dashboard');
   }
 
   handleSubmit = (e) => {
@@ -114,7 +111,6 @@ export class AddVolunteer extends React.Component { // eslint-disable-line react
         </Helmet>
 
         <button onClick={this.open} className="btn btn-primary btn-success" style={{marginTop: '2.0px'}}> Add Volunteer </button>
-
 
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>

@@ -8,7 +8,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -17,7 +16,6 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectLogin from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
 import 'containers/Signup/style.css';
 import {Form} from 'reactstrap';
 import FacebookLogin from 'react-facebook-login';
@@ -25,7 +23,6 @@ import { GoogleLogin } from 'react-google-login';
 import LinkedIn from 'react-linkedin-login';
 import { socialSignupAction,linkedinAction, loginAction } from './actions';
 import { isLogin, isProfile } from 'containers/App/selectors';
-import { browserHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 
 export class Login extends React.Component { // eslint-disable-line react/prefer-stateless-function

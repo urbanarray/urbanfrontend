@@ -8,7 +8,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -17,15 +16,14 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectAddRoles from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
 import {createRolesAction, listRolesAction} from './actions';
-import { Grid, Row, Col, Panel, Button, Table, Pagination, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Col, Table, Form, FormGroup, Label, Input } from 'reactstrap';
 import { styles, headings } from '../../assets/styles/variables';
 
 
 export class AddRoles extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-  constructor(props, context) {
+  constructor(props) {
     super(props);
     this.state = {
       name: '',
@@ -57,9 +55,9 @@ export class AddRoles extends React.Component { // eslint-disable-line react/pre
   renderRoles = () => {
     const { roles_list } = this.props.addroles;
     if (roles_list && roles_list.length > 0 ) {
-      return roles_list.map((role) => {
+      return roles_list.map((role, i) => {
         return (
-          <tr> <td> {role.name} </td> </tr>
+          <tr key={i}><td>{role.name}</td></tr>
         );
       });
     }
@@ -103,12 +101,13 @@ export class AddRoles extends React.Component { // eslint-disable-line react/pre
 
             { /* START table-responsive */}
             <Col md={6}>
-              <div className="user-detail" id="user-detail"  >
-            <Table id="table-ext-1" className="panel" responsive bordered hover>
-              <thead>
-                <div style={styles.primaryDark} className="panel-heading">
+              <div className="user-detail" id="user-detail">
+              <div style={styles.primaryDark} className="panel-heading">
                   <h4  style={headings.tableHeading}>Roles List</h4>
                 </div>
+            <Table id="table-ext-1" className="panel" responsive bordered hover>
+              <thead>
+            
               </thead>
               <tbody>
                 {this.renderRoles()}

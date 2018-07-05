@@ -8,8 +8,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -18,8 +16,7 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectPledgedResources from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
-import { Grid, Row, Col, Panel, Button, Table, Pagination, FormControl, FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
 import { styles, headings } from '../../assets/styles/variables'

@@ -12,7 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import ContentWrapper from 'components/Layout/ContentWrapper';
-import {Form , FormGroup, Label, Input, Ellipsis, Last, First, Prev, Next, Item, Grid, Row, Col, Panel, Button, Table, Pagination,Modal } from 'react-bootstrap';
+import { Row, Col, Button, Table, Pagination,Modal } from 'react-bootstrap';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';

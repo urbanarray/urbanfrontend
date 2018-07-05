@@ -18,12 +18,12 @@ import reducer from './reducer';
 import saga from './saga';
 
 import ContentWrapper from 'components/Layout/ContentWrapper';
-import { Row, Col, Panel, Button, FormControl, FormGroup } from 'react-bootstrap';
+import { Col, Panel, Button, FormControl, FormGroup } from 'react-bootstrap';
 import { setNewPasswordAction } from "./actions";
 
 export class ResetPassword extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-  constructor(props, context) {
+  constructor(props) {
     super(props)
 
     this.state = {

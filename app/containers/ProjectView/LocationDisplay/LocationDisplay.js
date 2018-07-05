@@ -1,11 +1,6 @@
 import React from 'react';
 
 import {Col} from 'react-bootstrap';
-import {createStructuredSelector} from 'reselect';
-import projectId from '../selectors';
-import injectReducer from 'utils/injectReducer';
-import reducer from '../reducer';
-import {compose} from 'redux';
 import {styles, headings} from '../../../assets/styles/variables';
 
 
