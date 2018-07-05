@@ -57,17 +57,14 @@ export class UpdateResources extends React.Component { // eslint-disable-line re
   render() {
     return (
       <div>
-        <Helmet>
-          <title>UpdateResources</title>
-          <meta name="description" content="Description of UpdateResources" />
-        </Helmet>
+    
             <button onClick={this.open} className="btn btn-primary" >UpdateResources </button>
 
             { /* END table-responsive */}
             {/* <div className="panel-footer">Panel Footer</div> */}
         <Modal show={this.state.openModel} onHide={this.close}>
           <Modal.Header closeButton>
-            <Modal.Title>UpdateResources</Modal.Title>
+            <Modal.Title>Update Resource</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form className="form-horizontal"  >

@@ -4,7 +4,7 @@ import {Col, Table} from 'react-bootstrap';
 import { styles, headings } from '../../../assets/styles/variables';
 
 const RolesDisplay = (props) => (
-    <Col md={6}>
+    <Col md={12}>
         <div id="panelDemo8" className="panel panel-primary">
             <div className="panel-heading" style={styles.primaryDark}>
                 <h4 style={headings.tableHeading}>Roles</h4>

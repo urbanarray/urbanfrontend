@@ -8,7 +8,7 @@ const ip = 'http://192.168.1.118:3000/v1/';
 
 const api = axios.create({
 
-    baseURL: local,
+    baseURL: onlineServer,
     timeout: 20000,
 });
 
