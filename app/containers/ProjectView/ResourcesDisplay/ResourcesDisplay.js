@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Row, Col, Table, Model} from 'react-bootstrap';
+import {Row, Col, Table} from 'react-bootstrap';
 import {styles, headings} from '../../../assets/styles/variables';
 
 const ResourcesDisplay = (props) => (

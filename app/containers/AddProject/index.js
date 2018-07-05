@@ -7,12 +7,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
-import { Grid, Row, Col, Panel, Button, FormControl, Textarea, Modal, FormGroup } from 'react-bootstrap';
-import ContentWrapper from '../../components/Layout/ContentWrapper';
+import { Row, Col, Button, FormControl, Modal, FormGroup } from 'react-bootstrap';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import  {makeSelectAddProject, makeSelectListPlaces} from './selectors';
@@ -22,9 +20,17 @@ import {makeSelectCurrentUser} from 'containers/App/selectors';
 import {addProjectAction, listPlacesAction} from './actions';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import PlacesAutocomplete from 'react-places-autocomplete';
+import {
+  geocodeByAddress,
+  geocodeByPlaceId,
+  getLatLng,
+} from 'react-places-autocomplete';
 
 
 export class AddProject extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
+  API_KEY = ""
 
   constructor(props){
     super(props);
@@ -64,6 +70,10 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
     const {name, value} = e.target;
     this.setState({[name]: value});
 
+  }
+
+  handlePlaces = (e) => {
+    this.setState({place: e})
   }
 
   handleQuill = (value) => {
@@ -122,7 +132,12 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
   }
 
   componentDidMount(){
-    this.props.listPlace();
+    //this.props.listPlace();
+    const script = document.createElement("script")
+    //script.type = "text/javascript"
+    script.src = "https://maps.googleapis.com/maps/api/js?key="+this.API_KEY+"&libraries=places"
+    script.async = true
+    document.body.appendChild(script)
   }
 
   renderSelect = () => {
@@ -228,10 +243,52 @@ export class AddProject extends React.Component { // eslint-disable-line react/p
                             </p>
                             <Row>
                             <Col md={6}>
-                            <select value={this.state.place} name="place" className="form-control" required>
-                              <option> Select Place</option>
-                              {this.renderSelect()}
-                            </select>
+                           {/* TODO: Enter autocomplete box here*/}
+                           <PlacesAutocomplete
+                            name="place"
+                            id="place"
+                            type="place"
+                            value={this.state.place}
+                            onChange={this.handlePlaces}
+                            >
+
+                            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                              <div >
+                                <input className="form-control"
+                                  {...getInputProps({
+                                    placeholder: 'Enter Place',
+                                    
+                                  })}
+                                />
+                                <div style={{
+                                  position : 'absolute',
+                                  border: '1px solid #DDE6EA',
+                                  zIndex: 999
+                                  }}>
+                                  {loading && <div style={{backgroundColor: 'white'}}>Loading...</div>}
+                                  {suggestions.map(suggestion => {
+                                    const className = suggestion.active
+                                      ? 'suggestion-item--active'
+                                      : 'suggestion-item';
+                                    const style = suggestion.active
+                                      ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                                    : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                                    return (
+                                      <div
+                                        {...getSuggestionItemProps(suggestion, {
+                                          className,
+                                          style,
+                                        })}
+                                      >
+                                        <span>{suggestion.description}</span>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                            )}
+
+                            </PlacesAutocomplete>
                             <p style={{
                               color: 'red'
                             }}>

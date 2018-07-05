@@ -8,7 +8,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -17,8 +16,7 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectProfile from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
-import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Col, Form, FormGroup, Label, Input } from 'reactstrap';
 import {createProfileAction, updateAction} from './actions';
 import {makeSelectCurrentUser} from 'containers/App/selectors';
 import { isLogin, isProfile } from 'containers/App/selectors';
@@ -27,7 +25,7 @@ import 'containers/Signup/style.css';
 
 export class Profile extends React.Component { // eslint-disable-line react/prefer-stateless-function
   
-  constructor(props, context){
+  constructor(props){
     super(props);
     this.state = {
       firstName: '',

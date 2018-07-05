@@ -8,15 +8,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Helmet} from 'react-helmet';
-import {FormattedMessage} from 'react-intl';
 import {createStructuredSelector} from 'reselect';
 import {compose} from 'redux';
 import {
-  Grid,
   Row,
   Col,
-  Panel,
-  Button,
   FormControl
 } from 'react-bootstrap';
 
@@ -25,8 +21,7 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectAcceptInvitation from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
-import {findUserAction, acceptInvitationAction, invitedUserDataAction} from './actions';
+import {findUserAction, invitedUserDataAction} from './actions';
 import ContentWrapper from '../../components/Layout/ContentWrapper';
 
 export class AcceptInvitation extends React.Component { // eslint-disable-line react/prefer-stateless-function

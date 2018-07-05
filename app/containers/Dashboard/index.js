@@ -11,7 +11,6 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -20,7 +19,6 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectDashboard from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
 import Roles from 'containers/Roles';
 import YourRole from 'containers/YourRole';
 import NeededResources from 'containers/NeededResources';

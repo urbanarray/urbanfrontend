@@ -19,8 +19,6 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 import {logout} from 'containers/App/actions';
-import {isLogin} from 'containers/App/selectors';
-import { Route, Redirect } from 'react-router';
 
 export class Logout extends React.Component { // eslint-disable-line react/prefer-stateless-function
   

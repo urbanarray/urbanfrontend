@@ -10,26 +10,21 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-// import { Button, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
 
-import { FormGroup, Label, Grid, Table, Row, Col, Input, Panel, Button, ButtonGroup, ButtonToolbar, SplitButton, DropdownButton, MenuItem, Pagination, Pager, PageItem, Alert, ProgressBar, OverlayTrigger, Tooltip, Popover, Modal } from 'react-bootstrap';
-import Select from 'react-select';
+import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import {makeSelectResources, makeSelectListPlaces} from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import ResourcesDisplay from '../ProjectView/ResourcesDisplay/index.js'
 import './style.css';
 import 'react-select/dist/react-select.css';
-import { createCommunicationsAction, listCommunication } from "./actions";
 import { styles, headings } from '../../assets/styles/variables';
 import { addResourcesAction, listPlacesAction, listResourcesAction } from './actions'
-import { listResources } from './saga'
 import { UpdateResources }from './UpdateResources/index'
  
 
-export class Resources extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class Resources extends React.Component {
   constructor(props){
     super(props)
 

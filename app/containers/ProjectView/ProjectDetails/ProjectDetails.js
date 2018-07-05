@@ -1,6 +1,5 @@
 import React from 'react';
 import {Col, Row} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import {styles, headings} from '../../../assets/styles/variables';
 import ReactQuill from 'react-quill';
 import styled from "styled-components";
