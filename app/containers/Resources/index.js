@@ -10,11 +10,11 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-
 import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
+
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import {makeSelectResources, makeSelectListPlaces} from './selectors';
+import { makeSelectResources, makeSelectListPlaces} from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import './style.css';
@@ -23,7 +23,6 @@ import { styles, headings } from '../../assets/styles/variables';
 import { addResourcesAction, listPlacesAction, listResourcesAction } from './actions'
 import { UpdateResources }from './UpdateResources/index'
  
-
 export class Resources extends React.Component {
   constructor(props){
     super(props)

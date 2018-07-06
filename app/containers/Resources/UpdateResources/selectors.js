@@ -19,7 +19,18 @@ const makeSelectUpdateResources = () => createSelector(
   (substate) => substate.toJS()
 );
 
+const makeSelectListedPlaces = () => createSelector(
+	selectUpdateResourcesDomain,
+	(substate) => substate.get('listedPlaces')
+
+);
+
+
+
 export default makeSelectUpdateResources;
-export {
+
+export { 
   selectUpdateResourcesDomain,
+  makeSelectUpdateResources,
+  makeSelectListedPlaces
 };
