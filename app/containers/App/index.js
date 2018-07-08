@@ -45,8 +45,8 @@ export default function App() {
         <Base>
        
           <Route exact path="/" component={Landing} />  
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
+          {/* <Route path="/signup" component={Signup} /> */}
+          {/* <Route path="/login" component={Login} /> */}
           <Route path="/profile" component={Profile} />
           <Route path="/logout" component={Logout} />
           <Route path="/dashboard" component={Dashboard} />

@@ -55,14 +55,18 @@ class Header extends React.Component {
                         </ul>
                         { /* END Left navbar */}
                         { /* START Right Navbar */}
-                        <ul className="nav navbar-nav navbar-right">
+
+                        {/* signup and login options are commented for sometime, because marquis has asked to do */}
+                        
+                        {/* <ul className="nav navbar-nav navbar-right">
                           <li> 
                             <Link className="btn btn-primary" to="/signup"> Signup</Link>
                           </li>
                           <li> 
                             <Link className="btn btn-success" to="/login"> Login</Link>
                           </li>
-                        </ul>
+                        </ul> */}
+                        
                         { /* END Right Navbar */}
                     </div>
                     { /* END Nav wrapper */}
