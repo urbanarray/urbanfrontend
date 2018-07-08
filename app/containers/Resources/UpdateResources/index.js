@@ -10,13 +10,18 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import { Row, Col, Button, Modal } from 'react-bootstrap';
+import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectUpdateResources from './selectors';
+import { makeSelectUpdateResources, makeSelectListedPlaces } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import { updateResourceAction, listPlacesAction } from './actions'
+
+
+
+
 
 export class UpdateResources extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props){
@@ -31,7 +36,33 @@ export class UpdateResources extends React.Component { // eslint-disable-line re
 
     };
   }
-  
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.create(
+      {
+
+        item: this.state.item,
+        quantity: this.state.quantity,
+        dateId: this.state.date,
+        placeId: this.state.place,
+        projectId: this.props.projectId,
+
+
+      },
+      this.props.updateResources(this.props.projectId)
+      
+   );
+    setTimeout(() =>{
+      this.close();
+    },800);
+
+  }
+
+  componentDidMount(){
+      
+  }
+
   open = () => {
     this.setState({
       openModel : true,
@@ -43,9 +74,10 @@ export class UpdateResources extends React.Component { // eslint-disable-line re
       openModel : false,
     });
   }
+
   renderListPlaces = () =>{
-    if (this.props.resources && this.props.resources.listedPlaces && this.props.resources.listedPlaces.length > 0) {
-      return this.props.resources.listedPlaces.map(places => {
+    if (this.props.updateResources && this.props.updateResources.listedPlaces && this.props.updateResources.listedPlaces.length > 0) {
+      return this.props.Resources.listedPlaces.map(places => {
         return(
            <option key={Math.random()} value={places._id}>{places.name}</option>
            )
@@ -137,12 +169,17 @@ UpdateResources.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  updateresources: makeSelectUpdateResources(),
+
+  updateResources: makeSelectUpdateResources(),
+  placesList: makeSelectListedPlaces(),
+
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    listPlace: () => dispatch(listPlacesAction()),
+
   };
 }
 

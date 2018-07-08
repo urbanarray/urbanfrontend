@@ -59,4 +59,4 @@ export default function* defaultSaga(){
 	yield takeLatest(ADD_RESOURCES_ACTION, create);
 	yield takeLatest(LIST_PLACES_ACTION, listingPlaces);
 	yield takeLatest(LIST_RESOURCES_ACTION, listResources);
-	}
+}
