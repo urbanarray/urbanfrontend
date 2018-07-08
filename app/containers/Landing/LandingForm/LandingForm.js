@@ -2,6 +2,15 @@ import React from 'react';
 
 import {FormGroup, ControlLabel, FormControl, HelpBlock, Button } from 'react-bootstrap';
 
+function printErrors(errors) {
+    if (errors.length > 0) {
+        return errors.map((error) => {
+            return <p key ={Math.random()} style={{color:'red'}}  > {error.message} </p>
+        });
+    }
+}
+
+
 const LandingForm = (props) => {
     return (
         <form onSubmit={(e) => props.handleSubmit(e)}>
@@ -13,10 +22,11 @@ const LandingForm = (props) => {
                 <FormControl
                     type="text"
                     value={props.state.value}
-                    placeholder="Enter text"
+                    placeholder="Enter Passphrase"
                     onChange={props.handleChange}
                 />
                 <FormControl.Feedback />
+                {printErrors(props.errors)}
                 <HelpBlock>{props.state.value.length < 6 || props.state.value.length > 6 ?
                     `Code needs to be exactly 6 characters` : `Looks good`}</HelpBlock>
                 <p style={{ color: 'red' }}>{props.state.message}</p>
