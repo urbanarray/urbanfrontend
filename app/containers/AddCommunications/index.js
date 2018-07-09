@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import Select from 'react-select';
 import injectSaga from 'utils/injectSaga';
@@ -40,7 +41,6 @@ export class AddCommunications extends React.Component { // eslint-disable-line 
       multi: true,
 
     };
-
   }
 
   componentDidMount(){
@@ -172,6 +172,11 @@ handleChange = (e) => {
                     </thead>
                     <tbody>
                       {this.listComm()}
+                    </tbody>
+                    <tbody>
+                        <tr style={{width: '100%'}}>
+                          <Link to={"/list-communications/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                        </tr>
                     </tbody>
                 </Table>
                 { /* END table-responsive */}
