@@ -32,6 +32,7 @@ import './style.css';
 import AddProject  from 'containers/AddProject';
 import ListProjects  from 'containers/ListProjects';
 import ListPlaces  from 'containers/Places';
+import ListCommunications  from 'containers/ListCommunications';
 
 export default function App() {
 
@@ -63,6 +64,7 @@ export default function App() {
           <Route path="/addProject" component={AddProject} />
           <Route path="/listProjects" component={ListProjects} /> 
           <Route path="/places" component={ListPlaces} />
+          <Route path="/list-communications/:id" component={ListCommunications} />
         </Base> 
       </Switch>
     </Router>
