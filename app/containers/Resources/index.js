@@ -55,6 +55,7 @@ export class Resources extends React.Component {
    );
     setTimeout(() =>{
       this.close();
+      this.props.listResource(this.props.projectId);
     },800);
 
   }

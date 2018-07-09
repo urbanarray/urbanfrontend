@@ -81,6 +81,7 @@ export class AddCommunications extends React.Component { // eslint-disable-line 
       })
       setTimeout(() => {
         this.close();
+        this.props.listCommunication(this.props.projectId);
       }, 800);
     }, 500);
   }
