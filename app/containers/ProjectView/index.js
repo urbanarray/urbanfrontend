@@ -64,8 +64,10 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
         return this.props.projectview.leadership.map((leadership) => {
           return(
             <div key={Math.random()} className="col-md-4">
-                <img style={{width:'50px', height:'50px', borderRadius:'50%' }} src={Avatar} />
-                <span> {leadership.firstName} </span>
+                {/* I'd like better icons so we don't have to have a negative margin */}
+                <img style={{width:'50px', height:'50px', borderRadius:'50%', marginLeft: '-6px' }} src={Avatar} />
+                <span>{leadership.firstName}</span>
+                <div>{leadership.role}</div>
             </div>
           )
         });
@@ -78,8 +80,10 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
         return this.props.projectview.team.map((team) => {
           return(
             <div key={Math.random()} className="col-md-4">
-              <img style={{width:'50px', height:'50px', borderRadius:'50%' }} src={Avatar} />
-              <span> {team.firstName} </span>
+              {/* I'd like better icons so we don't have to have a negative margin */}
+              <img style={{width:'50px', height:'50px', borderRadius:'50%', marginLeft: '-6px' }} src={Avatar} />
+              <span>{team.firstName}</span>
+              <div>{team.role}</div>
             </div>
           )
         });
