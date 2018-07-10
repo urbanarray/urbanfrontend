@@ -32,6 +32,9 @@ import './style.css';
 import AddProject  from 'containers/AddProject';
 import ListProjects  from 'containers/ListProjects';
 import ListPlaces  from 'containers/Places';
+import ListCommunications  from 'containers/ListCommunications';
+import ListHealthSafety  from 'containers/ListHealthSafety';
+import AddSkills  from 'containers/AddSkills';
 
 export default function App() {
 
@@ -58,11 +61,14 @@ export default function App() {
           <Route path="/account-settings" component={AccountSettings} /> 
           <Route path="/list-volunteers" component={Volunteer} /> 
           <Route path="/add-roles" component={AddRoles} />
+          <Route path="/add-main-skills" component={AddSkills} />
           <Route path="/resetpassword/:code" component={ResetPassword} /> 
           <Route path="/completeAccount/:id" component={AcceptInvitation} /> 
           <Route path="/addProject" component={AddProject} />
           <Route path="/listProjects" component={ListProjects} /> 
           <Route path="/places" component={ListPlaces} />
+          <Route path="/list-communications/:id" component={ListCommunications} />
+          <Route path="/list-healthSafety/:id" component={ListHealthSafety} />
         </Base> 
       </Switch>
     </Router>

@@ -68,7 +68,6 @@ export class Landing extends Component {
   }
 
   render() {
-    console.log(this.props.isLogin)
     if (this.props.isLogin) {
       this.props.history.push('/dashboard');
     }

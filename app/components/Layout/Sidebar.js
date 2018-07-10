@@ -86,7 +86,7 @@ class Sidebar extends React.Component {
                 blog: this.routeActive(['projectsList', 'createProject', 'myProjects', 'blog-article-view']),
                 ecommerce: this.routeActive(['help', 'ecommerce-order-view', 'ecommerce-products', 'ecommerce-product-view', 'ecommerce-checkout']),
                 forum: this.routeActive(['forum-categories', 'user-skills', '']),
-                admin: this.routeActive(['add-roles', 'add-skills', '']),
+                admin: this.routeActive(['add-roles', 'add-skills', 'add-main-skills']),
                 pages: false
             }
         };
@@ -499,6 +499,14 @@ class Sidebar extends React.Component {
                                             : ''}>
                                             <Link to="/add-roles" title="Add Roles">
                                                 <span>Add Roles</span>
+                                            </Link>
+                                        </li>
+                                        <li
+                                            className={this.routeActive('add-main-skills')
+                                            ? 'active'
+                                            : ''}>
+                                            <Link to="/add-main-skills" title="Add Skills">
+                                                <span>Add Skills</span>
                                             </Link>
                                         </li>
 
