@@ -13,12 +13,12 @@ import LandingForm from './LandingForm';
 
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
-import { submitCodeAction } from './actions'
+import { submitCodeAction, emptyErrorsAction } from './actions'
 import saga from './saga';
 import reducer from './reducer';
 import SUBMIT_CODE_ACTION from './constants'
 import { makeSelectSubmitCode, makeSelectLanding} from './selectors';
-
+import { isLogin } from 'containers/App/selectors';
 
 
 export class Landing extends Component {
@@ -44,6 +44,10 @@ export class Landing extends Component {
   }
 
   handleChange(e) {
+    if(this.props.landing.errors && this.props.landing.errors.length > 0){
+      this.props.emptyErrors();
+    }
+
     if (this.state.value.length === 6) {
       this.setState({message: "", value: e.target.value})
     } else {
@@ -64,6 +68,9 @@ export class Landing extends Component {
   }
 
   render() {
+    if (this.props.isLogin) {
+      this.props.history.push('/dashboard');
+    }
 
     return (
         <div className='container text-center' style={{padding: '5%'}}>
@@ -81,6 +88,7 @@ export class Landing extends Component {
                 getValidationState={this.getValidationState} 
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
+                errors={this.props.landing.errors}
               />
             </Col>
           </Row>
@@ -96,13 +104,14 @@ Landing.propTypes = {
 const mapStateToProps = createStructuredSelector({
 
   landing: makeSelectLanding(),
-
+  isLogin: isLogin(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     create: (payload) =>dispatch(submitCodeAction(payload)),
+    emptyErrors: () =>dispatch(emptyErrorsAction()),
   };
 }
 

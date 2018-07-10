@@ -39,11 +39,13 @@ const initialState = fromJS({
     {
       firstName: 'John',
       lastName: 'Jon',
+      role: "Manager",
       picture: '1.jpg'
     },    
     {
       firstName: 'Elon',
       lastName: 'Eln',
+      role: "Assistant Manager",
       picture: '1.jpg'
     },
 
@@ -53,16 +55,19 @@ const initialState = fromJS({
     {
       firstName: 'Nizar',
       lastName: 'Niar',
+      role: "Gardener",
       picture: '1.jpg'
     },    
     {
       firstName: 'Max',
       lastName: 'Ma',
+      role: "Gardener",
       picture: '1.jpg'
     },
     {
       firstName: 'Mem',
       lastName: 'Me',
+      role: "General Laborer",
       picture: '1.jpg'
     },    
    

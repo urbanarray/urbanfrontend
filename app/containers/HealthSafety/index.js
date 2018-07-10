@@ -17,6 +17,7 @@ import {
   Button,
   Modal
 } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import { createHealthSafetyAction } from "./actions";
 import Select from 'react-select';
@@ -228,6 +229,11 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
                     </thead>
                     <tbody>
                       {this.listHealth()}
+                    </tbody>
+                    <tbody>
+                        <tr style={{width: '100%'}}>
+                          <Link to={"/ListHealthSafety/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                        </tr>
                     </tbody>
                 </Table>
                 { /* END table-responsive */}
