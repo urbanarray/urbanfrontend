@@ -40,9 +40,9 @@ export class NeededResources extends React.Component { // eslint-disable-line re
   }
 
   getValidationState() {
-    if (/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(this.state.zip)) return 'success';
-    else if (length < 5) return 'warning';
-    else if (length > 5) return 'Must return a 5 digit zip code';
+    if (/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(this.state.zip)) return "success";
+    else if (length < 5) return "warning";
+    else if (length > 5) return "Must return a 5 digit zip code";
     return null;
   }
 
