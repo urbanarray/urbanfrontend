@@ -532,12 +532,10 @@ class Sidebar extends React.Component {
 
 }
 
+export{Sidebar};
+
 const mapStateToProps = createStructuredSelector({currentUser: makeSelectCurrentUser()});
 
-const withConnect = connect(mapStateToProps);
-
-export default withRouter(
-// compose(
-Sidebar,
-// withConnect, )
-);
+const withConnect = connect(mapStateToProps)(Sidebar);
+const routedContainer = withRouter(withConnect)
+export default routedContainer;
