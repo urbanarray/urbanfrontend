@@ -14,8 +14,8 @@ const RoleDisplay = (props) => {
             return (
                 <thead>
                     <tr>
-                        <th>Project</th>
-                        <th>Description</th>
+                        <th style={{ minWidth: '150px' }}>Project</th>
+                        <th style={{ minWidth: '250px' }}>Description</th>
                         <th>Date/Time</th>
                         <th>Location</th>
                         <th>Action</th>
