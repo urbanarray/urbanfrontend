@@ -34,17 +34,19 @@ export class Roles extends Component { // eslint-disable-line react/prefer-state
     }
   }
 
-  handleZipChange = (zipcode) => {
-    this.setState({ zip: zipcode });
-  }
-
-  handleMilesChange = (e) => {
-    this.setState({ miles: e });
-  }
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
   }
+
+  handleZipChange = (zipcode) => {
+    this.setState({ zip: zipcode });
+  }
+
+  handleMilesChange = (miles) => {
+    this.setState({ miles: miles });
+  }
+  
 
   render() {
     return (
@@ -70,7 +72,6 @@ export class Roles extends Component { // eslint-disable-line react/prefer-state
             roles={this.props.roles.openRoles} 
             windowWidth={this.props.windowWidth} 
           />
-
 
           <div className="panel-footer">
             <div className="text-right">
