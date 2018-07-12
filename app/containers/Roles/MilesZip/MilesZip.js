@@ -14,7 +14,7 @@ const MilesZip = ({zip, miles, handleZipChange, handleMilesChange}) => {
 
   return (
     <Col md={6}>
-      <form role="form" className="form-inline" >
+      <form role="form" className="form-inline">
 
         <DropdownButton
           bsSize="small"
@@ -35,14 +35,14 @@ const MilesZip = ({zip, miles, handleZipChange, handleMilesChange}) => {
           controlId="formZip"
           validationState={this.getValidationState}
         >
-        <FormControl
-          type="text"
-          value={zip}
-          placeholder="Zip"
-          onChange={(e) => handleZipChange(e.target.value)}
-          style={{ padding: '0', paddingLeft: '5px', marginTop: '10px', height: '30px', maxWidth: '150px', border: 'none' }}
-        />
-        <FormControl.Feedback />
+          <FormControl
+            type="text"
+            value={zip}
+            placeholder="Zip"
+            onChange={(e) => handleZipChange(e.target.value)}
+            style={{ padding: '0', paddingLeft: '5px', marginTop: '10px', height: '30px', maxWidth: '150px', border: 'none' }}
+          />
+          <FormControl.Feedback />
           <HelpBlock></HelpBlock>
         </FormGroup>
 

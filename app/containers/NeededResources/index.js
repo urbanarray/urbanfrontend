@@ -39,13 +39,12 @@ export class NeededResources extends Component { // eslint-disable-line react/pr
     TableExtendedRun();
   }
 
-  handleZipChange = (zipcode) => {
-    this.setState({ zip: zipcode });
+  handleZipChange = (zip) => {
+    this.setState({ zip });
   }
 
   handleMilesChange = (miles) => {
-    this.setState({ miles: miles })
-
+    this.setState({ miles });
   }
 
   render() {

@@ -39,14 +39,13 @@ export class Roles extends Component { // eslint-disable-line react/prefer-state
     TableExtendedRun();
   }
 
-  handleZipChange = (zipcode) => {
-    this.setState({ zip: zipcode });
+  handleZipChange = (zip) => {
+    this.setState({ zip });
   }
 
   handleMilesChange = (miles) => {
-    this.setState({ miles: miles });
+    this.setState({ miles });
   }
-  
 
   render() {
     return (
