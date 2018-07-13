@@ -21,11 +21,80 @@ import saga from './saga';
 import {listHealthSafetyAction } from "./actions";
 
 export class ListHealthSafety extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+  constructor(props){
+    super(props)
+  }
   componentDidMount(){
     this.props.listHealthSafetys(this.props.match.params.id);
   }
+  renderSma = (sma) => {
+    if(sma && sma.length > 0 ){
+      return sma.map((c) => {
+        return (
+          <ul key={Math.random()}>
+            <li>
+              {c.label}
+            </li>
+          </ul>
+        )
+      })
+    }
+  }
 
+  renderMma = (mma) => {
+    if (mma && mma.length > 0 ) {
+      return mma.map((c) =>{
+        return (
+          <ul key={Math.random()}>
+            <li>{c.label}</li>
+          </ul>
+        )
+      })
+    }
+  }
+
+  renderEcn = (ecn) => {
+    if(ecn && ecn.length > 0) {
+      return ecn.map((c) => {
+        return (
+          <ul key={Math.random()}>
+            <li>
+              { c.label}
+            </li>
+          </ul>
+        )
+      })
+    }
+  }
+
+  listHealth = () => {
+    if (this.props.listHealthSafety && this.props.listHealthSafety.list_healthsafety && this.props.listHealthSafety.list_healthsafety && this.props.listHealthSafety.list_healthsafety.length > 0) {
+      return this.props.listHealthSafety.list_healthsafety.map((c) => {
+        return (
+          <tr key={Math.random()}>
+            <td>
+              {c.lmc}
+            </td>
+            <td>
+              {c.location}
+            </td>
+            <td>
+              {c.lsc}
+            </td>
+            <td>
+              {this.renderSma(c.sma)}
+            </td>
+            <td>
+              {this.renderMma(c.mma)}
+            </td>
+            <td>
+              {this.renderEcn(c.ecn)}
+            </td>
+          </tr>
+        );
+      });
+    }
+  }
   render() {
     return (
       <div>
@@ -34,7 +103,21 @@ export class ListHealthSafety extends React.Component { // eslint-disable-line r
           <meta name="description" content="Description of ListHealthSafety" />
         </Helmet>
         <Col sm={12}>
-          <h1>headings</h1>
+          <Table id="table-ext-2" responsive striped bordered hover>
+            <thead>
+                <tr>
+                    <th style={{width: '120px' }}>List of Medical Considerations</th>
+                    <th style={{width: '120px'}}>Location of Medical</th>
+                    <th style={{width: '120px'}}>Any Safety Considerations</th>
+                    <th style={{width: '120px'}}>Security Members Assigned</th>
+                    <th style={{width: '120px'}}>Medical Members Assigned</th>
+                    <th style={{width: '120px'}}>Emergency Contact Number</th>
+                </tr>
+            </thead>
+            <tbody>
+              {this.listHealth()}
+            </tbody>
+          </Table>
         </Col>
       </div>
     );
@@ -46,7 +129,7 @@ ListHealthSafety.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  listhealthsafety: makeSelectListHealthSafety(),
+  listHealthSafety: makeSelectListHealthSafety(),
 });
 
 function mapDispatchToProps(dispatch) {

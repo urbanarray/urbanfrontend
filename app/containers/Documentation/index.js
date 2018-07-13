@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -159,6 +160,11 @@ export class Documentation extends React.Component { // eslint-disable-line reac
               </thead>
               <tbody>
                 {this.listD()}
+              </tbody>
+              <tbody>
+                  <tr style={{width: '100%'}}>
+                    <Link to={"/list-Documentation/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                  </tr>
               </tbody>
             </Table>
             { /* END table-responsive */}

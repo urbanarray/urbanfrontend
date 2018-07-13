@@ -12,6 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Row, Col,Table, Button, Modal } from 'react-bootstrap';
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -201,6 +202,11 @@ export class AddExecution extends React.Component { // eslint-disable-line react
                   </thead>
                   <tbody>
                     {this.listExc()}
+                  </tbody>
+                  <tbody>
+                    <tr style={{width: '100%'}}>
+                      <Link to={"/list-Execution/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                    </tr>
                   </tbody>
               </Table>
               { /* END table-responsive */}

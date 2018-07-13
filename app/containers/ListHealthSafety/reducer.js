@@ -20,6 +20,7 @@ function listHealthSafetyReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
+    console.log(payload)
     case LIST_HEALTHSAFETY_ACTION:
       return state
         .set('list_healthsafety', action.payload)

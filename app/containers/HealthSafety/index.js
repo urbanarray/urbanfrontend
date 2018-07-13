@@ -232,7 +232,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
                     </tbody>
                     <tbody>
                         <tr style={{width: '100%'}}>
-                          <Link to={"/ListHealthSafety/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                          <Link to={"/list-healthSafety/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
                         </tr>
                     </tbody>
                 </Table>

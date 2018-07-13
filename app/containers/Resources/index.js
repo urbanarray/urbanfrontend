@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -160,6 +161,11 @@ export class Resources extends React.Component {
                   <tbody>
 
                     {this.listResources()}
+                  </tbody>
+                  <tbody>
+                    <tr style={{width: '100%'}}>
+                      <Link to={"/list-Resources/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                    </tr>
                   </tbody>
               </Table>
               { /* END table-responsive */}

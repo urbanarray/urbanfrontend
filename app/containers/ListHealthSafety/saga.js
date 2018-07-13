@@ -10,9 +10,8 @@ export function* listHealthSafety() {
     try {
 
       const listhealth = yield select(makeSelectListHealth());
-      console.log(listhealth)
       const response = yield call(listHealthApi, listhealth);
-      yield put(listedHealthSafetyAction(response.data));
+      yield put(listedHealthSafetyAction(response.data.healthsafety));
     } catch (error) {
       console.log(error);
     }
