@@ -30,7 +30,9 @@ import {
 
 export class AddProject extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-  API_KEY = ""
+  // Enable BOTH javascript maps API and google places API
+
+  API_KEY = "AIzaSyAqOL-kRGnEzetbCdHgCrFW01De3uina_E";
 
   constructor(props){
     super(props);
