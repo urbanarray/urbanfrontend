@@ -17,7 +17,7 @@ import injectReducer from 'utils/injectReducer';
 import { makeSelectUpdateResources, makeSelectListedPlaces } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { updateResourceAction, listPlacesAction } from './actions'
+import { updateResourceAction, listPlacesAction } from './actions';
 
 
 

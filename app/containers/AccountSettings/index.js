@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -18,7 +18,7 @@ import saga from './saga';
 
 import ContentWrapper from 'components/Layout/ContentWrapper';
 
-import {Row, Col, Button, Alert, Modal } from 'react-bootstrap';
+import { Row, Col, Button, Alert, Modal } from 'react-bootstrap';
 
 import { makeSelectCurrentUser } from 'containers/App/selectors';
 import {
@@ -29,11 +29,11 @@ import {
 } from './actions';
 
 import ProfileDetails from 'containers/ProfileDetails';
-import { styles, headings } from '../../assets/styles/variables';
+import { styles, headings } from 'assets/styles/variables';
 
 
 
-export class AccountSettings extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class AccountSettings extends Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props, context) {
     super(props, context);
     this.state = {
