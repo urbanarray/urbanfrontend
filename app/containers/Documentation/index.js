@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -18,29 +18,29 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectDocumentation from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { createDocumentAction, listDocumentAction } from "./actions";
-import { styles, headings } from '../../assets/styles/variables';
+import { createDocumentAction, listDocumentAction } from './actions';
+import { styles, headings } from 'assets/styles/variables';
 
-export class Documentation extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class Documentation extends Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
     super(props)
     this.state = {
       name: '',
       attachments: [],
-      openModel: false,
+      openModel: false
     }
   }
 
   open = () => {
     this.setState({
-      openModel: true,
+      openModel: true
     })
   }
 
   close = () => {
     this.setState({
-      openModel: false,
+      openModel: false
     })
   }
 

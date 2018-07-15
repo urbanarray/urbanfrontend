@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -23,7 +23,7 @@ import { isLogin, isProfile } from 'containers/App/selectors';
 
 import 'containers/Signup/style.css';
 
-export class Profile extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class Profile extends Component { // eslint-disable-line react/prefer-stateless-function
   
   constructor(props){
     super(props);
@@ -222,21 +222,21 @@ export class Profile extends React.Component { // eslint-disable-line react/pref
 }
 
 Profile.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
   profile: makeSelectProfile(),
   isLogin: isLogin(),
   currentUser: makeSelectCurrentUser(),
-  currentProfile: isProfile(),
+  currentProfile: isProfile()
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     create: (payload) => dispatch(createProfileAction(payload)),
-    update: (payload) => dispatch(updateAction(payload)),
+    update: (payload) => dispatch(updateAction(payload))
   };
 }
 
@@ -248,5 +248,5 @@ const withSaga = injectSaga({ key: 'profile', saga });
 export default compose(
   withReducer,
   withSaga,
-  withConnect,
+  withConnect
 )(Profile);

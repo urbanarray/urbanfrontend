@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -19,7 +19,7 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
-export class ProjectRoles extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class ProjectRoles extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
@@ -34,16 +34,16 @@ export class ProjectRoles extends React.Component { // eslint-disable-line react
 }
 
 ProjectRoles.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
-  projectroles: makeSelectProjectRoles(),
+  projectroles: makeSelectProjectRoles()
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    dispatch
   };
 }
 
@@ -55,5 +55,5 @@ const withSaga = injectSaga({ key: 'projectRoles', saga });
 export default compose(
   withReducer,
   withSaga,
-  withConnect,
+  withConnect
 )(ProjectRoles);

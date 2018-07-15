@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {Col, Table} from 'react-bootstrap';
-import { styles, headings } from '../../../assets/styles/variables';
+import { Col, Table } from 'react-bootstrap';
+import { styles, headings } from 'assets/styles/variables';
 
 const RolesDisplay = (props) => (
     <Col md={12}>

@@ -4,19 +4,13 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import {
-  Row,
-  Col,
-  Table,
-  Button,
-  Modal
-} from 'react-bootstrap';
+import { Row, Col, Table, Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import { createHealthSafetyAction } from "./actions";
@@ -26,13 +20,13 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectHealthSafety from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import {listHealthSafetyAction} from './actions';
-import { styles, headings } from '../../assets/styles/variables';
+import { listHealthSafetyAction } from './actions';
+import { styles, headings } from 'assets/styles/variables';
 
-export class HealthSafety extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class HealthSafety extends Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props){
-    super(props)
+    super(props);
 
     this.state = {
       ecn : [],
@@ -41,7 +35,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
       sma: [],
       location: '',
       lmc: '',
-      lsc: '',
+      lsc: ''
 
     }
   }

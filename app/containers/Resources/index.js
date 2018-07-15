@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -24,7 +24,7 @@ import { styles, headings } from 'assets/styles/variables';
 import { addResourcesAction, listPlacesAction, listResourcesAction } from './actions';
 import UpdateResources from './UpdateResources';
  
-export class Resources extends React.Component {
+export class Resources extends Component {
   constructor(props){
     super(props)
 

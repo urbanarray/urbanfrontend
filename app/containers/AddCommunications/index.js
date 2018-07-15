@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -21,11 +21,11 @@ import reducer from './reducer';
 import saga from './saga';
 import './style.css';
 import 'react-select/dist/react-select.css';
-import { createCommunicationsAction, listCommunication } from "./actions";
-import { styles, headings } from '../../assets/styles/variables';
+import { createCommunicationsAction, listCommunication } from './actions';
+import { styles, headings } from 'assets/styles/variables';
 
 
-export class AddCommunications extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class AddCommunications extends Component { // eslint-disable-line react/prefer-stateless-function
 
 
   constructor(props){

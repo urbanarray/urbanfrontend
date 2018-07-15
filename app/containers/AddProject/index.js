@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -13,22 +13,22 @@ import { compose } from 'redux';
 import { Row, Col, Button, FormControl, Modal, FormGroup } from 'react-bootstrap';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import  {makeSelectAddProject, makeSelectListPlaces} from './selectors';
+import { makeSelectAddProject, makeSelectListPlaces } from './selectors';
 import reducer from './reducer';
 import saga from './saga';``
-import {makeSelectCurrentUser} from 'containers/App/selectors';
-import {addProjectAction, listPlacesAction} from './actions';
+import { makeSelectCurrentUser } from 'containers/App/selectors';
+import { addProjectAction, listPlacesAction } from './actions';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import {
   geocodeByAddress,
   geocodeByPlaceId,
-  getLatLng,
+  getLatLng
 } from 'react-places-autocomplete';
 
 
-export class AddProject extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class AddProject extends Component { // eslint-disable-line react/prefer-stateless-function
 
   API_KEY = ""
 

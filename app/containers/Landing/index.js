@@ -4,16 +4,16 @@
  *
  */
 import { createStructuredSelector } from 'reselect';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Row, Col} from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import LandingForm from './LandingForm';
 
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
-import { submitCodeAction, emptyErrorsAction } from './actions'
+import { submitCodeAction, emptyErrorsAction } from './actions';
 import saga from './saga';
 import reducer from './reducer';
 import SUBMIT_CODE_ACTION from './constants'
