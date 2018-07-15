@@ -22,12 +22,12 @@ import saga from './saga';
 
 import Roles from './Roles';
 import YourRole from './YourRole';
-import NeededResources from 'containers/NeededResources';
+import NeededResources from './NeededResources';
 import PledgedResources from 'containers/PledgedResources';
+import {Clock, HoursWorked, PointsDisplay, CoinDisplay} from './widgets';
 
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
-import {Clock, HoursWorked, PointsDisplay, CoinDisplay} from './widgets';
 
 export class Dashboard extends Component { // eslint-disable-line react/prefer-stateless-function
  

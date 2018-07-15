@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table, Panel } from 'react-bootstrap';
 
-import { styles, headings } from '../../../assets/styles/variables';
+import { styles, headings } from 'assets/styles/variables';
 import ClaimButton from './ClaimButton';
 
 const ResourcesTable = (props) => {

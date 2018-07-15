@@ -20,7 +20,7 @@ import saga from './saga';
 import { Row, Col, HelpBlock, FormControl, FormGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
-import { styles, headings } from '../../assets/styles/variables'
+import { styles, headings } from 'assets/styles/variables';
 import ResourcesTable from './ResourcesTable';
 import MilesZip from './MilesZip';
 
