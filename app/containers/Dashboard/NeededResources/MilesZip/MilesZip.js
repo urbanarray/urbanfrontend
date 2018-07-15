@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, FormControl, HelpBlock, FormGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { styles, headings } from '../../../assets/styles/variables';
+import { styles, headings } from 'assets/styles/variables';
 
 const MilesZip = ({zip, miles, handleZipChange, handleMilesChange}) => {
 

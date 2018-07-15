@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table, Panel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { styles, headings } from '../../../assets/styles/variables';
+import { styles, headings } from 'assets/styles/variables';
 
 const RolesTable = (props) => {
 

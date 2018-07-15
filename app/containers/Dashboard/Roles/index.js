@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import { Row, Col, FormControl, HelpBlock, FormGroup, DropdownButton, MenuItem } from 'react-bootstrap';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -17,10 +18,11 @@ import makeSelectRoles from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import './style.css';
-import { Row, Col, FormControl, HelpBlock, FormGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
-import { styles, headings } from '../../assets/styles/variables';
+
+import { styles, headings } from 'assets/styles/variables';
 import RolesTable from './RolesTable';
 import MilesZip from './MilesZip';
 

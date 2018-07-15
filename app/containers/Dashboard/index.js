@@ -19,13 +19,15 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectDashboard from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import Roles from 'containers/Roles';
-import YourRole from 'containers/YourRole';
-import NeededResources from 'containers/NeededResources';
-import PledgedResources from 'containers/PledgedResources';
+
+import Roles from './Roles';
+import YourRole from './YourRole';
+import NeededResources from './NeededResources';
+import PledgedResources from './PledgedResources';
+import {Clock, HoursWorked, PointsDisplay, CoinDisplay} from './widgets';
+
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
-import {Clock, HoursWorked, PointsDisplay, CoinDisplay} from './widgets';
 
 export class Dashboard extends Component { // eslint-disable-line react/prefer-stateless-function
  
