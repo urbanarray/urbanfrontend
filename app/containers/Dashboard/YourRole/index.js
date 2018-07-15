@@ -20,7 +20,7 @@ import saga from './saga';
 import { Row, Col } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
-import { styles, headings } from '../../assets/styles/variables';
+import { styles, headings } from 'assets/styles/variables';
 import YourRoleTable from './YourRoleTable';
 
 export class YourRole extends React.Component { // eslint-disable-line react/prefer-stateless-function

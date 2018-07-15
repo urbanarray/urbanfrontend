@@ -21,7 +21,7 @@ import reducer from './reducer';
 import saga from './saga';
 
 import Roles from './Roles';
-import YourRole from 'containers/YourRole';
+import YourRole from './YourRole';
 import NeededResources from 'containers/NeededResources';
 import PledgedResources from 'containers/PledgedResources';
 
