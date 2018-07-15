@@ -19,10 +19,12 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectDashboard from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import Roles from 'containers/Roles';
+
+import Roles from './Roles';
 import YourRole from 'containers/YourRole';
 import NeededResources from 'containers/NeededResources';
 import PledgedResources from 'containers/PledgedResources';
+
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
 import {Clock, HoursWorked, PointsDisplay, CoinDisplay} from './widgets';
