@@ -23,7 +23,7 @@ import saga from './saga';
 import Roles from './Roles';
 import YourRole from './YourRole';
 import NeededResources from './NeededResources';
-import PledgedResources from 'containers/PledgedResources';
+import PledgedResources from './PledgedResources';
 import {Clock, HoursWorked, PointsDisplay, CoinDisplay} from './widgets';
 
 import TableExtendedRun from 'components/Tables/TableExtended.run';
