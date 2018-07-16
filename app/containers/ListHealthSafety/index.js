@@ -18,7 +18,7 @@ import injectReducer from 'utils/injectReducer';
 import { makeSelectListHealthSafety } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import {listHealthSafetyAction } from "./actions";
+import { listHealthSafetyAction } from './actions';
 
 export class ListHealthSafety extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props){

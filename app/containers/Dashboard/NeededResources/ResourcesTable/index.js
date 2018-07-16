@@ -1,1 +1,1 @@
-export {default} from './ResourcesTable';
+export { default } from './ResourcesTable';

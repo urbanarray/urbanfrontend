@@ -1,8 +1,8 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
-import { LIST_HEALTHSAFETY_ACTION } from "./constants";
-import { listedHealthSafetyAction } from "./actions";
-import { makeSelectListHealth } from "./selectors";
-import { listHealthApi } from "./api";
+import { LIST_HEALTHSAFETY_ACTION } from './constants';
+import { listedHealthSafetyAction } from './actions';
+import { makeSelectListHealth } from './selectors';
+import { listHealthApi } from './api';
 
 
 export function* listHealthSafety() {

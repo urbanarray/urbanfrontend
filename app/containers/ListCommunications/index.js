@@ -12,13 +12,13 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
 
-import AddCommunications from '../AddCommunications'
+import AddCommunications from '../AddCommunications';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectListCommunications from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import {  listCommunication } from "./actions";
+import { listCommunication } from './actions';
 
 export class ListCommunications extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props){

@@ -1,8 +1,8 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
-import { CREATE_SKILLS_ACTION, LIST_SKILLS_ACTION } from "./constants";
-import { createdSkillsAction, listedSkillsAction } from "./actions";
-import { makeSelectSkill } from "./selectors";
-import { createSkillApi, listSkillsApi } from "./api";
+import { CREATE_SKILLS_ACTION, LIST_SKILLS_ACTION } from './constants';
+import { createdSkillsAction, listedSkillsAction } from './actions';
+import { makeSelectSkill } from './selectors';
+import { createSkillApi, listSkillsApi } from './api';
 
 
 export function* create() {

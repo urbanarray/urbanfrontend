@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
@@ -19,7 +19,7 @@ import reducer from './reducer';
 import saga from './saga';
 import './style.css';
 
-import {Form} from 'reactstrap';
+import { Form } from 'reactstrap';
 import FacebookLogin from 'react-facebook-login';
 import { GoogleLogin } from 'react-google-login';
 import LinkedIn from 'react-linkedin-login';
@@ -27,7 +27,7 @@ import { socialSignupAction, signupAction, linkedinAction} from './actions';
 import { isLogin, isProfile } from 'containers/App/selectors';
 import { Redirect } from 'react-router';
 
-export class Signup extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class Signup extends Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props, context) {
     super(props)
 

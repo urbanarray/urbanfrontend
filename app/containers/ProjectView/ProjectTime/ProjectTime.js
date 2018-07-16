@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Col} from 'react-bootstrap';
-import {styles, headings} from '../../../assets/styles/variables';
+import {styles, headings} from 'assets/styles/variables';
 
 
 const ProjectTime = (props) => (

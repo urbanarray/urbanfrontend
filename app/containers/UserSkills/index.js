@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -19,7 +19,7 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
-export class UserSkills extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class UserSkills extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>

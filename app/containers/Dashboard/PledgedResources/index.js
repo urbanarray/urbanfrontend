@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -23,7 +23,7 @@ import PanelsRun from 'components/Elements/Panels.run';
 import { styles, headings } from 'assets/styles/variables';
 import PledgedResourcesTable from './PledgedResourcesTable';
 
-export class PledgedResources extends React.Component {
+export class PledgedResources extends Component {
 
   componentDidMount() {
     PanelsRun();

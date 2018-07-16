@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -20,8 +20,8 @@ import saga from './saga';
 import {listResourcesAction} from './actions';
 import { UpdateResources }from '../Resources/UpdateResources/index'
 
-export class ListResources extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  componentDidMount=()=>{
+export class ListResources extends Component { // eslint-disable-line react/prefer-stateless-function
+  componentDidMount = () => {
     this.props.listResourcess(this.props.match.params.id);
 
   }
