@@ -2,6 +2,7 @@ import React from 'react';
 import { Table, Panel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { styles, headings } from 'assets/styles/variables';
+import ReactTooltip from 'react-tooltip';
 
 const RolesTable = (props) => {
 
@@ -58,7 +59,7 @@ const RolesTable = (props) => {
           props.roles.map((role, i) => {
             return (
               <tr key={i}>
-                <td>
+                <td data-tip={role.description}>
                   {role.title}
                 </td>
                 <td>
@@ -109,6 +110,8 @@ const RolesTable = (props) => {
         <tbody>
           {renderOpenRoles()}
         </tbody>
+
+        <ReactTooltip />
       </Table>
     )
   }
