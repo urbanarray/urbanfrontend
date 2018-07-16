@@ -27,8 +27,8 @@ export class ListExecution extends React.Component { // eslint-disable-line reac
     this.props.listexecutions(this.props.match.params.id);
   } 
  listExc = () => {
-    if (this.props.listExecution && this.props.listExecution.execution_list  && this.props.listExecution.execution_list.length > 0) {
-      return this.props.listExecution.execution_list.map((c) => {
+    if (this.props.listExecution && this.props.listExecution.list_Execution  && this.props.listExecution.list_Execution.length > 0) {
+      return this.props.listExecution.list_Execution.map((c) => {
         return (
               <tr key={Math.random()}>
                 <td>

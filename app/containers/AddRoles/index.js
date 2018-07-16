@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
+
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectAddRoles from './selectors';
@@ -93,6 +94,7 @@ export class AddRoles extends React.Component { // eslint-disable-line react/pre
                       <div className="btn-continue">
                         <button className="btn btn-success btn-block">Add Role</button>
                       </div>
+                      
                     </Form>
                   </div>
                 </div>

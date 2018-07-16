@@ -24,13 +24,13 @@ function listResourcesReducer(state = initialState, action) {
       return state;
     case LIST_RESOURCES_ACTION:
       return state
-        .set('projectId', action.payload)
+        .set('listedResources', action.payload)
         .set('loading', true)
         .set('done', false)
 
     case LISTED_RESOURCES_ACTION:
       return state
-      .set('projectId', action.payload)
+      .set('listedResources', action.payload)
       .set('loading', false)
       .set('done', true)
     default:

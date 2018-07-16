@@ -173,11 +173,13 @@ handleChange = (e) => {
                     <tbody>
                       {this.listComm()}
                     </tbody>
-                    <tbody>
-                        <tr style={{width: '100%'}}>
+                    <thead>
+                      <tr style={{width: '100%'}}>
+                        <th style={{width: '120px'}}>
                           <Link to={"/list-communications/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
-                        </tr>
-                    </tbody>
+                        </th>
+                      </tr>
+                    </thead> 
                 </Table>
                 { /* END table-responsive */}
                 {/* <div className="panel-footer">Panel Footer</div> */}

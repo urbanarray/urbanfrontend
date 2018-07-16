@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Row, Col,Table, Button, Modal } from 'react-bootstrap';
+
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
 
@@ -203,11 +204,13 @@ export class AddExecution extends React.Component { // eslint-disable-line react
                   <tbody>
                     {this.listExc()}
                   </tbody>
-                  <tbody>
+                  <thead>
                     <tr style={{width: '100%'}}>
-                      <Link to={"/list-Execution/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                      <th style={{width: '120px'}}>
+                        <Link to={"/list-Execution/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                      </th>
                     </tr>
-                  </tbody>
+                  </thead> 
               </Table>
               { /* END table-responsive */}
               {/* <div className="panel-footer">Panel Footer</div> */}

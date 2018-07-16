@@ -2,17 +2,17 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
 import { LIST_EXECUTION_ACTION } from "./constants";
 import { listedExecutionAction } from "./actions";
-import { listExecutions } from "./selectors";
-import { listExecutionApi}  from "./api";
+import { list_Executions } from "./selectors";
+import { listExecutionApi }  from "./api";
 
 
 export function* listExecution() {
   
   try {
 
-    const listExecution = yield select(listExecutionslistExecutionslistExecutions());
-    console.log(listExecution)
-    // const response = yield call(listExecutionApi, listExecution);
+    const execution_list = yield select(list_Executions());
+    const response = yield call(listExecutionApi, execution_list);
+    console.log(response)
     // yield put(listedExecutionAction(response.data));
 
 

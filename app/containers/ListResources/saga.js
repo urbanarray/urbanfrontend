@@ -11,10 +11,9 @@ export function* listResources(){
 	
 	try{
 
-		const projectId = yield select(makeSelectProjectId());
-		const response = yield call(listResourcesApi, projectId);
+		const listedResources = yield select(makeSelectProjectId());
+		const response = yield call(listResourcesApi, listedResources);
 		yield put(listedResourcesAction(response.data.resources));
-		console.log(response)
 
 	}catch(error){
 		console.log(error)
