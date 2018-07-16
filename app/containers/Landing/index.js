@@ -16,7 +16,7 @@ import injectSaga from 'utils/injectSaga';
 import { submitCodeAction, emptyErrorsAction } from './actions';
 import saga from './saga';
 import reducer from './reducer';
-import SUBMIT_CODE_ACTION from './constants'
+import SUBMIT_CODE_ACTION from './constants';
 import { makeSelectSubmitCode, makeSelectLanding} from './selectors';
 import { isLogin } from 'containers/App/selectors';
 

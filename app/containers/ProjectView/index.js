@@ -30,11 +30,11 @@ import RolesDisplay from './RolesDisplay';
 import TimelineRoles from './TimelineRoles';
 import {styles} from 'assets/styles/variables';
 import { viewProject } from './actions';
-import AddCommunications from "../AddCommunications";
-import AddExecution from "../AddExecution";
-import HealthSafety from "../HealthSafety";
-import Documentation from "../Documentation";
-import Resources from "../Resources";
+import AddCommunications from '../AddCommunications';
+import AddExecution from '../AddExecution';
+import HealthSafety from '../HealthSafety';
+import Documentation from '../Documentation';
+import Resources from '../Resources';
 
 export class ProjectView extends Component { // eslint-disable-line react/prefer-stateless-function
 

@@ -1,1 +1,1 @@
-export {default} from './MilesZip';
+export { default } from './MilesZip';

@@ -19,7 +19,7 @@ import { makeSelectListExecution } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { styles, headings } from 'assets/styles/variables';
-import { listExecutionAction } from "./actions";
+import { listExecutionAction } from './actions';
 
 
 export class ListExecution extends Component { // eslint-disable-line react/prefer-stateless-function

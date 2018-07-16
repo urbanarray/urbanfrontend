@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Table, Panel } from 'react-bootstrap';
 
-import { styles, headings } from '../../../assets/styles/variables';
+import { styles, headings } from 'assets/styles/variables';
 
 import DetailsButton from './DetailsButton';
 import ResourcesButton from './ResourcesButton';

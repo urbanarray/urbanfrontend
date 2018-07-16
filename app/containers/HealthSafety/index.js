@@ -13,7 +13,7 @@ import { compose } from 'redux';
 import { Row, Col, Table, Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import { createHealthSafetyAction } from "./actions";
+import { createHealthSafetyAction } from './actions';
 import Select from 'react-select';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';

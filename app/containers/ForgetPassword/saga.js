@@ -1,8 +1,8 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
-import { SEND_EMAIL } from "./constants";
-import { emailSentAction } from "./actions";
-import { makeSelectEmail } from "./selectors";
-import { forgetPasswordApi } from "./api";
+import { SEND_EMAIL } from './constants';
+import { emailSentAction } from './actions';
+import { makeSelectEmail } from './selectors';
+import { forgetPasswordApi } from './api';
 
 
 export function* sendEmail() {

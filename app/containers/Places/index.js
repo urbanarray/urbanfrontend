@@ -18,8 +18,8 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectPlaces from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { listPlacesAction, deletePlacesAction, updatePlacesAction } from "./actions";
-import AddPlace from "containers/AddPlace";
+import { listPlacesAction, deletePlacesAction, updatePlacesAction } from './actions';
+import AddPlace from 'containers/AddPlace';
 import { styles, headings } from 'assets/styles/variables';
 
 

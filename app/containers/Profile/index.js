@@ -17,9 +17,8 @@ import makeSelectProfile from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { Col, Form, FormGroup, Label, Input } from 'reactstrap';
-import {createProfileAction, updateAction} from './actions';
-import {makeSelectCurrentUser} from 'containers/App/selectors';
-import { isLogin, isProfile } from 'containers/App/selectors';
+import { createProfileAction, updateAction } from './actions';
+import { isLogin, isProfile, makeSelectCurrentUser } from 'containers/App/selectors';
 
 import 'containers/Signup/style.css';
 

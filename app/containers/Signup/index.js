@@ -19,7 +19,7 @@ import reducer from './reducer';
 import saga from './saga';
 import './style.css';
 
-import {Form} from 'reactstrap';
+import { Form } from 'reactstrap';
 import FacebookLogin from 'react-facebook-login';
 import { GoogleLogin } from 'react-google-login';
 import LinkedIn from 'react-linkedin-login';

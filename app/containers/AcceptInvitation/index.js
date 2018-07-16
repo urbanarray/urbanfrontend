@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
-import {compose} from 'redux';
+import { compose } from 'redux';
 import { Row, Col, FormControl } from 'react-bootstrap';
 
 import injectSaga from 'utils/injectSaga';

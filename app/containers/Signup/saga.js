@@ -1,9 +1,9 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
 import { fromJS } from 'immutable';
-import {socialLoggedInAction, signedupAction, errors } from './actions';
-import {makeSelectSocialSignup, makeSelectCustomSignup, makeSelectLinkedinSignup} from './selectors';
-import {socialSignupApi, signupApi, linkedinSignupApi} from './api';
-import {SOCIAL_SIGNUP_ACTION, SIGNUP_ACTION, LINKEDIN_ACTION } from './constants';
+import { socialLoggedInAction, signedupAction, errors } from './actions';
+import { makeSelectSocialSignup, makeSelectCustomSignup, makeSelectLinkedinSignup } from './selectors';
+import { socialSignupApi, signupApi, linkedinSignupApi } from './api';
+import { SOCIAL_SIGNUP_ACTION, SIGNUP_ACTION, LINKEDIN_ACTION } from './constants';
 import { login as loginGLobal } from 'containers/App/actions';
 import { saveState } from 'utils/persistState';
 import { setToken } from 'utils/axios';

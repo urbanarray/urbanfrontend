@@ -25,7 +25,7 @@ import {
   skillsListAction,
   listUserSkillsAction,
   createUserSkillsAction,
-  deleteUserSkillsAction,
+  deleteUserSkillsAction
 } from './actions';
 
 import ProfileDetails from 'containers/ProfileDetails';

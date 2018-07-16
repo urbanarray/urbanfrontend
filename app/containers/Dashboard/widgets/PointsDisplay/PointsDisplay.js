@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Col, Row } from 'react-bootstrap';
-import {styles} from '../../../../assets/styles/variables'
+import { styles } from 'assets/styles/variables';
 
 const PointsDisplay = (props) => (
     <Col xs={3} sm={6} lg={3} style={props.windowWidth < 768 ? {padding: '0'} : null}>

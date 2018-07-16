@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import {Modal, Button} from 'react-bootstrap';
-import {styles} from '../../../assets/styles/variables';
+import { Modal, Button } from 'react-bootstrap';
+import { styles } from 'assets/styles/variables';
 
 class ResourcesButton extends Component {
     constructor(props, context) {

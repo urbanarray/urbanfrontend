@@ -18,7 +18,7 @@ import makeSelectAddPlace from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { makeSelectCurrentUser } from 'containers/App/selectors';
-import {createPlaceAction} from './actions';
+import { createPlaceAction } from './actions';
 
 export class AddPlace extends Component { // eslint-disable-line react/prefer-stateless-function
 

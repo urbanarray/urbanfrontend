@@ -20,8 +20,7 @@ const initialState = fromJS({
   done: false,
   userId:null,
   user_data: null,
-  invited_user_data: null,
-
+  invited_user_data: null
 });
 
 function acceptInvitationReducer(state = initialState, action) {

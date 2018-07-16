@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {FormGroup, ControlLabel, FormControl, HelpBlock, Button } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, HelpBlock, Button } from 'react-bootstrap';
 
 function printErrors(errors) {
     if (errors.length > 0) {
