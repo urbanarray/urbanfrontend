@@ -224,11 +224,13 @@ export class HealthSafety extends Component { // eslint-disable-line react/prefe
                     <tbody>
                       {this.listHealth()}
                     </tbody>
-                    <tbody>
+                    <thead>
                         <tr style={{width: '100%'}}>
-                          <Link to={"/list-healthSafety/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                          <th>
+                            <Link to={"/list-healthSafety/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                          </th>
                         </tr>
-                    </tbody>
+                    </thead>
                 </Table>
                 { /* END table-responsive */}
                 {/* <div className="panel-footer">Panel Footer</div> */}

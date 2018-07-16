@@ -1,7 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import {
+  Row,
+  Col,
+  Table,
+  Button,
+  Modal,
+  Panel
 
-import { Col, Table, Panel } from 'react-bootstrap';
-import { styles, headings } from 'assets/styles/variables';
+} from 'react-bootstrap';
+import { styles, headings } from '../../../assets/styles/variables';
 
 import ClaimButton from './ClaimButton';
 
@@ -19,6 +27,9 @@ const RoleDisplay = (props) => {
                         <th>Date/Time</th>
                         <th>Location</th>
                         <th>Action</th>
+                        <th>
+                            <Link to={"/list-healthSafety/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                        </th>
                     </tr>
                 </thead>
             )

@@ -10,9 +10,9 @@ export function* listExecution() {
   
   try {
 
-    const listExecution = yield select(listExecutionslistExecutionslistExecutions());
-    console.log(listExecution)
-    // const response = yield call(listExecutionApi, listExecution);
+    const execution_list = yield select(list_Executions());
+    const response = yield call(listExecutionApi, execution_list);
+    console.log(response)
     // yield put(listedExecutionAction(response.data));
 
 

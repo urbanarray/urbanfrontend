@@ -203,11 +203,13 @@ export class AddExecution extends Component { // eslint-disable-line react/prefe
                   <tbody>
                     {this.listExc()}
                   </tbody>
-                  <tbody>
+                  <thead>
                     <tr style={{width: '100%'}}>
-                      <Link to={"/list-Execution/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                      <th style={{width: '120px'}}>
+                        <Link to={"/list-Execution/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                      </th>
                     </tr>
-                  </tbody>
+                  </thead> 
               </Table>
               { /* END table-responsive */}
               {/* <div className="panel-footer">Panel Footer</div> */}

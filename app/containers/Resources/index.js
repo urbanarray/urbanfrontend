@@ -162,11 +162,13 @@ export class Resources extends Component {
 
                     {this.listResources()}
                   </tbody>
-                  <tbody>
+                  <thead>
                     <tr style={{width: '100%'}}>
-                      <Link to={"/list-Resources/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                      <th style={{width: '120px'}}>
+                        <Link to={"/list-Resources/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                      </th>
                     </tr>
-                  </tbody>
+                  </thead> 
               </Table>
               { /* END table-responsive */}
               {/* <div className="panel-footer">Panel Footer</div> */}

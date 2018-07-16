@@ -10,7 +10,9 @@ export function* create() {
   try {
 
     const execution = yield select(makeSelectExecution());
+    console.log(execution)
     const response = yield call(executionApi, execution);
+
     yield put(createdExecutionAction(response.data.executions));
     
   } catch (error) {
