@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -18,9 +18,9 @@ import makeSelectAddPlace from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { makeSelectCurrentUser } from 'containers/App/selectors';
-import {createPlaceAction} from "./actions";
+import { createPlaceAction } from './actions';
 
-export class AddPlace extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class AddPlace extends Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props, context){
     super(props, context);

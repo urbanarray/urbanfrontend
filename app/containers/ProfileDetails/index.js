@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -19,10 +19,10 @@ import reducer from './reducer';
 import saga from './saga';
 import { makeSelectCurrentUser } from 'containers/App/selectors';
 import { updateAction } from './actions';
-import { styles, headings } from '../../assets/styles/variables';
+import { styles, headings } from 'assets/styles/variables';
 
 
-export class ProfileDetails extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class ProfileDetails extends Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props, context) {
     super(props, context);

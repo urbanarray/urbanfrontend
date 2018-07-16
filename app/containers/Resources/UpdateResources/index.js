@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -17,13 +17,13 @@ import injectReducer from 'utils/injectReducer';
 import { makeSelectUpdateResources, makeSelectListedPlaces } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { updateResourceAction, listPlacesAction } from './actions'
+import { updateResourceAction, listPlacesAction } from './actions';
 
 
 
 
 
-export class UpdateResources extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class UpdateResources extends Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props){
     super(props)
 

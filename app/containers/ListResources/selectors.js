@@ -21,7 +21,7 @@ const makeSelectListResources = () => createSelector(
 
 const makeSelectProjectId = () => createSelector(
     selectListResourcesDomain,
-    (substate) => substate.get('projectId')
+    (substate) => substate.get('listedResources')
   );
 
 

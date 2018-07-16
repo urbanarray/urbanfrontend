@@ -1,6 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import {Table, Panel } from 'react-bootstrap';
+
+import { Link } from 'react-router-dom';
+import { Table, Panel } from 'react-bootstrap';
 import { styles, headings } from 'assets/styles/variables';
 import DetailsButton from './DetailsButton';
 const PledgedResourcesTable = (props) => {

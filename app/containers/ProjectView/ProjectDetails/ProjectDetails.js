@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {Col, Row} from 'react-bootstrap';
-import {styles, headings} from '../../../assets/styles/variables';
+import {styles, headings} from 'assets/styles/variables';
 import ReactQuill from 'react-quill';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 
 
@@ -22,7 +22,7 @@ const Textquill = styled.div`
 
 `;
 
-export default class ProjectDetails extends React.Component {
+export default class ProjectDetails extends Component {
 
     constructor(props){
         super(props)

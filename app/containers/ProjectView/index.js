@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -17,7 +17,7 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectProjectView from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import Avatar from '../../../assets/images/avatar.jpg';
+import Avatar from '../../../assets/images/avatar.jpg'; // can't start import path with assets here since this file isn't in app directory
 import ContentWrapper from 'components/Layout/ContentWrapper';
 import { Row, Col } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
@@ -28,15 +28,15 @@ import ProjectTime from './ProjectTime';
 import TeamDisplay from './TeamDisplay';
 import RolesDisplay from './RolesDisplay';
 import TimelineRoles from './TimelineRoles';
-import {styles} from '../../assets/styles/variables';
+import {styles} from 'assets/styles/variables';
 import { viewProject } from './actions';
-import AddCommunications from "../AddCommunications";
-import AddExecution from "../AddExecution";
-import HealthSafety from "../HealthSafety";
-import Documentation from "../Documentation";
-import Resources from "../Resources";
+import AddCommunications from '../AddCommunications';
+import AddExecution from '../AddExecution';
+import HealthSafety from '../HealthSafety';
+import Documentation from '../Documentation';
+import Resources from '../Resources';
 
-export class ProjectView extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class ProjectView extends Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props, context) {
     super(props, context);
@@ -273,7 +273,7 @@ ProjectView.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  projectview: makeSelectProjectView(),
+  projectview: makeSelectProjectView()
 });
 
 function mapDispatchToProps(dispatch) {
@@ -292,5 +292,5 @@ const withSaga = injectSaga({ key: 'projectView', saga });
 export default compose(
   withReducer,
   withSaga,
-  withConnect,
+  withConnect
 )(ProjectView);

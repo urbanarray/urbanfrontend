@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -26,7 +26,7 @@ import ResourcesNeeded from './ResourcesNeeded';
 import SimilarRoles from './SimilarRoles';
 
 
-export class RoleView extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class RoleView extends Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props, context) {
     super(props, context);

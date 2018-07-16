@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -18,17 +18,17 @@ import injectReducer from 'utils/injectReducer';
 import { makeSelectListExecution } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { styles, headings } from '../../assets/styles/variables';
-import { listExecutionAction } from "./actions";
+import { styles, headings } from 'assets/styles/variables';
+import { listExecutionAction } from './actions';
 
 
-export class ListExecution extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class ListExecution extends Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount (){
     this.props.listexecutions(this.props.match.params.id);
   } 
  listExc = () => {
-    if (this.props.listExecution && this.props.listExecution.execution_list  && this.props.listExecution.execution_list.length > 0) {
-      return this.props.listExecution.execution_list.map((c) => {
+    if (this.props.listExecution && this.props.listExecution.list_Execution  && this.props.listExecution.list_Execution.length > 0) {
+      return this.props.listExecution.list_Execution.map((c) => {
         return (
               <tr key={Math.random()}>
                 <td>

@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -25,7 +25,7 @@ import { socialSignupAction,linkedinAction, loginAction } from './actions';
 import { isLogin, isProfile } from 'containers/App/selectors';
 import { Link } from 'react-router-dom';
 
-export class Login extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class Login extends Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props)
 
@@ -254,14 +254,13 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
 }
 
 Login.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
   login: makeSelectLogin(),
   isLogin: isLogin(),
-  currentProfile: isProfile(),
-  
+  currentProfile: isProfile()
 });
 
 function mapDispatchToProps(dispatch) {
@@ -269,8 +268,7 @@ function mapDispatchToProps(dispatch) {
     dispatch,
     socialSignup: (payload) => dispatch(socialSignupAction(payload)),
     linkedin: (payload) => dispatch(linkedinAction(payload)), 
-    customLogin: (payload) => dispatch(loginAction(payload)), 
-
+    customLogin: (payload) => dispatch(loginAction(payload))
   }; 
 }
 
@@ -282,5 +280,5 @@ const withSaga = injectSaga({ key: 'login', saga });
 export default compose(
   withReducer,
   withSaga,
-  withConnect,
+  withConnect
 )(Login);

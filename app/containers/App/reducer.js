@@ -11,7 +11,7 @@
  */
 
 import { fromJS } from 'immutable';
-import {loadState, clearState} from 'utils/persistState';
+import { loadState, clearState } from 'utils/persistState';
 
 import {
   LOAD_REPOS_SUCCESS,
