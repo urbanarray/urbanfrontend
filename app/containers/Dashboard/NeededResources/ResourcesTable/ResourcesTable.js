@@ -3,7 +3,7 @@ import { Table, Panel } from 'react-bootstrap';
 
 import { styles, headings } from 'assets/styles/variables';
 import ClaimButton from './ClaimButton';
-
+import ReactTooltip from 'react-tooltip';
 const ResourcesTable = (props) => {
 
     const renderHeader = () => {
@@ -50,7 +50,7 @@ const ResourcesTable = (props) => {
                 return props.neededResources.map((resource, i) => {
                     return (
                         <tr key={i}>
-                            <td>
+                            <td data-tip={resource.name}>
                                 {resource.name}
                             </td>
 
@@ -92,6 +92,7 @@ const ResourcesTable = (props) => {
                 <tbody>
                     {renderTable()}
                 </tbody>
+                  <ReactTooltip />
             </Table>
         )
     }

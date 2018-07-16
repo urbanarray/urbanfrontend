@@ -1,7 +1,7 @@
 import React from 'react';
+
 import { Link } from 'react-router-dom';
 import { Table, Panel } from 'react-bootstrap';
-
 import { styles, headings } from 'assets/styles/variables';
 import DetailsButton from './DetailsButton';
 const PledgedResourcesTable = (props) => {
@@ -54,7 +54,7 @@ const PledgedResourcesTable = (props) => {
           props.pledgedResources.map((resource, i) => {
             return (
               <tr key={i}>
-                <td>
+                <td >
                   {resource.item}
                 </td>
                 <td>
@@ -91,6 +91,8 @@ const PledgedResourcesTable = (props) => {
         <tbody>
           {renderOpenRoles()}
         </tbody>
+
+
       </Table>
     )
   }

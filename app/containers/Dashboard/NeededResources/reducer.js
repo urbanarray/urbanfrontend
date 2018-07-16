@@ -14,6 +14,7 @@ const initialState = fromJS({
   neededResources : [
     {
       name: 'Lumber',
+      description: 'Some description here',
       size: '4*3*6',
       quantity:4,
       date: 'Nov 10',
@@ -24,6 +25,7 @@ const initialState = fromJS({
     },
     {
       name: 'Door',
+      description: 'Some description here',
       size: '2*3*7',
       quantity:14,
       date: 'Dec 12',
@@ -34,6 +36,7 @@ const initialState = fromJS({
     },
     {
       name: 'Paint',
+      description: 'Some description here',
       size: '...',
       quantity:6,
       date: 'Feb 02',
