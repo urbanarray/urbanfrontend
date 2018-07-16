@@ -1,7 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import {
+  Row,
+  Col,
+  Table,
+  Button,
+  Modal,
+  Panel
 
-import { Col, Table, Panel } from 'react-bootstrap';
+} from 'react-bootstrap';
 import { styles, headings } from '../../../assets/styles/variables';
+
+import ClaimButton from './ClaimButton';
 
 const RoleDisplay = (props) => {
 
@@ -12,8 +22,14 @@ const RoleDisplay = (props) => {
             return (
                 <thead>
                     <tr>
-                        <th>Project</th>
+                        <th style={{ minWidth: '150px' }}>Project</th>
+                        <th style={{ minWidth: '250px' }}>Description</th>
                         <th>Date/Time</th>
+                        <th>Location</th>
+                        <th>Action</th>
+                        <th>
+                            <Link to={"/list-healthSafety/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                        </th>
                     </tr>
                 </thead>
             )
@@ -29,8 +45,11 @@ const RoleDisplay = (props) => {
                     </Panel.Heading>
                     <Panel.Body style={{ textAlign: 'center' }}>
                         Project: {props.roleview.roleDetail.project}<br />
+                        Description: {props.roleview.roleDetail.description} <br />
+                        Location: {props.roleview.roleDetail.location} <br />
                         Date: {props.roleview.roleDetail.date}<br />
-                        Time: {`${props.roleview.roleDetail.startTime} - ${props.roleview.roleDetail.endTime}`}<br />
+                        Time: {`${props.roleview.roleDetail.startTime} - ${props.roleview.roleDetail.endTime}`}<br /><br/>
+                        <ClaimButton roleDetail={props.roleview.roleDetail} />
                     </Panel.Body>
                 </Panel>
             )
@@ -42,8 +61,18 @@ const RoleDisplay = (props) => {
                             {props.roleview.roleDetail.project}
                         </td>
                         <td>
+                          {props.roleview.roleDetail.description}
+                        </td>
+
+                        <td>
                             {`${props.roleview.roleDetail.date}
                                 ${props.roleview.roleDetail.startTime} to ${props.roleview.roleDetail.endTime}`}
+                        </td>
+                        <td>
+                          {props.roleview.roleDetail.location}
+                        </td>
+                        <td>
+                          <ClaimButton roleDetail={props.roleview.roleDetail}/>
                         </td>
                     </tr>
                 </tbody>

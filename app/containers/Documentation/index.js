@@ -4,42 +4,43 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectDocumentation from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { createDocumentAction, listDocumentAction } from "./actions";
-import { styles, headings } from '../../assets/styles/variables';
+import { createDocumentAction, listDocumentAction } from './actions';
+import { styles, headings } from 'assets/styles/variables';
 
-export class Documentation extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class Documentation extends Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
     super(props)
     this.state = {
       name: '',
       attachments: [],
-      openModel: false,
+      openModel: false
     }
   }
 
   open = () => {
     this.setState({
-      openModel: true,
+      openModel: true
     })
   }
 
   close = () => {
     this.setState({
-      openModel: false,
+      openModel: false
     })
   }
 
@@ -160,6 +161,13 @@ export class Documentation extends React.Component { // eslint-disable-line reac
               <tbody>
                 {this.listD()}
               </tbody>
+              <thead>
+                  <tr style={{width: '100%'}}>
+                    <th style={{width: '120px'}}>
+                       <Link to={"/list-Documentation/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                    </th>
+                  </tr>
+              </thead>
             </Table>
             { /* END table-responsive */}
             {/* <div className="panel-footer">Panel Footer</div> */}

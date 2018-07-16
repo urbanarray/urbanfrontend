@@ -30,11 +30,15 @@ import AddRoles from 'containers/AddRoles';
 import AcceptInvitation from 'containers/AcceptInvitation';
 import './style.css';
 import AddProject  from 'containers/AddProject';
+import AddSkills  from 'containers/AddSkills';
 import ListProjects  from 'containers/ListProjects';
 import ListPlaces  from 'containers/Places';
 import ListCommunications  from 'containers/ListCommunications';
 import ListHealthSafety  from 'containers/ListHealthSafety';
-import AddSkills  from 'containers/AddSkills';
+import ListExecution  from 'containers/ListExecution';
+import ListDocumentation  from 'containers/ListDocumentation';
+import ListResources  from 'containers/ListResources';
+import ListRoles  from 'containers/ListRoles';
 
 export default function App() {
 
@@ -69,6 +73,10 @@ export default function App() {
           <Route path="/places" component={ListPlaces} />
           <Route path="/list-communications/:id" component={ListCommunications} />
           <Route path="/list-healthSafety/:id" component={ListHealthSafety} />
+          <Route path="/list-Execution/:id" component={ListExecution} />
+          <Route path="/list-Documentation/:id" component={ListDocumentation} />
+          <Route path="/list-Resources/:id" component={ListResources} />
+          <Route path="/list-Roles/:id" component={ListRoles} />
         </Base> 
       </Switch>
     </Router>

@@ -4,35 +4,29 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import {
-  Row,
-  Col,
-  Table,
-  Button,
-  Modal
-} from 'react-bootstrap';
+import { Row, Col, Table, Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import { createHealthSafetyAction } from "./actions";
+import { createHealthSafetyAction } from './actions';
 import Select from 'react-select';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectHealthSafety from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import {listHealthSafetyAction} from './actions';
-import { styles, headings } from '../../assets/styles/variables';
+import { listHealthSafetyAction } from './actions';
+import { styles, headings } from 'assets/styles/variables';
 
-export class HealthSafety extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class HealthSafety extends Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props){
-    super(props)
+    super(props);
 
     this.state = {
       ecn : [],
@@ -41,7 +35,7 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
       sma: [],
       location: '',
       lmc: '',
-      lsc: '',
+      lsc: ''
 
     }
   }
@@ -230,11 +224,13 @@ export class HealthSafety extends React.Component { // eslint-disable-line react
                     <tbody>
                       {this.listHealth()}
                     </tbody>
-                    <tbody>
+                    <thead>
                         <tr style={{width: '100%'}}>
-                          <Link to={"/ListHealthSafety/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                          <th>
+                            <Link to={"/list-healthSafety/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                          </th>
                         </tr>
-                    </tbody>
+                    </thead>
                 </Table>
                 { /* END table-responsive */}
                 {/* <div className="panel-footer">Panel Footer</div> */}

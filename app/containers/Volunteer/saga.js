@@ -2,17 +2,17 @@ import { takeLatest, call, put, select } from 'redux-saga/effects';
 import {
   LIST_VOLUNTEER_ACTION,
   RESEND_INVITATION_ACTION,
-} from "./constants";
+} from './constants';
 import {
   listedVolunteerAction,
   emailSentAction,
 
-} from "./actions";
+} from './actions';
 import {
   makeSelectEmail
-} from "./selectors";
+} from './selectors';
 
-import { listVolunteersApi, resendEmailApi } from "./api";
+import { listVolunteersApi, resendEmailApi } from './api';
 
 
 export function* listVolunteers() {

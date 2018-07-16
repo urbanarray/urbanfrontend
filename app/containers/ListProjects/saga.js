@@ -1,9 +1,8 @@
-import {takeLatest, call, put, select} from 'redux-saga/effects';
-import {LIST_PROJECTS_ACTION, UPDATE_PROJECT_ACTION, DELETE_PROJECT_ACTION,LIST_PLACES_ACTION,LISTED_PLACES_ACTION, SET_PAGINATION, GET_PAGINATION} from "./constants";
-import {listProjectsApi, updateProjectApi, deleteProjectApi, listPlacesApi} from "./api";
-import {listedProjectsAction, updatedAction, deletedAction, listedPlacesAction} from "./actions";
-import makeSelectListProjects, {makeSelectUpdateProject, makeSelectProjectId, makeSelectPlaces}
-from "./selectors";
+import { takeLatest, call, put, select} from 'redux-saga/effects';
+import { LIST_PROJECTS_ACTION, UPDATE_PROJECT_ACTION, DELETE_PROJECT_ACTION,LIST_PLACES_ACTION,LISTED_PLACES_ACTION, SET_PAGINATION, GET_PAGINATION } from './constants';
+import { listProjectsApi, updateProjectApi, deleteProjectApi, listPlacesApi } from './api';
+import { listedProjectsAction, updatedAction, deletedAction, listedPlacesAction } from './actions';
+import makeSelectListProjects, {makeSelectUpdateProject, makeSelectProjectId, makeSelectPlaces } from './selectors';
 
 
 export function* listProjects() {

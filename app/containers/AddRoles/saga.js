@@ -1,8 +1,8 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
-import { CREATE_ROLES_ACTION, LIST_ROLES_ACTION } from "./constants";
-import { createdRolesAction, listedRolesAction } from "./actions";
-import { makeSelectRole } from "./selectors";
-import { createRoleApi, listRolesApi } from "./api";
+import { CREATE_ROLES_ACTION, LIST_ROLES_ACTION } from './constants';
+import { createdRolesAction, listedRolesAction } from './actions';
+import { makeSelectRole } from './selectors';
+import { createRoleApi, listRolesApi } from './api';
 
 
 export function* create() {

@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -12,7 +12,7 @@ import { compose } from 'redux';
 import injectSaga from 'utils/injectSaga';
 import saga from './saga';
 
-export class ResendEmail extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class ResendEmail extends Component { // eslint-disable-line react/prefer-stateless-function
   
   componentDidMount(){
     console.log(this.props)
@@ -42,13 +42,13 @@ export class ResendEmail extends React.Component { // eslint-disable-line react/
 }
 
 ResendEmail.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    dispatch
   };
 }
 
@@ -57,5 +57,5 @@ const withSaga = injectSaga({ key: 'resendEmail', saga });
 
 export default compose(
   withSaga,
-  withConnect,
+  withConnect
 )(ResendEmail);

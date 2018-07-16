@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -19,9 +19,9 @@ import saga from './saga';
 import messages from './messages';
 import {createSkillsAction, listSkillsAction} from './actions';
 import { Col, Table, Form, FormGroup, Label, Input } from 'reactstrap';
-import { styles, headings } from '../../assets/styles/variables';
+import { styles, headings } from 'assets/styles/variables';
 
-export class AddSkills extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class AddSkills extends Component { // eslint-disable-line react/prefer-stateless-function
  
   constructor(props) {
     super(props);

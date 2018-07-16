@@ -1,10 +1,10 @@
 // import { take, call, put, select } from 'redux-saga/effects';
 import { takeLatest, call, put, select } from 'redux-saga/effects';
 
-import {LIST_PLACES_ACTION} from './constants';
-import {listedPlacesAction} from './actions';
-import {makeSelectListedPlaces} from '../selectors';
-import {listPlacesApi} from './api';
+import { LIST_PLACES_ACTION } from './constants';
+import { listedPlacesAction } from './actions';
+import { makeSelectListedPlaces } from '../selectors';
+import { listPlacesApi } from './api';
 
 
 

@@ -4,14 +4,15 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Row, Col,Table, Button, Modal } from 'react-bootstrap';
-import styled from "styled-components";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -19,9 +20,9 @@ import makeSelectAddExecution from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import ReactQuill from 'react-quill';
-import { createExecutionAction, listExecutionAction } from "./actions";
+import { createExecutionAction, listExecutionAction } from './actions';
 import 'react-quill/dist/quill.snow.css';
-import { styles, headings } from '../../assets/styles/variables';
+import { styles, headings } from 'assets/styles/variables';
 
 
 const QuillWrapper = styled.div`
@@ -47,10 +48,10 @@ const Textquill = styled.div `
 `;
 
 
-export class AddExecution extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class AddExecution extends Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props){
-    super(props)
+    super(props);
 
     this.state = {
       entry: '',
@@ -202,6 +203,13 @@ export class AddExecution extends React.Component { // eslint-disable-line react
                   <tbody>
                     {this.listExc()}
                   </tbody>
+                  <thead>
+                    <tr style={{width: '100%'}}>
+                      <th style={{width: '120px'}}>
+                        <Link to={"/list-Execution/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                      </th>
+                    </tr>
+                  </thead> 
               </Table>
               { /* END table-responsive */}
               {/* <div className="panel-footer">Panel Footer</div> */}

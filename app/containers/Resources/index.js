@@ -4,26 +4,27 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import { makeSelectResources, makeSelectListPlaces} from './selectors';
+import { makeSelectResources, makeSelectListPlaces } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import './style.css';
 import 'react-select/dist/react-select.css';
-import { styles, headings } from '../../assets/styles/variables';
-import { addResourcesAction, listPlacesAction, listResourcesAction } from './actions'
-import { UpdateResources }from './UpdateResources/index'
+import { styles, headings } from 'assets/styles/variables';
+import { addResourcesAction, listPlacesAction, listResourcesAction } from './actions';
+import UpdateResources from './UpdateResources';
  
-export class Resources extends React.Component {
+export class Resources extends Component {
   constructor(props){
     super(props)
 
@@ -161,6 +162,13 @@ export class Resources extends React.Component {
 
                     {this.listResources()}
                   </tbody>
+                  <thead>
+                    <tr style={{width: '100%'}}>
+                      <th style={{width: '120px'}}>
+                        <Link to={"/list-Resources/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                      </th>
+                    </tr>
+                  </thead> 
               </Table>
               { /* END table-responsive */}
               {/* <div className="panel-footer">Panel Footer</div> */}
