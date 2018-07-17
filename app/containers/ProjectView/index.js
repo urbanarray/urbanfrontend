@@ -129,7 +129,7 @@ export class ProjectView extends React.Component { // eslint-disable-line react/
                   type="button"
                   className="btn btn-primary btn-sm btn-block"
                   color="default"
-                  style={styles.primaryLight}>Details
+                  style={styles.primary}>Details
                 </Link>
               </td>
 

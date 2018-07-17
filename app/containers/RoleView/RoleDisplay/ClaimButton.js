@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import {Modal, Button} from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import {styles} from '../../../assets/styles/variables';
 
 class ClaimButton extends Component {
@@ -43,7 +43,7 @@ class ClaimButton extends Component {
                     {this.state.role}
                 </Modal.Body>
                 <Modal.Footer>
-                    <button style={styles.primaryLight} onClick={this.close}>Cancel</button>
+                    <button style={styles.primary} onClick={this.close}>Cancel</button>
                 </Modal.Footer>
             </Modal>
         )
@@ -52,7 +52,7 @@ class ClaimButton extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.open} className="btn btn-block" style={styles.primaryLight} >
+                <button onClick={this.open} className="btn btn-block" style={styles.primary} >
                 {/* need span to wrap text, otherwise we get a nodeparent error */}
                     <span> Claims </span>
                 </button>

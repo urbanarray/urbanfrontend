@@ -40,7 +40,7 @@ const ResourcesTable = (props) => {
                                     Location: {resource.locationNeeded}
                                     Date: {resource.date}<br />
                                     Time: {`${resource.startTime} - ${resource.endTime}`}<br />
-                                    <ClaimButton />
+                                    <ClaimButton windowWidth={props.windowWidth}/>
                                 </Panel.Body>
                             </Panel>
                         )

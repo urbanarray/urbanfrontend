@@ -18,6 +18,7 @@ import { makeSelectUpdateResources, makeSelectListedPlaces } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { updateResourceAction, listPlacesAction } from './actions'
+import { styles, headings } from '../../../assets/styles/variables';
 
 
 
@@ -51,7 +52,7 @@ export class UpdateResources extends React.Component { // eslint-disable-line re
 
       },
       this.props.updateResources(this.props.projectId)
-      
+
    );
     setTimeout(() =>{
       this.close();
@@ -60,7 +61,7 @@ export class UpdateResources extends React.Component { // eslint-disable-line re
   }
 
   componentDidMount(){
-      
+
   }
 
   open = () => {
@@ -88,8 +89,8 @@ export class UpdateResources extends React.Component { // eslint-disable-line re
   render() {
     return (
       <div>
-    
-            <button onClick={this.open} className="btn btn-primary" >UpdateResources </button>
+
+            <button onClick={this.open} className="btn btn-primary" style={styles.primary}>UpdateResources </button>
 
             { /* END table-responsive */}
             {/* <div className="panel-footer">Panel Footer</div> */}

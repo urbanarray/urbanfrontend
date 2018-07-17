@@ -42,7 +42,7 @@ const YourRoleTable = (props) => {
                     type="button"
                     className="btn btn-block btn-sm"
                     color="default"
-                    style={styles.primary}>Details
+                    style={styles.primaryLight}>Details
                         </Link>
                 </Panel.Body>
               </Panel>
@@ -70,7 +70,7 @@ const YourRoleTable = (props) => {
                   to="/roleView"
                   type="button"
                   className="btn btn-primary btn-xs btn-block"
-                  style={styles.primaryLight}>Details
+                  style={styles.primary}>Details
                         </Link>
               </td>
 

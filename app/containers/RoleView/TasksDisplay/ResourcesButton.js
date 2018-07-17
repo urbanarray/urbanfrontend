@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import {Modal, Button} from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import {styles} from '../../../assets/styles/variables';
 
 class ResourcesButton extends Component {
@@ -40,7 +40,7 @@ class ResourcesButton extends Component {
                     {this.state.details}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={this.close}>Cancel</Button>
+                    <button style={styles.primary} onClick={this.close}>Cancel</button>
                 </Modal.Footer>
             </Modal>
         )
