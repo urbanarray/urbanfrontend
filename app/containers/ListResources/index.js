@@ -18,6 +18,7 @@ import makeSelectListResources from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import {listResourcesAction} from './actions';
+import { UpdateResources }from '../Resources/UpdateResources/index'
 
 export class ListResources extends Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount = () => {
@@ -26,10 +27,11 @@ export class ListResources extends Component { // eslint-disable-line react/pref
   }
 
   listResources = () => {
-    
-    if (this.props.listResource && this.props.listResource.listedResources && this.props.listResource.listedResources.length > 0) {
-        
-      return this.props.listResource.listedResources.map((res) => {
+
+    if (this.props.listResources && this.props.listResources.listedResources && this.props.listResources.listedResources.length > 0) {
+
+        console.log(this.props.listResources.listedResources)
+      return this.props.listResources.listedResources.map((res) => {
 
         return (
               <tr key={Math.random()}>
@@ -40,7 +42,13 @@ export class ListResources extends Component { // eslint-disable-line react/pref
                   {res.quantity}
                 </td>
                 <td>
+                  {(res.placeId) ? res.placeId.name : ''}
+                </td>
+                <td>
                   {res.dateId}
+                </td>
+                <td>
+                  <UpdateResources/>
                 </td>
               </tr>
             );

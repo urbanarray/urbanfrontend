@@ -19,9 +19,9 @@ const makeSelectListExecution = () => createSelector(
   (substate) => substate.toJS()
 );
 
-const listExecutions = () => createSelector(
+const list_Executions = () => createSelector(
   selectListExecutionDomain,
-  (substate) => substate.get('projectId')
+  (substate) => substate.get('list_Execution')
 );
 
 
@@ -29,5 +29,5 @@ export default makeSelectListExecution;
 export {
   selectListExecutionDomain,
   makeSelectListExecution,
-  listExecutions
+  list_Executions
 };

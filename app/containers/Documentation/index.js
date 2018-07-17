@@ -161,11 +161,13 @@ export class Documentation extends Component { // eslint-disable-line react/pref
               <tbody>
                 {this.listD()}
               </tbody>
-              <tbody>
+              <thead>
                   <tr style={{width: '100%'}}>
-                    <Link to={"/list-Documentation/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                    <th style={{width: '120px'}}>
+                       <Link to={"/list-Documentation/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
+                    </th>
                   </tr>
-              </tbody>
+              </thead>
             </Table>
             { /* END table-responsive */}
             {/* <div className="panel-footer">Panel Footer</div> */}
