@@ -39,6 +39,7 @@ import ListExecution  from 'containers/ListExecution';
 import ListDocumentation  from 'containers/ListDocumentation';
 import ListResources  from 'containers/ListResources';
 import ListRoles  from 'containers/ListRoles';
+import listTeamDisplay  from 'containers/listTeamDisplay';
 
 export default function App() {
 
@@ -77,6 +78,7 @@ export default function App() {
           <Route path="/list-Documentation/:id" component={ListDocumentation} />
           <Route path="/list-Resources/:id" component={ListResources} />
           <Route path="/list-Roles/:id" component={ListRoles} />
+          <Route path="/listTeamDisplay" component={listTeamDisplay} />
         </Base> 
       </Switch>
     </Router>

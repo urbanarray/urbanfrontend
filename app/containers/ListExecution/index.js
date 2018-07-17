@@ -23,12 +23,13 @@ import { listExecutionAction } from './actions';
 
 
 export class ListExecution extends Component { // eslint-disable-line react/prefer-stateless-function
-  componentDidMount (){
-    this.props.listexecutions(this.props.match.params.id);
-  } 
+
+  componentDidMount = () => {
+    this.props.listExecutions(this.props.match.params.id);
+  }
  listExc = () => {
-    if (this.props.listExecution && this.props.listExecution.list_Execution  && this.props.listExecution.list_Execution.length > 0) {
-      return this.props.listExecution.list_Execution.map((c) => {
+    if (this.props.listExecution && this.props.listExecution.execution_list  && this.props.listExecution.execution_list.length > 0) {
+      return this.props.listExecution.execution_list.map((c) => {
         return (
               <tr key={Math.random()}>
                 <td>
@@ -39,6 +40,7 @@ export class ListExecution extends Component { // eslint-disable-line react/pref
                           readOnly
                           formats={this.formats}
                           />
+                          {c.conceptOperation}
                   </Textquill>
                 </td>
                 <td>
@@ -108,7 +110,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    listexecutions: (id) => dispatch(listExecutionAction(id))
+    listExecutions: (id) => dispatch(listExecutionAction(id))
   };
 }
 
