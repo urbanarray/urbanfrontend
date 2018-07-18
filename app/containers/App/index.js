@@ -29,17 +29,19 @@ import Base from 'components/Layout/Base';
 import AddRoles from 'containers/AddRoles';
 import AcceptInvitation from 'containers/AcceptInvitation';
 import './style.css';
-import AddProject  from 'containers/AddProject';
-import AddSkills  from 'containers/AddSkills';
-import ListProjects  from 'containers/ListProjects';
-import ListPlaces  from 'containers/Places';
-import ListCommunications  from 'containers/ListCommunications';
-import ListHealthSafety  from 'containers/ListHealthSafety';
-import ListExecution  from 'containers/ListExecution';
-import ListDocumentation  from 'containers/ListDocumentation';
-import ListResources  from 'containers/ListResources';
-import ListRoles  from 'containers/ListRoles';
+
+import AddProject from 'containers/ListProjects/AddProject';
+import AddSkills from 'containers/AddSkills';
+import ListProjects from 'containers/ListProjects';
+import ListPlaces from 'containers/Places';
+import ListCommunications from 'containers/ListCommunications';
+import ListHealthSafety from 'containers/ListHealthSafety';
+import ListExecution from 'containers/ListExecution';
+import ListDocumentation from 'containers/ListDocumentation';
+import ListResources from 'containers/ListResources';
+import ListRoles from 'containers/ListRoles';
 import listTeamDisplay  from 'containers/listTeamDisplay';
+
 
 export default function App() {
 
