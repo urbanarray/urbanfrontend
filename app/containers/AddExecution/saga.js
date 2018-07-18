@@ -1,8 +1,8 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
-import { CREATE_EXECUTION_ACTION, LIST_EXECUTION_ACTION } from './constants';
-import { createdExecutionAction, listedExecutionAction } from './actions';
-import { makeSelectExecution, makeSelectListExecution } from './selectors';
-import { executionApi, listExecutionApi}  from './api';
+import { CREATE_EXECUTION_ACTION, LIST_EXECUTION_ACTION } from "./constants";
+import { createdExecutionAction, listedExecutionAction } from "./actions";
+import { makeSelectExecution, makeSelectListExecution } from "./selectors";
+import {executionApi, listExecutionApi}  from "./api";
 
 
 export function* create() {
@@ -10,7 +10,7 @@ export function* create() {
   try {
 
     const execution = yield select(makeSelectExecution());
-    console.log(execution)
+    // console.log(execution)
     const response = yield call(executionApi, execution);
 
     yield put(createdExecutionAction(response.data.executions));

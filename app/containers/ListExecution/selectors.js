@@ -19,9 +19,9 @@ const makeSelectListExecution = () => createSelector(
   (substate) => substate.toJS()
 );
 
-const list_Executions = () => createSelector(
+const makeSelectListExecutions = () => createSelector(
   selectListExecutionDomain,
-  (substate) => substate.get('list_Execution')
+  (substate) => substate.get('execution_list')
 );
 
 
@@ -29,5 +29,5 @@ export default makeSelectListExecution;
 export {
   selectListExecutionDomain,
   makeSelectListExecution,
-  list_Executions
+  makeSelectListExecutions
 };
