@@ -29,6 +29,7 @@ import Base from 'components/Layout/Base';
 import AddRoles from 'containers/AddRoles';
 import AcceptInvitation from 'containers/AcceptInvitation';
 import './style.css';
+
 import AddProject from 'containers/ListProjects/AddProject';
 import AddSkills from 'containers/AddSkills';
 import ListProjects from 'containers/ListProjects';
@@ -39,6 +40,8 @@ import ListExecution from 'containers/ListExecution';
 import ListDocumentation from 'containers/ListDocumentation';
 import ListResources from 'containers/ListResources';
 import ListRoles from 'containers/ListRoles';
+import listTeamDisplay  from 'containers/listTeamDisplay';
+
 
 export default function App() {
 
@@ -77,6 +80,7 @@ export default function App() {
           <Route path="/list-Documentation/:id" component={ListDocumentation} />
           <Route path="/list-Resources/:id" component={ListResources} />
           <Route path="/list-Roles/:id" component={ListRoles} />
+          <Route path="/listTeamDisplay" component={listTeamDisplay} />
         </Base> 
       </Switch>
     </Router>

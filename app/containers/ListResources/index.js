@@ -30,7 +30,6 @@ export class ListResources extends Component { // eslint-disable-line react/pref
 
     if (this.props.listResources && this.props.listResources.listedResources && this.props.listResources.listedResources.length > 0) {
 
-        console.log(this.props.listResources.listedResources)
       return this.props.listResources.listedResources.map((res) => {
 
         return (
