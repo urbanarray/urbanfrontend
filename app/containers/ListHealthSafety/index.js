@@ -11,7 +11,7 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
-
+import ContentWrapper from 'components/Layout/ContentWrapper';
 import HealthSafety from '../HealthSafety';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -97,11 +97,14 @@ export class ListHealthSafety extends React.Component { // eslint-disable-line r
   }
   render() {
     return (
-      <div>
+      <ContentWrapper>
         <Helmet>
           <title>ListHealthSafety</title>
           <meta name="description" content="Description of ListHealthSafety" />
         </Helmet>
+        <h3>HealthSafety
+            <small>List of HealthSafety</small>
+        </h3>
         <Col sm={12}>
           <Table id="table-ext-2" responsive striped bordered hover>
             <thead>
@@ -119,7 +122,7 @@ export class ListHealthSafety extends React.Component { // eslint-disable-line r
             </tbody>
           </Table>
         </Col>
-      </div>
+      </ContentWrapper>
     );
   }
 }

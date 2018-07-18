@@ -11,21 +11,26 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
+import ContentWrapper from 'components/Layout/ContentWrapper';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectListRoles from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import RolesDisplay from '../ProjectView/RolesDisplay/RolesDisplay';
 
 export class ListRoles extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>
+      <ContentWrapper>
         <Helmet>
           <title>ListRoles</title>
           <meta name="description" content="Description of ListRoles" />
         </Helmet>
-      </div>
+        <h3>TeamDisplay
+          <small>List of TeamDisplay</small>
+        </h3>
+      </ContentWrapper>
     );
   }
 }

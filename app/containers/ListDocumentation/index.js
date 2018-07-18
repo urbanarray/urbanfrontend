@@ -12,6 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
 
+import ContentWrapper from 'components/Layout/ContentWrapper';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import { listDocumentAction } from './actions';
@@ -62,11 +63,14 @@ export class ListDocumentation extends Component { // eslint-disable-line react/
 
   render() {
     return (
-      <div>
+      <ContentWrapper>
         <Helmet>
           <title>ListDocumentation</title>
           <meta name="description" content="Description of ListDocumentation" />
         </Helmet>
+        <h3>Documentation
+            <small>List of Documentation</small>
+        </h3>
          <Col md={12}>
           <div id="panelDemo8" className="panel panel-primary" >
 
@@ -86,7 +90,7 @@ export class ListDocumentation extends Component { // eslint-disable-line react/
             {/* <div className="panel-footer">Panel Footer</div> */}
           </div>
         </Col>
-      </div>
+      </ContentWrapper>
     );
   }
 }

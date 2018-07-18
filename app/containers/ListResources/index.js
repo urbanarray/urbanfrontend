@@ -11,7 +11,9 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
+import {styles} from 'assets/styles/variables';
 
+import ContentWrapper from 'components/Layout/ContentWrapper';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectListResources from './selectors';
@@ -19,6 +21,7 @@ import reducer from './reducer';
 import saga from './saga';
 import {listResourcesAction} from './actions';
 import { UpdateResources }from '../Resources/UpdateResources/index'
+import { Resources }from '../Resources'
 
 export class ListResources extends Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount = () => {
@@ -29,7 +32,6 @@ export class ListResources extends Component { // eslint-disable-line react/pref
   listResources = () => {
 
     if (this.props.listResources && this.props.listResources.listedResources && this.props.listResources.listedResources.length > 0) {
-
       return this.props.listResources.listedResources.map((res) => {
 
         return (
@@ -54,19 +56,21 @@ export class ListResources extends Component { // eslint-disable-line react/pref
           });
         }
       }
-
   render() {
     return (
-      <div>
+      <ContentWrapper>
         <Helmet>
           <title>ListResources</title>
           <meta name="description" content="Description of ListResources" />
         </Helmet>
+        <h3>Resources
+            <small>List of Resources</small>
+        </h3>
          <Col md={12}>
             <div id="panelDemo8" className="panel panel-primary" >
 
               { /* START table-responsive */}
-              <Table id="table-ext-2" responsive striped bordered hover>
+              <Table id="table-ext-2" responsive striped bordered hover >
                   <thead>
                       <tr>
                           <th>Item</th>
@@ -85,7 +89,7 @@ export class ListResources extends Component { // eslint-disable-line react/pref
               {/* <div className="panel-footer">Panel Footer</div> */}
           </div>
         </Col>
-      </div>
+      </ContentWrapper>
     );
   }
 }

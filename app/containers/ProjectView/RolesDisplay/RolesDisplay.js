@@ -1,9 +1,11 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
 import { Col, Table } from 'react-bootstrap';
 import { styles, headings } from 'assets/styles/variables';
 
 const RolesDisplay = (props) => (
+    
     <Col md={12}>
         <div id="panelDemo8" className="panel panel-primary">
             <div className="panel-heading" style={styles.primaryDark}>
@@ -25,6 +27,13 @@ const RolesDisplay = (props) => (
                 <tbody>
                     {props.renderRoles()}
                 </tbody>
+                <thead>
+                    <tr style={{width: '100%'}}>
+                      <th style={{width: '120px'}}>
+                        <Link to={"/list-Roles"} style={{float: 'right'}}>See all</Link>
+                      </th>
+                    </tr>
+                </thead> 
             </Table>
             { /* END table-responsive */}
             {/* <div className="panel-footer">Panel Footer</div> */}

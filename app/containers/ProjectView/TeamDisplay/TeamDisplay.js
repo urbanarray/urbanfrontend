@@ -26,15 +26,23 @@ const TeamDisplay = (props) => (
                     </tr>
                 </thead>
                 <tbody>
-                  {props.renderLeadership()}
+                  <tr>
+                    <td>
+                      {props.renderLeadership()}
+                    </td>
+                  </tr>
                 </tbody>
                 <thead>
                     <tr>
-                      <th style={{width: '120px'}}> Team</th>
+                      <td style={{width: '120px'}}> Team</td>
                     </tr>
                 </thead>
                 <tbody>
-                  {props.renderTeam()}
+                  <tr>
+                    <td>
+                      {props.renderTeam()}
+                    </td>
+                  </tr>
                 </tbody>
                 <thead>
                   <tr>

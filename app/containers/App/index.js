@@ -77,7 +77,7 @@ export default function App() {
           <Route path="/list-Execution/:id" component={ListExecution} />
           <Route path="/list-Documentation/:id" component={ListDocumentation} />
           <Route path="/list-Resources/:id" component={ListResources} />
-          <Route path="/list-Roles/:id" component={ListRoles} />
+          <Route path="/list-Roles" component={ListRoles} />
           <Route path="/listTeamDisplay" component={listTeamDisplay} />
         </Base> 
       </Switch>

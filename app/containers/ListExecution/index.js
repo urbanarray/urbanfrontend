@@ -12,6 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Row, Col,Table, Button, Modal } from 'react-bootstrap';
 
+import ContentWrapper from 'components/Layout/ContentWrapper';
 import AddExecution from '../AddExecution';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -70,11 +71,14 @@ export class ListExecution extends Component { // eslint-disable-line react/pref
       }
   render() {
     return (
-      <div>
+      <ContentWrapper>
         <Helmet>
           <title>ListExecution</title>
           <meta name="description" content="Description of ListExecution" />
         </Helmet>
+        <h3>Execution
+            <small>List of Execution</small>
+        </h3>
         <Col md={12}>
           <div id="panelDemo8" className="panel panel-primary" >
               { /* START table-responsive */}
@@ -94,7 +98,7 @@ export class ListExecution extends Component { // eslint-disable-line react/pref
               {/* <div className="panel-footer">Panel Footer</div> */}
           </div>
         </Col>
-      </div>
+      </ContentWrapper>
     );
   }
 }
