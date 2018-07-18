@@ -4,7 +4,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -20,9 +20,9 @@ import reducer from './reducer';
 import saga from './saga';
 import { listHealthSafetyAction } from './actions';
 
-export class ListHealthSafety extends Component { // eslint-disable-line react/prefer-stateless-function
+export class ListHealthSafety extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props){
-    super(props);
+    super(props)
   }
   componentDidMount(){
     this.props.listHealthSafetys(this.props.match.params.id);
@@ -125,11 +125,11 @@ export class ListHealthSafety extends Component { // eslint-disable-line react/p
 }
 
 ListHealthSafety.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  listHealthSafety: makeSelectListHealthSafety()
+  listHealthSafety: makeSelectListHealthSafety(),
 });
 
 function mapDispatchToProps(dispatch) {
