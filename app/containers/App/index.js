@@ -71,11 +71,11 @@ export default function App() {
           <Route path="/add-main-skills" component={AddSkills} />
           <Route path="/resetpassword/:code" component={ResetPassword} /> 
           <Route path="/completeAccount/:id" component={AcceptInvitation} /> 
-          <Route path="/list-Projects" component={ListProjects} /> 
-          <Route path="/list-Projects/add" component={AddProject} />
-          <Route path="/list-Places" component={ListPlaces} />
-          <Route path="/list-Communications/:id" component={ListCommunications} />
-          <Route path="/list-HealthSafety/:id" component={ListHealthSafety} />
+          <Route path="/addProject" component={AddProject} />
+          <Route path="/listProjects" component={ListProjects} /> 
+          <Route path="/places" component={ListPlaces} />
+          <Route path="/list-communications/:id" component={ListCommunications} />
+          <Route path="/list-healthSafety/:id" component={ListHealthSafety} />
           <Route path="/list-Execution/:id" component={ListExecution} />
           <Route path="/list-Documentation/:id" component={ListDocumentation} />
           <Route path="/list-Resources/:id" component={ListResources} />

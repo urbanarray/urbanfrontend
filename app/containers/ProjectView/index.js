@@ -28,7 +28,7 @@ import ProjectTime from './ProjectTime';
 import TeamDisplay from './TeamDisplay';
 import RolesDisplay from './RolesDisplay';
 import TimelineRoles from './TimelineRoles';
-import { styles } from 'assets/styles/variables';
+import {styles} from 'assets/styles/variables';
 import { viewProject } from './actions';
 import AddCommunications from '../AddCommunications';
 import AddExecution from '../AddExecution';
