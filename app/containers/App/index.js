@@ -30,7 +30,7 @@ import AddRoles from 'containers/AddRoles';
 import AcceptInvitation from 'containers/AcceptInvitation';
 import './style.css';
 
-import AddProject from 'containers/ListProjects/AddProject';
+import AddProject from 'containers/AddProject';
 import AddSkills from 'containers/AddSkills';
 import ListProjects from 'containers/ListProjects';
 import ListPlaces from 'containers/Places';

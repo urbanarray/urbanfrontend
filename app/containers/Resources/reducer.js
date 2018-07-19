@@ -16,6 +16,8 @@ import {
   LIST_RESOURCES_ACTION,
   LISTED_RESOURCES_ACTION,
 
+  DELETE_RESOURCES_ACTION
+
 } from './constants';
 
 const initialState = fromJS({
@@ -25,6 +27,7 @@ const initialState = fromJS({
 	loading: false,
 	done: false,
   projectId: null,
+  deleteResources: null,
 
 
 });
@@ -67,6 +70,10 @@ function resourcesReducer(state = initialState, action) {
       .set('listedResources', action.payload)
       .set('loading', false)
       .set('done', true)
+      
+    case DELETE_RESOURCES_ACTION:
+      return state
+        .set('deleteResources', action.payload);
 
     default:
       return state;

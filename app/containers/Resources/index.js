@@ -21,7 +21,8 @@ import saga from './saga';
 import './style.css';
 import 'react-select/dist/react-select.css';
 import { styles, headings } from 'assets/styles/variables';
-import { addResourcesAction, listPlacesAction, listResourcesAction } from './actions';
+
+import { addResourcesAction, listPlacesAction, listResourcesAction, deleteAction } from './actions';
 import UpdateResources from './UpdateResources';
  
 export class Resources extends Component {
@@ -76,6 +77,7 @@ export class Resources extends Component {
     const {name, value} = e.target;
     this.setState({[name]: value});
   }
+
   open = () => {
     this.setState({
       openModel : true,
@@ -88,6 +90,25 @@ export class Resources extends Component {
     });
   }
 
+  closedelete = () => {
+    this.setState({
+      showDeleteModel: false
+    });
+  }
+
+  openDelete = (id) => {
+    this.setState({
+      showDeleteModel: true,
+      modal_delete: id
+    });
+  }
+
+  handleRemove = async (resId) => {
+    await this.props.deleteResources(resId);
+    await this.props.listResource();
+    this.closedelete();
+  }
+  
   renderListPlaces = () =>{
     if (this.props.resources && this.props.resources.listedPlaces && this.props.resources.listedPlaces.length > 0) {
       return this.props.resources.listedPlaces.map(places => {
@@ -99,9 +120,9 @@ export class Resources extends Component {
   }
 
   listResources = () => {
-    
+
     if (this.props.resources && this.props.resources.listedResources && this.props.resources.listedResources.length > 0) {
-        
+
       return this.props.resources.listedResources.map((res) => {
 
         return (
@@ -120,6 +141,7 @@ export class Resources extends Component {
                 </td>
                 <td>
                   <UpdateResources/>
+                  <i title="delete Resource" style={{ marginLeft: '30px' }} onClick={() => this.openDelete(res._id)} className="fa fa-times"> </i>
                 </td>
               </tr>
             );
@@ -139,7 +161,7 @@ export class Resources extends Component {
               <div className="panel-heading" style={styles.primaryDark} >
                 <Row>
                   <Col md={6}>
-                  <h4 style={headings.tableHeading}>Resources</h4>
+                    <h4 style={headings.tableHeading}>Resources</h4>
                   </Col>
                   <Col md={6}>
                     <button onClick={this.open} className="btn btn-success pull-right" style={{marginTop: '3.0px'}}> Add Resources </button>
@@ -244,6 +266,27 @@ export class Resources extends Component {
             <Button className="btn btn-danger" onClick={this.close}>Cancel</Button>
           </Modal.Footer>
         </Modal>
+        <Modal show={this.state.showDeleteModel} onHide={this.closeDelete}>
+          <Modal.Body>
+
+            <div className="form-group mb text-center">
+              <h3 className="p-v-20 fw-i">Are You Sure To Delete This Project?</h3>
+              <button className="btn btn-labeled btn-lg btn-warning mr btn btn-labeled btn-warning mr-default" onClick={this.closedelete}>
+                <span className="btn-label">
+                  <i className="fa fa-warning"></i>
+
+                </span> No
+                   </button>
+              <button className="btn btn-labeled btn-danger btn-lg mr btn btn-labeled btn-danger  mr-default" onClick={() => this.handleRemove(this.state.modal_delete)}>
+                <span className="btn-label">
+                  <i className="fa fa-check">
+                  </i>
+                </span>
+                DELETE </button>
+            </div>
+
+          </Modal.Body>
+        </Modal>
       </div>
     );
   }
@@ -266,6 +309,7 @@ function mapDispatchToProps(dispatch){
     create: (payload) =>dispatch(addResourcesAction(payload)),
     listPlace: () => dispatch(listPlacesAction()),
     listResource: (id) => dispatch(listResourcesAction(id)),
+    deleteResources: (id) => dispatch(deleteAction(id)),
   };
 }
 

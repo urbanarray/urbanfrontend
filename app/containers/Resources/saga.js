@@ -1,10 +1,10 @@
 // import { take, call, put, select } from 'redux-saga/effects';
 import { takeLatest, call, put, select } from 'redux-saga/effects';
 
-import { ADD_RESOURCES_ACTION, LIST_PLACES_ACTION, LIST_RESOURCES_ACTION } from './constants';
-import { addedResourcesAction, listedPlacesAction, listedResourcesAction } from './actions';
+import { ADD_RESOURCES_ACTION, LIST_PLACES_ACTION, LIST_RESOURCES_ACTION, DELETE_RESOURCE_ACTION } from './constants';
+import { addedResourcesAction, listedPlacesAction, listedResourcesAction, deletedAction } from './actions';
 import { makeSelectResources, makeSelectListPlaces, makeSelectProjectId } from './selectors';
-import { addResourcesApi, listPlacesApi, listResourcesApi } from './api';
+import { addResourcesApi, listPlacesApi, listResourcesApi, deleteProjectApi } from './api';
 
 
 
@@ -50,6 +50,20 @@ export function* listResources(){
 	}catch(error){
 		console.log(error)
 	}
+}
+
+
+export function* deleteResource() {
+	try {
+		const resourceId = yield select(makeSelectResourceId());
+		console.log(resourceId)
+		const response = yield call(deleteProjectApi, ResourceId);
+		yield put(deletedAction(response.data));
+	} catch (error) {
+		console.log(error)
+		alert('Got Error.')
+	}
+
 }
 
 

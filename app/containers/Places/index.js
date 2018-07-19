@@ -248,7 +248,6 @@ export class Places extends Component { // eslint-disable-line react/prefer-stat
                     </Col>
                   </div>
 
-
                 </fieldset>
               </form>
             </Modal.Body>
