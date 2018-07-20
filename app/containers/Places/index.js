@@ -85,7 +85,7 @@ export class Places extends Component { // eslint-disable-line react/prefer-stat
     })
   }
 
-    handleRemove = async (proId) => {
+  handleRemove = async (proId) => {
     await this.props.deletePlace(proId);
     await this.props.listPlaces();
     this.closedelete();

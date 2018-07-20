@@ -16,7 +16,8 @@ import {
   LIST_RESOURCES_ACTION,
   LISTED_RESOURCES_ACTION,
 
-  DELETE_RESOURCES_ACTION
+  DELETE_RESOURCES_ACTION,
+  DELETED_RESOURCES_ACTION
 
 } from './constants';
 
@@ -24,10 +25,10 @@ const initialState = fromJS({
 	addResources:[],
   listedPlaces: [],
   listedResources: [],
-	loading: false,
-	done: false,
-  projectId: null,
   deleteResources: null,
+  loading: false,
+  done: false,
+  projectId: null,
 
 
 });

@@ -105,7 +105,7 @@ export class Resources extends Component {
 
   handleRemove = async (resId) => {
     await this.props.deleteResources(resId);
-    await this.props.listResource();
+    await this.props.listResource(this.props.projectId);
     this.closedelete();
   }
   
@@ -114,7 +114,7 @@ export class Resources extends Component {
       return this.props.resources.listedPlaces.map(places => {
         return(
            <option key={Math.random()} value={places._id}>{places.name}</option>
-           )
+        )
       })
     }
   }
@@ -275,14 +275,14 @@ export class Resources extends Component {
                 <span className="btn-label">
                   <i className="fa fa-warning"></i>
 
-                </span> No
-                   </button>
+                </span>No
+              </button>
               <button className="btn btn-labeled btn-danger btn-lg mr btn btn-labeled btn-danger  mr-default" onClick={() => this.handleRemove(this.state.modal_delete)}>
                 <span className="btn-label">
                   <i className="fa fa-check">
                   </i>
-                </span>
-                DELETE </button>
+                </span>DELETE 
+              </button>
             </div>
 
           </Modal.Body>
@@ -309,7 +309,7 @@ function mapDispatchToProps(dispatch){
     create: (payload) =>dispatch(addResourcesAction(payload)),
     listPlace: () => dispatch(listPlacesAction()),
     listResource: (id) => dispatch(listResourcesAction(id)),
-    deleteResources: (id) => dispatch(deleteAction(id)),
+    deleteResources : (payload) => dispatch(deleteAction(payload)),
   };
 }
 

@@ -14,7 +14,5 @@ export const listResourcesApi = (projectId) =>{
 }
 
 export const deleteProjectApi = (id) => {
-
-	return axios.delete('Resources/delete/' + id);
-
+	return axios.delete(`resources/delete/${id}`);
 }

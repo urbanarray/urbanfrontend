@@ -16,8 +16,8 @@ import {
 	LISTED_RESOURCES_ACTION,
 
 	DELETE_RESOURCES_ACTION,
-	DELETED_RESOURCES_ACTION
-
+	DELETED_RESOURCES_ACTION,
+	
 } from './constants';
 
 export function defaultAction() {
