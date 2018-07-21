@@ -72,7 +72,7 @@ export class Dashboard extends Component { // eslint-disable-line react/prefer-s
           <meta name="description" content="Description of Dashboard" />
         </Helmet>
 
-        <h3>DASHBOARD</h3>
+        <h3>DASHBOARD Hello Hannah</h3>
 
         <Grid fluid>
 
