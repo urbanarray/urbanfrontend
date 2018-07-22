@@ -12,3 +12,7 @@ export const listPlacesApi = (payload) =>{
 export const listResourcesApi = (projectId) =>{
 	return axios.get('resources/index/' + projectId )
 }
+
+export const deleteProjectApi = (id) => {
+	return axios.delete(`resources/delete/${id}`);
+}

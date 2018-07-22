@@ -26,24 +26,33 @@ const TeamDisplay = (props) => (
                     </tr>
                 </thead>
                 <tbody>
-                  {props.renderLeadership()}
+                  <tr>
+                    <td>
+                      {props.renderLeadership()}
+                    </td>
+                  </tr>
                 </tbody>
                 <thead>
                     <tr>
-                      <th style={{width: '120px'}}> Team</th>
+                      <td style={{width: '120px'}}> Team</td>
                     </tr>
                 </thead>
                 <tbody>
-                  {props.renderTeam()}
-                </tbody>
-                <thead>
                   <tr>
-                      <Link to="/listTeamDisplay" style={{float: 'right'}}>See all</Link>
+                    <td>
+                      {props.renderTeam()}
+                    </td>
                   </tr>
-              </thead>
+                </tbody>
+
+
             </Table>
+
             { /* END table-responsive */}
-            {/* <div className="panel-footer">Panel Footer</div> */}
+            <div className="panel-footer">
+              <Link to="/listTeamDisplay" style={{float: 'right'}}>See all</Link>
+
+            </div>
         </div>
       </Col>
 

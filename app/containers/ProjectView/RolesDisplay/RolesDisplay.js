@@ -33,8 +33,6 @@ const RolesDisplay = (props) => {
   const renderTable = () => {
       if (props.roles && props.roles.length > 0) {
         if (props.windowWidth < 600) {
-          console.log('render table < 600 is being hit')
-          console.log(props.roles)
           return props.roles.map((roles, i) => {
 
             <Panel bsStyle="primary" key={i}>

@@ -1,10 +1,10 @@
 // import { take, call, put, select } from 'redux-saga/effects';
 import { takeLatest, call, put, select } from 'redux-saga/effects';
 
-import { ADD_RESOURCES_ACTION, LIST_PLACES_ACTION, LIST_RESOURCES_ACTION } from './constants';
-import { addedResourcesAction, listedPlacesAction, listedResourcesAction } from './actions';
-import { makeSelectResources, makeSelectListPlaces, makeSelectProjectId } from './selectors';
-import { addResourcesApi, listPlacesApi, listResourcesApi } from './api';
+import { ADD_RESOURCES_ACTION, LIST_PLACES_ACTION, LIST_RESOURCES_ACTION, DELETE_RESOURCES_ACTION } from './constants';
+import { addedResourcesAction, listedPlacesAction, listedResourcesAction, deletedAction } from './actions';
+import { makeSelectResources, makeSelectListPlaces, makeSelectProjectId, makeSelectDelete } from './selectors';
+import { addResourcesApi, listPlacesApi, listResourcesApi, deleteProjectApi } from './api';
 
 
 
@@ -53,10 +53,28 @@ export function* listResources(){
 }
 
 
+export function* deleteResource() {
+	try {
+		const resourceId = yield select(makeSelectDelete());
+		const response = yield call(deleteProjectApi, resourceId);
+		yield put(deletedAction(response.data));
+		yield listResources();
+		
+
+		
+	} catch (error) {
+		console.log(error)
+		alert('Got Error.')
+	}
+
+}
+
+
 
 export default function* defaultSaga(){
 
 	yield takeLatest(ADD_RESOURCES_ACTION, create);
 	yield takeLatest(LIST_PLACES_ACTION, listingPlaces);
 	yield takeLatest(LIST_RESOURCES_ACTION, listResources);
+	yield takeLatest(DELETE_RESOURCES_ACTION, deleteResource);
 }

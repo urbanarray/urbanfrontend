@@ -12,6 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
 
+import ContentWrapper from 'components/Layout/ContentWrapper';
 import AddCommunications from '../AddCommunications';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -68,11 +69,14 @@ export class ListCommunications extends React.Component { // eslint-disable-line
   }
   render() {
     return (
-      <div>
+      <ContentWrapper>
         <Helmet>
           <title>ListCommunications</title>
           <meta name="description" content="Description of ListCommunications" />
         </Helmet>
+        <h3>Communications
+          <small>List of Communication</small>
+        </h3>
         <Col md={12}>
           <div id="panelDemo8" className="panel panel-primary" >
             <Table id="table-ext-2" responsive striped bordered hover>
@@ -89,7 +93,7 @@ export class ListCommunications extends React.Component { // eslint-disable-line
             </Table>
           </div>
         </Col>
-      </div>
+      </ContentWrapper>
     );
   }
 }

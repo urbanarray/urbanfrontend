@@ -159,7 +159,6 @@ export class ProjectView extends Component { // eslint-disable-line react/prefer
   }
 
   render() {
-    console.log(this.state, 'this is state from the project view component (should contain defined windowwidth)')
     return (
       <ContentWrapper>
           <Helmet>

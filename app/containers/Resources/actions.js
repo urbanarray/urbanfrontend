@@ -5,17 +5,19 @@
  */
 
 import {
-  DEFAULT_ACTION,
-  ADD_RESOURCES_ACTION,
-  ADDED_RESOURCES_ACTION,
+	DEFAULT_ACTION,
+	ADD_RESOURCES_ACTION,
+	ADDED_RESOURCES_ACTION,
 
-  LIST_PLACES_ACTION,
-  LISTED_PLACES_ACTION,
+	LIST_PLACES_ACTION,
+	LISTED_PLACES_ACTION,
 
-  LIST_RESOURCES_ACTION,
-  LISTED_RESOURCES_ACTION,
+	LIST_RESOURCES_ACTION,
+	LISTED_RESOURCES_ACTION,
 
-
+	DELETE_RESOURCES_ACTION,
+	DELETED_RESOURCES_ACTION,
+	
 } from './constants';
 
 export function defaultAction() {
@@ -66,3 +68,17 @@ export function listedResourcesAction(payload){
 	}
 }
 
+export function deleteAction(payload) {
+	return {
+
+		type: DELETE_RESOURCES_ACTION,
+		payload
+	};
+}
+
+export function deletedAction(payload) {
+	return {
+		type: DELETED_RESOURCES_ACTION,
+		payload
+	};
+}

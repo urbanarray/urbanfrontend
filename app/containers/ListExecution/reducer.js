@@ -14,8 +14,8 @@ import {
 
 const initialState = fromJS({
   execution_list: [],
-  loading: false,
-  done: false,
+  execution_loading: false,
+  execution_done: false,
 });
 
 function listExecutionReducer(state = initialState, action) {
@@ -25,13 +25,13 @@ function listExecutionReducer(state = initialState, action) {
     case LIST_EXECUTION_ACTION:
       return state
         .set('execution_list', action.payload)
-        .set('loading', true)
-        .set('done', false)
+        .set('execution_loading', true)
+        .set('execution_done', false)
     case LISTED_EXECUTION_ACTION:
       return state
         .set('execution_list', action.payload)
-        .set('loading', false)
-        .set('done', true)
+        .set('execution_loading', false)
+        .set('execution_done', true)
     default:
       return state;
   }

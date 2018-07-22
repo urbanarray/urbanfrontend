@@ -21,6 +21,7 @@ const initialState = fromJS({
   listedPlaces: [],
 	loading: false,
 	done: false,
+  updateDone: false,
 });
 
 function updateResourcesReducer(state = initialState, action) {
