@@ -1,8 +1,8 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
-import { LIST_COMMUNICATION_ACTION } from "./constants";
-import { listedCommunication } from "./actions";
-import { listCommunications } from "./selectors";
-import { listCommunicationApi } from "./api";
+import { LIST_COMMUNICATION_ACTION } from './constants';
+import { listedCommunication } from './actions';
+import { listCommunications } from './selectors';
+import { listCommunicationApi } from './api';
 
 
 export function * listCommunication() {

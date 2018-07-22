@@ -32,6 +32,22 @@ class ClaimButton extends Component {
         })
     }
 
+    renderButton() {
+      if (this.props.windowWidth < 600) {
+        return (
+          <button onClick={this.open} className="btn btn-block btn-primary" style={styles.primaryLight}>
+            <span> Details/Claim </span>
+          </button>
+        )
+      } else {
+        return (
+          <button onClick={this.open} className="btn btn-block btn-primary" style={styles.primary}>
+            <span> Claim </span>
+          </button>
+        )
+      }
+    }
+
     renderModal() {
         return(
             <Modal show={this.state.showModal} onHide={this.close}>
@@ -52,10 +68,7 @@ class ClaimButton extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.open} className="btn btn-block" style={styles.primary} >
-                {/* need span to wrap text, otherwise we get a nodeparent error */}
-                    <span> Claims </span>
-                </button>
+                {this.renderButton()}
                 {this.renderModal()}
             </div>
 

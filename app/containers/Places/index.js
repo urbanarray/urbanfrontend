@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -18,12 +18,12 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectPlaces from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { listPlacesAction, deletePlacesAction, updatePlacesAction } from "./actions";
-import AddPlace from "containers/AddPlace";
-import { styles, headings } from '../../assets/styles/variables';
+import { listPlacesAction, deletePlacesAction, updatePlacesAction } from './actions';
+import AddPlace from './AddPlace';
+import { styles, headings } from 'assets/styles/variables';
 
 
-export class Places extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class Places extends Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props, content){
 
@@ -286,11 +286,11 @@ export class Places extends React.Component { // eslint-disable-line react/prefe
 }
 
 Places.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
-  places: makeSelectPlaces(),
+  places: makeSelectPlaces()
 });
 
 function mapDispatchToProps(dispatch) {
@@ -298,7 +298,7 @@ function mapDispatchToProps(dispatch) {
     dispatch,
     listPlaces: () => dispatch(listPlacesAction()),
     deletePlace : (payload) => dispatch(deletePlacesAction(payload)),
-    update : (payload) => dispatch(updatePlacesAction(payload)),
+    update : (payload) => dispatch(updatePlacesAction(payload))
   };
 }
 
@@ -310,5 +310,5 @@ const withSaga = injectSaga({ key: 'places', saga });
 export default compose(
   withReducer,
   withSaga,
-  withConnect,
+  withConnect
 )(Places);

@@ -1,8 +1,8 @@
-import {takeLatest, call, put, select} from 'redux-saga/effects';
-import { CREATE_PlACE_ACTION } from "./constants";
-import { createdPlaceAction } from "./actions";
-import { makeSelectPlace } from "./selectors";
-import { createPlaceApi } from "./api";
+import { takeLatest, call, put, select } from 'redux-saga/effects';
+import { CREATE_PlACE_ACTION } from './constants';
+import { createdPlaceAction } from './actions';
+import { makeSelectPlace } from './selectors';
+import { createPlaceApi } from './api';
 import { listPlaces } from 'containers/Places/saga';
 
 

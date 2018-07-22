@@ -1,8 +1,8 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
-import { SET_NEW_PASSWORD } from "./constants";
-import { passwordResetDoneAction, errorAction } from "./actions";
-import { makeSelectNewPassword } from "./selectors";
-import { setNewPasswordApi } from "./api";
+import { SET_NEW_PASSWORD } from './constants';
+import { passwordResetDoneAction, errorAction } from './actions';
+import { makeSelectNewPassword } from './selectors';
+import { setNewPasswordApi } from './api';
 
 
 export function* setNewPassword() {

@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -14,12 +14,12 @@ import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import { listDocumentAction } from "./actions";
+import { listDocumentAction } from './actions';
 import makeSelectListDocumentation from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
-export class ListDocumentation extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class ListDocumentation extends Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props)
   }

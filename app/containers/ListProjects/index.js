@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -24,12 +24,12 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import * as a from "./actions";
 import AddProject from 'containers/AddProject';
-import { styles, headings } from '../../assets/styles/variables';
+import { styles, headings } from 'assets/styles/variables';
 
 
 
 
-export class ListProjects extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class ListProjects extends Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props){
     super(props)
@@ -58,7 +58,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
         pkeywords: '',
       },
       modal_delete: null,
-      page_no: 1,
+      page_no: 1
     };
   }
 
@@ -70,7 +70,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
 
   closedelete = () => {
     this.setState({
-      showDeleteModel: false,
+      showDeleteModel: false
     });
   }
 
@@ -79,7 +79,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
     this.setState({
       showModal: true,
 
-      toedit: obj,
+      toedit: obj
     });
   }
 
@@ -108,12 +108,12 @@ export class ListProjects extends React.Component { // eslint-disable-line react
     e.preventDefault();
 
      this.props.update(this.state.toedit);
-     this.close()
+     this.close();
   }
 
   handleClick = (value) => {
     this.setState({
-      show: value,
+      show: value
     });
 
   }
@@ -125,7 +125,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
 
     toedit[name] = value;
     this.setState({
-      toedit: toedit,
+      toedit: toedit
     });
   }
 
@@ -134,7 +134,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
 
     toedit[name] = value;
     this.setState({
-      toedit: toedit,
+      toedit: toedit
     });
 
   }

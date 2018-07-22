@@ -3,22 +3,21 @@ import {
   FIND_USER_ACTION,
   ACCEPT_INVITATION_ACTION,
   INVITATION_ACCEPTED_ACTION,
-  INVITED_USER_DATA_ACTION,
-} from "./constants";
+  INVITED_USER_DATA_ACTION
+} from './constants';
 import {
   userFoundAction,
   invitationAcceptedAction,
   invitedUserDataAction,
-  acceptInvitationAction,
-
-} from "./actions";
+  acceptInvitationAction
+} from './actions';
 import {
   makeSelectUserId,
   makeSelectUserData,
   makeSelectInvitedUserData,
-} from "./selectors";
+} from './selectors';
 
-import { findUserApi, acceptInvitationApi } from "./api";
+import { findUserApi, acceptInvitationApi } from './api';
 
 
 export function* findUser() {

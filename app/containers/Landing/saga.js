@@ -2,10 +2,10 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
 import { fromJS } from 'immutable';
 
-import { SUBMIT_CODE_ACTION } from "./constants";
-import { submitedCodeAction, errorsAction } from "./actions";
-import { selectLandingDomain, makeSelectLanding, makeSelectSubmitCode } from "./selectors";
-import { submitCodeApi } from "./api"
+import { SUBMIT_CODE_ACTION } from './constants';
+import { submitedCodeAction, errorsAction } from './actions';
+import { selectLandingDomain, makeSelectLanding, makeSelectSubmitCode } from './selectors';
+import { submitCodeApi } from './api';
 import { login as loginGLobal } from 'containers/App/actions';
 import { saveState } from 'utils/persistState';
 import { setToken } from 'utils/axios';

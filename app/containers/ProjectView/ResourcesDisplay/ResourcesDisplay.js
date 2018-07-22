@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {Row, Col, Table} from 'react-bootstrap';
-import {styles, headings} from '../../../assets/styles/variables';
+import { Row, Col, Table } from 'react-bootstrap';
+import { styles, headings } from 'assets/styles/variables';
 
 const ResourcesDisplay = (props) => (
     <Col md={6}>

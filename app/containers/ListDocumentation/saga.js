@@ -1,9 +1,9 @@
 // import { take, call, put, select } from 'redux-saga/effects';
 import { takeLatest, take, call, put, select } from 'redux-saga/effects';
-import { listedDocumentAction } from "./actions";
-import { LIST_DOCUMENT_ACTION } from "./constants";
-import { makeSelectListDocument } from "./selectors";
-import { listDocumentAPI } from "./api";
+import { listedDocumentAction } from './actions';
+import { LIST_DOCUMENT_ACTION } from './constants';
+import { makeSelectListDocument } from './selectors';
+import { listDocumentAPI } from './api';
 
 export function* listDocs() {
 

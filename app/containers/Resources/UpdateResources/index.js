@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -24,7 +24,7 @@ import { styles, headings } from '../../../assets/styles/variables';
 
 
 
-export class UpdateResources extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class UpdateResources extends Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props){
     super(props)
 

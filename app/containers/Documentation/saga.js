@@ -1,8 +1,8 @@
 import { takeLatest, take, call, put, select } from 'redux-saga/effects';
-import { createDocumentAction, createdDocumentAction, listedDocumentAction } from "./actions";
-import { CREATE_DOCUMENT_ACTION, LIST_DOCUMENT_ACTION } from "./constants";
-import { makeSelectDocument, makeSelectListDocument } from "./selectors";
-import { documentAPI, listDocumentAPI } from "./api";
+import { createDocumentAction, createdDocumentAction, listedDocumentAction } from './actions';
+import { CREATE_DOCUMENT_ACTION, LIST_DOCUMENT_ACTION } from './constants';
+import { makeSelectDocument, makeSelectListDocument } from './selectors';
+import { documentAPI, listDocumentAPI } from './api';
 // Individual exports for testing
 
 export function* create() {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Table, Panel } from 'react-bootstrap';
+import ReactTooltip from 'react-tooltip';
 
 import { styles, headings } from 'assets/styles/variables';
 
@@ -53,7 +54,7 @@ const YourRoleTable = (props) => {
         return props.yourRoles.map((roleInfo, i) => {
           return (
             <tr key={i}>
-              <td>
+              <td data-tip={roleInfo.project}>
                 {roleInfo.role}
               </td>
 
@@ -96,6 +97,7 @@ const YourRoleTable = (props) => {
         <tbody>
           {renderTable()}
         </tbody>
+        <ReactTooltip />
       </Table>
     )
   }

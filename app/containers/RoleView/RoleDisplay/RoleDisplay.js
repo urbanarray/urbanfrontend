@@ -1,6 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import {
+  Row,
+  Col,
+  Table,
+  Button,
+  Modal,
+  Panel
 
-import { Col, Table, Panel } from 'react-bootstrap';
+} from 'react-bootstrap';
 import { styles, headings } from '../../../assets/styles/variables';
 
 import ClaimButton from './ClaimButton';
@@ -19,6 +27,9 @@ const RoleDisplay = (props) => {
                         <th>Date/Time</th>
                         <th>Location</th>
                         <th>Action</th>
+                        <th>
+                            <Link to={"/list-healthSafety/"+props.projectId} style={{float: 'right'}}>See all</Link>
+                        </th>
                     </tr>
                 </thead>
             )
@@ -29,8 +40,8 @@ const RoleDisplay = (props) => {
         if (props.windowWidth < 600) {
             return (
                 <Panel bsStyle="primary">
-                    <Panel.Heading style={{ textAlign: 'center', backgroundColor: 'white', color: 'black' }}>
-                        <Panel.Title componentClass="h3" style={headings.tableHeading}>{props.roleview.roleDetail.role}</Panel.Title>
+                    <Panel.Heading style={styles.primary}>
+                        <Panel.Title componentClass="h3" style={headings.subHeading}>{props.roleview.roleDetail.role}</Panel.Title>
                     </Panel.Heading>
                     <Panel.Body style={{ textAlign: 'center' }}>
                         Project: {props.roleview.roleDetail.project}<br />
@@ -38,7 +49,7 @@ const RoleDisplay = (props) => {
                         Location: {props.roleview.roleDetail.location} <br />
                         Date: {props.roleview.roleDetail.date}<br />
                         Time: {`${props.roleview.roleDetail.startTime} - ${props.roleview.roleDetail.endTime}`}<br /><br/>
-                        <ClaimButton roleDetail={props.roleview.roleDetail} />
+                        <ClaimButton roleDetail={props.roleview.roleDetail} windowWidth={props.windowWidth}/>
                     </Panel.Body>
                 </Panel>
             )

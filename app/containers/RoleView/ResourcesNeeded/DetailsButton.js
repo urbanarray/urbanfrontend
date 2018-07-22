@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import { Modal } from 'react-bootstrap';
-import {styles} from '../../../assets/styles/variables';
+import { styles } from 'assets/styles/variables';
+
 
 class DetailsButton extends Component {
     constructor(props, context) {
@@ -30,6 +31,22 @@ class DetailsButton extends Component {
         })
     }
 
+    renderButton() {
+      if (this.props.windowWidth < 600) {
+        return (
+          <button onClick={this.open} className="btn btn-block btn-primary" style={styles.primaryLight}>
+            <span> Details/Claim </span>
+          </button>
+        )
+      } else {
+        return (
+          <button onClick={this.open} className="btn btn-block btn-primary" style={styles.primary}>
+            <span> Details </span>
+          </button>
+        )
+      }
+    }
+
     renderModal() {
         return(
             <Modal show={this.state.showModal} onHide={this.close}>
@@ -49,10 +66,7 @@ class DetailsButton extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.open} className="btn btn-block" style={styles.primary} >
-                {/* need span to wrap text, otherwise we get a nodeparent error */}
-                    <span> Details </span>
-                </button>
+                {this.renderButton()}
                 {this.renderModal()}
             </div>
 

@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -17,9 +17,9 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectAddVolunteer from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import {listRolesAction, createAction} from './actions';
+import { listRolesAction, createAction } from './actions';
 
-export class AddVolunteer extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class AddVolunteer extends Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props, context) {
     super(props, context);
@@ -168,14 +168,14 @@ AddVolunteer.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  addvolunteer: makeSelectAddVolunteer(),
+  addvolunteer: makeSelectAddVolunteer()
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     listRoles: () => dispatch(listRolesAction()),
-    create: (payload) => dispatch(createAction(payload)),
+    create: (payload) => dispatch(createAction(payload))
   };
 }
 
@@ -187,5 +187,5 @@ const withSaga = injectSaga({ key: 'addVolunteer', saga });
 export default compose(
   withReducer,
   withSaga,
-  withConnect,
+  withConnect
 )(AddVolunteer);

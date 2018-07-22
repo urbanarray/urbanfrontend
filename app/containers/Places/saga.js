@@ -1,8 +1,8 @@
-import {takeLatest, call, put, select} from 'redux-saga/effects';
-import {LIST_PLACES_ACTION, LISTED_PLACES_ACTION, DELETE_PLACES_ACTION, DELETED_PLACES_ACTION, UPDATE_PLACES_ACTION, UPDATED_PLACES_ACTION} from "./constants";
-import {listedPlacesAction, listPlacesAction, deletePlacesAction, deletedPlacesAction, updatePlacesAction, updatedPlacesAction} from "./actions";
-import {listPlacesApi, deletePlaceApi, updatePlacesApi} from "./api.js";
-import { makeSelectDelete, makeSelectUpdate } from "./selectors";
+import { takeLatest, call, put, select } from 'redux-saga/effects';
+import { LIST_PLACES_ACTION, LISTED_PLACES_ACTION, DELETE_PLACES_ACTION, DELETED_PLACES_ACTION, UPDATE_PLACES_ACTION, UPDATED_PLACES_ACTION } from './constants';
+import { listedPlacesAction, listPlacesAction, deletePlacesAction, deletedPlacesAction, updatePlacesAction, updatedPlacesAction } from './actions';
+import { listPlacesApi, deletePlaceApi, updatePlacesApi } from './api.js';
+import { makeSelectDelete, makeSelectUpdate } from './selectors';
 
 
 export function* listPlaces() {

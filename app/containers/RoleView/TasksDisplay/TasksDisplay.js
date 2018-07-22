@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Table, Panel } from 'react-bootstrap';
 
-import { styles, headings } from '../../../assets/styles/variables';
+import { styles, headings } from 'assets/styles/variables';
 
 import DetailsButton from './DetailsButton';
 import ResourcesButton from './ResourcesButton';
@@ -33,16 +33,17 @@ const TasksDisplay = (props) => {
                 return props.tasks.map((task, i) => {
                     return (
                         <Panel bsStyle="primary" key={i}>
-                            <Panel.Heading style={{ textAlign: 'center', backgroundColor: 'white', color: 'black' }}>
-                                <Panel.Title componentClass="h3">{task.title}</Panel.Title>
+                            <Panel.Heading style={styles.primary}>
+                                <Panel.Title componentClass="h3" style={headings.subHeading}>{task.title}</Panel.Title>
                             </Panel.Heading>
                             <Panel.Body style={{ textAlign: 'center' }}>
                                 Description: {task.description}<br />
                                 Date: {task.date}<br />
                                 Time: {`${task.startTime} - ${task.endTime}`}<br />
+
+                                <DetailsButton  task={task} windowWidth={props.windowWidth}/>
+                                <ResourcesButton  task={task} />
                             </Panel.Body>
-                            <DetailsButton  task={task} />
-                            <ResourcesButton  task={task} />
                         </Panel>
                     )
                 })

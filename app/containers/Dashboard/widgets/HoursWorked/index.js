@@ -1,1 +1,1 @@
-export {default} from './HoursWorked.js';
+export { default } from './HoursWorked.js';

@@ -23,7 +23,6 @@ function listExecutionReducer(state = initialState, action) {
     case DEFAULT_ACTION:
       return state;
     case LIST_EXECUTION_ACTION:
-      // console.log(action.payload)
       return state
         .set('execution_list', action.payload)
         .set('loading', true)

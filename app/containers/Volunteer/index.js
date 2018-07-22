@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -20,14 +20,14 @@ import makeSelectVolunteer from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { listVolunteerAction, resendInvitationAction } from './actions';
-import AddVolunteer from 'containers/AddVolunteer';
-import { styles, headings } from '../../assets/styles/variables';
+import AddVolunteer from './AddVolunteer';
+import { styles, headings } from 'assets/styles/variables';
 
 
-export class Volunteer extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class Volunteer extends Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       hide: 'hide',
@@ -122,7 +122,6 @@ export class Volunteer extends React.Component { // eslint-disable-line react/pr
 
           </div>
           { /* END panel */}
-          { /* START panel */}
 
         </ContentWrapper>
 
@@ -132,18 +131,18 @@ export class Volunteer extends React.Component { // eslint-disable-line react/pr
 }
 
 Volunteer.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
-  volunteer: makeSelectVolunteer(),
+  volunteer: makeSelectVolunteer()
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     listVolunteers:() => dispatch(listVolunteerAction()),
-    resendEmail: (payload) => dispatch(resendInvitationAction(payload)),
+    resendEmail: (payload) => dispatch(resendInvitationAction(payload))
   };
 }
 
@@ -155,5 +154,5 @@ const withSaga = injectSaga({ key: 'volunteer', saga });
 export default compose(
   withReducer,
   withSaga,
-  withConnect,
+  withConnect
 )(Volunteer);
