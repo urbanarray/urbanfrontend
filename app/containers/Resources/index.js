@@ -137,7 +137,7 @@ export class Resources extends Component {
                   Quantity: {res.quantity} <br />
                   Location: {(res.placeId) ? res.placeId.name : ""}
                   Date Needed: {res.dateId}
-                  <UpdateResources/>
+                  <UpdateResources windowWidth={this.props.windowWidth}/>
                 </Panel.Body>
               </Panel>
             )
@@ -190,7 +190,7 @@ export class Resources extends Component {
 
   render() {
     return(
-      <div>
+      <Row>
         <Helmet>
           <title>Resources</title>
           <meta name="description" content="Description of Resources" />
@@ -318,7 +318,7 @@ export class Resources extends Component {
 
           </Modal.Body>
         </Modal>
-      </div>
+      </Row>
     );
   }
 }

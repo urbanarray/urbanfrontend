@@ -34,25 +34,27 @@ const RolesDisplay = (props) => {
       if (props.roles && props.roles.length > 0) {
         if (props.windowWidth < 600) {
           return props.roles.map((roles, i) => {
+            return (
+              <Panel bsStyle="primary" key={i}>
+                <Panel.Heading style={styles.primary}>
+                  <Panel.Title componentClass="h3" style={headings.subHeading}>{roles.title}</Panel.Title>
+                </Panel.Heading>
+                <Panel.Body style={{ textAlign: 'center' }}>
+                  Project: {roles.project} <br />
+                  Date: {roles.date}, {`${roles.startTime} - ${roles.endTime}`} <br/>
+                  PTS: {roles.pts} <br />
+                  AC: {roles.ac} <br />
+                  <Link
+                    to="/roleView"
+                    type="button"
+                    className="btn btn-primary btn-sm btn-block"
+                    color="default"
+                    style={styles.primaryLight}>Details
+                  </Link>
+                </Panel.Body>
+              </Panel>
+            )
 
-            <Panel bsStyle="primary" key={i}>
-              <Panel.Heading style={styles.primary}>
-                <Panel.Title componentClass="h3" style={headings.subHeading}>{roles.title}</Panel.Title>
-              </Panel.Heading>
-              <Panel.Body style={{ textAlign: 'center' }}>
-                Project: {roles.project} <br />
-                Date: {roles.date}, {`${roles.startTime} - ${roles.endTime}`} <br/>
-                PTS: {roles.pts} <br />
-                AC: {roles.ac} <br />
-                <Link
-                  to="/roleView"
-                  type="button"
-                  className="btn btn-primary btn-sm btn-block"
-                  color="default"
-                  style={styles.primary}>Details
-                </Link>
-              </Panel.Body>
-            </Panel>
           })
         } else {
           return props.roles.map((roles) => {

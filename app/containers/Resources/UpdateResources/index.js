@@ -18,7 +18,7 @@ import { makeSelectUpdateResources, makeSelectListedPlaces } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { updateResourceAction, listPlacesAction } from './actions'
-import { styles, headings } from '../../../assets/styles/variables';
+import { styles, headings } from 'assets/styles/variables';
 
 
 
@@ -86,12 +86,27 @@ export class UpdateResources extends Component { // eslint-disable-line react/pr
     }
   }
 
+  renderButton = () => {
+    if (this.props.windowWidth < 600) {
+      return (
+        <button onClick={this.open} className="btn btn-block" style={styles.primaryLight}>
+          <span>Edit this Resource</span>
+        </button>
+      )
+    } else {
+      return (
+        <button onClick={this.open} className="btn" style={styles.primary}>
+          <span>Edit this Resource</span>
+        </button>
+      )
+    }
+  }
+
   render() {
     return (
       <div>
 
-            <button onClick={this.open} className="btn btn-primary" style={{display: 'inline'}, styles.primary}>Edit this Resource </button>
-
+        {this.renderButton()}
             { /* END table-responsive */}
             {/* <div className="panel-footer">Panel Footer</div> */}
         <Modal show={this.state.openModel} onHide={this.close}>
