@@ -117,40 +117,7 @@ export class ProjectView extends Component { // eslint-disable-line react/prefer
 
 
 
-  renderProjectResources = () => {
-    if (this.props.projectview.projectResources) {
-      return this.props.projectview.projectResources.map((resource) => {
-        return (
-          <tr key={Math.random()}>
-            <td>
-              {resource.name}
-            </td>
 
-            <td>
-              {resource.quantity}
-            </td>
-            <td>
-              {resource.locationNeeded}
-            </td>
-            <td>
-              {resource.date}<br />
-              {`${resource.startTime} - ${resource.endTime}`}
-            </td>
-            <td>
-              {/* <button type="button" className="btn btn-primary btn-block btn-sm"  > Pledge </button> */}
-              <Link
-                to="/projectView"
-                type="button"
-                className="btn btn-success btn-block btn-sm"
-                style={styles.primaryLight}>Details/Claim
-              </Link>
-            </td>
-
-          </tr>
-        );
-      });
-    }
-  }
 
   renderProjectDetails = () => {
     if (this.props.projectview.projectDetail) {
@@ -223,7 +190,7 @@ export class ProjectView extends Component { // eslint-disable-line react/prefer
           </Col>
           <Col md={12}>
             <Resources
-              projectId={this.props.match.params.id}
+              projectId={this.props.match.params.id} resources={this.props.projectview.projectResources} windowWidth={this.state.width}
             />
           </Col>
         </Row>

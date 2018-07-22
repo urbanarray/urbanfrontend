@@ -90,7 +90,7 @@ export class UpdateResources extends Component { // eslint-disable-line react/pr
     return (
       <div>
 
-            <button onClick={this.open} className="btn btn-primary" style={styles.primary}>UpdateResources </button>
+            <button onClick={this.open} className="btn btn-primary" style={{display: 'inline'}, styles.primary}>Edit this Resource </button>
 
             { /* END table-responsive */}
             {/* <div className="panel-footer">Panel Footer</div> */}
