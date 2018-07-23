@@ -92,13 +92,16 @@ const YourRoleTable = (props) => {
     )
   } else {
     return (
-      <Table id="table-ext-2" responsive striped bordered hover>
-        {renderHeader()}
-        <tbody>
-          {renderTable()}
-        </tbody>
+      <div>
+        <Table id="table-ext-2" responsive striped bordered hover>
+          {renderHeader()}
+          <tbody>
+            {renderTable()}
+          </tbody>
+        </Table>
         <ReactTooltip />
-      </Table>
+      </div>
+
     )
   }
 }
