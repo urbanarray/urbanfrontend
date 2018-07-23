@@ -12,20 +12,21 @@ export default class InterviewMember extends Component {
 
   render() {
     return (
-      <Col lg={6}>
-        { /* START panel */}
-        <div id="panelDemo8" className="panel panel-default panel-demo">
-          <div className="panel-heading" style={styles.primaryDark}>
-            <h4 style={headings.tableHeading}>Location</h4>
-          </div>
-          <div className="panel-body text-center">
-            <p>
-              {this.props.location.name.toUpperCase()}
-            </p>
-          </div>
-        </div>
-        { /* END panel */}
-      </Col>
+      // 3 step graphic here
+      <div>
+        { logo }
+        <h1>Meet with a Member</h1>
+        <h3>Thanks for taking the time to fill out your information! You're almost there.</h3>
+
+        <h4>Ready to Take the Next Step?</h4>
+        <button>Meet with a Member</button>
+
+        <h4>Not quite ready yet?</h4>
+        <button>Continue to Dashboard</button>
+
+        <a href="#">Back</a>
+
+      </div>
     )
   }
 }

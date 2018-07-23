@@ -4,7 +4,7 @@ import { Col } from 'react-bootstrap';
 import { styles, headings } from 'assets/styles/variables';
 
 // urban array logo
-import logo from '../../../../../assets/logo/logo.png';
+import logo from 'assets/img/logo.png';
 
 export default class GetInvolved extends Component {
 
@@ -23,7 +23,7 @@ export default class GetInvolved extends Component {
 
         <div>
           <h3>First Step</h3>
-          <h4>Sign up</h4>
+          <h4>Sign Up</h4>
           <p>Let's get this process started by entering in some basic information.</p>
         </div>
 
