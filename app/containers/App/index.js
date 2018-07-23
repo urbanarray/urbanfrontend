@@ -12,7 +12,7 @@ import { browserHistory, Route, Switch, BrowserRouter as Router } from 'react-ro
 
 import Landing from 'containers/Landing';
 
-import Signup from 'containers/Signup/Loadable';
+import Signup from 'containers/Onboarding/Signup/Loadable';
 import Login from 'containers/Login/Loadable';
 import Profile from 'containers/Profile/Loadable';
 import Dashboard from 'containers/Dashboard/Loadable';
