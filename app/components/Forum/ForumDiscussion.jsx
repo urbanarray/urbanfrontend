@@ -12,6 +12,12 @@ class ForumDiscussion extends React.Component {
         };
     }
 
+    handleClick = () => {
+      this.setState({
+        replyCollapse: !this.state.replyCollapse
+      })
+    }
+
     render() {
         return (
             <ContentWrapper>
@@ -193,7 +199,7 @@ class ForumDiscussion extends React.Component {
                     </Table>
                 </Panel>
                 <div className="text-center mb-lg">
-                    <Button onClick={ ()=> this.setState({ replyCollapse: !this.state.replyCollapse })} bsStyle="primary">Reply to this topic</Button>
+                    <Button onClick={this.handleClick} bsStyle="primary">Reply to this topic</Button>
                 </div>
                 <Collapse in={this.state.replyCollapse}>
                     <div>

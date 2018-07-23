@@ -218,6 +218,7 @@ export class Resources extends Component {
                   <thead>
                     <tr style={{width: '100%'}}>
                       <th style={{width: '120px'}}>
+                        {/* this line is causing the error DOM nesting error, not sure how to fix */}
                         <Link to={"/list-Resources/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
                       </th>
                     </tr>
