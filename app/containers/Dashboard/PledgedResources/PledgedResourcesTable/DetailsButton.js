@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import { Modal, Button } from 'react-bootstrap';
-import { styles } from 'assets/styles/variables';
+import { Modal } from 'react-bootstrap';
+import {styles} from 'assets/styles/variables';
 
 class DetailsButton extends Component {
     constructor(props, context) {
@@ -40,7 +40,7 @@ class DetailsButton extends Component {
                     {this.state.details}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={this.close}>Cancel</Button>
+                    <button onClick={this.close}>Cancel</button>
                 </Modal.Footer>
             </Modal>
         )
@@ -49,7 +49,7 @@ class DetailsButton extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.open} className="btn btn-block" style={styles.primaryLight} >
+                <button onClick={this.open} className="btn btn-block" style={styles.primary} >
                 {/* need span to wrap text, otherwise we get a nodeparent error */}
                     <span> Details </span>
                 </button>

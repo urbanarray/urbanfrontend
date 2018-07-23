@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import { Modal, Button } from 'react-bootstrap';
-import { styles } from 'assets/styles/variables';
+import { Modal } from 'react-bootstrap';
+import {styles} from '../../../assets/styles/variables';
 
 class DetailsButton extends Component {
     constructor(props, context) {
@@ -30,6 +30,22 @@ class DetailsButton extends Component {
         })
     }
 
+    renderButton() {
+      if (this.props.windowWidth < 600) {
+        return (
+          <button onClick={this.open} className="btn btn-block btn-primary" style={styles.primaryLight}>
+            <span> Details </span>
+          </button>
+        )
+      } else {
+        return (
+          <button onClick={this.open} className="btn btn-block btn-primary" style={styles.primary}>
+            <span> Details </span>
+          </button>
+        )
+      }
+    }
+
     renderModal() {
         return(
             <Modal show={this.state.showModal} onHide={this.close}>
@@ -40,7 +56,7 @@ class DetailsButton extends Component {
                     {this.state.details}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={this.close}>Cancel</Button>
+                    <button style={styles.primary} onClick={this.close}>Cancel</button>
                 </Modal.Footer>
             </Modal>
         )
@@ -49,10 +65,7 @@ class DetailsButton extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.open} className="btn btn-block" style={styles.primary} >
-                {/* need span to wrap text, otherwise we get a nodeparent error */}
-                    <span> Details </span>
-                </button>
+                {this.renderButton()}
                 {this.renderModal()}
             </div>
 

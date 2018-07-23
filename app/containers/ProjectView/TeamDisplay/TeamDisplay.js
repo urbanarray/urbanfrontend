@@ -44,14 +44,15 @@ const TeamDisplay = (props) => (
                     </td>
                   </tr>
                 </tbody>
-                <thead>
-                  <tr>
-                      <Link to="/listTeamDisplay" style={{float: 'right'}}>See all</Link>
-                  </tr>
-              </thead>
+
+
             </Table>
+
             { /* END table-responsive */}
-            {/* <div className="panel-footer">Panel Footer</div> */}
+            <div className="panel-footer">
+              <Link to="/listTeamDisplay" style={{float: 'right'}}>See all</Link>
+
+            </div>
         </div>
       </Col>
 

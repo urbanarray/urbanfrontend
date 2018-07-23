@@ -29,15 +29,16 @@ const SimilarRoles = (props) => {
                 return props.similarRoles.map((similarRole, i) => {
                     return (
                         <Panel bsStyle="primary" key={i}>
-                            <Panel.Heading style={{ textAlign: 'center', backgroundColor: 'white', color: 'black' }}>
-                                <Panel.Title componentClass="h3" style={headings.tableHeading}>{similarRole.role}</Panel.Title>
+                            <Panel.Heading style={styles.primary}>
+                                <Panel.Title componentClass="h3" style={headings.subHeading}>{similarRole.role}</Panel.Title>
                             </Panel.Heading>
                             <Panel.Body style={{ textAlign: 'center' }}>
                                 Description: {similarRole.description}<br />
                                 Date: {similarRole.date}<br />
                                 Time: {`${similarRole.startTime} - ${similarRole.endTime}`}<br />
+                                <ClaimButton similarRole={similarRole}  windowWidth={props.windowWidth}/>
                             </Panel.Body>
-                            <ClaimButton similarRole={similarRole}  />
+
                         </Panel>
                     )
                 })

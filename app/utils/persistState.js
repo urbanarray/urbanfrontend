@@ -21,9 +21,9 @@ export const loadState = () => {
  */
 
 export const saveState = (state) => {
-    try{  
+    try{
         const serializedState = JSON.stringify(state);
-        localStorage.setItem(state_name, serializedState);   
+        localStorage.setItem(state_name, serializedState);
     }
     catch(error){
         return fasle;
@@ -41,7 +41,7 @@ export const clearState = () => {
 
 export const accessToken = () => {
     const user = loadState();
-  
+
     if (user) {
         return "Bearer " + user.access_token;
     }

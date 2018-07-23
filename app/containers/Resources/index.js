@@ -1,6 +1,6 @@
 /**
  *
- * Resources
+ * Resources - standalone component.
  *
  */
 
@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
+import { Table, Row, Col, Button, Modal, Panel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import injectSaga from 'utils/injectSaga';
@@ -24,7 +24,7 @@ import { styles, headings } from 'assets/styles/variables';
 
 import { addResourcesAction, listPlacesAction, listResourcesAction, deleteAction } from './actions';
 import UpdateResources from './UpdateResources';
- 
+
 export class Resources extends Component {
   constructor(props){
     super(props)
@@ -53,7 +53,7 @@ export class Resources extends Component {
 
       },
       this.props.listResource(this.props.projectId)
-      
+
    );
     setTimeout(() =>{
       this.close();
@@ -108,8 +108,8 @@ export class Resources extends Component {
     await this.props.listResource(this.props.projectId);
     this.closedelete();
   }
-  
-  renderListPlaces = () =>{
+
+  renderListPlaces = () =>{ // renders a random list of places for some reason.
     if (this.props.resources && this.props.resources.listedPlaces && this.props.resources.listedPlaces.length > 0) {
       return this.props.resources.listedPlaces.map(places => {
         return(
@@ -119,39 +119,78 @@ export class Resources extends Component {
     }
   }
 
-  listResources = () => {
+  listResources = () => { // renders the table of resources
 
     if (this.props.resources && this.props.resources.listedResources && this.props.resources.listedResources.length > 0) {
-
-      return this.props.resources.listedResources.map((res) => {
-
+      if (this.props.windowWidth < 600) {
         return (
-              <tr key={Math.random()}>
-                <td>
-                  {res.item}
-                </td>
-                <td>
-                  {res.quantity}
-                </td>
-                <td>
-                  {(res.placeId) ? res.placeId.name : ''}
-                </td>
-                <td>
-                  {res.dateId}
-                </td>
-                <td>
-                  <UpdateResources/>
-                  <i title="delete Resource" style={{ marginLeft: '30px' }} onClick={() => this.openDelete(res._id)} className="fa fa-times"> </i>
-                </td>
-              </tr>
-            );
-          });
-        }
+          this.props.resources.listedResources.map((res, i) => {
+            return (
+              <Panel bsStyle="primary" key={i}>
+                <Panel.Heading style={styles.primary}>
+                  <Panel.Title componentClass="h3" style={headings.subHeading}>{res.item} </Panel.Title>
+                  <i title="Delete Resource" style={{ float: 'right'}} onClick={() => this.openDelete(res._id)} className="fa fa-times"> </i>
+
+                </Panel.Heading>
+                <Panel.Body style={{ textAlign: 'center'}}>
+                  Item: {res.item} <br />
+                  Quantity: {res.quantity} <br />
+                  Location: {(res.placeId) ? res.placeId.name : ""}
+                  Date Needed: {res.dateId}
+                  <UpdateResources windowWidth={this.props.windowWidth}/>
+                </Panel.Body>
+              </Panel>
+            )
+          })
+        )
+      } else {
+        return this.props.resources.listedResources.map((res) => {
+          return (
+            <tr key={Math.random()}>
+              <td>
+                {res.item}
+              </td>
+              <td>
+                {res.quantity}
+              </td>
+              <td>
+                {(res.placeId) ? res.placeId.name : ''}
+              </td>
+              <td>
+                {res.dateId}
+              </td>
+              <td>
+                <UpdateResources/>
+                <i title="delete Resource" style={{ float: 'right', display: 'inline' }} onClick={() => this.openDelete(res._id)} className="fa fa-times"> </i>
+              </td>
+            </tr>
+          );
+        });
       }
+    }
+  }
+
+  renderHeader = () => {
+    if (this.props.windowWidth < 600) {
+      return null;
+    } else {
+      return (
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Quantity </th>
+            <th>Location Needed</th>
+            <th>date/Time</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+      )
+    }
+  }
 
   render() {
     return(
-      <div>
+      <Row>
         <Helmet>
           <title>Resources</title>
           <meta name="description" content="Description of Resources" />
@@ -171,15 +210,7 @@ export class Resources extends Component {
 
               { /* START table-responsive */}
               <Table id="table-ext-2" responsive striped bordered hover>
-                  <thead>
-                      <tr>
-                          <th>Item</th>
-                          <th>Quantity </th>
-                          <th>Location Needed</th>
-                          <th>date/Time</th>
-                          <th>Action</th>
-                      </tr>
-                  </thead>
+                {this.renderHeader()}
                   <tbody>
 
                     {this.listResources()}
@@ -187,10 +218,11 @@ export class Resources extends Component {
                   <thead>
                     <tr style={{width: '100%'}}>
                       <th style={{width: '120px'}}>
+                        {/* this line is causing the error DOM nesting error, not sure how to fix */}
                         <Link to={"/list-Resources/"+this.props.projectId} style={{float: 'right'}}>See all</Link>
                       </th>
                     </tr>
-                  </thead> 
+                  </thead>
               </Table>
               { /* END table-responsive */}
               {/* <div className="panel-footer">Panel Footer</div> */}
@@ -281,13 +313,13 @@ export class Resources extends Component {
                 <span className="btn-label">
                   <i className="fa fa-check">
                   </i>
-                </span>DELETE 
+                </span>DELETE
               </button>
             </div>
 
           </Modal.Body>
         </Modal>
-      </div>
+      </Row>
     );
   }
 }
