@@ -98,10 +98,10 @@ const YourRoleTable = (props) => {
           <tbody>
             {renderTable()}
           </tbody>
-
         </Table>
         <ReactTooltip />
       </div>
+
     )
   }
 }

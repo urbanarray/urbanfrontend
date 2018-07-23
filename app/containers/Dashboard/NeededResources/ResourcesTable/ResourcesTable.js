@@ -87,16 +87,15 @@ const ResourcesTable = (props) => {
         )
     } else {
         return (
-          <div>
-            <Table id="table-ext-2" responsive striped bordered hover>
-                {renderHeader()}
-                <tbody>
-                    {renderTable()}
-                </tbody>
-
-            </Table>
-            <ReactTooltip />
-          </div>
+            <div>
+                <Table id="table-ext-2" responsive striped bordered hover>
+                    {renderHeader()}
+                    <tbody>
+                        {renderTable()}
+                    </tbody>
+                </Table>
+                <ReactTooltip />
+            </div>
         )
     }
 }

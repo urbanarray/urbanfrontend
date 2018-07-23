@@ -15,7 +15,7 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectVerifyAccount from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import {defaultAction} from './actions';
+import { defaultAction } from './actions';
 
 export class VerifyAccount extends Component { // eslint-disable-line react/prefer-stateless-function
   
