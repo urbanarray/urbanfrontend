@@ -42,7 +42,6 @@ import ListResources from 'containers/ListResources';
 import ListRoles from 'containers/ListRoles';
 import listTeamDisplay  from 'containers/listTeamDisplay';
 
-
 export default function App() {
 
   return (  
