@@ -31,10 +31,12 @@ const ResourcesNeeded = (props) => {
                 return props.resources.map((resource, i) => {
                     return (
                         <Panel bsStyle="primary" key={i}>
-                            <Panel.Heading style={{ textAlign: 'center', backgroundColor: 'white', color: 'black' }}>
-                                <Panel.Title componentClass="h3" style={headings.tableHeading}>{resource}</Panel.Title>
+                            <Panel.Heading style={styles.primary}>
+                                <Panel.Title componentClass="h3" style={headings.subHeading}>{resource}</Panel.Title>
                             </Panel.Heading>
-                            <DetailsButton resource={resource}/>
+                            <Panel.Body>
+                              <DetailsButton style={{width: "90%"}} resource={resource} windowWidth={props.windowWidth}/>
+                            </Panel.Body>
                         </Panel>
                     )
                 })

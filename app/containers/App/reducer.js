@@ -11,7 +11,7 @@
  */
 
 import { fromJS } from 'immutable';
-import { loadState, clearState } from 'utils/persistState';
+import { loadState, clearState, windowWidth } from 'utils/persistState';
 
 import {
   LOAD_REPOS_SUCCESS,
@@ -31,7 +31,7 @@ const initialState = fromJS({
   userData: {
     repositories: false,
   },
-  loggedInUser: loadState(),
+  loggedInUser: loadState()
 
 });
 
@@ -51,7 +51,7 @@ function appReducer(state = initialState, action) {
       return state
         .set('error', action.error)
         .set('loading', false);
-   
+
     case LOGGED_IN_USER:
       return state
         .set('loggedInUser', action.payload);

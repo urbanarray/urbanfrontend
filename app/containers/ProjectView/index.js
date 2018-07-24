@@ -19,7 +19,7 @@ import reducer from './reducer';
 import saga from './saga';
 import Avatar from '../../../assets/images/avatar.jpg'; // can't start import path with assets here since this file isn't in app directory
 import ContentWrapper from 'components/Layout/ContentWrapper';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Panel } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
 import ProjectDetails from './ProjectDetails';
@@ -28,27 +28,41 @@ import ProjectTime from './ProjectTime';
 import TeamDisplay from './TeamDisplay';
 import RolesDisplay from './RolesDisplay';
 import TimelineRoles from './TimelineRoles';
-import {styles} from 'assets/styles/variables';
 import { viewProject } from './actions';
 import AddCommunications from '../AddCommunications';
 import AddExecution from '../AddExecution';
 import HealthSafety from '../HealthSafety';
 import Documentation from '../Documentation';
 import Resources from '../Resources';
+import { styles, headings } from 'assets/styles/variables';
 
 export class ProjectView extends Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props, context) {
     super(props, context);
     this.state = {
-      key: 1
+      key: 1,
+      width: 0
     };
+
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
     this.props.viewProjects(this.props.match.params.id);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  // copied this from the Dashboard component. eventually should be moved into redux
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth })
   }
 
   handleSelect(key) {
@@ -100,82 +114,10 @@ export class ProjectView extends Component { // eslint-disable-line react/prefer
     }
   }
 
-  renderRoles = () => {
-    if (this.props.projectview.projectRoles && this.props.projectview.projectRoles.length > 0) {
-      return this.props.projectview.projectRoles.map((roles) => {
-          return (
-            <tr key={Math.random()}>
-              <td>
-                {roles.title}
-              </td>
-
-              <td>
-                {roles.project}
-              </td>
-
-              <td>
-                {roles.date}<br />
-                {`${roles.startTime} - ${roles.endTime}`}
-              </td>
-              <td>
-                {roles.pts}
-              </td>
-              <td>
-                {roles.ac}
-              </td>
-              <td>
-                <Link
-                  to="/roleView"
-                  type="button"
-                  className="btn btn-primary btn-sm btn-block"
-                  color="default"
-                  style={styles.primaryLight}>Details
-                </Link>
-              </td>
-
-            </tr>
-
-          );
-        });
-    }
-
-  }
 
 
-  renderProjectResources = () => {
-    if (this.props.projectview.projectResources) {
-      return this.props.projectview.projectResources.map((resource) => {
-        return (
-          <tr key={Math.random()}>
-            <td>
-              {resource.name}
-            </td>
 
-            <td>
-              {resource.quantity}
-            </td>
-            <td>
-              {resource.locationNeeded}
-            </td>
-            <td>
-              {resource.date}<br />
-              {`${resource.startTime} - ${resource.endTime}`}
-            </td>
-            <td>
-              {/* <button type="button" className="btn btn-primary btn-block btn-sm"  > Pledge </button> */}
-              <Link
-                to="/projectView"
-                type="button"
-                className="btn btn-success btn-block btn-sm"
-                style={styles.primaryLight}>Details/Claim
-              </Link>
-            </td>
 
-          </tr>
-        );
-      });
-    }
-  }
 
   renderProjectDetails = () => {
     if (this.props.projectview.projectDetail) {
@@ -248,14 +190,14 @@ export class ProjectView extends Component { // eslint-disable-line react/prefer
           </Col>
           <Col md={12}>
             <Resources
-              projectId={this.props.match.params.id}
+              projectId={this.props.match.params.id} resources={this.props.projectview.projectResources} windowWidth={this.state.width}
             />
           </Col>
         </Row>
 
         <Row>
           <Col md={6}>
-            <RolesDisplay renderRoles={this.renderRoles} {...this.props}/>
+            <RolesDisplay roles={this.props.projectview.projectRoles} windowWidth={this.state.width}/>
           </Col>
           <Col md={6}>
             <TimelineRoles />
