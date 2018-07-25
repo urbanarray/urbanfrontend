@@ -1,17 +1,17 @@
-import React from 'react';
-import {Router, Route, Link, History, withRouter} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Router, Route, Link, History, withRouter } from 'react-router-dom';
 
-import {createStructuredSelector} from 'reselect';
-import {connect} from 'react-redux';
-import {compose} from 'redux';
+import { createStructuredSelector } from 'reselect';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 import pubsub from 'pubsub-js';
-import {Collapse} from 'react-bootstrap';
+import { Collapse } from 'react-bootstrap';
 import SidebarRun from './Sidebar.run';
 import avatar from '../../assets/img/user/02.jpg';
-import {makeSelectCurrentUser} from 'containers/App/selectors';
+import { makeSelectCurrentUser } from 'containers/App/selectors';
 
-class Sidebar extends React.Component {
+class Sidebar extends Component {
 
     constructor(props, context) {
         super(props, context);
@@ -90,24 +90,22 @@ class Sidebar extends React.Component {
                 pages: false
             }
         };
-        this.pubsub_token = pubsub.subscribe('toggleUserblock', () => {
-            this.setState({
-                userBlockCollapse: !this.state.userBlockCollapse
-            });
-        });
+        let pubsub_token;
     };
 
     componentDidMount() {
         // console.log(this.props.currentUser)
         // pass navigator to access router api
         SidebarRun(this.navigator.bind(this));
+        this.pubsub_token = pubsub.subscribe('toggleUserblock', () => {
+            this.setState({
+                userBlockCollapse: !this.state.userBlockCollapse
+            });
+        });
     }
 
     navigator(route) {
-        this
-            .props
-            .history
-            .push(route);
+        this.props.history.push(route);
     }
 
     componentWillUnmount() {

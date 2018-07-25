@@ -28,10 +28,8 @@ import {
   deleteUserSkillsAction
 } from './actions';
 
-import ProfileDetails from 'containers/ProfileDetails';
+import ProfileDetails from 'containers/Profile/ProfileDetails';
 import { styles, headings } from 'assets/styles/variables';
-
-
 
 export class AccountSettings extends Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props, context) {
@@ -132,7 +130,7 @@ export class AccountSettings extends Component { // eslint-disable-line react/pr
             <div className="panel panel-default">
               <div className="panel-body text-center">
                 <div className="pv-lg">
-                  <img src="img/user/02.jpg" alt="avatar" className="center-block img-responsive img-circle img-thumbnail thumb96" />
+                  <img src={this.props.currentUser.profile.picture} alt="avatar" className="center-block img-responsive img-circle img-thumbnail thumb96" />
                 </div>
                 <h3 className="m0 text-bold">{(this.props.currentUser && this.props.currentUser.profile) ? this.props.currentUser.profile.firstName+' '+this.props.currentUser.profile.lastName : 'No User'  }</h3>
                 <div className="mv-lg">

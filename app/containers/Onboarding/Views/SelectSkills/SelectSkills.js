@@ -16,8 +16,10 @@ export default class SelectSkills extends Component {
     return (
 
       // 3 step graphic here
+
       <div>
-        { logo }
+        { /* <img src={logo} alt="Urban Array logo" /> */}
+
         <h1>Urban Array is all about skills</h1>
         <h3>Tell us the skills you have and the skills you want to learn and we'll help you reach your goals.</h3>
 

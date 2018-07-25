@@ -58,7 +58,6 @@ export class Dashboard extends Component { // eslint-disable-line react/prefer-s
   }
 
   handleSelect(key) {
-    console.log('Tab selected ' + key);
     this.setState({
       key
     });

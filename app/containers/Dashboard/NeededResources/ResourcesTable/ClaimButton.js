@@ -57,7 +57,7 @@ class ClaimButton extends Component {
                     {this.state.details}
                 </Modal.Body>
                 <Modal.Footer>
-                    <button style={this.state.style} onClick={this.close}>Cancel</button>
+                    <button onClick={this.close}>Cancel</button>
                 </Modal.Footer>
             </Modal>
         )

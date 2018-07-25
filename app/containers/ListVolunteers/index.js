@@ -24,7 +24,7 @@ import AddVolunteer from './AddVolunteer';
 import { styles, headings } from 'assets/styles/variables';
 
 
-export class Volunteer extends Component { // eslint-disable-line react/prefer-stateless-function
+export class ListVolunteers extends Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
     super(props);
@@ -130,7 +130,7 @@ export class Volunteer extends Component { // eslint-disable-line react/prefer-s
   }
 }
 
-Volunteer.propTypes = {
+ListVolunteers.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
@@ -155,4 +155,4 @@ export default compose(
   withReducer,
   withSaga,
   withConnect
-)(Volunteer);
+)(ListVolunteers);

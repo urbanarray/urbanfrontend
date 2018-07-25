@@ -56,7 +56,6 @@ export class RoleView extends Component { // eslint-disable-line react/prefer-st
   }
 
   handleSelect(key) {
-    console.log('Tab selected ' + key);
     this.setState({
       key
     });

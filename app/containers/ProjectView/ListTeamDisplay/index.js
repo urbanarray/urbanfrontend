@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -13,19 +13,16 @@ import { compose } from 'redux';
 
 import ContentWrapper from 'components/Layout/ContentWrapper';
 import { Row, Col,Table, Button, Modal } from 'react-bootstrap';
-import {styles, headings} from '../../assets/styles/variables';
+import { styles, headings } from 'assets/styles/variables';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectListTeamDisplay from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import TeamDisplay from '../ProjectView/TeamDisplay';
+import TeamDisplay from './TeamDisplay';
 
-
-
-
-  export class ListTeamDisplay extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  export class ListTeamDisplay extends Component { // eslint-disable-line react/prefer-stateless-function
     render() {
       return (
         <ContentWrapper>

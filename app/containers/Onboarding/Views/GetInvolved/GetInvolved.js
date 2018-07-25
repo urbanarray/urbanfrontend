@@ -17,7 +17,8 @@ export default class GetInvolved extends Component {
 
       // 3 step graphic here
       <div>
-        { logo }
+        { /* <img src={logo} alt="Urban Array logo" /> */}
+        
         <h1>Get Involved in Three Steps</h1>
         <h3>Before viewing the opportunities in your community, complete the following steps:</h3>
 

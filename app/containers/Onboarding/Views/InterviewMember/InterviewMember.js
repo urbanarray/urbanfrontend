@@ -14,7 +14,8 @@ export default class InterviewMember extends Component {
     return (
       // 3 step graphic here
       <div>
-        { logo }
+        { /* <img src={logo} alt="Urban Array logo" /> */}
+        
         <h1>Meet with a Member</h1>
         <h3>Thanks for taking the time to fill out your information! You're almost there.</h3>
 

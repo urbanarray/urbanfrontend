@@ -17,7 +17,7 @@ import makeSelectAddSkills from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-import {createSkillsAction, listSkillsAction} from './actions';
+import { createSkillsAction, listSkillsAction } from './actions';
 import { Col, Table, Form, FormGroup, Label, Input } from 'reactstrap';
 import { styles, headings } from 'assets/styles/variables';
 

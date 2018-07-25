@@ -54,6 +54,7 @@ export class ProfileDetails extends Component { // eslint-disable-line react/pre
         availability_end_date: this.props.profileDetails.profile.availability_end_date,
         noCriminal: this.props.profileDetails.profile.noCriminal,
         noMedConditions: this.props.profileDetails.profile.noMedConditions,
+        picture: this.props.picture
       });
     }
   }
@@ -218,27 +219,27 @@ export class ProfileDetails extends Component { // eslint-disable-line react/pre
                     <Modal.Title>Profile</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                    <form className="form-horizontal" onSubmit={this.handleSubmit} onChange={this.changeAll}  >
+                    <form className="form-horizontal" onSubmit={this.handleSubmit}  >
                       <fieldset>
 
                         <div className="form-group mb">
                           <label className="col-sm-3 control-label mb">First Name</label>
                           <Col sm={9}>
-                            <input className="form-control" type="text" name="firstName" value={this.state.firstName} placeholder="First Name" required />
+                            <input className="form-control" type="text" name="firstName" value={this.state.firstName} onChange={this.changeAll} placeholder="First Name" required />
                           </Col>
                         </div>
 
                         <div className="form-group mb">
                           <label className="col-sm-3 control-label mb">Last Name</label>
                           <Col sm={9}>
-                            <input className="form-control" type="text" name="lastName" value={this.state.lastName} placeholder="First Name" required />
+                            <input className="form-control" type="text" name="lastName" value={this.state.lastName} onChange={this.changeAll} placeholder="Last Name" required />
                           </Col>
                         </div>
 
                         <div className="form-group mb">
                           <label className="col-sm-3 control-label mb">City/Metro Area</label>
                           <Col sm={9}>
-                            <select className="form-control" type="select" name="city" value={this.state.city} placeholder="City" >
+                            <select className="form-control" type="select" name="city" value={this.state.city} onChange={this.changeAll} placeholder="City" >
                               <option>City/Metro Area</option>
                             </select>
                           </Col>
@@ -247,7 +248,7 @@ export class ProfileDetails extends Component { // eslint-disable-line react/pre
                         <div className="form-group mb">
                           <label className="col-sm-3 control-label mb">Contribute</label>
                           <Col sm={9}>
-                            <select className="form-control" type="select" name="howToContribute" value={this.state.howToContribute}  >
+                            <select className="form-control" type="select" name="howToContribute" value={this.state.howToContribute} onChange={this.changeAll} >
                               <option>How would you like to contribute</option>
                             </select>
                           </Col>
@@ -256,25 +257,25 @@ export class ProfileDetails extends Component { // eslint-disable-line react/pre
                         <div className="form-group mb">
                           <label className="col-sm-3 control-label mb">Start Date</label>
                           <Col sm={9}>
-                            <input title="Set your availability start date" className="form-control" type="date" name="availability_start_date" value={this.state.availability_start_date} />
+                            <input title="Set your availability start date" className="form-control" type="date" name="availability_start_date" value={this.state.availability_start_date} onChange={this.changeAll} />
                           </Col>
                         </div>
 
                         <div className="form-group mb">
                           <label className="col-sm-3 control-label mb">End Date</label>
                           <Col sm={9}>
-                            <input title="Set your availability end date" className="form-control" type="date" name="availability_end_date" value={this.state.availability_end_date} />
+                            <input title="Set your availability end date" className="form-control" type="date" name="availability_end_date" value={this.state.availability_end_date} onChange={this.changeAll} />
                           </Col>
                         </div>
 
                         <div className="form-group mb">
                           <label  style={{ marginLeft: '70px' }}>
-                            <input type="checkbox" id="checkbox1" name="noCriminal" value={this.state.noCriminal} />
+                            <input type="checkbox" id="checkbox1" name="noCriminal" value={this.state.noCriminal} onChange={this.changeAll} />
                              No Criminal
                           </label>
 
                           <label  style={{ marginLeft: '40px' }}>
-                            <input type="checkbox" id="checkbox2" name="noMedConditions" value={this.state.noMedConditions} />
+                            <input type="checkbox" id="checkbox2" name="noMedConditions" value={this.state.noMedConditions} onChange={this.changeAll} />
                             No Med Conditions
                           </label>
                         </div>
@@ -283,7 +284,7 @@ export class ProfileDetails extends Component { // eslint-disable-line react/pre
                           <Col sm={3}>
                           </Col>
                           <Col sm={9}>
-                            <input className="form-control" name="picture" type="file" />
+                            <input className="form-control" name="picture" type="file" onChange={this.changeAll} />
                             <label>Upload Profile Photo</label>
                           </Col>
                         </div>
