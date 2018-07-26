@@ -61,9 +61,9 @@ export default function App() {
             <Route path="/signup" component={Signup} />
 
             {/* 3 onboarding steps: */}
-            <Route path="/signup/get-involved" component={GetInvolved} />
-            <Route path="/signup/select-skills" component={SelectSkills} />
-            <Route path="/signup/interview-member" component={InterviewMember} />
+            <Route path="/get-involved" component={GetInvolved} />
+            <Route path="/select-skills" component={SelectSkills} />
+            <Route path="/interview-member" component={InterviewMember} />
 
             {/* <Route path="/login" component={Login} /> */}
             <Route path="/profile" component={Profile} />

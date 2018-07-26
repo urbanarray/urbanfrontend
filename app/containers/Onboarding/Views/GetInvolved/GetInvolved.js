@@ -12,6 +12,11 @@ export default class GetInvolved extends Component {
     super(props);
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.history.push('signup');
+  }
+
   render() {
     return (
 
@@ -42,7 +47,7 @@ export default class GetInvolved extends Component {
 
         <a href="#">Back</a>
 
-        <button>Sign Up</button>
+        <button onClick={this.handleSubmit}>Sign Up</button>
       </div>
 
     )
