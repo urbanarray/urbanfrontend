@@ -7,9 +7,8 @@ import {
   Button,
   Modal,
   Panel
-
 } from 'react-bootstrap';
-import { styles, headings } from '../../../assets/styles/variables';
+import { styles, headings } from 'assets/styles/variables';
 
 import ClaimButton from './ClaimButton';
 
@@ -27,9 +26,9 @@ const RoleDisplay = (props) => {
                         <th>Date/Time</th>
                         <th>Location</th>
                         <th>Action</th>
-                        <th>
+                        { /* <th>
                             <Link to={"/list-healthSafety/"+props.projectId} style={{float: 'right'}}>See all</Link>
-                        </th>
+                        </th> */ }
                     </tr>
                 </thead>
             )

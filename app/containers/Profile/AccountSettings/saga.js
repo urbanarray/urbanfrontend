@@ -42,7 +42,6 @@ export function* createUserSkills() {
   try {
     const skill = yield select(makeSelectaddUserSkills());
     const response = yield call(createUserSkillsApi, skill);
-    console.log(response);
     yield put(createdUserSkillsAction(response.data));
   } catch (error) {
     console.log(error)

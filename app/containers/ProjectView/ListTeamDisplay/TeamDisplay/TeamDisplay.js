@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { Row, Col,Table, Button, Modal } from 'react-bootstrap';
-import {Link} from 'react-router-dom';
-import {styles, headings} from '../../../assets/styles/variables';
+import { Link } from 'react-router-dom';
+import { styles, headings } from 'assets/styles/variables';
 
 const TeamDisplay = (props) => (
   <Row>

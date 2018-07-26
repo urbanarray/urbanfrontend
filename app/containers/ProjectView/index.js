@@ -25,15 +25,15 @@ import PanelsRun from 'components/Elements/Panels.run';
 import ProjectDetails from './ProjectDetails';
 import LocationDisplay from './LocationDisplay';
 import ProjectTime from './ProjectTime';
-import TeamDisplay from './TeamDisplay';
-import RolesDisplay from './RolesDisplay';
+import TeamDisplay from './ListTeamDisplay/TeamDisplay';
+import RolesDisplay from './ListRoles/RolesDisplay';
 import TimelineRoles from './TimelineRoles';
 import { viewProject } from './actions';
-import AddCommunications from '../AddCommunications';
-import AddExecution from '../AddExecution';
-import HealthSafety from '../HealthSafety';
-import Documentation from '../Documentation';
-import Resources from '../Resources';
+import AddCommunications from './ListCommunications/AddCommunications';
+import AddExecution from './ListExecution/AddExecution';
+import HealthSafety from './ListHealthSafety/HealthSafety';
+import Documentation from './Documentation';
+import Resources from './Resources';
 import { styles, headings } from 'assets/styles/variables';
 
 export class ProjectView extends Component { // eslint-disable-line react/prefer-stateless-function
@@ -45,7 +45,6 @@ export class ProjectView extends Component { // eslint-disable-line react/prefer
       width: 0
     };
 
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
@@ -61,7 +60,7 @@ export class ProjectView extends Component { // eslint-disable-line react/prefer
   }
 
   // copied this from the Dashboard component. eventually should be moved into redux
-  updateWindowDimensions() {
+  updateWindowDimensions = () => {
     this.setState({ width: window.innerWidth })
   }
 

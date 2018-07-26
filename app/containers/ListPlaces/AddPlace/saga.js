@@ -3,7 +3,7 @@ import { CREATE_PlACE_ACTION } from './constants';
 import { createdPlaceAction } from './actions';
 import { makeSelectPlace } from './selectors';
 import { createPlaceApi } from './api';
-import { listPlaces } from 'containers/Places/saga';
+import { listPlaces } from '../saga';
 
 
 export function* create() {

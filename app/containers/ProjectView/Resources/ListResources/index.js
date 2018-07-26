@@ -11,7 +11,7 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
-import {styles} from 'assets/styles/variables';
+import { styles } from 'assets/styles/variables';
 
 import ContentWrapper from 'components/Layout/ContentWrapper';
 import injectSaga from 'utils/injectSaga';
@@ -19,13 +19,13 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectListResources from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import {listResourcesAction} from './actions';
-import { UpdateResources }from '../Resources/UpdateResources/index'
-import { Resources }from '../Resources'
+import { listResourcesAction } from './actions';
+import { UpdateResources } from '../UpdateResources';
+import { Resources } from '../../Resources';
 
 export class ListResources extends Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount = () => {
-    this.props.listResourcess(this.props.match.params.id);
+    this.props.listResources(this.props.match.params.id);
 
   }
 

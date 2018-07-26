@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ContentWrapper from '../Layout/ContentWrapper';
 import { Grid, Row, Col, Panel, Button } from 'react-bootstrap';
 import Dropzone from 'react-dropzone';
 
-class FormUpload extends React.Component {
+class FormUpload extends Component {
 
     constructor(props) {
         super(props);
@@ -13,7 +13,6 @@ class FormUpload extends React.Component {
     }
 
     onDrop (files) {
-        // console.log(files);
         this.setState({
             files: files
         });

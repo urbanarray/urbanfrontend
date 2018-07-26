@@ -13,7 +13,7 @@ import { compose } from 'redux';
 import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
 
 import ContentWrapper from 'components/Layout/ContentWrapper';
-import AddCommunications from '../AddCommunications';
+import AddCommunications from './AddCommunications';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectListCommunications from './selectors';

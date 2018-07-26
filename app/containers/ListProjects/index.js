@@ -22,8 +22,8 @@ import saga from './saga';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import * as a from "./actions";
-import AddProject from 'containers/AddProject';
+import * as a from './actions';
+import AddProject from './AddProject';
 import { styles, headings } from 'assets/styles/variables';
 
 

@@ -13,7 +13,7 @@ import { compose } from 'redux';
 import { Row, Col,Table, Button, Modal } from 'react-bootstrap';
 
 import ContentWrapper from 'components/Layout/ContentWrapper';
-import AddExecution from '../AddExecution';
+import AddExecution from './AddExecution';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import { makeSelectListExecution } from './selectors';

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {Col, Row} from 'react-bootstrap';
-import {styles, headings} from 'assets/styles/variables';
+import { Col, Row } from 'react-bootstrap';
+import { styles, headings } from 'assets/styles/variables';
 
 const TimelineRoles = (props) => (
     <Row>
