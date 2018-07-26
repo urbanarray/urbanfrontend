@@ -30,6 +30,8 @@ import AddRoles from 'containers/AddRoles';
 import AcceptInvitation from 'containers/AcceptInvitation';
 import './style.css';
 
+import LandingPage from 'containers/Onboarding/Views/LandingPage';
+
 import AddProject from 'containers/AddProject';
 import AddSkills from 'containers/AddSkills';
 import ListProjects from 'containers/ListProjects';
@@ -45,34 +47,34 @@ import listTeamDisplay  from 'containers/listTeamDisplay';
 
 export default function App() {
 
-  return (  
+  return (
     <div>
-      
+
     {/* <Auth /> */}
 
     <Router history={browserHistory}  >
-      <Switch>   
+      <Switch>
         <Base>
-       
-          <Route exact path="/" component={Landing} />  
+
+          <Route exact path="/" component={Landing} />
           {/* <Route path="/signup" component={Signup} /> */}
           {/* <Route path="/login" component={Login} /> */}
           <Route path="/profile" component={Profile} />
           <Route path="/logout" component={Logout} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/projectView/:id" component={ProjectView} />
-          <Route path="/roleView" component={RoleView} />  
-          <Route path="/resendEmail/:id" component={ResendEmail} /> 
-          <Route path="/verify/:id" component={VerifyAccount} /> 
-          <Route path="/forgetpassword" component={ForgetPassword} /> 
-          <Route path="/account-settings" component={AccountSettings} /> 
-          <Route path="/list-volunteers" component={Volunteer} /> 
+          <Route path="/roleView" component={RoleView} />
+          <Route path="/resendEmail/:id" component={ResendEmail} />
+          <Route path="/verify/:id" component={VerifyAccount} />
+          <Route path="/forgetpassword" component={ForgetPassword} />
+          <Route path="/account-settings" component={AccountSettings} />
+          <Route path="/list-volunteers" component={Volunteer} />
           <Route path="/add-roles" component={AddRoles} />
           <Route path="/add-main-skills" component={AddSkills} />
-          <Route path="/resetpassword/:code" component={ResetPassword} /> 
-          <Route path="/completeAccount/:id" component={AcceptInvitation} /> 
+          <Route path="/resetpassword/:code" component={ResetPassword} />
+          <Route path="/completeAccount/:id" component={AcceptInvitation} />
           <Route path="/addProject" component={AddProject} />
-          <Route path="/listProjects" component={ListProjects} /> 
+          <Route path="/listProjects" component={ListProjects} />
           <Route path="/places" component={ListPlaces} />
           <Route path="/list-communications/:id" component={ListCommunications} />
           <Route path="/list-healthSafety/:id" component={ListHealthSafety} />
@@ -81,10 +83,11 @@ export default function App() {
           <Route path="/list-Resources/:id" component={ListResources} />
           <Route path="/list-Roles" component={ListRoles} />
           <Route path="/listTeamDisplay" component={listTeamDisplay} />
-        </Base> 
+          <Route path="/welcome" component={LandingPage} />
+        </Base>
       </Switch>
     </Router>
   </div>
-  
+
   );
 }
