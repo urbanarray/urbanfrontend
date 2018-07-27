@@ -52,7 +52,7 @@ export default class GetInvolved extends Component {
         </Row>
 
         <Col xs={12} sm={10}>
-          <a href="#">Back</a>
+          <a href="/welcome">Back</a>
 
           <Button style={styles.primary} onClick={this.handleSubmit}>Sign Up</Button>
         </Col>
