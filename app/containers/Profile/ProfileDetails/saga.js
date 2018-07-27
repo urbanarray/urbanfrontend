@@ -14,7 +14,6 @@ import { fromJS } from 'immutable';
 export function* update(params) {
   const profileDetails = yield select(makeSelectUpdateProfile());
   const response = yield call(updateProfileApi, profileDetails);
-  console.log(response);
   const currentUser = yield select(makeSelectCurrentUser());
   const { user, access_token, refresh_token } = currentUser;
   const profile = response.data.profile;

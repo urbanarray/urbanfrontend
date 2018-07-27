@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -17,9 +17,9 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectListRoles from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import RolesDisplay from '../ProjectView/RolesDisplay/RolesDisplay';
+import RolesDisplay from './RolesDisplay';
 
-export class ListRoles extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class ListRoles extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <ContentWrapper>

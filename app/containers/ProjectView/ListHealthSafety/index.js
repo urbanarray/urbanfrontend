@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -12,7 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Table, Row, Col, Button, Modal } from 'react-bootstrap';
 import ContentWrapper from 'components/Layout/ContentWrapper';
-import HealthSafety from '../HealthSafety';
+import HealthSafety from './HealthSafety';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import { makeSelectListHealthSafety } from './selectors';
@@ -20,7 +20,7 @@ import reducer from './reducer';
 import saga from './saga';
 import { listHealthSafetyAction } from './actions';
 
-export class ListHealthSafety extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class ListHealthSafety extends Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props){
     super(props)
   }
@@ -68,7 +68,7 @@ export class ListHealthSafety extends React.Component { // eslint-disable-line r
   }
 
   listHealth = () => {
-    if (this.props.listHealthSafety && this.props.listHealthSafety.list_healthsafety && this.props.listHealthSafety.list_healthsafety && this.props.listHealthSafety.list_healthsafety.length > 0) {
+    if (this.props.listHealthSafety && this.props.listHealthSafety.list_healthsafety && this.props.listHealthSafety.list_healthsafety.length > 0) {
       return this.props.listHealthSafety.list_healthsafety.map((c) => {
         return (
           <tr key={Math.random()}>

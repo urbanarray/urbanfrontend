@@ -137,7 +137,7 @@ export class Signup extends Component { // eslint-disable-line react/prefer-stat
 
       this.props.customSignup(signupObj);
     }
-    // this.props.history.push('profile');
+    this.props.history.push('select-skills');
     // alert('hello to you test');
   }
 

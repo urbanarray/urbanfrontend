@@ -11,13 +11,12 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
-
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectAddRoles from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import {createRolesAction, listRolesAction} from './actions';
+import { createRolesAction, listRolesAction } from './actions';
 import { Col, Table, Form, FormGroup, Label, Input } from 'reactstrap';
 import { styles, headings } from 'assets/styles/variables';
 

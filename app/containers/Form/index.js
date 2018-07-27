@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -17,7 +17,7 @@ import makeSelectForm from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
-export class Form extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class Form extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>

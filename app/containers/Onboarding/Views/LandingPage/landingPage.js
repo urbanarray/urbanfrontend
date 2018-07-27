@@ -4,6 +4,7 @@ import { Col, Row } from 'react-bootstrap';
 import { styles, headings, logo, cards } from 'assets/styles/variables';
 import colorLogo from 'assets/img/colorLogo.png';
 import { SocialIcon } from 'react-social-icons';
+import { Link } from 'react-router-dom';
 
 export default class LandingPage extends Component {
   constructor(props) {
@@ -17,8 +18,18 @@ export default class LandingPage extends Component {
           <img src={colorLogo} style={logo.landingPageLogo}/>
           <div style={{display: 'inline', float: 'right', paddingRight: '2vw', marginTop: '5vh'}}>
             <a href="https://urbanarray.org/donate/" target="_blank"><button className="btn" style={{marginRight: '1vw'}, styles.primary} >Donate</button></a>
-            <button className="btn" style={{marginRight: '1vw'}, styles.secondary}>Get Involved</button>
-            <button className="btn" style={styles.primaryLight}>Sign In</button>
+            <Link
+              to="/get-involved"
+              type="button"
+              className="btn"
+              style={styles.secondary}>Get Involved
+            </Link>
+            <Link
+              to="/signup"
+              type="button"
+              className="btn"
+              style={styles.primaryLight}>Sign In
+            </Link>
           </div>
         </header>
 
@@ -54,7 +65,7 @@ export default class LandingPage extends Component {
 
 
 
-        <button className="btn" style={{marginTop: '5vh', marginLeft: '45%', marginRight: '45%', backgroundColor: '#4a99cb', color: 'white'}}> Get Involved </button>
+        <a href="/get-involved"><button className="btn" style={{marginTop: '5vh', marginLeft: '45%', marginRight: '45%', backgroundColor: '#4a99cb', color: 'white'}}> Get Involved </button></a>
 
 
         <h3 style={headings.landingPageHeading}> Our Mission </h3>
