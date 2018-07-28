@@ -79,3 +79,12 @@
   padding-left: 1vw; 
   padding-right: 1vw;
 }
+.three-step-nav {
+  padding: 0.5vw 1vw;
+  text-align: center;
+}
+.three-step-nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
