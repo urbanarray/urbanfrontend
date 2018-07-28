@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 
 import { Button, Col, Row } from 'react-bootstrap';
-import { styles, headings } from 'assets/styles/variables';
+import { styles, headings, logo, cards } from 'assets/styles/variables';
+import { Link } from 'react-router-dom';
 
-// urban array logo
-import logo from 'assets/img/logo.png';
+import colorLogo from 'assets/img/colorLogo.png';
+// import search from 'assets/img/search.png';
 
 export default class SelectSkills extends Component {
 
   constructor(props){
     super(props);
+  }
+
+  searchSkills = (e) => {
+    e.preventDefault();
   }
 
   interviewMember = (e) => {
@@ -22,31 +27,48 @@ export default class SelectSkills extends Component {
 
       // 3 step graphic here
 
-      <div className="container text-center">
-        { /* <img src={logo} alt="Urban Array logo" /> */}
-        <Col xs={12} sm={10}>
-          <h1>Urban Array is all about skills</h1>
-          <h3>Tell us the skills you have and the skills you want to learn and we'll help you reach your goals.</h3>
-        </Col>
+      <div>
+        <img src={colorLogo} style={logo.onboardingLogo}/>        
+        <div className="container text-center">
+          <Col xs={12} sm={10}>
+            <h1>Urban Array is all about skills</h1>
+            <h3>Tell us the skills you have and the skills you want to learn and we'll help you reach your goals.</h3>
+          </Col>
 
-        <Col xs={12} sm={10}>
-          <form type="text" placeholder="Search other skills here.">
-            <Button style={styles.primary}>Magnifying glass icon</Button>
-          </form>
-        </Col>
+          <Col xs={12} sm={10}>
+              <input onClick={this.searchSkills} placeholder="Search other skills here."></input>
+              { /* <img src={search} alt="Search Icon" /> */ }
+          </Col>
 
-        <Col xs={12} sm={10}>
-          <h4>Filters</h4>
-          <Button style={styles.secondaryDark}>Construction</Button>
-          <Button style={styles.secondaryDark}>Activism</Button>
-          <Button style={styles.secondaryDark}>Design</Button>
-        </Col>
+          <Col xs={12} sm={10}>
+            <h4>Filters</h4>
+            <Button style={styles.secondaryDark}>Construction</Button>
+            <Button style={styles.secondaryDark}>Activism</Button>
+            <Button style={styles.secondaryDark}>Design</Button>
+          </Col>
 
-        <Col xs={12} sm={10}>
-          <a href="#">Back</a>
-          <p>Don't see your skills? <a onClick={this.interviewMember} href="#">Skip for now.</a> </p>
-          <button style={styles.primary} onClick={this.interviewMember}>Next</button>
-        </Col>
+          <Col xs={12} sm={10}>
+            <Link
+              to="/get-involved"
+              type="button"
+              className="btn"
+              style={styles.primary}>Back
+            </Link>
+            <h4>Don't see your skills?</h4> 
+            <Link
+              to="/interview-member"
+              type="button"
+              className="btn"
+              style={styles.primaryLight}>Skip for now.
+            </Link>
+            <Link
+              to="/interview-member"
+              type="button"
+              className="btn"
+              style={styles.secondaryLight}>Next
+            </Link>
+          </Col>
+        </div>
 
       </div>
 

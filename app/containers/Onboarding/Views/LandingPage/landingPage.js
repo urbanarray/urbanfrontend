@@ -15,9 +15,9 @@ export default class LandingPage extends Component {
     return (
       <div>
         <header style={{textAlign: 'center'}}>
-          <img src={colorLogo} style={logo.landingPageLogo}/>
-          <div style={{display: 'inline', float: 'right', paddingRight: '2vw', marginTop: '5vh'}}>
-            <a href="https://urbanarray.org/donate/" target="_blank"><button className="btn" style={{marginRight: '1vw'}, styles.primary} >Donate</button></a>
+          <div style={{display: 'inline', float: 'right', paddingRight: '2vw', marginTop: '0', marginLeft: '0'}}>
+            <div style={{content: '', clearfix: 'both', display: 'table'}}></div>
+            <a href="https://urbanarray.org/donate/" target="_blank"><button className="btn" style={styles.primary} >Donate</button></a>
             <Link
               to="/get-involved"
               type="button"
@@ -31,6 +31,8 @@ export default class LandingPage extends Component {
               style={styles.primaryLight}>Sign In
             </Link>
           </div>
+          <br/>
+          <img src={colorLogo} style={logo.landingPageLogo}/>
         </header>
 
         <Row style={{textAlign: 'center'}}>
@@ -87,15 +89,15 @@ export default class LandingPage extends Component {
         </div>
 
         <div style={{marginTop: '10vh', backgroundColor: '#80cafe', width: '90%', borderRadius: '15px', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center', paddingTop: '3vh', paddingBottom: '3vh', fontWeight: 'bold', fontSize: '1.3em'}}>
-          Follow us and check out what's happening in your community: &nbsp; <SocialIcon url="https://www.facebook.com/urbanarray/"/>
-          <SocialIcon url="https://twitter.com/urbanarray"/>
-          <SocialIcon url="https://www.instagram.com/urbanarray/" />
-          <SocialIcon url="https://www.linkedin.com/company/urban-array/" />
-          <SocialIcon url="https://www.youtube.com/channel/UCicgBg_6lVqWBgqkur2S9vg" />
+          Follow us and check out what's happening in your community: &nbsp; 
+          <SocialIcon style={{backgroundColor: 'white', borderRadius: '50%'}} url="https://www.facebook.com/urbanarray/"/>
+          <SocialIcon style={{backgroundColor: 'white', borderRadius: '50%'}} url="https://twitter.com/urbanarray"/>
+          <SocialIcon style={{backgroundColor: 'white', borderRadius: '50%'}} url="https://www.instagram.com/urbanarray/" />
+          <SocialIcon style={{backgroundColor: 'white', borderRadius: '50%'}} url="https://www.linkedin.com/company/urban-array/" />
+          <SocialIcon style={{backgroundColor: 'white', borderRadius: '50%'}} url="https://www.youtube.com/channel/UCicgBg_6lVqWBgqkur2S9vg" />
 
         </div>
 
-        <footer style={{marginLeft: '2vw', marginBottom: '1vh', marginTop: '5vh'}}> 	&copy; 2018 Urban Array </footer>
       </div>
     )
   }

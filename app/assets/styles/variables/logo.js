@@ -1,9 +1,17 @@
 export const logo = {
   landingPageLogo: {
-    width: '500px',
+    display: 'block',
+    width: '50%',
     marginLeft: 'auto',
-    marginRight: '-18vw',
+    marginRight: 'auto',
     marginTop: '5vh',
     marginBottom: '5vh'
+  },
+  onboardingLogo: {
+    display: 'block',
+    width: '50%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: '2vh'
   }
 }
