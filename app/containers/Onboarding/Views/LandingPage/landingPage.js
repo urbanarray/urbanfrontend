@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { Col, Row } from 'react-bootstrap';
 import { styles, headings, logo, cards } from 'assets/styles/variables';
+import '../OnboardingStyles.css';
 import colorLogo from 'assets/img/colorLogo.png';
 import { SocialIcon } from 'react-social-icons';
 import { Link } from 'react-router-dom';
@@ -14,9 +15,9 @@ export default class LandingPage extends Component {
   render() {
     return (
       <div>
-        <header style={{textAlign: 'center'}}>
-          <div style={{display: 'inline', float: 'right', paddingRight: '2vw', marginTop: '0', marginLeft: '0'}}>
-            <div style={{content: '', clearfix: 'both', display: 'table'}}></div>
+        <header className="center">
+          <div className="nav-buttons">
+            <div className="clearfix"></div>
             <a href="https://urbanarray.org/donate/" target="_blank"><button className="btn" style={styles.primary} >Donate</button></a>
             <Link
               to="/get-involved"
@@ -35,7 +36,7 @@ export default class LandingPage extends Component {
           <img src={colorLogo} style={logo.landingPageLogo}/>
         </header>
 
-        <Row style={{textAlign: 'center'}}>
+        <Row className="center">
           <h1> Welcome to Urban Array's Volunteer Platform </h1>
           <h3 style={{marginBottom: '10vh'}}> Build yourself, grow your community </h3>
 
@@ -44,23 +45,22 @@ export default class LandingPage extends Component {
 
         <h3 style={headings.landingPageHeading}> Current Projects </h3>
 
-        <div style={{textAlign: 'center', width: '90%', marginLeft: 'auto', marginRight: 'auto', display: 'flex', justifyContent: 'space-around'}}>
+        <div className="center card-layout">
 
-
-          <div style={{width: '35vw', height: '30vh', border: '1px solid black', backgroundColor: 'white', display: 'flex', borderRadius: '15px'}}>
-            <div style={{width: '35%', height: '100%', border: '1px solid black', display: 'inline', borderRadius: '15px 0 0 15px'}}>Image Placeholder</div>
-            <div style={{width: '65%'}}>
-              <h4 style={{marginTop: '3vh'}}> Housing Project on 63rd </h4>
-              <p style={{textAlign: 'left', paddingLeft: '1vw', paddingRight: '1vw'}}> Urban Array is working on renovating a block of buildings in the beautiful, historic neighborhood of Englewood. Members are encouraged to come and help out! </p> <br />
-              <a style={{textAlign: 'right', float: 'right', marginRight: '1vw'}}> Learn More </a>
+          <div className="project-container">
+            <div className="project-image">Image Placeholder</div>
+            <div className="project-text-container">
+              <h4 className="project-title"> Housing Project on 63rd </h4>
+              <p className="project-description"> Urban Array is working on renovating a block of buildings in the beautiful, historic neighborhood of Englewood. Members are encouraged to come and help out! </p> <br />
+              <a className="learn-more-projects"> Learn More </a>
             </div>
           </div>
-          <div style={{width: '35vw', height: '30vh', border: '1px solid black', backgroundColor: 'white', display: 'flex', borderRadius: '15px'}}>
-            <div style={{width: '35%', height: '100%', border: '1px solid black', display: 'inline', borderRadius: '15px 0 0 15px'}}>Image Placeholder</div>
-              <div style={{width: '65%'}}>
-                <h4 style={{marginTop: '3vh'}}> Urban Garden on 97th </h4>
-                <p style={{textAlign: 'left', paddingLeft: '1vw', paddingRight: '1vw'}}> Community members broke soil at the beginning of June. Local community members will enjoy kale, tomatoes, beets, and potatoes at the end of the summer. Spare hands welcome.</p>
-                <a style={{textAlign: 'right', float: 'right', marginRight: '1vw'}}> Learn More </a>
+          <div className="project-container">
+            <div className="project-image">Image Placeholder</div>
+              <div className="project-text-container">
+                <h4 className="project-title"> Urban Garden on 97th </h4>
+                <p className="project-description"> Community members broke soil at the beginning of June. Local community members will enjoy kale, tomatoes, beets, and potatoes at the end of the summer. Spare hands welcome.</p>
+                <a className="learn-more-projects"> Learn More </a>
               </div>
             </div>
           </div>
@@ -71,31 +71,30 @@ export default class LandingPage extends Component {
 
 
         <h3 style={headings.landingPageHeading}> Our Mission </h3>
-        <a style={{float: 'right', marginTop: '-8vh', marginRight: '10vw'}}> Learn More </a>
+        <a className="learn-more-mission"> Learn More </a>
 
-        <div style={{display: 'flex', justifyContent: 'space-around', width: '90%', marginLeft: 'auto', marginRight: 'auto'}}>
+        <div className="card-layout">
           <div style={cards.greenCard}>
-            <h4 style={{textAlign: 'center', marginTop: '3vh'}}> Education, Training, and Information</h4>
-            <p style={{paddingLeft: '2vw', paddingRight: '2vw'}}>Urban Array provides skills building and hands-on training for members.</p>
+            <h4 className="card-headline"> Education, Training, and Information</h4>
+            <p className="card-text">Urban Array provides skills building and hands-on training for members.</p>
           </div>
           <div style={cards.greenCard}>
-            <h4 style={{textAlign: 'center', marginTop: '3vh'}}> Member's Economic Participation</h4>
-            <p style={{paddingLeft: '2vw', paddingRight: '2vw'}}> Members participation is key. The benefits match the amount of effort.</p>
+            <h4 className="card-headline"> Member's Economic Participation</h4>
+            <p className="card-text"> Members participation is key. The benefits match the amount of effort.</p>
           </div>
           <div style={cards.greenCard}>
-            <h4 style={{textAlign: 'center', marginTop: '3vh'}}> Concern for Community </h4>
-            <p style={{paddingLeft: '2vw', paddingRight: '2vw'}}> Members help make decisions on sustainable development in their own community.</p>
+            <h4 className="card-headline"> Concern for Community </h4>
+            <p className="card-text"> Members help make decisions on sustainable development in their own community.</p>
           </div>
         </div>
 
-        <div style={{marginTop: '10vh', backgroundColor: '#80cafe', width: '90%', borderRadius: '15px', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center', paddingTop: '3vh', paddingBottom: '3vh', fontWeight: 'bold', fontSize: '1.3em'}}>
+        <div className="social-icon-container">
           Follow us and check out what's happening in your community: &nbsp; 
-          <SocialIcon style={{backgroundColor: 'white', borderRadius: '50%'}} url="https://www.facebook.com/urbanarray/"/>
-          <SocialIcon style={{backgroundColor: 'white', borderRadius: '50%'}} url="https://twitter.com/urbanarray"/>
-          <SocialIcon style={{backgroundColor: 'white', borderRadius: '50%'}} url="https://www.instagram.com/urbanarray/" />
-          <SocialIcon style={{backgroundColor: 'white', borderRadius: '50%'}} url="https://www.linkedin.com/company/urban-array/" />
-          <SocialIcon style={{backgroundColor: 'white', borderRadius: '50%'}} url="https://www.youtube.com/channel/UCicgBg_6lVqWBgqkur2S9vg" />
-
+          <SocialIcon className="social-icons" url="https://www.facebook.com/urbanarray/" target="_blank" />
+          <SocialIcon className="social-icons" url="https://twitter.com/urbanarray" target="_blank" />
+          <SocialIcon className="social-icons" url="https://www.instagram.com/urbanarray/" target="_blank" />
+          <SocialIcon className="social-icons" url="https://www.linkedin.com/company/urban-array/" target="_blank" />
+          <SocialIcon className="social-icons" url="https://www.youtube.com/channel/UCicgBg_6lVqWBgqkur2S9vg" target="_blank" />
         </div>
 
       </div>
