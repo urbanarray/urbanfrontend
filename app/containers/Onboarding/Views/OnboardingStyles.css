@@ -82,9 +82,16 @@
 .three-step-nav {
   padding: 0.5vw 1vw;
   text-align: center;
+  margin-left: 1vw;
 }
 .three-step-nav-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
+}
+.search-field {
+  background-color: #f5f7fa;
+  border: 0.5px solid black;
+  padding-left: 1vw;
+  padding-right: 1vw;
 }
