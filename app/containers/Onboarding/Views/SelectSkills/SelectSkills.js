@@ -71,6 +71,15 @@ export default class SelectSkills extends Component {
     console.log(e.currentTarget.id)
   }
 
+  haveClick = (e) => {
+    e.preventDefault();
+    const skill = e.currentTarget.id
+    console.log(e.currentTarget.previousSibling.id, 'this is have id')
+    this.setState({
+      have: [...this.state.have, skill]
+    })
+  }
+
   renderSkills = () => {
     if (this.state.selectedCategory != "") {
       // get the skills from that category from the back end
@@ -79,11 +88,15 @@ export default class SelectSkills extends Component {
           <div className="skill-card" key={i}>
             <h3 className="card-headline">{skill}</h3>
             <button onClick={this.wantClick} id={skill} className="skill-button skill-button-left">Want</button>
-            <button className="skill-button skill-button-right">Have</button>
+            <button onClick={this.haveClick} className="skill-button skill-button-right">Have</button>
           </div>
         )
       })
     }
+  }
+
+  handleSubmit = () => {
+    console.log('handle submit clicked')
   }
 
   render() {
@@ -113,6 +126,14 @@ export default class SelectSkills extends Component {
               {this.renderSkills()}
             </div>
 
+            <Link
+              to="/interview-member"
+              type="button"
+              className="three-step-nav"
+              onClick={this.handleSubmit}
+              style={styles.primaryLight}>Submit Skills
+            </Link>
+
           </div>
           <h4 className="center">Don't see your skills?</h4>
 
@@ -127,13 +148,7 @@ export default class SelectSkills extends Component {
               to="/interview-member"
               type="button"
               className="three-step-nav"
-              style={styles.primaryLight}>Skip for now
-            </Link>
-            <Link
-              to="/interview-member"
-              type="button"
-              className="three-step-nav"
-              style={styles.secondary}>Next
+              style={styles.secondary}>Skip for now
             </Link>
           </div>
         </div>
