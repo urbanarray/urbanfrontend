@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 
 import { Button, Col, Row } from 'react-bootstrap';
-import { styles, headings } from 'assets/styles/variables';
+import { styles, headings, logo, cards } from 'assets/styles/variables';
+import '../OnboardingStyles.css';
+import { Link } from 'react-router-dom';
+import { SocialIcon } from 'react-social-icons';
 
-// urban array logo
-import logo from 'assets/img/logo.png';
+import colorLogo from 'assets/img/colorLogo.png';
+// import search from 'assets/img/search.png';
 
 export default class SelectSkills extends Component {
 
@@ -12,9 +15,9 @@ export default class SelectSkills extends Component {
     super(props);
   }
 
-  interviewMember = (e) => {
+  searchSkills = (e) => {
     e.preventDefault();
-    this.props.history.push('interview-member');
+    // search function here.
   }
 
   render() {
@@ -22,31 +25,63 @@ export default class SelectSkills extends Component {
 
       // 3 step graphic here
 
-      <div className="container text-center">
-        { /* <img src={logo} alt="Urban Array logo" /> */}
-        <Col xs={12} sm={10}>
-          <h1>Urban Array is all about skills</h1>
-          <h3>Tell us the skills you have and the skills you want to learn and we'll help you reach your goals.</h3>
-        </Col>
+      <div>
 
-        <Col xs={12} sm={10}>
-          <form type="text" placeholder="Search other skills here.">
-            <Button style={styles.primary}>Magnifying glass icon</Button>
-          </form>
-        </Col>
+        <img src={colorLogo} style={logo.onboardingLogo}/> 
 
-        <Col xs={12} sm={10}>
-          <h4>Filters</h4>
-          <Button style={styles.secondaryDark}>Construction</Button>
-          <Button style={styles.secondaryDark}>Activism</Button>
-          <Button style={styles.secondaryDark}>Design</Button>
-        </Col>
+        <div>
+          <div className="center">
+            <h1 className="card-headline">Urban Array is all about skills</h1>
+            <h3 className="card-text">Tell us the skills you have and the skills you want to learn, and we'll help you reach your goals.</h3>
+          </div>
 
-        <Col xs={12} sm={10}>
-          <a href="#">Back</a>
-          <p>Don't see your skills? <a onClick={this.interviewMember} href="#">Skip for now.</a> </p>
-          <button style={styles.primary} onClick={this.interviewMember}>Next</button>
-        </Col>
+          <br/>
+
+          <div className="center">
+              <input className="search-field" onClick={this.searchSkills} placeholder="Search other skills here."></input>
+              { /* <img src={search} alt="Search Icon" /> */ }
+          </div>
+
+          <div className="center">
+            <h4 className="card-headline">Filters</h4>
+            <Button style={styles.secondaryDark}>Construction</Button>
+            <Button style={styles.secondaryDark}>Activism</Button>
+            <Button style={styles.secondaryDark}>Design</Button>
+          </div>
+          <h4 className="center">Don't see your skills?</h4> 
+
+          <div className="three-step-nav-container">
+            <Link
+              to="/get-involved"
+              type="button"
+              className="three-step-nav"
+              style={styles.primary}>Back
+            </Link>
+            <Link
+              to="/interview-member"
+              type="button"
+              className="three-step-nav"
+              style={styles.primaryLight}>Skip for now
+            </Link>
+            <Link
+              to="/interview-member"
+              type="button"
+              className="three-step-nav"
+              style={styles.secondary}>Next
+            </Link>
+          </div>
+        </div>
+
+        <br/>
+
+        <div className="social-icon-container">
+          Follow us and check out what's happening in your community: &nbsp; 
+          <SocialIcon className="social-icons" url="https://www.facebook.com/urbanarray/" target="_blank" />
+          <SocialIcon className="social-icons" url="https://twitter.com/urbanarray" target="_blank" />
+          <SocialIcon className="social-icons" url="https://www.instagram.com/urbanarray/" target="_blank" />
+          <SocialIcon className="social-icons" url="https://www.linkedin.com/company/urban-array/" target="_blank" />
+          <SocialIcon className="social-icons" url="https://www.youtube.com/channel/UCicgBg_6lVqWBgqkur2S9vg" target="_blank" />
+        </div>
 
       </div>
 
