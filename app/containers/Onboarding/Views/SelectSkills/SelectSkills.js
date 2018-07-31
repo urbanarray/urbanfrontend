@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Button, Col, Row } from 'react-bootstrap';
+import { Button, Col, Row, DropdownButton, MenuItem } from 'react-bootstrap';
 import { styles, headings, logo, cards } from 'assets/styles/variables';
 import '../OnboardingStyles.css';
 import { Link } from 'react-router-dom';
@@ -13,6 +13,12 @@ export default class SelectSkills extends Component {
 
   constructor(props){
     super(props);
+    this.state = {
+      selectedCategory: "",
+      constructionSkills: ["Painting", "Sanding", "HVAC", "Electrical", "Carpentry", "Plumbing", "Roofing"],
+      want: [],
+      have: []
+    }
   }
 
   searchSkills = (e) => {
@@ -20,14 +26,72 @@ export default class SelectSkills extends Component {
     // search function here.
   }
 
-  render() {
+  selectCategory = (e) => {
+    e.preventDefault();
+    let selected = e.currentTarget.text
+    this.setState({
+      selectedCategory: selected
+    })
+    // this component should also trigger the toggle class effect to indicate that this has been selected
+    // or, potentially, this should go into its own function
+  }
+
+  renderDropdownButton = (i) => {
+    // TODO - get the dropdown text to change once a skill category has been selected
+    // const title = () => {
+    //   if (this.state.selectedCategory) {
+    //     return this.state.selectedCategory
+    //   } else {
+    //     return "Select Skill"
+    //   }
+    // }
     return (
+      <DropdownButton
+        title="Select Skills"
+        key={i}
+        id={`dropdown-basic=${i}`}
+        style={{marginTop: '5vh'}}
+      >
+        <MenuItem onClick={this.selectCategory} eventKey="1">Construction</MenuItem>
+        <MenuItem onClick={this.selectCategory} eventKey="2">Activism</MenuItem>
+        <MenuItem onClick={this.selectCategory} eventKey="3">Development</MenuItem>
+        <MenuItem onClick={this.selectCategory} eventKey="4">Art and Design</MenuItem>
+        <MenuItem onClick={this.selectCategory} eventKey="5">Project Management</MenuItem>
+        <MenuItem onClick={this.selectCategory} eventKey="6">Gardening and Farming</MenuItem>
+      </DropdownButton>
+    );
+  }
 
-      // 3 step graphic here
+  wantClick = (e) => {
+    e.preventDefault();
+    const skill = e.currentTarget.id
+    this.setState({
+      want: [...this.state.want, skill]
+    })
+    console.log(e.currentTarget.id)
+  }
 
+  renderSkills = () => {
+    if (this.state.selectedCategory != "") {
+      // get the skills from that category from the back end
+      return this.state.constructionSkills.map((skill, i) => {
+        return (
+          <div className="skill-card" key={i}>
+            <h3 className="card-headline">{skill}</h3>
+            <button onClick={this.wantClick} id={skill} className="skill-button skill-button-left">Want</button>
+            <button className="skill-button skill-button-right">Have</button>
+          </div>
+        )
+      })
+    }
+  }
+
+  render() {
+    console.log(this.state, 'this is state')
+    return (
       <div>
 
-        <img src={colorLogo} style={logo.onboardingLogo}/> 
+        <img src={colorLogo} style={logo.onboardingLogo}/>
 
         <div>
           <div className="center">
@@ -38,17 +102,19 @@ export default class SelectSkills extends Component {
           <br/>
 
           <div className="center">
-              <input className="search-field" onClick={this.searchSkills} placeholder="Search other skills here."></input>
-              { /* <img src={search} alt="Search Icon" /> */ }
-          </div>
+            <h4 className="card-headline">Search or select a category to get started</h4>
+            <div className="center">
+                <input className="search-field" onClick={this.searchSkills} placeholder="Search other skills here."></input>
+                { /* <img src={search} alt="Search Icon" /> */ }
+            </div>
 
-          <div className="center">
-            <h4 className="card-headline">Filters</h4>
-            <Button style={styles.secondaryDark}>Construction</Button>
-            <Button style={styles.secondaryDark}>Activism</Button>
-            <Button style={styles.secondaryDark}>Design</Button>
+            {this.renderDropdownButton()}
+            <div className="skill-card-holder">
+              {this.renderSkills()}
+            </div>
+
           </div>
-          <h4 className="center">Don't see your skills?</h4> 
+          <h4 className="center">Don't see your skills?</h4>
 
           <div className="three-step-nav-container">
             <Link
@@ -75,7 +141,7 @@ export default class SelectSkills extends Component {
         <br/>
 
         <div className="social-icon-container">
-          Follow us and check out what's happening in your community: &nbsp; 
+          Follow us and check out what's happening in your community: &nbsp;
           <SocialIcon className="social-icons" url="https://www.facebook.com/urbanarray/" target="_blank" />
           <SocialIcon className="social-icons" url="https://twitter.com/urbanarray" target="_blank" />
           <SocialIcon className="social-icons" url="https://www.instagram.com/urbanarray/" target="_blank" />
