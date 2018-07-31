@@ -68,13 +68,11 @@ export default class SelectSkills extends Component {
     this.setState({
       want: [...this.state.want, skill]
     })
-    console.log(e.currentTarget.id)
   }
 
   haveClick = (e) => {
     e.preventDefault();
     const skill = e.currentTarget.id
-    console.log(e.currentTarget.previousSibling.id, 'this is have id')
     this.setState({
       have: [...this.state.have, skill]
     })
@@ -100,7 +98,6 @@ export default class SelectSkills extends Component {
   }
 
   render() {
-    console.log(this.state, 'this is state')
     return (
       <div>
 
