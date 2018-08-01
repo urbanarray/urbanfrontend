@@ -21,6 +21,8 @@ export default class SelectSkills extends Component {
     }
   }
 
+  // component did mount 
+
   searchSkills = (e) => {
     e.preventDefault();
     // search function here.
@@ -72,7 +74,7 @@ export default class SelectSkills extends Component {
 
   haveClick = (e) => {
     e.preventDefault();
-    const skill = e.currentTarget.id
+    const skill = e.currentTarget.previousSibling.id
     this.setState({
       have: [...this.state.have, skill]
     })
@@ -98,6 +100,7 @@ export default class SelectSkills extends Component {
   }
 
   render() {
+    console.log(this.state, 'state from select skills component')
     return (
       <div>
 
