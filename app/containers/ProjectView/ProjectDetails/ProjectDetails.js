@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {Col, Row} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import {styles} from '../../../assets/styles/variables';
+import {styles, headings} from 'assets/styles/variables';
 import ReactQuill from 'react-quill';
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import HealthSafety from "../../HealthSafety";
-import AddExecution from "../../AddExecution";
-import Documentation from "../../Documentation";
+
+
+
 import 'react-quill/dist/quill.snow.css';
 
 const Textquill = styled.div`
@@ -18,13 +17,13 @@ const Textquill = styled.div`
 
 .ql-editor {
     border-top: 1px solid #ccc;
-    
+
 }
 
 `;
 
-export default class ProjectDetails extends React.Component {
-    
+export default class ProjectDetails extends Component {
+
     constructor(props){
         super(props)
         this.state = {
@@ -39,18 +38,18 @@ export default class ProjectDetails extends React.Component {
 
 
     render(){
-        
+
         return (
             <Col md={6}>
                 <div id="panelDemo8" className="panel panel-primary">
                     <div className="panel-heading" style={styles.primaryDark}>
-                        Project: {(this.props.projectDetail.name)}
+                        <h4 style={headings.tableHeading}>Project: {(this.props.projectDetail.name)}</h4>
                     </div>
-    
+
                     <div className="panel-body">
-    
+
                         <div className="row">
-    
+
                             <div className="col-md-12">
                                 <h4>Project Description</h4>
                                  {(this.props.projectDetail.description)}
@@ -68,33 +67,21 @@ export default class ProjectDetails extends React.Component {
                                 </Textquill>
                                 <br />
                                 <br />
-    
-                                <Row>
-                                    <hr />
-                                    <Col md={12}>
-                                        
-                                        
-                                    </Col>
-                                    <Col md={6}>
-                                        <AddExecution/>
-                                        
-                                        
-                                    </Col>
-                                </Row>
 
                                 <Row>
                                     <hr />
                                     <Col md={6}>
-                                        <Documentation />
+
                                     </Col>
                                     <Col md={6}>
-                                        <HealthSafety />
-                                        
+                                        {/* {console.log(this.props.projectId)} */}
+
+
                                     </Col>
                                 </Row>
-    
+
                             </div>
-    
+
                         </div>
                     </div>
                     {/* <div className="panel-footer">Panel Footer</div> */}

@@ -1,17 +1,17 @@
-import React from 'react';
-import {Router, Route, Link, History, withRouter} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Router, Route, Link, History, withRouter } from 'react-router-dom';
 
-import {createStructuredSelector} from 'reselect';
-import {connect} from 'react-redux';
-import {compose} from 'redux';
+import { createStructuredSelector } from 'reselect';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 import pubsub from 'pubsub-js';
-import {Collapse} from 'react-bootstrap';
+import { Collapse } from 'react-bootstrap';
 import SidebarRun from './Sidebar.run';
 import avatar from '../../assets/img/user/02.jpg';
-import {makeSelectCurrentUser} from 'containers/App/selectors';
+import { makeSelectCurrentUser } from 'containers/App/selectors';
 
-class Sidebar extends React.Component {
+class Sidebar extends Component {
 
     constructor(props, context) {
         super(props, context);
@@ -86,28 +86,26 @@ class Sidebar extends React.Component {
                 blog: this.routeActive(['projectsList', 'createProject', 'myProjects', 'blog-article-view']),
                 ecommerce: this.routeActive(['help', 'ecommerce-order-view', 'ecommerce-products', 'ecommerce-product-view', 'ecommerce-checkout']),
                 forum: this.routeActive(['forum-categories', 'user-skills', '']),
-                admin: this.routeActive(['add-roles', 'add-skills', '']),
+                admin: this.routeActive(['add-roles', 'add-skills', 'add-main-skills']),
                 pages: false
             }
         };
-        this.pubsub_token = pubsub.subscribe('toggleUserblock', () => {
-            this.setState({
-                userBlockCollapse: !this.state.userBlockCollapse
-            });
-        });
+        let pubsub_token;
     };
 
     componentDidMount() {
         // console.log(this.props.currentUser)
         // pass navigator to access router api
         SidebarRun(this.navigator.bind(this));
+        this.pubsub_token = pubsub.subscribe('toggleUserblock', () => {
+            this.setState({
+                userBlockCollapse: !this.state.userBlockCollapse
+            });
+        });
     }
 
     navigator(route) {
-        this
-            .props
-            .history
-            .push(route);
+        this.props.history.push(route);
     }
 
     componentWillUnmount() {
@@ -203,8 +201,8 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('dashboard')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="dashboard" title="Calander">
-                                                <span>Calander</span>
+                                            <Link to="/dashboard" title="Calendar">
+                                                <span>Calendar</span>
                                             </Link>
                                         </li>
 
@@ -233,7 +231,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('account-settings')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="account-settings" title="Profile Setting">
+                                            <Link to="/account-settings" title="Profile Setting">
                                                 <span>Profile</span>
                                             </Link>
                                         </li>
@@ -263,7 +261,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('list-volunteers')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="list-volunteers" title="List Volunteers">
+                                            <Link to="/list-volunteers" title="List Volunteers">
                                                 <span>List Volunteers</span>
                                             </Link>
                                         </li>
@@ -315,7 +313,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('communities')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="communities" title="Communities">
+                                            <Link to="/dashboard" title="Communities">
                                                 <span data-localize="sidebar.nav.element.BUTTON">Communities</span>
                                             </Link>
                                         </li>
@@ -324,7 +322,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('projects')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="projects" title="Projects">
+                                            <Link to="/listProjects" title="Projects">
                                                 <span data-localize="sidebar.nav.element.BUTTON">Projects</span>
                                             </Link>
                                         </li>
@@ -333,7 +331,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('dm')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="dm" title="D.M">
+                                            <Link to="/dashboard" title="D.M">
                                                 <span data-localize="sidebar.nav.element.COLOR">D.M</span>
                                             </Link>
                                         </li>
@@ -370,7 +368,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('openRoles')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="openRoles" title="Open Roles">
+                                            <Link to="/roleView" title="Open Roles">
                                                 <span>Open Roles</span>
                                             </Link>
                                         </li>
@@ -378,7 +376,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('myRoles')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="myRoles" title="My Roles">
+                                            <Link to="/roleView" title="My Roles">
                                                 <span>My Roles</span>
                                             </Link>
                                         </li>
@@ -386,7 +384,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('allRoles')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="allRoles" title="All Roles">
+                                            <Link to="/roleView" title="All Roles">
                                                 <span>All Roles</span>
                                             </Link>
                                         </li>
@@ -415,7 +413,7 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('places')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="places" title="List">
+                                            <Link to="/places" title="List">
                                                 <span>List Places</span>
                                             </Link>
                                         </li>
@@ -449,20 +447,20 @@ class Sidebar extends React.Component {
                                                 <span>List Projects</span>
                                             </Link>
                                         </li>
-                                        <li
+                                        {/* <li
                                             className={this.routeActive('createProject')
                                                 ? 'active'
                                                 : ''}>
                                             <Link to="/addProject" title="Create Project">
                                                 <span>Create Project</span>
                                             </Link>
-                                        </li>
+                                        </li> */}
 
                                         <li
                                             className={this.routeActive('myProjects')
                                                 ? 'active'
                                                 : ''}>
-                                            <Link to="/myProjects" title="My Projects">
+                                            <Link to="/listProjects" title="My Projects">
                                                 <span>My Projects</span>
                                             </Link>
                                         </li>
@@ -497,8 +495,16 @@ class Sidebar extends React.Component {
                                             className={this.routeActive('add-roles')
                                             ? 'active'
                                             : ''}>
-                                            <Link to="add-roles" title="Add Roles">
+                                            <Link to="/add-roles" title="Add Roles">
                                                 <span>Add Roles</span>
+                                            </Link>
+                                        </li>
+                                        <li
+                                            className={this.routeActive('add-main-skills')
+                                            ? 'active'
+                                            : ''}>
+                                            <Link to="/add-main-skills" title="Add Skills">
+                                                <span>Add Skills</span>
                                             </Link>
                                         </li>
 
@@ -507,7 +513,7 @@ class Sidebar extends React.Component {
                             </li>
 
                             <li>
-                                <a href="logout" title="Logout">
+                                <a href="/logout" title="Logout">
                                     <em className="icon-power"></em>
                                     <span>Logout</span>
                                 </a>
@@ -524,12 +530,10 @@ class Sidebar extends React.Component {
 
 }
 
+export{Sidebar};
+
 const mapStateToProps = createStructuredSelector({currentUser: makeSelectCurrentUser()});
 
-const withConnect = connect(mapStateToProps);
-
-export default withRouter(
-// compose(
-Sidebar,
-// withConnect, )
-);
+const withConnect = connect(mapStateToProps)(Sidebar);
+const routedContainer = withRouter(withConnect)
+export default routedContainer;

@@ -11,7 +11,6 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -20,31 +19,45 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectDashboard from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
-import Roles from 'containers/Roles';
-import YourRole from 'containers/YourRole';
-import NeededResources from 'containers/NeededResources';
-import PledgedResources from 'containers/PledgedResources';
+
+import Roles from './Roles';
+import YourRole from './YourRole';
+import NeededResources from './NeededResources';
+import PledgedResources from './PledgedResources';
+import { Clock, HoursWorked, PointsDisplay, CoinDisplay } from './widgets';
+
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
-import {Clock, HoursWorked, PointsDisplay, CoinDisplay} from './widgets';
 
 export class Dashboard extends Component { // eslint-disable-line react/prefer-stateless-function
  
   constructor(props, context) {
     super(props, context);
     this.state = {
-      key: 1
+      key: 1,
+      width: 0,
+      height: 0
     };
+
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
     PanelsRun();
     TableExtendedRun();
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   handleSelect(key) {
-    console.log('Tab selected ' + key);
     this.setState({
       key
     });
@@ -58,32 +71,27 @@ export class Dashboard extends Component { // eslint-disable-line react/prefer-s
           <meta name="description" content="Description of Dashboard" />
         </Helmet>
 
-        <h3>DASHBOARD
-          <small>
-
-          </small>
-
-        </h3>
+        <h3>DASHBOARD</h3>
 
         <Grid fluid>
 
           { /* START widgets box */}
           <Row>
-            <HoursWorked />
-            <PointsDisplay />
-            <CoinDisplay />
-            <Clock />
+            <HoursWorked windowWidth={this.state.width} />
+            <PointsDisplay windowWidth={this.state.width} />
+            <CoinDisplay windowWidth={this.state.width} />
+            <Clock windowWidth={this.state.width} />
           </Row>
           { /* END widgets box */}
           
           <Row>
-            <Roles />
-            <YourRole />
+            <Roles windowWidth={this.state.width} />
+            <YourRole windowWidth={this.state.width} />
           </Row>
 
           <Row>
-            <NeededResources />
-            <PledgedResources />
+            <NeededResources windowWidth={this.state.width} />
+            <PledgedResources windowWidth={this.state.width} />
           </Row>
 
           { /* END row */}

@@ -2,7 +2,7 @@
  * ForgetPassword
 **/
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -15,14 +15,14 @@ import reducer from './reducer';
 import saga from './saga';
 
 import ContentWrapper from 'components/Layout/ContentWrapper';
-import { Row, Col, Panel, Button, FormControl, FormGroup } from 'react-bootstrap';
-import {sendEmailAction, emailSentAction} from './actions';
+import { Col, Panel, Button, FormControl, FormGroup } from 'react-bootstrap';
+import { sendEmailAction } from './actions';
 
 
-export class ForgetPassword extends React.Component { // eslint-disable-line react/prefer-stateless-function  
+export class ForgetPassword extends Component { // eslint-disable-line react/prefer-stateless-function  
 
-  constructor(props, context) {
-    super(props)
+  constructor(props) {
+    super(props);
 
     this.state = {
       email:'',      

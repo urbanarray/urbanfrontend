@@ -37,7 +37,6 @@ function resetPasswordReducer(state = initialState, action) {
       return state
         .set('serverError', action.payload);
 
-
     default:
       return state;
   }

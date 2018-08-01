@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -18,12 +18,12 @@ import reducer from './reducer';
 import saga from './saga';
 
 import ContentWrapper from 'components/Layout/ContentWrapper';
-import { Row, Col, Panel, Button, FormControl, FormGroup } from 'react-bootstrap';
-import { setNewPasswordAction } from "./actions";
+import { Col, Panel, Button, FormControl, FormGroup } from 'react-bootstrap';
+import { setNewPasswordAction } from './actions';
 
-export class ResetPassword extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class ResetPassword extends Component { // eslint-disable-line react/prefer-stateless-function
 
-  constructor(props, context) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -32,7 +32,7 @@ export class ResetPassword extends React.Component { // eslint-disable-line reac
       code:null,
       passwordNotMatch: '',
       hide: 'hide',
-      show: 'alert alert-success',
+      show: 'alert alert-success'
     }
   }
 
@@ -66,9 +66,6 @@ export class ResetPassword extends React.Component { // eslint-disable-line reac
     this.setState({
       show: 'hide'
     });
-  }
-
-  componentDidUpdate(){
   }
 
   printErrors = (attribute) => {
@@ -155,17 +152,17 @@ export class ResetPassword extends React.Component { // eslint-disable-line reac
 }
 
 ResetPassword.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
-  resetpassword: makeSelectResetPassword(),
+  resetpassword: makeSelectResetPassword()
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    setNewPassword: (payload) => (dispatch(setNewPasswordAction(payload))),
+    setNewPassword: (payload) => (dispatch(setNewPasswordAction(payload)))
   };
 }
 
@@ -177,5 +174,5 @@ const withSaga = injectSaga({ key: 'resetPassword', saga });
 export default compose(
   withReducer,
   withSaga,
-  withConnect,
+  withConnect
 )(ResetPassword);

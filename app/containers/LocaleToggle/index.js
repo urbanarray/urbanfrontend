@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
@@ -16,7 +16,7 @@ import { appLocales } from '../../i18n';
 import { changeLocale } from '../LanguageProvider/actions';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
 
-export class LocaleToggle extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class LocaleToggle extends PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <Wrapper>

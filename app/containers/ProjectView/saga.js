@@ -8,8 +8,8 @@ import { viewedProject, listedCommunication } from './actions';
 export function* index() {
   try {
     const id = yield select(projectId());
-    
     const response = yield call(projectView, id);
+
     yield put(viewedProject(response.data.project));
   } catch (error) {
     console.log(error)

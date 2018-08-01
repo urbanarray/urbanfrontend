@@ -2,11 +2,12 @@ import axios from 'axios';
 import history from '../history';
 import {accessToken, clearState} from './persistState';
 
-const onlineServer ='http://mvp.urbanarray.org:3000/v1/';
+const onlineServer ='http://mvp.urbanarray.org/v1/';
 const local = 'http://localhost:3000/v1/';
+const ip = 'http://192.168.1.118/v1/';
 
 const api = axios.create({
-    
+
     baseURL: local,
     timeout: 20000,
 });
@@ -22,7 +23,7 @@ api.interceptors.response.use((response) =>{
         clearState();
         history.push('/login');
     }
-    
+
     throw error;
 });
 

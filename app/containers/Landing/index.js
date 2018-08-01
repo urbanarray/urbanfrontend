@@ -3,57 +3,91 @@
  * Landing
  *
  */
-
-import React from 'react';
+import { createStructuredSelector } from 'reselect';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import {Button} from 'reactstrap';
-import styled from 'styled-components';
+import { Row, Col } from 'react-bootstrap';
+import LandingForm from './LandingForm';
 
-import { Link } from 'react-router-dom';
+import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
+import { submitCodeAction, emptyErrorsAction } from './actions';
+import saga from './saga';
+import reducer from './reducer';
+import SUBMIT_CODE_ACTION from './constants';
+import { makeSelectSubmitCode, makeSelectLanding} from './selectors';
+import { isLogin } from 'containers/App/selectors';
 
 
-const LandingWraper = styled.div`
-  position: absolute;
-  width: 100% !important;
-  height: 100% !important;
-  color:white;
+export class Landing extends Component {
+  constructor(props) {
+    super(props);
 
-  .container{
-    padding : 50px;
+    this.state = {
+      value: '',
+      message: ''
+    };
   }
 
-  .padding_20{
-    padding: 20px;
+  getValidationState = () => {
+    const length = this.state.value.length;
+    if (length === 6) return 'success';
+    else if (length > 6) return 'warning';
+    else if (length < 6) return 'warning';
+    return null;
   }
 
-  .margin_10{
-    margin: 10px;
+  handleChange = (e) => {
+    if(this.props.landing.errors && this.props.landing.errors.length > 0){
+      this.props.emptyErrors();
+    }
+
+    if (this.state.value.length === 6) {
+      this.setState({message: "", value: e.target.value})
+    } else {
+      this.setState({ value: e.target.value });
+    }
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const submissionLength = this.state.value.length;
+    if (submissionLength < 6 || submissionLength > 6) {
+      this.setState({message: "The code needs to be exactly 6 characters"})
+    } else {
+      this.setState({message: ""})
+    }
+    this.props.create(this.state.value)
+  }
 
-  `;
-
-
-
-export class Landing extends React.Component { // eslint-disable-line react/prefer-stateless-function
- 
   render() {
- 
+    if (this.props.isLogin) {
+      this.props.history.push('/dashboard');
+    }
+
     return (
-      <LandingWraper>
-        <div className= 'container text-center' >
-            <div className= 'row' >
-              <div className= 'col-md-12' >
-                
-              <iframe width="100%" height="450" src="https://www.youtube.com/embed/U5n_FxGmcH8" frameBorder="0"  allowFullScreen="true"></iframe>
+        <div className='container text-center' style={{padding: '5%'}}>
+          <Row>
+            <Col xs={12} sm={8}>
+              <h1>Welcome to the Urban Array MVP Demo App.</h1>
+              <h3>This website is for testing and design purposes only.  THIS IS NOT A LIVE SITE.  Your data will NOT be saved.</h3>
+              <h3>Please Enter your Invitation PASSPHRASE to the right (or below, on mobile) to begin.</h3>
+              <p>For more info about Urban Array, <a href="https://urbanarray.org/">please click here to visit our website.</a></p>
+            </Col>
 
-              </div>
-            </div>
+            <Col xs={12} sm={4}>
+              <LandingForm
+                state={this.state}
+                getValidationState={this.getValidationState} 
+                handleChange={this.handleChange}
+                handleSubmit={this.handleSubmit}
+                errors={this.props.landing.errors}
+              />
+            </Col>
+          </Row>
         </div>
-
-      </LandingWraper>
     );
   }
 }
@@ -62,15 +96,26 @@ Landing.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
+const mapStateToProps = createStructuredSelector({
+  landing: makeSelectLanding(),
+  isLogin: isLogin(),
+});
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    create: (payload) =>dispatch(submitCodeAction(payload)),
+    emptyErrors: () =>dispatch(emptyErrorsAction()),
   };
 }
 
-const withConnect = connect(null, mapDispatchToProps);
+const withConnect = connect( mapStateToProps, mapDispatchToProps);
+
+const withReducer = injectReducer({ key: 'landing', reducer });
+const withSaga = injectSaga({ key: 'landing', saga });
 
 export default compose(
+  withReducer,
+  withSaga, 
   withConnect,
 )(Landing);

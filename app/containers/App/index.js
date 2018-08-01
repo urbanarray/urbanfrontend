@@ -7,15 +7,18 @@
  */
 
 import React from 'react';
-import styled from 'styled-components';
-import { browserHistory, Route, BrowserRouter, withRouter, Switch, BrowserRouter as Router, Redirect, Miss } from 'react-router-dom';
+import { browserHistory, Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import './style.css';
 
-
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Landing from 'containers/Landing';
-
-import Signup from 'containers/Signup/Loadable';
 import Login from 'containers/Login/Loadable';
+
+import LandingPage from 'containers/Onboarding/Views/LandingPage';
+import Signup from 'containers/Onboarding/Signup/Loadable';
+import GetInvolved from 'containers/Onboarding/Views/GetInvolved';
+import SelectSkills from 'containers/Onboarding/Views/SelectSkills';
+import InterviewMember from 'containers/Onboarding/Views/InterviewMember';
+
 import Profile from 'containers/Profile/Loadable';
 import Dashboard from 'containers/Dashboard/Loadable';
 import ProjectView from 'containers/ProjectView/Loadable';
@@ -24,75 +27,77 @@ import ResendEmail from 'containers/ResendEmail';
 import VerifyAccount from 'containers/VerifyAccount';
 import ForgetPassword from 'containers/ForgetPassword';
 import ResetPassword from 'containers/ResetPassword';
-// import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Logout from 'containers/Logout/Loadable';
-import AccountSettings from 'containers/AccountSettings/Loadable';
-import Volunteer from 'containers/Volunteer/Loadable';
+import AccountSettings from 'containers/Profile/AccountSettings/Loadable';
+import ListVolunteers from 'containers/ListVolunteers/Loadable';
 import Base from 'components/Layout/Base';
-import Auth from 'containers/Auth';
-import AddRoles from 'containers/AddRoles';
 import AcceptInvitation from 'containers/AcceptInvitation';
-import './style.css';
-import AddProject  from 'containers/AddProject';
-import ListProjects  from 'containers/ListProjects';
-import ListPlaces  from 'containers/Places';
-  
-// List of routes that uses the page layout
-// listed here to Switch between layouts
-// depending on the current pathname
-const listofPages = [
-    '/',
-    '/login',
-    '/signup',
-    '/profile',
-    '/logout',
-    '/notfound',
-    '/error500',
-    '/maintenance',
-];
 
 
 
-const currentKey = Math.random();
-const timeout = { enter: 500, exit: 500 };
-const animationName = 'rag-fadeIn';
+import AddSkills from 'containers/AddSkills';
+import ListDocumentation from 'containers/ListDocumentation';
+import ListPlaces from 'containers/ListPlaces';
+import ListProjects from 'containers/ListProjects';
+import AddProject from 'containers/ListProjects/AddProject';
 
+import ListCommunications from 'containers/ProjectView/ListCommunications';
+import ListHealthSafety from 'containers/ProjectView/ListHealthSafety';
+import ListExecution from 'containers/ProjectView/ListExecution';
+import ListResources from 'containers/ProjectView/Resources/ListResources';
+import ListRoles from 'containers/ProjectView/ListRoles';
+import AddRoles from 'containers/ProjectView/ListRoles/AddRoles';
+import ListTeamDisplay from 'containers/ProjectView/ListTeamDisplay';
 
 export default function App() {
 
-  return (  
+  return (
     <div>
-      
-    {/* <Auth /> */}
 
-    <Router history={browserHistory}  >
-      <Switch>   
-        <Base>
-       
-          <Route exact path="/" component={Landing} />  
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/logout" component={Logout} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/projectView/:id" component={ProjectView} />
-          <Route path="/roleView" component={RoleView} />  
-          <Route path="/resendEmail/:id" component={ResendEmail} /> 
-          <Route path="/verify/:id" component={VerifyAccount} /> 
-          <Route path="/forgetpassword" component={ForgetPassword} /> 
-          <Route path="/account-settings" component={AccountSettings} /> 
-          <Route path="/list-volunteers" component={Volunteer} /> 
-          <Route path="/add-roles" component={AddRoles} />
-          <Route path="/resetpassword/:code" component={ResetPassword} /> 
-          <Route path="/completeAccount/:id" component={AcceptInvitation} /> 
-          <Route path="/addProject" component={AddProject} /> 
-          <Route path="/listProjects" component={ListProjects} /> 
-          <Route path="/places" component={ListPlaces} /> 
-        
-        </Base> 
-      </Switch>
-    </Router>
-  </div>
-  
+      {/* <Auth /> */}
+
+      <Router history={browserHistory}  >
+        <Switch>
+          <Base>
+
+            <Route exact path="/" component={Landing} />
+            <Route path="/welcome" component={LandingPage} />
+            <Route path="/signup" component={Signup} />
+
+            {/* 3 onboarding steps: */}
+            <Route path="/get-involved" component={GetInvolved} />
+            <Route path="/select-skills" component={SelectSkills} />
+            <Route path="/interview-member" component={InterviewMember} />
+
+            {/* <Route path="/login" component={Login} /> */}
+            <Route path="/profile" component={Profile} />
+            <Route path="/logout" component={Logout} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/projectView/:id" component={ProjectView} />
+            <Route path="/roleView" component={RoleView} />
+            <Route path="/resendEmail/:id" component={ResendEmail} />
+            <Route path="/verify/:id" component={VerifyAccount} />
+            <Route path="/forgetpassword" component={ForgetPassword} />
+            <Route path="/account-settings" component={AccountSettings} />
+            <Route path="/list-volunteers" component={ListVolunteers} />
+            <Route path="/add-roles" component={AddRoles} />
+            <Route path="/add-main-skills" component={AddSkills} />
+            <Route path="/resetpassword/:code" component={ResetPassword} />
+            <Route path="/completeAccount/:id" component={AcceptInvitation} />
+            <Route path="/addProject" component={AddProject} />
+            <Route path="/listProjects" component={ListProjects} />
+            <Route path="/places" component={ListPlaces} />
+            <Route path="/list-Communications/:id" component={ListCommunications} />
+            <Route path="/list-HealthSafety/:id" component={ListHealthSafety} />
+            <Route path="/list-Execution/:id" component={ListExecution} />
+            <Route path="/list-Documentation/:id" component={ListDocumentation} />
+            <Route path="/list-Resources/:id" component={ListResources} />
+            <Route path="/list-Roles" component={ListRoles} />
+            <Route path="/list-TeamDisplay" component={ListTeamDisplay} />
+          </Base>
+        </Switch>
+      </Router>
+    </div>
+
   );
 }

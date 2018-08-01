@@ -4,45 +4,34 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {Helmet} from 'react-helmet';
-import {FormattedMessage} from 'react-intl';
-import {createStructuredSelector} from 'reselect';
-import {compose} from 'redux';
-import {
-  Grid,
-  Row,
-  Col,
-  Panel,
-  Button,
-  FormControl
-} from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
+import { Row, Col, FormControl } from 'react-bootstrap';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectAcceptInvitation from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
-import {findUserAction, acceptInvitationAction, invitedUserDataAction} from './actions';
-import ContentWrapper from '../../components/Layout/ContentWrapper';
+import { findUserAction, invitedUserDataAction } from './actions';
+import ContentWrapper from 'components/Layout/ContentWrapper';
 
-export class AcceptInvitation extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class AcceptInvitation extends Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
     super(props);
     this.state = {
-
       email: '',
       password: '',
       confirmPassword: '',
       passwordNotMatch: '',
       id : (this.props.acceptinvitation && this.props.acceptinvitation.user_Id)
         ? this.props.acceptinvitation.user_Id
-          : '',
-
+          : ''
     }
 
   }
@@ -78,10 +67,7 @@ export class AcceptInvitation extends React.Component { // eslint-disable-line r
   }
 
   componentDidMount() {
-    this
-      .props
-      .findUser(this.props.match.params.id);
-
+    this.props.findUser(this.props.match.params.id);
   }
 
   render() {
@@ -182,4 +168,4 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const withReducer = injectReducer({key: 'acceptInvitation', reducer});
 const withSaga = injectSaga({key: 'acceptInvitation', saga});
 
-export default compose(withReducer, withSaga, withConnect,)(AcceptInvitation);
+export default compose(withReducer, withSaga, withConnect)(AcceptInvitation);

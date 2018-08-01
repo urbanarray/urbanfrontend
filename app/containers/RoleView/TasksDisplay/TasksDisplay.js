@@ -1,40 +1,117 @@
 import React from 'react';
 
-import {Link} from 'react-router-dom';
-import {Col, Table} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Col, Table, Panel } from 'react-bootstrap';
 
-import { styles } from '../../../assets/styles/variables';
+import { styles, headings } from 'assets/styles/variables';
 
-const TasksDisplay = (props) => (
-    <Col md={8}>
-        <div id="panelDemo8" className="panel panel-primary">
-            <div className="panel-heading" style={styles.primaryDark}>
-                Tasks
-              </div>
+import DetailsButton from './DetailsButton';
+import ResourcesButton from './ResourcesButton';
 
-            { /* START table-responsive */}
-            <Table id="table-ext-2" responsive striped bordered hover>
-                <thead>
-                    <tr>
-                        <th style={{width: '150px'}}>Title</th>
-                        <th>Description </th>
-                        <th style={{width: '120px'}}>Date/Time</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {props.renderTasks()}
-                </tbody>
-            </Table>
-            { /* END table-responsive */}
+const TasksDisplay = (props) => {
 
-            <div className="panel-footer">
-                <div className="text-right">
-                    <Link to="#" >View All</Link>
+    const renderHeader = () => {
+      if (props.windowWidth < 600) {
+          return null;
+      } else {
+          return (
+              <thead>
+                  <tr>
+                      <th style={{ width: '150px' }}>Title</th>
+                      <th>Description </th>
+                      <th style={{ width: '120px' }}>Date/Time</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+          )
+      }
+    }
+
+    const renderTable = () => {
+        if (props.tasks && props.tasks.length) {
+            if (props.windowWidth < 600) {
+                return props.tasks.map((task, i) => {
+                    return (
+                        <Panel bsStyle="primary" key={i}>
+                            <Panel.Heading style={styles.primary}>
+                                <Panel.Title componentClass="h3" style={headings.subHeading}>{task.title}</Panel.Title>
+                            </Panel.Heading>
+                            <Panel.Body style={{ textAlign: 'center' }}>
+                                Description: {task.description}<br />
+                                Date: {task.date}<br />
+                                Time: {`${task.startTime} - ${task.endTime}`}<br />
+
+                                <DetailsButton  task={task} windowWidth={props.windowWidth}/>
+                                <ResourcesButton  task={task} />
+                            </Panel.Body>
+                        </Panel>
+                    )
+                })
+            } else {
+                return props.tasks.map((task, i) => {
+                    return (
+                        <tr key={i} >
+                            <td>{task.title}</td>
+                            <td>{task.description}</td>
+                            <td>{`${task.date}`}<br />
+                                {`${task.startTime} - ${task.endTime}`}
+                            </td>
+                            <td>
+                                <DetailsButton  task={task} />
+                                <ResourcesButton  task={task} />
+                            </td>
+
+                        </tr>
+                    );
+                });
+            }
+        }
+
+    }
+
+    if (props.windowWidth < 600) {
+        return (
+            <Col md={8}>
+                <div id="panelDemo8" className="panel panel-primary">
+                    <div className="panel-heading" style={styles.primaryDark}>
+                        <h4 style={headings.tableHeading}>Tasks</h4>
+                  </div>
+
+                    {renderHeader()}
+                    {renderTable()}
+
+                    <div className="panel-footer">
+                        <div className="text-right">
+                            <Link to="#" >View All</Link>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </Col>
-)
+            </Col>
+        )
+    } else {
+        return (
+            <Col md={8}>
+                <div id="panelDemo8" className="panel panel-primary">
+                    <div className="panel-heading" style={styles.primaryDark}>
+                        <h4 style={headings.tableHeading}>Tasks</h4>
+                  </div>
+
+                    <Table id="table-ext-2" responsive striped bordered hover>
+                        {renderHeader()}
+                        <tbody>
+                            {renderTable()}
+                        </tbody>
+                    </Table>
+
+                    <div className="panel-footer">
+                        <div className="text-right">
+                            <Link to="#" >View All</Link>
+                        </div>
+                    </div>
+                </div>
+            </Col>
+        )
+    }
+}
 
 export default TasksDisplay;

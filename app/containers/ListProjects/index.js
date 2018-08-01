@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -12,7 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import ContentWrapper from 'components/Layout/ContentWrapper';
-import {Form , FormGroup, Label, Input, Ellipsis, Last, First, Prev, Next, Item, Grid, Row, Col, Panel, Button, Table, Pagination,Modal } from 'react-bootstrap';
+import { Row, Col, Button, Table, Pagination,Modal } from 'react-bootstrap';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -22,12 +22,14 @@ import saga from './saga';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import * as a from './actions';
+import AddProject from './AddProject';
+import { styles, headings } from 'assets/styles/variables';
 
 
-import * as a from "./actions";
 
 
-export class ListProjects extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class ListProjects extends Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props){
     super(props)
@@ -36,25 +38,27 @@ export class ListProjects extends React.Component { // eslint-disable-line react
       description: '',
       projectType: '',
       place: '',
-      date: null,
+      startDate: null,
+      endDate: null,
       time: null,
       pgoals: '',
       pkeywords: '',
       showModal: false,
       showDeleteModel: false,
-      
+
       toedit: {
         name: '',
         description: '',
         projectType: '',
         place: '',
-        date: null,
+        startDate: null,
+        endDate: null,
         time: null,
         pgoals: '',
         pkeywords: '',
       },
       modal_delete: null,
-      page_no: 1,
+      page_no: 1
     };
   }
 
@@ -66,7 +70,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
 
   closedelete = () => {
     this.setState({
-      showDeleteModel: false,
+      showDeleteModel: false
     });
   }
 
@@ -75,7 +79,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
     this.setState({
       showModal: true,
 
-      toedit: obj, 
+      toedit: obj
     });
   }
 
@@ -87,9 +91,9 @@ export class ListProjects extends React.Component { // eslint-disable-line react
   }
 
   projectFullInfo = (id) => {
-  
+
     this.props.history.push('projectView/' + id);
-    
+
   }
 
 
@@ -102,14 +106,14 @@ export class ListProjects extends React.Component { // eslint-disable-line react
 
    handleSubmit = (e) => {
     e.preventDefault();
-  
+
      this.props.update(this.state.toedit);
-     this.close()
+     this.close();
   }
 
   handleClick = (value) => {
     this.setState({
-      show: value,
+      show: value
     });
 
   }
@@ -121,17 +125,16 @@ export class ListProjects extends React.Component { // eslint-disable-line react
 
     toedit[name] = value;
     this.setState({
-      toedit: toedit,
+      toedit: toedit
     });
   }
-  
+
   handleQuill = (value) => {
-    console.log(value);
     const toedit = this.state.toedit;
-    
+
     toedit[name] = value;
     this.setState({
-      toedit: toedit,
+      toedit: toedit
     });
 
   }
@@ -139,7 +142,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
   componentDidMount(){
     this.props.listprojects();
     this.props.listPlaces();
-    
+
   }
 
 
@@ -163,11 +166,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
 
       return places.map((place) => {
         return (
-
-
-
           <option key={Math.random()} value={place._id}>{place.name}</option>
-
         )
       })
     }
@@ -179,54 +178,70 @@ export class ListProjects extends React.Component { // eslint-disable-line react
 
     if (prolists && prolists.length > 0) {
       return prolists.map((projects) => {
-        
+
           return(
             <tr key={Math.random()} >
               <td> {projects.name} </td>
 
-
               <td>{projects.description}</td>
-              
+              <td>{projects.place.name}</td>
+
               <td>
 
+                  <i title="view project" style={{marginLeft: '30px'}}  onClick={() => this.projectFullInfo(projects._id)} className="fa fa-eye"> </i>
 
-                <button className='btn btn-labeled btn-danger mr btn btn-labeled btn-danger mr-default pull-right' onClick={() => this.openDelete(projects._id)}>
-                    <span  className="btn-label" > <i className="fa fa-times"> </i> </span> Delete </button>  
-                
-                
-                <button  className='btn btn-labeled btn-success mr btn btn-labeled btn-success mr-default pull-right' onClick={() => this.open(projects)}> 
-                    <span className="btn-label" ><i className="fa fa-check"></i></span> Update</button> 
-                    
+                  <i title="update project" style={{marginLeft: '30px'}}  onClick={() => this.open(projects)} className="fa fa-pencil"></i>
 
-                <button className='btn btn-labeled btn-info mr btn btn-labeled btn-info mr-default pull-right' onClick={() => this.projectFullInfo(projects._id)}>
-                  <span className="btn-label" > <i className="fa fa-info"> </i> </span> Info </button>
-              
+                  <i title="delete project" style={{marginLeft: '30px'}}  onClick={() => this.openDelete(projects._id)}  className="fa fa-times"> </i>
+
               </td>
-              
+
             </tr>
           );
-        
+
       });
     }
-    
+
   }
+
   render() {
     return (
       <ContentWrapper>
-      
+
         <Helmet>
-          <title>Volunteer</title>
-          <meta name="description" content="Description of Volunteer" />
+          <title>Project</title>
+          <meta name="description" content="Description of Project" />
         </Helmet>
+        <h3>Projects
+            <small>List of all projects</small>
+        </h3>
+        { /* START panel */}
+        <div className="panel panel-default">
+          <div className="panel-heading" style={styles.primaryDark}>
+            <h4 style={headings.tableHeading}>projects</h4> 
+            <div className='pull-right'>
+              <AddProject />
+            </div>
+            <br />
+          </div>
+
             { /* START table-responsive */}
             <Table id="table-ext-1" responsive bordered hover>
               <thead>
+                <tr>
+                  <th style={{ width: '200px' }} >Project Name</th>
+                  <th style={{ width: '500px' }}>Description</th>
+                  <th style={{ width: '200px' }} >Place</th>
+                  <th>Actions</th>
+                </tr>
               </thead>
               <tbody>
               {this.listPojects()}
               </tbody>
-             
+
             </Table>
+
+            <hr style={{ marginTop: '12px', marginBottom: '0px' }} />
 
             <Row>
               <Col  className="text-center">
@@ -246,8 +261,11 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                 </Pagination>;
               </Col>
             </Row>
-          
-          
+
+        </div>
+        { /* END panel */}
+        { /* START panel */}
+
           <Modal show={this.state.showModal} onHide={this.close}>
             <Modal.Header closeButton >
               <Modal.Title>Update Project</Modal.Title>
@@ -255,27 +273,28 @@ export class ListProjects extends React.Component { // eslint-disable-line react
             <Modal.Body>
               <form className="form-horizontal" onSubmit={this.handleSubmit} onChange={this.changeAll}  >
                 <fieldset>
-                  
+
                   <div className="form-group mb">
                     <Row>
                         <label className="col-sm-3 control-label mb">Project Name</label>
                         <Col md={8} >
-                          <input onChange={this.handleUpdateChange} className="form-control" type="text" name="name" value={this.state.toedit.name} placeholder="Project Name" required />
+                          <input onChange={this.handleUpdateChange} className="form-control" type="text" name="name" value={(this.state.toedit)?this.state.toedit.name:''} placeholder="Project Name" required />
                         </Col>
                     </Row>
-                    
+
                     <Row>
-                      <label className="col-sm-3 control-label mb">description</label>
+                      <label className="col-sm-3 control-label mb">Description</label>
                       <Col md={8}>
-                        <textarea rows="5" style={{marginTop: '10px'}} onChange={this.handleUpdateChange} className="form-control" type="text" name="description" value={this.state.toedit.description} placeholder="description" required />
+                      <textarea rows="5" style={{ marginTop: '10px' }} onChange={this.handleUpdateChange} className="form-control" type="text" name="description" value={(this.state.toedit) ?this.state.toedit.description: ''} placeholder="description" required />
                       </Col>
 
                     </Row>
-                    
+
                     <Row>
                       <label className="col-sm-3 control-label mb">Project Type</label>
                       <Col md={8}>
-                      <select value={this.state.toedit.projectType} style={{marginTop: '10px'}} name="projectType" className="form-control">
+                      <select value={this.state.toedit.projectType } style={{marginTop: '10px'}} name="projectType" className="form-control">
+                        <option>Select Project Type</option>
                         <option value={1}>Urban Farming</option>
                         <option value={2}>Building Rehab</option>
                       </select>
@@ -286,40 +305,64 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                     <Row>
                       <label className="col-sm-3 control-label mb">Place</label>
                       <Col sm={8}>
-                      <select style={{marginTop: '10px'}} onChange={this.handleUpdateChange} value={this.state.toedit.place} name="place" className="form-control">
+                      <select style={{marginTop: '10px'}} onChange={this.handleUpdateChange} value={(this.state.toedit && this.state.toedit.place)? this.state.toedit.place._id:''} name="place" className="form-control">
                         {this.renderPlaces()}
                       </select>
                       {/* <input  style={{marginTop: '10px'}} className="form-control" type="text" name="place" value={this.state.toedit.place} placeholder="place"/> */}
                       </Col>
                     </Row>
-                    
+
                     <Row>
-                      
-                      <label className="col-sm-3 control-label mb">date and Time</label>
+
+                      <label className="col-sm-3 control-label mb">Time</label>
                       {/* <Col sm={4}>
                         <input rows="5" onChange={this.handleUpdateChange} className="form-control" type="text" name="date" value={this.state.toedit.date} placeholder="date" required />
                       </Col> */}
                       <Col md={8}>
-                        <input rows="5" style={{marginTop: '10px'}} onChange={this.handleUpdateChange} className="form-control" type="text" name="time" value={this.state.toedit.time} placeholder="time" required />
+                      <input style={{ marginTop: '10px' }} onChange={this.handleUpdateChange} className="form-control" type="time" name="time" value={(this.state.toedit) ? this.state.toedit.time: ''} placeholder="time" required />
                       </Col>
 
                     </Row>
-                    
+
+
+                    <Row>
+                      <label className="col-sm-3 control-label mb">Start Date</label>
+                      {/* <Col sm={4}>
+                        <input rows="5" onChange={this.handleUpdateChange} className="form-control" type="text" name="date" value={this.state.toedit.date} placeholder="date" required />
+                      </Col> */}
+                      <Col md={8}>
+                      <input style={{ marginTop: '10px' }} onChange={this.handleUpdateChange} className="form-control" type="date" name="startDate" value={(this.state.toedit) ? this.state.toedit.startDate:''} placeholder="Date" required />
+                      </Col>
+
+                    </Row>
+
+
+                    <Row>
+                      <label className="col-sm-3 control-label mb">End Date</label>
+                      {/* <Col sm={4}>
+                        <input rows="5" onChange={this.handleUpdateChange} className="form-control" type="text" name="date" value={this.state.toedit.date} placeholder="date" required />
+                      </Col> */}
+                      <Col md={8}>
+                      <input style={{ marginTop: '10px' }} onChange={this.handleUpdateChange} className="form-control" type="date" name="endDate" value={(this.state.toedit) ? this.state.toedit.endDate: ''} placeholder="End Date" required />
+                      </Col>
+
+                    </Row>
+
                     <Row>
                       <label className="col-sm-3 control-label mb">Project Goals</label>
                       <Col sm={8}>
-                        <ReactQuill 
+                        <ReactQuill
                           name="pgoals"
-                          value ={this.state.toedit.pgoals}
+                        value={(this.state.toedit) ? this.state.toedit.pgoals:''}
                           type="text"
                           style={{marginTop: '10px'}}
-                          // onChange={this.handleUpdateChange} 
+                          // onChange={this.handleUpdateChange}
                           onChange={this.handleQuill}
                            />
-                        {/* <textarea rows="3" 
-                        style={{marginTop: '10px'}} 
-                        onChange={this.handleUpdateChange} 
-                        className="form-control" type="text" 
+                        {/* <textarea rows="3"
+                        style={{marginTop: '10px'}}
+                        onChange={this.handleUpdateChange}
+                        className="form-control" type="text"
                         name="pgoals" value={this.state.toedit.pgoals} placeholder="Project Goals"/> */}
                       </Col>
                     </Row>
@@ -327,7 +370,7 @@ export class ListProjects extends React.Component { // eslint-disable-line react
                     <Row>
                       <label className="col-sm-3 control-label mb">Project keywords</label>
                       <Col sm={8}>
-                      <textarea rows="3" style={{marginTop: '10px'}} onChange={this.handleUpdateChange} className="form-control" type="text" name="pkeywords" value={this.state.toedit.pkeywords} placeholder="Project Keywords"/>
+                      <textarea rows="3" style={{ marginTop: '10px' }} onChange={this.handleUpdateChange} className="form-control" type="text" name="pkeywords" value={(this.state.toedit) ? this.state.toedit.pkeywords:''} placeholder="Project Keywords"/>
                       </Col>
                     </Row>
 
@@ -347,13 +390,13 @@ export class ListProjects extends React.Component { // eslint-disable-line react
 
           <Modal show={this.state.showDeleteModel} onHide={this.closeDelete}>
             <Modal.Body>
-              
+
               <div className="form-group mb text-center">
                 <h3 className="p-v-20 fw-i">Are You Sure To Delete This Project?</h3>
                   <button className="btn btn-labeled btn-lg btn-warning mr btn btn-labeled btn-warning mr-default" onClick={this.closedelete}>
                    <span className="btn-label">
                      <i className="fa fa-warning"></i>
-                   
+
                    </span> No
                    </button>
                   <button className="btn btn-labeled btn-danger btn-lg mr btn btn-labeled btn-danger  mr-default" onClick={() => this.handleRemove(this.state.modal_delete)}>
@@ -388,7 +431,7 @@ function mapDispatchToProps(dispatch) {
     listprojects: () => dispatch(a.listProjectsAction()),
     update : (payload) => dispatch(a.updateAction(payload)),
     deleteProject : (payload) => dispatch(a.deleteAction(payload)),
-    getPagination: (payload) => dispatch(a.getPagination(payload)), 
+    getPagination: (payload) => dispatch(a.getPagination(payload)),
     listPlaces: () => dispatch(a.listPlacesAction())
   };
 }

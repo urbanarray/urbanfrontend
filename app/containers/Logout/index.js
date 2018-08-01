@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -18,11 +18,9 @@ import makeSelectLogout from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-import {logout} from 'containers/App/actions';
-import {isLogin} from 'containers/App/selectors';
-import { Route, Redirect } from 'react-router';
+import { logout } from 'containers/App/actions';
 
-export class Logout extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class Logout extends Component { // eslint-disable-line react/prefer-stateless-function
   
   componentDidMount(){
     const logout = this.props.logout();
@@ -43,18 +41,17 @@ export class Logout extends React.Component { // eslint-disable-line react/prefe
 }
 
 Logout.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
-  logout: makeSelectLogout(),
+  logout: makeSelectLogout()
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    logout:() => dispatch(logout()),
-
+    logout:() => dispatch(logout())
   };
 }
 
@@ -66,5 +63,5 @@ const withSaga = injectSaga({ key: 'logout', saga });
 export default compose(
   withReducer,
   withSaga,
-  withConnect,
+  withConnect
 )(Logout);

@@ -61,6 +61,7 @@ export function ejectSagaFactory(store, isValid) {
     if (!isValid) checkStore(store);
 
     checkKey(key);
+    
 
     if (Reflect.has(store.injectedSagas, key)) {
       const descriptor = store.injectedSagas[key];
