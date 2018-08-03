@@ -139,3 +139,11 @@
   font-weight: bold;
   background-color: #91c63f;
 }
+
+.want-border {
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+}
+.have-border {
+  border-top: 1px solid black;
+}

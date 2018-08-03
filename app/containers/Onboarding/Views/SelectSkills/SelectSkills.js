@@ -28,7 +28,7 @@ export default class SelectSkills extends Component {
 
   selectCategory = (e) => {
     e.preventDefault();
-    let selected = e.currentTarget.text
+    let selected = e.currentTarget.text;
     this.setState({
       selectedCategory: selected
     })
@@ -37,17 +37,10 @@ export default class SelectSkills extends Component {
   }
 
   renderDropdownButton = (i) => {
-    // TODO - get the dropdown text to change once a skill category has been selected
-    // const title = () => {
-    //   if (this.state.selectedCategory) {
-    //     return this.state.selectedCategory
-    //   } else {
-    //     return "Select Skill"
-    //   }
-    // }
+
     return (
       <DropdownButton
-        title="Select Skills"
+        title={this.state.selectedCategory === "" ? "Selected Skills" : this.state.selectedCategory }
         key={i}
         id={`dropdown-basic=${i}`}
         style={{marginTop: '5vh'}}
@@ -64,7 +57,7 @@ export default class SelectSkills extends Component {
 
   wantClick = (e) => {
     e.preventDefault();
-    const skill = e.currentTarget.id
+    const skill = e.currentTarget.id;
     this.setState({
       want: [...this.state.want, skill]
     })
@@ -72,7 +65,7 @@ export default class SelectSkills extends Component {
 
   haveClick = (e) => {
     e.preventDefault();
-    const skill = e.currentTarget.id
+    const skill = e.currentTarget.id;
     this.setState({
       have: [...this.state.have, skill]
     })
@@ -81,12 +74,15 @@ export default class SelectSkills extends Component {
   renderSkills = () => {
     if (this.state.selectedCategory != "") {
       // get the skills from that category from the back end
+
+      // using html code for heart and checkmark symbols being displayed 
+      // codes pulled from http://graphemica.com 
       return this.state.constructionSkills.map((skill, i) => {
         return (
-          <div className="skill-card" key={i}>
+          <div style={{border: '1px solid black'}} className="skill-card" key={i}>
             <h3 className="card-headline">{skill}</h3>
-            <button onClick={this.wantClick} id={skill} className="skill-button skill-button-left">Want</button>
-            <button onClick={this.haveClick} className="skill-button skill-button-right">Have</button>
+            <button onClick={this.wantClick} id={skill} className="skill-button skill-button-left want-border">&hearts; Want</button>
+            <button onClick={this.haveClick} className="skill-button skill-button-right have-border">&#10004; Have</button>
           </div>
         )
       })
@@ -94,7 +90,7 @@ export default class SelectSkills extends Component {
   }
 
   handleSubmit = () => {
-    console.log('handle submit clicked')
+    console.log('handle submit clicked');
   }
 
   render() {
