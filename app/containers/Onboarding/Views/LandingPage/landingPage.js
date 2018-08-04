@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 
 import { Col, Row } from 'react-bootstrap';
-import { styles, headings, logo, cards } from 'assets/styles/variables';
+import { styles, headings, logo, cards, images } from 'assets/styles/variables';
 import '../OnboardingStyles.css';
 import colorLogo from 'assets/img/colorLogo.png';
+import image1 from 'assets/img/stockImage1.jpg';
+import image2 from 'assets/img/stockImage2.jpg';
+import icon1 from 'assets/img/icons/education.svg';
+import icon2 from 'assets/img/icons/gears.svg';
+import icon3 from 'assets/img/icons/globe.svg';
 import { SocialIcon } from 'react-social-icons';
 import { Link } from 'react-router-dom';
 
@@ -48,7 +53,9 @@ export default class LandingPage extends Component {
         <div className="center card-layout">
 
           <div className="project-container">
-            <div className="project-image">Image Placeholder</div>
+            <div className="project-image" style={{overflow: "hidden"}}>
+              <img src={image1} style={{marginLeft: "-6vw", height: "100%"}} />
+            </div>
             <div className="project-text-container">
               <h4 className="project-title"> Housing Project on 63rd </h4>
               <p className="project-description"> Urban Array is working on renovating a block of buildings in the beautiful, historic neighborhood of Englewood. Members are encouraged to come and help out! </p> <br />
@@ -56,7 +63,9 @@ export default class LandingPage extends Component {
             </div>
           </div>
           <div className="project-container">
-            <div className="project-image">Image Placeholder</div>
+            <div className="project-image" style={{overflow: "hidden"}}>
+              <img src={image2} style={{height: '100%', marginLeft: '-10vw'}}/>
+            </div>
               <div className="project-text-container">
                 <h4 className="project-title"> Urban Garden on 97th </h4>
                 <p className="project-description"> Community members broke soil at the beginning of June. Local community members will enjoy kale, tomatoes, beets, and potatoes at the end of the summer. Spare hands welcome.</p>
@@ -75,21 +84,24 @@ export default class LandingPage extends Component {
 
         <div className="card-layout">
           <div style={cards.greenCard}>
+            <img src={icon1} style={{height: '10vh', marginTop: '3vh'}} />
             <h4 className="card-headline"> Education, Training, and Information</h4>
             <p className="card-text">Urban Array provides skills building and hands-on training for members.</p>
           </div>
           <div style={cards.greenCard}>
+            <img src={icon2} style={{height: '10vh', marginTop: '3vh'}} />
             <h4 className="card-headline"> Member's Economic Participation</h4>
             <p className="card-text"> Members participation is key. The benefits match the amount of effort.</p>
           </div>
           <div style={cards.greenCard}>
+            <img src={icon3} style={{height: '10vh', width: '10vh', alignSelf: 'center', marginTop: '3vh'}} />
             <h4 className="card-headline"> Concern for Community </h4>
             <p className="card-text"> Members help make decisions on sustainable development in their own community.</p>
           </div>
         </div>
 
         <div className="social-icon-container">
-          Follow us and check out what's happening in your community: &nbsp; 
+          Follow us and check out what's happening in your community: &nbsp;
           <SocialIcon className="social-icons" url="https://www.facebook.com/urbanarray/" target="_blank" />
           <SocialIcon className="social-icons" url="https://twitter.com/urbanarray" target="_blank" />
           <SocialIcon className="social-icons" url="https://www.instagram.com/urbanarray/" target="_blank" />
