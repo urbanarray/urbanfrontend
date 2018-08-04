@@ -1,5 +1,19 @@
 import React, { Component } from 'react';
 
+// redux stuff
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
+import injectSaga from 'utils/injectSaga';
+import injectReducer from 'utils/injectReducer';
+import makeSelectSelectSkills from './selectors';
+import reducer from './reducer';
+import saga from './saga';
+import axios from 'axios';
+import { submitSkills } from './actions';
+
+
 import { Button, Col, Row, DropdownButton, MenuItem } from 'react-bootstrap';
 import { styles, headings, logo, cards } from 'assets/styles/variables';
 import '../OnboardingStyles.css';
@@ -9,7 +23,7 @@ import { SocialIcon } from 'react-social-icons';
 import colorLogo from 'assets/img/colorLogo.png';
 // import search from 'assets/img/search.png';
 
-export default class SelectSkills extends Component {
+export class SelectSkills extends Component {
 
   constructor(props){
     super(props);
@@ -21,7 +35,7 @@ export default class SelectSkills extends Component {
     }
   }
 
-  // component did mount 
+  // component did mount
 
   searchSkills = (e) => {
     e.preventDefault();
@@ -97,10 +111,27 @@ export default class SelectSkills extends Component {
 
   handleSubmit = () => {
     console.log('handle submit clicked')
+    const wants = this.state.want
+    const haves = this.state.have
+    this.props.submitSkills({
+      wants,
+      haves
+    })
+    // axios.post('http://mvp.urbanarray.org:3000/v1/skill/create', {
+    //   wants: wants,
+    //   haves: haves
+    // })
+    // .then(function (response) {
+    //   console.log(response);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // })
   }
 
   render() {
     console.log(this.state, 'state from select skills component')
+    console.log(this.props, 'here are the props from the select skills component')
     return (
       <div>
 
@@ -138,6 +169,7 @@ export default class SelectSkills extends Component {
           <h4 className="center">Don't see your skills?</h4>
 
           <div className="three-step-nav-container">
+            <button onClick={this.handleSubmit}>Submit Testing Button</button>
             <Link
               to="/get-involved"
               type="button"
@@ -169,3 +201,29 @@ export default class SelectSkills extends Component {
     )
   }
 }
+
+SelectSkills.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = createStructuredSelector({
+  // selectedSkills: makeSelectSelectSkills(),
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatch,
+    submitSkills: (payload) => dispatch(submitSkills(payload)),
+  };
+}
+
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
+const withReducer = injectReducer({ key: 'submitSkills', reducer });
+const withSaga = injectSaga({ key: 'submitSkills', saga });
+
+export default compose(
+  withReducer,
+  withSaga,
+  withConnect,
+)(SelectSkills);
