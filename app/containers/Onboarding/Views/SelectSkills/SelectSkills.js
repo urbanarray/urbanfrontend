@@ -11,7 +11,7 @@ import makeSelectSelectSkills from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import axios from 'axios';
-import { submitSkills } from './actions';
+import { submitSkillsAction } from './actions';
 
 
 import { Button, Col, Row, DropdownButton, MenuItem } from 'react-bootstrap';
@@ -207,13 +207,13 @@ SelectSkills.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  // selectedSkills: makeSelectSelectSkills(),
+  selectedSkills: makeSelectSelectSkills(),
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
     dispatch,
-    submitSkills: (payload) => dispatch(submitSkills(payload)),
+    submitSkills: (payload) => dispatch(submitSkillsAction(payload)),
   };
 }
 

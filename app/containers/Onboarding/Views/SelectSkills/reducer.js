@@ -2,7 +2,7 @@
 
 import { fromJS } from 'immutable';
 import {
-  SUBMIT_SKILLS
+  SUBMIT_SKILLS_ACTION
 } from './constants';
 
 const initialState = fromJS({
@@ -12,11 +12,12 @@ const initialState = fromJS({
 
 function skillSelectionReducer(state = initialState, action) {
   switch (action.type) {
-    case SUBMIT_SKILLS:
+    case SUBMIT_SKILLS_ACTION:
       console.log(action.payload, 'this is the payload from the skill selection reducer')
       return state
       .set('wants', action.payload.wants)
-      .set('haves', action.payload.haves)
+      .set('haves', action.payload.haves);
+
     default:
       return state;
   }

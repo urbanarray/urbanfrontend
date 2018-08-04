@@ -1,10 +1,10 @@
 import { submitSkillsApi } from './api';
 import {takeLatest, call, put, select } from 'redux-saga/effects';
 import { makeSelectSelectSkills } from './selectors';
-import { SUBMIT_SKILLS } from './constants';
+import { SUBMIT_SKILLS_ACTION } from './constants';
 
 
-export function* submitSkills() {
+export default function* submitSkills() {
   try {
     const submitSkillsData = yield select(makeSelectSelectSkills());
 
@@ -16,6 +16,6 @@ export function* submitSkills() {
   }
 }
 
-export default function* defaultSaga() {
-  yield takeLatest(SUBMIT_SKILLS, submitSkills);
-}
+// export default function* defaultSaga() {
+//   yield takeLatest(SUBMIT_SKILLS_ACTION, submitSkills);
+// }
