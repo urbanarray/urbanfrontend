@@ -5,6 +5,7 @@ import { styles, headings, logo, cards } from 'assets/styles/variables';
 import '../OnboardingStyles.css';
 import { Link } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
+import ProgressBar from '../ProgressBar';
 
 import colorLogo from 'assets/img/colorLogo.png';
 // import search from 'assets/img/search.png';
@@ -17,7 +18,8 @@ export default class SelectSkills extends Component {
       selectedCategory: "",
       constructionSkills: ["Painting", "Sanding", "HVAC", "Electrical", "Carpentry", "Plumbing", "Roofing"],
       want: [],
-      have: []
+      have: [],
+      currentStep: 2
     }
   }
 
@@ -28,7 +30,7 @@ export default class SelectSkills extends Component {
 
   selectCategory = (e) => {
     e.preventDefault();
-    let selected = e.currentTarget.text
+    let selected = e.currentTarget.text;
     this.setState({
       selectedCategory: selected
     })
@@ -37,21 +39,15 @@ export default class SelectSkills extends Component {
   }
 
   renderDropdownButton = (i) => {
-    // TODO - get the dropdown text to change once a skill category has been selected
-    // const title = () => {
-    //   if (this.state.selectedCategory) {
-    //     return this.state.selectedCategory
-    //   } else {
-    //     return "Select Skill"
-    //   }
-    // }
+
     return (
       <DropdownButton
-        title="Select Skills"
+        title={this.state.selectedCategory === "" ? "Selected Skills" : this.state.selectedCategory }
         key={i}
         id={`dropdown-basic=${i}`}
         style={{marginTop: '5vh'}}
       >
+        <MenuItem onClick={this.selectCategory} eventKey="0">Selected Skills</MenuItem>
         <MenuItem onClick={this.selectCategory} eventKey="1">Construction</MenuItem>
         <MenuItem onClick={this.selectCategory} eventKey="2">Activism</MenuItem>
         <MenuItem onClick={this.selectCategory} eventKey="3">Development</MenuItem>
@@ -64,37 +60,47 @@ export default class SelectSkills extends Component {
 
   wantClick = (e) => {
     e.preventDefault();
-    const skill = e.currentTarget.id
-    this.setState({
-      want: [...this.state.want, skill]
-    })
-  }
-
-  haveClick = (e) => {
-    e.preventDefault();
-    const skill = e.currentTarget.id
-    this.setState({
-      have: [...this.state.have, skill]
-    })
-  }
-
-  renderSkills = () => {
-    if (this.state.selectedCategory != "") {
-      // get the skills from that category from the back end
-      return this.state.constructionSkills.map((skill, i) => {
-        return (
-          <div className="skill-card" key={i}>
-            <h3 className="card-headline">{skill}</h3>
-            <button onClick={this.wantClick} id={skill} className="skill-button skill-button-left">Want</button>
-            <button onClick={this.haveClick} className="skill-button skill-button-right">Have</button>
-          </div>
-        )
+    const skill = e.currentTarget.id;
+    if (skill !== "Selected Skills") {
+      this.setState({
+        want: [...this.state.want, skill]
       })
     }
   }
 
+  haveClick = (e) => {
+    e.preventDefault();
+    const skill = e.currentTarget.id;
+    if (skill !== "Selected Skills") {
+      this.setState({
+        have: [...this.state.have, skill]
+      })
+    }
+  }
+
+  renderSkills = () => {
+    if (this.state.selectedCategory === "Construction") {
+      // get the skills from that category from the back end
+
+      // using html code for heart and checkmark symbols being displayed 
+      // codes pulled from http://graphemica.com 
+
+      // TO DO: make a media query for less than 990 px width or so to fix display here
+      return this.state.constructionSkills.map((skill, i) => {
+        return (
+          <div style={{border: '1px solid black'}} className="skill-card" key={i}>
+            <h3 className="card-headline">{skill}</h3>
+            <button onClick={this.wantClick} id={skill} className="skill-button skill-button-left want-border">&hearts; Want</button>
+            <button onClick={this.haveClick} className="skill-button skill-button-right have-border">&#10004; Have</button>
+          </div>
+        )
+      })
+    }
+    // add conditions to render other skill categories here
+  }
+
   handleSubmit = () => {
-    console.log('handle submit clicked')
+    console.log('handle submit clicked');
   }
 
   render() {
@@ -102,7 +108,8 @@ export default class SelectSkills extends Component {
       <div>
 
         <img src={colorLogo} style={logo.onboardingLogo}/>
-
+        <br/>
+        <ProgressBar currentStep={this.state.currentStep} />
         <div>
           <div className="center">
             <h1 className="card-headline">Urban Array is all about skills</h1>
