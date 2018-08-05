@@ -142,9 +142,11 @@ export class ProjectView extends Component { // eslint-disable-line react/prefer
     this.setState({showDoc: !this.state.showDoc})
   }
 
-
+/* Trying to condense down to one handle
+    - Modal onHide doesn't return an event
+    - changing modal onHide to onClick breaks hiding functionality
+*/
   // handleModal = event => {
-  //   // Getting the value and name of the input which triggered the change
   //   const { name, value } = event.target;
   //   console.log(event)
   //   console.log(name) // showCom
@@ -206,18 +208,27 @@ export class ProjectView extends Component { // eslint-disable-line react/prefer
         </Row>
 
         <Row>
+          
           <Col md={6}>
             <RolesDisplay roles={this.props.projectview.projectRoles} windowWidth={this.state.width}/>
           </Col>
           <Col md={6}>
             <TimelineRoles />
           </Col>
+
         </Row>
 
         <Row>
           <Col md={12}>
-          <div id="projectview_btn_container">
-          {this.state.showCom}
+            <div id="panelDemo8" className="panel panel-primary" >
+              <div className="panel-heading" style={styles.primaryDark}  >
+                <Row>
+                    <Col md={12}>
+                        <h4 style={headings.tableHeading}> Additional Details</h4>
+                    </Col>
+                </Row>
+              </div>
+            <div id="projectview_btn_container">
             <Button bsStyle="primary" 
                     bsSize="large" 
                     id="modal_button" 
@@ -264,6 +275,7 @@ export class ProjectView extends Component { // eslint-disable-line react/prefer
                 projectId={this.props.match.params.id}
               />
             </Modal>
+            </div>
             </div>
           </Col> 
         </Row>
