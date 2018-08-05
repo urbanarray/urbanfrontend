@@ -19,7 +19,6 @@ export default class ProgressBar extends Component {
   render() {
     // currentStep is passed down as a prop from each component's view
     const currentStep = this.state.currentStep;
-    console.log(currentStep, " this is currentStep");
     if (currentStep === 1) {
       return (
         <div className="center progress-container">

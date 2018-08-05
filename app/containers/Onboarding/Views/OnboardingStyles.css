@@ -157,24 +157,30 @@
   text-align: center;
 }
 .activestep {
-  color: #91c63f;
+  background-color: #91c63f;
+  color: white;  
   margin: 0;
+  padding: 10px;
+  border: 1px solid #91c63f;
 }
 .inactivestep {
-  color: lightgrey;
+  background-color: lightgrey;
+  color: white;
   opacity: 0.5;
   margin: 0;
+  padding: 10px;
+  border: 1px solid lightgrey;
 }
 .activebar {
   background-color: #91c63f;
-  height: 15px;
+  height: 6px;
   width: 25%;
   margin: auto;
 }
 .inactivebar {
   background-color: lightgrey;
   opacity: 0.5;
-  height: 15px;
+  height: 6px;
   width: 25%;
   margin: auto;
 }

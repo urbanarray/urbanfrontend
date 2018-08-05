@@ -47,6 +47,7 @@ export default class SelectSkills extends Component {
         id={`dropdown-basic=${i}`}
         style={{marginTop: '5vh'}}
       >
+        <MenuItem onClick={this.selectCategory} eventKey="0">Selected Skills</MenuItem>
         <MenuItem onClick={this.selectCategory} eventKey="1">Construction</MenuItem>
         <MenuItem onClick={this.selectCategory} eventKey="2">Activism</MenuItem>
         <MenuItem onClick={this.selectCategory} eventKey="3">Development</MenuItem>
@@ -60,25 +61,31 @@ export default class SelectSkills extends Component {
   wantClick = (e) => {
     e.preventDefault();
     const skill = e.currentTarget.id;
-    this.setState({
-      want: [...this.state.want, skill]
-    })
+    if (skill !== "Selected Skills") {
+      this.setState({
+        want: [...this.state.want, skill]
+      })
+    }
   }
 
   haveClick = (e) => {
     e.preventDefault();
     const skill = e.currentTarget.id;
-    this.setState({
-      have: [...this.state.have, skill]
-    })
+    if (skill !== "Selected Skills") {
+      this.setState({
+        have: [...this.state.have, skill]
+      })
+    }
   }
 
   renderSkills = () => {
-    if (this.state.selectedCategory != "") {
+    if (this.state.selectedCategory === "Construction") {
       // get the skills from that category from the back end
 
       // using html code for heart and checkmark symbols being displayed 
       // codes pulled from http://graphemica.com 
+
+      // TO DO: make a media query for less than 990 px width or so to fix display here
       return this.state.constructionSkills.map((skill, i) => {
         return (
           <div style={{border: '1px solid black'}} className="skill-card" key={i}>
@@ -89,6 +96,7 @@ export default class SelectSkills extends Component {
         )
       })
     }
+    // add conditions to render other skill categories here
   }
 
   handleSubmit = () => {
@@ -100,6 +108,7 @@ export default class SelectSkills extends Component {
       <div>
 
         <img src={colorLogo} style={logo.onboardingLogo}/>
+        <br/>
         <ProgressBar currentStep={this.state.currentStep} />
         <div>
           <div className="center">
