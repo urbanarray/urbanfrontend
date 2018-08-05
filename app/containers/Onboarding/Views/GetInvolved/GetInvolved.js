@@ -5,6 +5,7 @@ import { styles, headings, logo, cards } from 'assets/styles/variables';
 import '../OnboardingStyles.css';
 import { Link } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
+import ProgressBar from '../ProgressBar';
 
 import colorLogo from 'assets/img/colorLogo.png';
 
@@ -12,7 +13,11 @@ export default class GetInvolved extends Component {
 
   constructor(props){
     super(props);
+    this.state = {
+      currentStep: 1
+    }
   }
+
 
   // handleSubmit = (e) => {
   //   e.preventDefault();
@@ -23,9 +28,9 @@ export default class GetInvolved extends Component {
   render() {
     return (
 
-      // 3 step graphic here
       <div>
-        <img src={colorLogo} style={logo.onboardingLogo}/>    
+        <img src={colorLogo} style={logo.onboardingLogo} />  
+        <ProgressBar currentStep={this.state.currentStep} />  
         <div className="container center">
           <h1>Get Involved in Three Steps</h1>
           <h3>Before viewing the opportunities in your community, complete the following steps:</h3>
