@@ -19,7 +19,7 @@ import reducer from './reducer';
 import saga from './saga';
 import Avatar from '../../../assets/images/avatar.jpg'; // can't start import path with assets here since this file isn't in app directory
 import ContentWrapper from 'components/Layout/ContentWrapper';
-import { Row, Col, Panel } from 'react-bootstrap';
+import { Row, Col, Panel, Button, Modal } from 'react-bootstrap';
 import TableExtendedRun from 'components/Tables/TableExtended.run';
 import PanelsRun from 'components/Elements/Panels.run';
 import ProjectDetails from './ProjectDetails';
@@ -35,6 +35,7 @@ import HealthSafety from './ListHealthSafety/HealthSafety';
 import Documentation from './Documentation';
 import Resources from './Resources';
 import { styles, headings } from 'assets/styles/variables';
+import './ProjectView.css';
 
 export class ProjectView extends Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -42,7 +43,12 @@ export class ProjectView extends Component { // eslint-disable-line react/prefer
     super(props, context);
     this.state = {
       key: 1,
-      width: 0
+      width: 0,
+      //Modal booleans
+      showCom: false,
+      showHealth: false,
+      showExec: false,
+      showDoc: false
     };
 
   }
@@ -113,18 +119,55 @@ export class ProjectView extends Component { // eslint-disable-line react/prefer
     }
   }
 
-
-
-
-
-
   renderProjectDetails = () => {
     if (this.props.projectview.projectDetail) {
           return <ProjectDetails projectId={this.props.match.params.id} projectDetail = {this.props.projectview.projectDetail} />
     }
   }
 
+  // Modal handlers
+  handleCom = () => {
+    this.setState({showCom: !this.state.showCom})
+  }
+
+  handleHealth = () => {
+    this.setState({showHealth: !this.state.showHealth})
+  }
+
+  handleExec = () => {
+    this.setState({showExec: !this.state.showExec})
+  }
+
+  handleDoc = () => {
+    this.setState({showDoc: !this.state.showDoc})
+  }
+
+
+  // handleModal = event => {
+  //   // Getting the value and name of the input which triggered the change
+  //   const { name, value } = event.target;
+  //   console.log(event)
+  //   console.log(name) // showCom
+  //   console.log(value)
+  //   console.log(typeof value) //string
+  //   let newState;
+  //   if (value == "true"){
+  //     newState = (value == "true")
+  //   } else {
+  //     newState = (value == "false")
+  //   }
+  //   // Updating the input's state
+  //   console.log(`newState - ${newState}`)
+  //   this.setState({
+  //     [name]: newState
+  //   });
+  //   console.log(`after name - ${this.state.showCom}`)
+  // };
+
+
+
   render() {
+
     return (
       <ContentWrapper>
           <Helmet>
@@ -155,38 +198,6 @@ export class ProjectView extends Component { // eslint-disable-line react/prefer
         </Row>
 
         <Row>
-          <hr />
-          <Col md={12}>
-            <AddCommunications
-              projectId={this.props.match.params.id}
-            />
-
-          </Col>
-
-
-          <Col md={12}>
-            <HealthSafety
-
-              projectId={this.props.match.params.id}
-
-            />
-
-          </Col>
-          <Col md={6}>
-            <AddExecution
-
-              projectId={this.props.match.params.id}
-
-            />
-          </Col>
-
-          <Col md={6}>
-            <Documentation
-
-              projectId={this.props.match.params.id}
-
-            />
-          </Col>
           <Col md={12}>
             <Resources
               projectId={this.props.match.params.id} resources={this.props.projectview.projectResources} windowWidth={this.state.width}
@@ -201,6 +212,60 @@ export class ProjectView extends Component { // eslint-disable-line react/prefer
           <Col md={6}>
             <TimelineRoles />
           </Col>
+        </Row>
+
+        <Row>
+          <Col md={12}>
+          <div id="projectview_btn_container">
+          {this.state.showCom}
+            <Button bsStyle="primary" 
+                    bsSize="large" 
+                    id="modal_button" 
+                    name="showCom" 
+                    value={!this.state.showCom}
+                    onClick={this.handleCom}>
+              Communications
+            </Button>
+         
+            <Modal show={this.state.showCom} 
+                    name="showCom" 
+                    onHide={this.handleCom}>
+              <AddCommunications
+                projectId={this.props.match.params.id}
+              />
+            </Modal>
+
+            <Button bsStyle="primary" bsSize="large" id="modal_button" onClick={this.handleHealth}>
+              Health & Safety
+            </Button>
+
+            <Modal show={this.state.showHealth} onHide={this.handleHealth}>
+                <HealthSafety
+                  projectId={this.props.match.params.id}
+                />
+            </Modal>
+
+            <Button bsStyle="primary" bsSize="large" id="modal_button" onClick={this.handleExec}>
+              Execution
+            </Button>
+
+            <Modal show={this.state.showExec} onHide={this.handleExec}>
+              <AddExecution
+                projectId={this.props.match.params.id}
+              />
+            </Modal>
+
+            <Button bsStyle="primary" bsSize="large" id="modal_button" onClick={this.handleDoc}>
+              Documentation
+            </Button>
+
+            <Modal show={this.state.showDoc} onHide={this.handleDoc}>
+              <Documentation
+                projectId={this.props.match.params.id}
+              />
+            </Modal>
+            </div>
+          </Col> 
         </Row>
 
 

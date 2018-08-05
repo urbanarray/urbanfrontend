@@ -1,0 +1,11 @@
+#projectview_btn_container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#modal_button{
+    background-color: rgb(74, 153, 203); 
+    color: white;
+}
