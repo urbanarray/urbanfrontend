@@ -147,3 +147,34 @@
 .have-border {
   border-top: 1px solid black;
 }
+
+/* PROGRESS BAR */
+.progress-container {
+  display: flex;
+  justify-content: space-around; 
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+}
+.activestep {
+  color: #91c63f;
+  margin: 0;
+}
+.inactivestep {
+  color: lightgrey;
+  opacity: 0.5;
+  margin: 0;
+}
+.activebar {
+  background-color: #91c63f;
+  height: 15px;
+  width: 25%;
+  margin: auto;
+}
+.inactivebar {
+  background-color: lightgrey;
+  opacity: 0.5;
+  height: 15px;
+  width: 25%;
+  margin: auto;
+}

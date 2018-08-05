@@ -5,6 +5,7 @@ import { styles, headings, logo, cards } from 'assets/styles/variables';
 import '../OnboardingStyles.css';
 import { Link } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
+import ProgressBar from '../ProgressBar';
 
 import colorLogo from 'assets/img/colorLogo.png';
 // import search from 'assets/img/search.png';
@@ -17,7 +18,8 @@ export default class SelectSkills extends Component {
       selectedCategory: "",
       constructionSkills: ["Painting", "Sanding", "HVAC", "Electrical", "Carpentry", "Plumbing", "Roofing"],
       want: [],
-      have: []
+      have: [],
+      currentStep: 2
     }
   }
 
@@ -98,7 +100,7 @@ export default class SelectSkills extends Component {
       <div>
 
         <img src={colorLogo} style={logo.onboardingLogo}/>
-
+        <ProgressBar currentStep={this.state.currentStep} />
         <div>
           <div className="center">
             <h1 className="card-headline">Urban Array is all about skills</h1>
