@@ -23,7 +23,7 @@ import { SocialIcon } from 'react-social-icons';
 import colorLogo from 'assets/img/colorLogo.png';
 // import search from 'assets/img/search.png';
 
-export class SelectSkills extends Component {
+export default class SelectSkills extends Component {
 
   constructor(props){
     super(props);
@@ -109,14 +109,24 @@ export class SelectSkills extends Component {
     }
   }
 
-  handleSubmit = () => {
+  handleSubmit = async () => {
     console.log('handle submit clicked')
     const wants = this.state.want
     const haves = this.state.have
-    this.props.submitSkills({
-      wants,
-      haves
-    })
+    const submittedSkills = await fetch('http://mvp.urbanarray.org:3000/v1/skill/create', {
+      method: "POST",
+      credentials: 'include',
+      body: JSON.stringify({
+        wants: wants,
+        haves: haves
+      })
+    });
+    console.log(submittedSkills, 'this is submittedSkills')
+    const submittedSkillsParsed = await submitSkills.json();
+    // this.props.submitSkills({
+    //   wants,
+    //   haves
+    // })
     // axios.post('http://mvp.urbanarray.org:3000/v1/skill/create', {
     //   wants: wants,
     //   haves: haves
@@ -202,28 +212,28 @@ export class SelectSkills extends Component {
   }
 }
 
-SelectSkills.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = createStructuredSelector({
-  selectedSkills: makeSelectSelectSkills(),
-});
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    dispatch,
-    submitSkills: (payload) => dispatch(submitSkillsAction(payload)),
-  };
-}
-
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
-
-const withReducer = injectReducer({ key: 'submitSkills', reducer });
-const withSaga = injectSaga({ key: 'submitSkills', saga });
-
-export default compose(
-  withReducer,
-  withSaga,
-  withConnect,
-)(SelectSkills);
+// SelectSkills.propTypes = {
+//   dispatch: PropTypes.func.isRequired,
+// };
+//
+// const mapStateToProps = createStructuredSelector({
+//   selectedSkills: makeSelectSelectSkills(),
+// });
+//
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     dispatch,
+//     submitSkills: (payload) => dispatch(submitSkillsAction(payload)),
+//   };
+// }
+//
+// const withConnect = connect(mapStateToProps, mapDispatchToProps);
+//
+// const withReducer = injectReducer({ key: 'submitSkills', reducer });
+// const withSaga = injectSaga({ key: 'submitSkills', saga });
+//
+// export default compose(
+//   withReducer,
+//   withSaga,
+//   withConnect,
+// )(SelectSkills);
