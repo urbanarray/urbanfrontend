@@ -25,17 +25,13 @@ export class Landing extends Component {
   constructor(props) {
     super(props);
 
-    this.handleChange = this.handleChange.bind(this);
-    this.getValidationState = this.getValidationState.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-
     this.state = {
       value: '',
       message: ''
     };
   }
 
-  getValidationState() {
+  getValidationState = () => {
     const length = this.state.value.length;
     if (length === 6) return 'success';
     else if (length > 6) return 'warning';
@@ -43,7 +39,7 @@ export class Landing extends Component {
     return null;
   }
 
-  handleChange(e) {
+  handleChange = (e) => {
     if(this.props.landing.errors && this.props.landing.errors.length > 0){
       this.props.emptyErrors();
     }
@@ -55,14 +51,13 @@ export class Landing extends Component {
     }
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     const submissionLength = this.state.value.length;
     if (submissionLength < 6 || submissionLength > 6) {
       this.setState({message: "The code needs to be exactly 6 characters"})
     } else {
       this.setState({message: ""})
-     
     }
     this.props.create(this.state.value)
   }
@@ -79,7 +74,7 @@ export class Landing extends Component {
               <h1>Welcome to the Urban Array MVP Demo App.</h1>
               <h3>This website is for testing and design purposes only.  THIS IS NOT A LIVE SITE.  Your data will NOT be saved.</h3>
               <h3>Please Enter your Invitation PASSPHRASE to the right (or below, on mobile) to begin.</h3>
-              <p>For more info about Urban Array, <a href="https://urbanarray.org/">please click here to visit our website</a></p>
+              <p>For more info about Urban Array, <a href="https://urbanarray.org/">please click here to visit our website.</a></p>
             </Col>
 
             <Col xs={12} sm={4}>
@@ -102,7 +97,6 @@ Landing.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-
   landing: makeSelectLanding(),
   isLogin: isLogin(),
 });

@@ -42,7 +42,7 @@ const PledgedResourcesTable = (props) => {
                     type="button"
                     className="btn btn-primary btn-block btn-sm"
                     color="default"
-                    style={styles.primary}>Details
+                    style={styles.primaryLight}>Details
                     </Link>
                 </Panel.Body>
               </Panel>
@@ -66,7 +66,7 @@ const PledgedResourcesTable = (props) => {
                 </td>
 
                 <td>
-                    <DetailsButton item={resource.item}/>
+                    <DetailsButton item={resource.item} windowWidth={props.windowWidth}/>
                 </td>
               </tr>
 

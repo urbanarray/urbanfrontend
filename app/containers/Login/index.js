@@ -16,7 +16,7 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectLogin from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import 'containers/Signup/style.css';
+import 'containers/Onboarding/Signup/style.css';
 import {Form} from 'reactstrap';
 import FacebookLogin from 'react-facebook-login';
 import { GoogleLogin } from 'react-google-login';

@@ -32,7 +32,7 @@ function listProjectsReducer(state = initialState, action) {
   switch (action.type) {
     case c.DEFAULT_ACTION:
       return state;
-    
+
     case c.LISTED_PROJECTS_ACTION:
       return state
           .set('list_projects', action.payload);
@@ -48,11 +48,7 @@ function listProjectsReducer(state = initialState, action) {
           .set('projectDetails', action.payload)
           .set('loading', false)
           .set('updateDone', true);
-      
-      case c.DELETE_PROJECT_ACTION:
-        return state
-          .set('deleteProject', action.payload);
-      
+
       case c.LIST_PLACES_ACTION:
         return state
           .set('list_places', null)
@@ -63,7 +59,11 @@ function listProjectsReducer(state = initialState, action) {
           .set('list_places', action.payload)
           .set('loading_places', false)
           .set('done_places', true);
-      
+
+      case c.DELETE_PROJECT_ACTION:
+        return state
+          .set('deleteProject', action.payload);
+
       case c.GET_PAGINATION:
         const pg = fromJS(state.get('pagination')).toJS();
         pg.page_no = action.payload;

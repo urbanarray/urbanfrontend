@@ -11,5 +11,10 @@ export const headings = {
     fontWeight: '100',
     letterSpacing: '2.0px',
     display: 'inline-block'
+  },
+  landingPageHeading: {
+    marginBottom: '5vh',
+    textAlign: 'center',
+    marginTop: '10vh'
   }
 }

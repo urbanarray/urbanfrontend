@@ -20,7 +20,7 @@ import { Col, Form, FormGroup, Label, Input } from 'reactstrap';
 import { createProfileAction, updateAction } from './actions';
 import { isLogin, isProfile, makeSelectCurrentUser } from 'containers/App/selectors';
 
-import 'containers/Signup/style.css';
+import 'containers/Onboarding/Signup/style.css';
 
 export class Profile extends Component { // eslint-disable-line react/prefer-stateless-function
   

@@ -31,6 +31,7 @@ export class PledgedResources extends Component {
   }
 
   renderPledgedResources = () => {
+    console.log('render pledged resources is being called')
     if (this.props.pledgedresources.pledgedResources) {
       return this.props.pledgedresources.pledgedResources.map((pledgedresource) => {
         return (

@@ -22,8 +22,8 @@ import saga from './saga';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import * as a from "./actions";
-import AddProject from 'containers/AddProject';
+import * as a from './actions';
+import AddProject from './AddProject';
 import { styles, headings } from 'assets/styles/variables';
 
 
@@ -218,7 +218,7 @@ export class ListProjects extends Component { // eslint-disable-line react/prefe
         { /* START panel */}
         <div className="panel panel-default">
           <div className="panel-heading" style={styles.primaryDark}>
-            <h4 style={headings.tableHeading}></h4> 
+            <h4 style={headings.tableHeading}>projects</h4> 
             <div className='pull-right'>
               <AddProject />
             </div>

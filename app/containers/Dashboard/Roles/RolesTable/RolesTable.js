@@ -84,7 +84,7 @@ const RolesTable = (props) => {
                     type="button"
                     className="btn btn-primary btn-block btn-sm"
                     color="default"
-                    style={styles.primaryLight}>Details
+                    style={styles.primary}>Details
                   </Link>
                 </td>
               </tr>
@@ -105,14 +105,16 @@ const RolesTable = (props) => {
     )
   } else {
     return (
-      <Table id="table-ext-2" responsive striped bordered hover>
-          {renderHeader()}
-        <tbody>
-          {renderOpenRoles()}
-        </tbody>
+      <div>
+        <Table id="table-ext-2" responsive striped bordered hover>
+            {renderHeader()}
+          <tbody>
+            {renderOpenRoles()}
+          </tbody>
 
+        </Table>
         <ReactTooltip />
-      </Table>
+      </div>
     )
   }
 }
