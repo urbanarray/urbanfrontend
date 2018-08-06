@@ -1,5 +1,19 @@
 import React, { Component } from 'react';
 
+// redux stuff
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
+import injectSaga from 'utils/injectSaga';
+import injectReducer from 'utils/injectReducer';
+import makeSelectSelectSkills from './selectors';
+import reducer from './reducer';
+import saga from './saga';
+import axios from 'axios';
+import { submitSkillsAction } from './actions';
+
+
 import { Button, Col, Row, DropdownButton, MenuItem } from 'react-bootstrap';
 import { styles, headings, logo, cards } from 'assets/styles/variables';
 import '../OnboardingStyles.css';
@@ -22,6 +36,8 @@ export default class SelectSkills extends Component {
       currentStep: 2
     }
   }
+
+  // component did mount
 
   searchSkills = (e) => {
     e.preventDefault();
@@ -82,8 +98,8 @@ export default class SelectSkills extends Component {
     if (this.state.selectedCategory === "Construction") {
       // get the skills from that category from the back end
 
-      // using html code for heart and checkmark symbols being displayed 
-      // codes pulled from http://graphemica.com 
+      // using html code for heart and checkmark symbols being displayed
+      // codes pulled from http://graphemica.com
 
       // TO DO: make a media query for less than 990 px width or so to fix display here
       return this.state.constructionSkills.map((skill, i) => {
@@ -99,11 +115,39 @@ export default class SelectSkills extends Component {
     // add conditions to render other skill categories here
   }
 
-  handleSubmit = () => {
-    console.log('handle submit clicked');
+  handleSubmit = async () => {
+    console.log('handle submit clicked')
+    const wants = this.state.want
+    const haves = this.state.have
+    const submittedSkills = await fetch('http://mvp.urbanarray.org:3000/v1/skill/create', {
+      method: "POST",
+      credentials: 'include',
+      body: JSON.stringify({
+        wants: wants,
+        haves: haves
+      })
+    });
+    console.log(submittedSkills, 'this is submittedSkills')
+    const submittedSkillsParsed = await submitSkills.json();
+    // this.props.submitSkills({
+    //   wants,
+    //   haves
+    // })
+    // axios.post('http://mvp.urbanarray.org:3000/v1/skill/create', {
+    //   wants: wants,
+    //   haves: haves
+    // })
+    // .then(function (response) {
+    //   console.log(response);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // })
   }
 
   render() {
+    console.log(this.state, 'state from select skills component')
+    console.log(this.props, 'here are the props from the select skills component')
     return (
       <div>
 
@@ -142,6 +186,7 @@ export default class SelectSkills extends Component {
           <h4 className="center">Don't see your skills?</h4>
 
           <div className="three-step-nav-container">
+            <button onClick={this.handleSubmit}>Submit Testing Button</button>
             <Link
               to="/get-involved"
               type="button"
@@ -173,3 +218,29 @@ export default class SelectSkills extends Component {
     )
   }
 }
+
+// SelectSkills.propTypes = {
+//   dispatch: PropTypes.func.isRequired,
+// };
+//
+// const mapStateToProps = createStructuredSelector({
+//   selectedSkills: makeSelectSelectSkills(),
+// });
+//
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     dispatch,
+//     submitSkills: (payload) => dispatch(submitSkillsAction(payload)),
+//   };
+// }
+//
+// const withConnect = connect(mapStateToProps, mapDispatchToProps);
+//
+// const withReducer = injectReducer({ key: 'submitSkills', reducer });
+// const withSaga = injectSaga({ key: 'submitSkills', saga });
+//
+// export default compose(
+//   withReducer,
+//   withSaga,
+//   withConnect,
+// )(SelectSkills);
