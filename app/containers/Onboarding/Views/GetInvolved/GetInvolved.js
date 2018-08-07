@@ -6,6 +6,9 @@ import '../OnboardingStyles.css';
 import { Link } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
 import ProgressBar from '../ProgressBar';
+import signupIcon from 'assets/img/icons/signup_icon.svg';
+import selectSkillsIcon from 'assets/img/icons/computer.svg';
+import meetMember from 'assets/img/icons/meet_with_members.svg';
 
 import colorLogo from 'assets/img/colorLogo.png';
 
@@ -38,18 +41,21 @@ export default class GetInvolved extends Component {
           <div className="card-layout">
               <div className="three-step-card">
                 <h3 className="card-headline">First Step</h3>
+                <img src={signupIcon} className="signupIcon"/>
                 <h4>Sign Up</h4>
                 <p className="card-text">Let's get this process started by entering in some basic information.</p>
               </div>
 
               <div className="three-step-card">
                 <h3 className="card-headline">Second Step</h3>
+                <img src={selectSkillsIcon} className="computerIcon"/>
                 <h4>Select Skills</h4>
                 <p className="card-text">Everybody has skills they can offer or want to learn! Tell us how we can help you gain skills and contribute to your community.</p>
               </div>
 
               <div className="three-step-card">
                 <h3 className="card-headline">Third Step</h3>
+                <img src={meetMember} className="memberIcon"/>
                 <h4>Interview with a Member</h4>
                 <p className="card-text">We want to ensure that we're a good fit for each other. We hope that we can help you and your community.</p>
               </div>
