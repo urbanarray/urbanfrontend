@@ -186,7 +186,6 @@ export default class SelectSkills extends Component {
           <h4 className="center">Don't see your skills?</h4>
 
           <div className="three-step-nav-container">
-            <button onClick={this.handleSubmit}>Submit Testing Button</button>
             <Link
               to="/get-involved"
               type="button"

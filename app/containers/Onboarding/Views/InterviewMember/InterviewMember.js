@@ -20,6 +20,7 @@ export default class InterviewMember extends Component {
 
   meetMember = (e) => {
     e.preventDefault();
+    alert("Coming Soon! \nFor now, please check out our dashboard to see what we've been working on lately.")
     // interview member
   }
 
@@ -27,7 +28,7 @@ export default class InterviewMember extends Component {
     return (
       <div>
 
-        <img src={colorLogo} style={logo.onboardingLogo} />  
+        <img src={colorLogo} style={logo.onboardingLogo} />
         <ProgressBar currentStep={this.state.currentStep} />
 
         <div>
@@ -66,7 +67,7 @@ export default class InterviewMember extends Component {
         <br/>
 
         <div className="social-icon-container">
-          Follow us and check out what's happening in your community: &nbsp; 
+          Follow us and check out what's happening in your community: &nbsp;
           <SocialIcon className="social-icons" url="https://www.facebook.com/urbanarray/" target="_blank" />
           <SocialIcon className="social-icons" url="https://twitter.com/urbanarray" target="_blank" />
           <SocialIcon className="social-icons" url="https://www.instagram.com/urbanarray/" target="_blank" />
