@@ -89,6 +89,11 @@
   flex-direction: row;
   justify-content: center;
 }
+
+.three-step-card {
+  width: 30vw;
+}
+
 .search-field {
   background-color: #f5f7fa;
   border: 0.5px solid black;
@@ -151,14 +156,14 @@
 /* PROGRESS BAR */
 .progress-container {
   display: flex;
-  justify-content: space-around; 
+  justify-content: space-around;
   margin: 0 auto;
   width: 50%;
   text-align: center;
 }
 .activestep {
   background-color: #91c63f;
-  color: white;  
+  color: white;
   margin: 0;
   padding: 10px;
   border: 1px solid #91c63f;
