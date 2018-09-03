@@ -76,7 +76,17 @@ export default class LandingPage extends Component {
 
 
 
-        <a href="/get-involved"><button className="btn" style={{marginTop: '5vh', marginLeft: '45%', marginRight: '45%', backgroundColor: '#4a99cb', color: 'white'}}> Get Involved </button></a>
+        <a href="/get-involved"><button className="btn" style={{
+          marginTop: '5vh',
+          marginLeft: '42%',
+          marginRight: '50%',
+          backgroundColor: '#4a99cb',
+          color: 'white',
+          width: '16vw',
+          height: '7vh',
+          fontSize: '1.5em',
+          borderRadius: '10px',
+        }}> Get Involved </button></a>
 
 
         <h3 style={headings.landingPageHeading}> Our Mission </h3>
@@ -84,17 +94,17 @@ export default class LandingPage extends Component {
 
         <div className="card-layout">
           <div style={cards.greenCard}>
-            <img src={icon1} style={{height: '10vh', marginTop: '3vh'}} />
+            <img src={"https://png.icons8.com/metro/50/000000/reading.png"} style={{ width: '10vw', marginTop: '3vh', marginLeft: 'auto', marginRight: "auto", opacity: '0.9'}} />
             <h4 className="card-headline"> Education, Training, and Information</h4>
             <p className="card-text">Urban Array provides skills building and hands-on training for members.</p>
           </div>
           <div style={cards.greenCard}>
-            <img src={icon2} style={{height: '10vh', marginTop: '3vh'}} />
+            <img src={"https://png.icons8.com/metro/50/000000/meeting.png"} style={{ width: '10vw', marginLeft: 'auto', marginRight: 'auto', marginTop: '3vh', opacity: '0.9'}} />
             <h4 className="card-headline"> Member's Economic Participation</h4>
             <p className="card-text"> Members participation is key. The benefits match the amount of effort.</p>
           </div>
           <div style={cards.greenCard}>
-            <img src={icon3} style={{height: '10vh', width: '10vh', alignSelf: 'center', marginTop: '3vh'}} />
+            <img src={"https://png.icons8.com/metro/50/000000/groups.png"} style={{ width: '10vw', alignSelf: 'center', marginTop: '3vh', opacity: '0.9'}} />
             <h4 className="card-headline"> Concern for Community </h4>
             <p className="card-text"> Members help make decisions on sustainable development in their own community.</p>
           </div>

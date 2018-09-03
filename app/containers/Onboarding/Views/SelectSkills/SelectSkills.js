@@ -15,7 +15,7 @@ import { submitSkillsAction } from './actions';
 
 
 import { Button, Col, Row, DropdownButton, MenuItem } from 'react-bootstrap';
-import { styles, headings, logo, cards } from 'assets/styles/variables';
+import { styles, headings, logo, cards, buttons } from 'assets/styles/variables';
 import '../OnboardingStyles.css';
 import { Link } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
@@ -151,7 +151,7 @@ export default class SelectSkills extends Component {
     return (
       <div>
 
-        <img src={colorLogo} style={logo.onboardingLogo}/>
+        <img src={colorLogo} style={logo.onboardingLogoSmall}/>
         <br/>
         <ProgressBar currentStep={this.state.currentStep} />
         <div>
@@ -163,12 +163,12 @@ export default class SelectSkills extends Component {
           <br/>
 
           <div className="center">
-            <h4 className="card-headline">Search or select a category to get started</h4>
+            {/* <h4 className="card-headline">Search or select a category to get started</h4>
             <div className="center">
-                <input className="search-field" onClick={this.searchSkills} placeholder="Search other skills here."></input>
+                {/* <input className="search-field" onClick={this.searchSkills} placeholder="Search other skills here."></input> */}
                 { /* <img src={search} alt="Search Icon" /> */ }
-            </div>
-
+            {/* </div> */}
+            <h4 className="card-headline">Select a category to get started</h4>
             {this.renderDropdownButton()}
             <div className="skill-card-holder">
               {this.renderSkills()}
@@ -179,24 +179,24 @@ export default class SelectSkills extends Component {
               type="button"
               className="three-step-nav"
               onClick={this.handleSubmit}
-              style={styles.primaryLight}>Submit Skills
+              style={buttons.lightButton}>Submit Skills
             </Link>
 
           </div>
-          <h4 className="center">Don't see your skills?</h4>
+          <h4 className="center" style={{marginTop: "3vh"}}>Don't see your skills?</h4>
 
           <div className="three-step-nav-container">
             <Link
               to="/get-involved"
               type="button"
               className="three-step-nav"
-              style={styles.primary}>Back
+              style={buttons.onboardingButton}>Back
             </Link>
             <Link
               to="/interview-member"
               type="button"
               className="three-step-nav"
-              style={styles.secondary}>Skip for now
+              style={buttons.greenButton}>Skip for now
             </Link>
           </div>
         </div>
