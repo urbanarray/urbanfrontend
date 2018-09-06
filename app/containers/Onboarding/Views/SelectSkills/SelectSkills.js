@@ -21,7 +21,7 @@ import { Link } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
 import ProgressBar from '../ProgressBar';
 
-import colorLogo from 'assets/img/colorLogo.png';
+import colorlogo from 'assets/img/colorlogo.png';
 // import search from 'assets/img/search.png';
 
 export default class SelectSkills extends Component {

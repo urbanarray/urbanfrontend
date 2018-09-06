@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { styles, headings, logo, cards, images } from 'assets/styles/variables';
 import '../OnboardingStyles.css';
-import colorLogo from 'assets/img/colorLogo.png';
+import colorlogo from 'assets/img/colorlogo.png';
 import image1 from 'assets/img/stockImage1.jpg';
 import image2 from 'assets/img/stockImage2.jpg';
 import icon1 from 'assets/img/icons/001-study.svg';
@@ -38,7 +38,7 @@ export default class LandingPage extends Component {
             </Link>
           </div>
           <br/>
-          <img src={colorLogo} style={logo.landingPageLogo}/>
+          <img src={colorlogo} style={logo.landingPageLogo}/>
         </header>
 
         <Row className="center">

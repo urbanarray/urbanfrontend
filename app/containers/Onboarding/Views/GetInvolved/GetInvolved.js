@@ -10,7 +10,7 @@ import signupIcon from 'assets/img/icons/004-connection.svg';
 import selectSkillsIcon from 'assets/img/icons/005-skills.svg';
 import meetMember from 'assets/img/icons/006-interview.svg';
 
-import colorLogo from 'assets/img/colorLogo.png';
+import colorlogo from 'assets/img/colorlogo.png';
 
 export default class GetInvolved extends Component {
 
