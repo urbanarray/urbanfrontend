@@ -10,7 +10,7 @@ import signupIcon from 'assets/img/icons/signup_icon.svg';
 import selectSkillsIcon from 'assets/img/icons/computer.svg';
 import meetMember from 'assets/img/icons/meet_with_members.svg';
 
-import colorLogo from 'assets/img/colorLogo.png';
+import colorlogo from 'assets/img/colorlogo.png';
 
 export default class GetInvolved extends Component {
 
@@ -32,8 +32,10 @@ export default class GetInvolved extends Component {
     return (
 
       <div>
-        <img src={colorLogo} style={logo.onboardingLogo} />
-        <ProgressBar currentStep={this.state.currentStep} />
+
+        <img src={colorlogo} style={logo.onboardingLogo} />  
+        <ProgressBar currentStep={this.state.currentStep} />  
+
         <div className="container center">
           <h1>Get Involved in Three Steps</h1>
           <h3>Before viewing the opportunities in your community, complete the following steps:</h3>
