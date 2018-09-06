@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
 import ProgressBar from '../ProgressBar';
 
-import colorLogo from 'assets/img/colorLogo.png';
+import colorlogo from 'assets/img/colorlogo.png';
 
 export default class GetInvolved extends Component {
 
@@ -29,7 +29,7 @@ export default class GetInvolved extends Component {
     return (
 
       <div>
-        <img src={colorLogo} style={logo.onboardingLogo} />  
+        <img src={colorlogo} style={logo.onboardingLogo} />  
         <ProgressBar currentStep={this.state.currentStep} />  
         <div className="container center">
           <h1>Get Involved in Three Steps</h1>

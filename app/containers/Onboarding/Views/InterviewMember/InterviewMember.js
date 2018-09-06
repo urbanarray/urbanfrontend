@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
 import ProgressBar from '../ProgressBar';
 
-import colorLogo from 'assets/img/colorLogo.png';
+import colorlogo from 'assets/img/colorlogo.png';
 
 export default class InterviewMember extends Component {
 
@@ -27,7 +27,7 @@ export default class InterviewMember extends Component {
     return (
       <div>
 
-        <img src={colorLogo} style={logo.onboardingLogo} />  
+        <img src={colorlogo} style={logo.onboardingLogo} />  
         <ProgressBar currentStep={this.state.currentStep} />
 
         <div>
