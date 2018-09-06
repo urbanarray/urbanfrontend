@@ -6,9 +6,9 @@ import '../OnboardingStyles.css';
 import colorLogo from 'assets/img/colorLogo.png';
 import image1 from 'assets/img/stockImage1.jpg';
 import image2 from 'assets/img/stockImage2.jpg';
-import icon1 from 'assets/img/icons/education.svg';
-import icon2 from 'assets/img/icons/gears.svg';
-import icon3 from 'assets/img/icons/globe.svg';
+import icon1 from 'assets/img/icons/001-study.svg';
+import icon2 from 'assets/img/icons/002-network.svg';
+import icon3 from 'assets/img/icons/003-social-care.svg';
 import { SocialIcon } from 'react-social-icons';
 import { Link } from 'react-router-dom';
 
@@ -94,17 +94,17 @@ export default class LandingPage extends Component {
 
         <div className="card-layout">
           <div style={cards.greenCard}>
-            <img src={"https://png.icons8.com/metro/50/000000/reading.png"} style={{ width: '10vw', marginTop: '3vh', marginLeft: 'auto', marginRight: "auto", opacity: '0.9'}} />
+            <img src={icon1} style={{ height: '6vw', marginTop: '3vh', marginLeft: 'auto', marginRight: "auto", opacity: '0.9'}} />
             <h4 className="card-headline"> Education, Training, and Information</h4>
             <p className="card-text">Urban Array provides skills building and hands-on training for members.</p>
           </div>
           <div style={cards.greenCard}>
-            <img src={"https://png.icons8.com/metro/50/000000/meeting.png"} style={{ width: '10vw', marginLeft: 'auto', marginRight: 'auto', marginTop: '3vh', opacity: '0.9'}} />
+            <img src={icon2} style={{ height: '6vw', marginLeft: 'auto', marginRight: 'auto', marginTop: '3vh', opacity: '0.9'}} />
             <h4 className="card-headline"> Member's Economic Participation</h4>
             <p className="card-text"> Members participation is key. The benefits match the amount of effort.</p>
           </div>
           <div style={cards.greenCard}>
-            <img src={"https://png.icons8.com/metro/50/000000/groups.png"} style={{ width: '10vw', alignSelf: 'center', marginTop: '3vh', opacity: '0.9'}} />
+            <img src={icon3} style={{ height: '6vw', alignSelf: 'center', marginTop: '3vh', opacity: '0.9'}} />
             <h4 className="card-headline"> Concern for Community </h4>
             <p className="card-text"> Members help make decisions on sustainable development in their own community.</p>
           </div>

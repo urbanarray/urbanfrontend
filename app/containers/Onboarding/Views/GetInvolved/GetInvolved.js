@@ -6,9 +6,9 @@ import '../OnboardingStyles.css';
 import { Link } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
 import ProgressBar from '../ProgressBar';
-import signupIcon from 'assets/img/icons/signup_icon.svg';
-import selectSkillsIcon from 'assets/img/icons/computer.svg';
-import meetMember from 'assets/img/icons/meet_with_members.svg';
+import signupIcon from 'assets/img/icons/004-connection.svg';
+import selectSkillsIcon from 'assets/img/icons/005-skills.svg';
+import meetMember from 'assets/img/icons/006-interview.svg';
 
 import colorLogo from 'assets/img/colorLogo.png';
 
