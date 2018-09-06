@@ -7,7 +7,6 @@ const local = 'http://localhost:3000/v1/';
 const ip = 'http://54.254.136.138:3000/v1/';
 
 const api = axios.create({
-
     baseURL: ip,
     timeout: 20000,
 });

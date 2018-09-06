@@ -88,13 +88,37 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-top: 2vh;
 }
+
+.three-step-card {
+  width: 30vw;
+}
+
 .search-field {
   background-color: #f5f7fa;
   border: 0.5px solid black;
   padding-left: 1vw;
   padding-right: 1vw;
 }
+
+.signupIcon {
+  height: 15vh;
+  width: auto;
+  margin-top: -2vh;
+  margin-bottom: -2vh;
+}
+
+.computerIcon, .memberIcon {
+  height: 10vh;
+  width: auto;
+  margin-bottom: 1vh;
+}
+
+/* .memberIcon {
+  height: 10vh;
+  width: auto;
+} */
 
 /* skills page */
 
@@ -151,14 +175,14 @@
 /* PROGRESS BAR */
 .progress-container {
   display: flex;
-  justify-content: space-around; 
+  justify-content: space-around;
   margin: 0 auto;
   width: 50%;
   text-align: center;
 }
 .activestep {
   background-color: #91c63f;
-  color: white;  
+  color: white;
   margin: 0;
   padding: 10px;
   border: 1px solid #91c63f;
