@@ -1,9 +1,10 @@
-/**
- *
- * ListCommunications
- *
- */
-
+// /**
+//  *
+//  * ListCommunications - this component is no longer used
+// WEIRD ERROR WHEN YOU DELETE THIS COMPONENT SO BEWARE
+//  *
+//  */
+//
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -27,9 +28,6 @@ export class ListCommunications extends React.Component { // eslint-disable-line
   }
   componentDidMount(){
     this.props.listCommunication(this.props.match.params.id);
-  }
-  mapStateToProps(state){
-
   }
 
   renderMoc = (moc) => {
@@ -110,7 +108,7 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     listCommunication : (id) => dispatch(listCommunication(id))
-    
+
   };
 }
 

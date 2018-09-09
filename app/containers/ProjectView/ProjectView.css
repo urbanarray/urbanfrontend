@@ -7,8 +7,25 @@
     margin-bottom: 10px;
 }
 
-#modal_button{
-
-    background-color: rgb(74, 153, 203); 
+.modal_button{
+    background-color: rgb(74, 153, 203);
     color: white;
+    margin-right: 0.5vw;
 }
+
+.project-info-buttons {
+  float: right;
+  display: inline-block;
+  margin-top: -4vh;
+}
+
+
+/* @media(max-width: 940px) { MAKE THIS WORK AT SOME POINT
+  .project-head {
+    display: inline;
+    height: 15vh;
+  }
+  .project-info-buttons {
+    display: inline;
+  }
+} */
