@@ -1,6 +1,8 @@
-import axios from 'utils/axios';
+// NOT USED
 
-
-export const listCommunicationApi = (projectId) => {
-    return axios.get('communication/index/' + projectId);
-} 
+// import axios from 'utils/axios';
+//
+//
+// export const listCommunicationApi = (projectId) => {
+//     return axios.get('communication/index/' + projectId);
+// }

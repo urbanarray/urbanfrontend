@@ -126,20 +126,22 @@ export class Resources extends Component {
         return (
           this.props.resources.listedResources.map((res, i) => {
             return (
-              <Panel bsStyle="primary" key={i}>
-                <Panel.Heading style={styles.primary}>
-                  <Panel.Title componentClass="h3" style={headings.subHeading}>{res.item} </Panel.Title>
-                  <i title="Delete Resource" style={{ float: 'right'}} onClick={() => this.openDelete(res._id)} className="fa fa-times"> </i>
+              <tr key={i}>
+                <Panel bsStyle="primary" >
+                  <Panel.Heading style={styles.primary}>
+                    <Panel.Title componentClass="h3" style={headings.subHeading}>{res.item} </Panel.Title>
+                    <i title="Delete Resource" style={{ float: 'right'}} onClick={() => this.openDelete(res._id)} className="fa fa-times"> </i>
 
-                </Panel.Heading>
-                <Panel.Body style={{ textAlign: 'center'}}>
-                  Item: {res.item} <br />
-                  Quantity: {res.quantity} <br />
-                  Location: {(res.placeId) ? res.placeId.name : ""}
-                  Date Needed: {res.dateId}
-                  <UpdateResources windowWidth={this.props.windowWidth}/>
-                </Panel.Body>
-              </Panel>
+                  </Panel.Heading>
+                  <Panel.Body style={{ textAlign: 'center'}}>
+                    Item: {res.item} <br />
+                    Quantity: {res.quantity} <br />
+                    Location: {(res.placeId) ? res.placeId.name : ""}
+                    Date Needed: {res.dateId}
+                    <UpdateResources windowWidth={this.props.windowWidth}/>
+                  </Panel.Body>
+                </Panel>
+              </tr>
             )
           })
         )
