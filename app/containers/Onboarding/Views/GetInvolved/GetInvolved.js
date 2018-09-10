@@ -32,7 +32,7 @@ export default class GetInvolved extends Component {
     return (
 
       <div>
-        <img src={colorLogo} style={logo.onboardingLogoSmall} />
+        <img src={colorlogo} style={logo.onboardingLogoSmall} />
         <ProgressBar currentStep={this.state.currentStep} />
         <div className="container center">
           <h1>Get Involved in Three Steps</h1>

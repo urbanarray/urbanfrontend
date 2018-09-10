@@ -146,12 +146,12 @@ export default class SelectSkills extends Component {
   }
 
   render() {
-    console.log(this.state, 'state from select skills component')
-    console.log(this.props, 'here are the props from the select skills component')
+    // console.log(this.state, 'state from select skills component')
+    // console.log(this.props, 'here are the props from the select skills component')
     return (
       <div>
 
-        <img src={colorLogo} style={logo.onboardingLogoSmall}/>
+        <img src={colorlogo} style={logo.onboardingLogoSmall}/>
         <br/>
         <ProgressBar currentStep={this.state.currentStep} />
         <div>

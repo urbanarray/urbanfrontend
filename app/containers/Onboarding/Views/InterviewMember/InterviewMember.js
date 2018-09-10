@@ -28,7 +28,7 @@ export default class InterviewMember extends Component {
     return (
       <div>
 
-        <img src={colorLogo} style={logo.onboardingLogoSmall} />
+        <img src={colorlogo} style={logo.onboardingLogoSmall} />
         <ProgressBar currentStep={this.state.currentStep} />
 
         <div>
