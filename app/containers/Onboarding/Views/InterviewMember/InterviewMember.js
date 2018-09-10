@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Button, Col, Row } from 'react-bootstrap';
-import { styles, headings, logo, cards } from 'assets/styles/variables';
+import { styles, headings, logo, cards, buttons } from 'assets/styles/variables';
 import '../OnboardingStyles.css';
 import { Link } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
@@ -28,9 +28,7 @@ export default class InterviewMember extends Component {
     return (
       <div>
 
-
-        <img src={colorlogo} style={logo.onboardingLogo} />  
-
+        <img src={colorlogo} style={logo.onboardingLogoSmall} />
         <ProgressBar currentStep={this.state.currentStep} />
 
         <div>
@@ -43,7 +41,7 @@ export default class InterviewMember extends Component {
 
           <div className="center">
             <h3 className="card-headline">Ready to Take the Next Step?</h3>
-            <Button className="card-text" style={styles.secondaryLight} onClick={this.meetMember}>Meet with a Member</Button>
+            <Button className="card-text" style={buttons.lightButton} onClick={this.meetMember}>Meet with a Member</Button>
           </div>
         </div>
 
@@ -56,13 +54,13 @@ export default class InterviewMember extends Component {
             to="/select-skills"
             type="button"
             className="three-step-nav"
-            style={styles.primary}>Back
+            style={buttons.onboardingButton}>Back
           </Link>
           <Link
             to="/dashboard"
             type="button"
             className="three-step-nav"
-            style={styles.secondary}>Continue to Dashboard
+            style={buttons.greenButton}>Continue to Dashboard
           </Link>
         </div>
 

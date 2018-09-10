@@ -56,7 +56,7 @@
 .project-container {
   display: flex;
   width: 35vw;
-  height: 30vh;
+  height: 35vh;
   border: 1px solid black;
   border-radius: 15px;
   background-color: white;
@@ -103,10 +103,9 @@
 }
 
 .signupIcon {
-  height: 15vh;
+  height: 10vh;
   width: auto;
-  margin-top: -2vh;
-  margin-bottom: -2vh;
+  margin-bottom: 1vh;
 }
 
 .computerIcon, .memberIcon {
@@ -139,6 +138,7 @@
   width: 8.9vw;
   display: inline;
   box-sizing: border-box;
+  font-size: 18px;
 }
 
 .skill-button-right {
