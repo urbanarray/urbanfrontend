@@ -28,6 +28,7 @@ const RolesTable = (props) => {
 
   const renderOpenRoles = () => {
     if (props.roles) {
+      console.log(props)
       if (props.windowWidth < 600) {
         return (
           props.roles.map((role, i) => {
@@ -56,14 +57,23 @@ const RolesTable = (props) => {
         )
       } else {
         return (
+
           props.roles.map((role, i) => {
             return (
               <tr key={i}>
-                <td data-tip={role.description}>
+                {/* <td data-tip={role.description}> */}
+                <td data-tip="Role Details">
+                <Link
+                  to="/roleView">
                   {role.title}
+                  </Link>
                 </td>
-                <td>
+                <td data-tip="Project Details">
+                <Link
+                // Project Link - hardcoded a specific project for presentation purposes
+                  to="/projectView/5b37bc70e904b714dc222fcb">
                   {role.project}
+                  </Link>
                 </td>
                 <td>
                   {`${role.startTime} - ${role.endTime}`}<br />
