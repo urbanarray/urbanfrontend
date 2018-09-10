@@ -176,11 +176,33 @@ export class ProjectView extends Component { // eslint-disable-line react/prefer
             <title>Project View</title>
             <meta name="description" content="Description of ProjectView" />
           </Helmet>
-          <h3>{(this.props.projectview && this.props.projectview.projectDetail)? this.props.projectview.projectDetail.name : ''}
+          <h3 className="project-head">{(this.props.projectview && this.props.projectview.projectDetail)? this.props.projectview.projectDetail.name : ''}
 
             <small>
               Project Details
             </small>
+
+            <div className="project-info-buttons">
+
+              <Button bsStyle="primary"
+                      bsSize="large"
+                      className="modal_button"
+                      name="showCom"
+                      value={!this.state.showCom}
+                      onClick={this.handleCom}
+                       style={styles.primary}>
+                Communications
+              </Button>
+              <Button bsStyle="primary" bsSize="large" className="modal_button" onClick={this.handleHealth} style={styles.primary}>
+                Health & Safety
+              </Button>
+              <Button bsStyle="primary" bsSize="large" className="modal_button" onClick={this.handleExec} style={styles.primary}>
+                Execution
+              </Button>
+              <Button bsStyle="primary" bsSize="large" className="modal_button" onClick={this.handleDoc} style={styles.primary}>
+                Documentation
+              </Button>
+            </div>
 
           </h3>
 
@@ -208,7 +230,7 @@ export class ProjectView extends Component { // eslint-disable-line react/prefer
         </Row>
 
         <Row>
-          
+
           <Col md={6}>
             <RolesDisplay roles={this.props.projectview.projectRoles} windowWidth={this.state.width}/>
           </Col>
@@ -218,68 +240,32 @@ export class ProjectView extends Component { // eslint-disable-line react/prefer
 
         </Row>
 
-        <Row>
-          <Col md={12}>
-            <div id="panelDemo8" className="panel panel-primary" >
-              <div className="panel-heading" style={styles.primaryDark}  >
-                <Row>
-                    <Col md={12}>
-                        <h4 style={headings.tableHeading}> Additional Details</h4>
-                    </Col>
-                </Row>
-              </div>
-            <div id="projectview_btn_container">
-            <Button bsStyle="primary" 
-                    bsSize="large" 
-                    id="modal_button" 
-                    name="showCom" 
-                    value={!this.state.showCom}
-                    onClick={this.handleCom}>
-              Communications
-            </Button>
-         
-            <Modal show={this.state.showCom} 
-                    name="showCom" 
-                    onHide={this.handleCom}>
-              <AddCommunications
-                projectId={this.props.match.params.id}
-              />
-            </Modal>
+        <Modal show={this.state.showExec} onHide={this.handleExec}>
+          <AddExecution
+            projectId={this.props.match.params.id}
+          />
+        </Modal>
 
-            <Button bsStyle="primary" bsSize="large" id="modal_button" onClick={this.handleHealth}>
-              Health & Safety
-            </Button>
 
-            <Modal show={this.state.showHealth} onHide={this.handleHealth}>
-                <HealthSafety
-                  projectId={this.props.match.params.id}
-                />
-            </Modal>
+        <Modal show={this.state.showCom}
+                name="showCom"
+                onHide={this.handleCom}>
+          <AddCommunications
+            projectId={this.props.match.params.id}
+          />
+        </Modal>
 
-            <Button bsStyle="primary" bsSize="large" id="modal_button" onClick={this.handleExec}>
-              Execution
-            </Button>
+        <Modal show={this.state.showHealth} onHide={this.handleHealth}>
+            <HealthSafety
+              projectId={this.props.match.params.id}
+            />
+        </Modal>
 
-            <Modal show={this.state.showExec} onHide={this.handleExec}>
-              <AddExecution
-                projectId={this.props.match.params.id}
-              />
-            </Modal>
-
-            <Button bsStyle="primary" bsSize="large" id="modal_button" onClick={this.handleDoc}>
-              Documentation
-            </Button>
-
-            <Modal show={this.state.showDoc} onHide={this.handleDoc}>
-              <Documentation
-                projectId={this.props.match.params.id}
-              />
-            </Modal>
-            </div>
-            </div>
-          </Col> 
-        </Row>
-
+        <Modal show={this.state.showDoc} onHide={this.handleDoc}>
+          <Documentation
+            projectId={this.props.match.params.id}
+          />
+        </Modal>
 
       </ContentWrapper>
     );

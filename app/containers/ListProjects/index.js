@@ -177,6 +177,7 @@ export class ListProjects extends Component { // eslint-disable-line react/prefe
     const prolists = (this.props.projects.list_projects && this.props.projects.list_projects.docs) ? this.props.projects.list_projects.docs : [] ;
 
     if (prolists && prolists.length > 0) {
+      console.log(prolists)
       return prolists.map((projects) => {
 
           return(

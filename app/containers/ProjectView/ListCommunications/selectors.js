@@ -1,3 +1,5 @@
+// NOT USED BUT CAUSES ERROR IF COMMENTED OUT 
+
 import { createSelector } from 'reselect';
 
 /**

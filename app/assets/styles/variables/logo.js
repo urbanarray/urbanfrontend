@@ -13,5 +13,13 @@ export const logo = {
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: '2vh'
+  },
+  onboardingLogoSmall: {
+    display: 'block',
+    width: '40%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: '2vh',
+    marginBottom: '5vh'
   }
 }
