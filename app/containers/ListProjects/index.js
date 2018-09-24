@@ -185,7 +185,7 @@ export class ListProjects extends Component { // eslint-disable-line react/prefe
               <td> {projects.name} </td>
 
               <td>{projects.description}</td>
-              <td>{projects.place.name}</td>
+              <td>{projects.place}</td>
 
               <td>
 
