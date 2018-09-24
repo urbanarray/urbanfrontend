@@ -20,7 +20,7 @@ export default class LocationDisplay extends Component {
           </div>
           <div className="panel-body text-center">
             <p>
-              {this.props.location.name.toUpperCase()}
+              {this.props.location.toUpperCase()}
             </p>
           </div>
         </div>
