@@ -1,6 +1,8 @@
 # Welcome to Urban Array
 
-We're so excited that you're here. To check out the Urban Array web app, please fork and clone this repository on your machine.
+We're so excited that you're here. To check out the Urban Array web app code, please fork and clone this repository on your machine.
+
+To see the live version, click [here](http://54.254.136.138/welcome)
 
 Whenever you're working on this code, make sure you pull from the **development** branch of this repository for the most up-to-date version. 
 
